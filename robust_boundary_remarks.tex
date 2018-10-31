@@ -13,7 +13,7 @@
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{epsfig}
-\usepackage[colorlinks=true,citecolor=red,linkcolor=blue,pdfpagetransition=Blinds]{hyperref}
+%\usepackage[colorlinks=true,citecolor=red,linkcolor=blue,pdfpagetransition=Blinds]{hyperref}
 \usepackage{fullpage}
 \usepackage{pgfplotstable}
 \usepackage{lipsum}
@@ -55,6 +55,14 @@
 \def\dx{\,\textnormal{d}x}
 \def\dt{\textnormal{d}t}
 \def\d{\,\textnormal{d}}
+\def\cbd{\mathcal O}
+\def\normal{n}
+\def\supp{\textnormal{supp}\,}
+\def\csbd{\chi_{\mathcal O}}
+\newcommand\csin[1]{\mathbf1_{#1}}
+\def\dx{\,\textnormal{d}x}
+\def\dt{\textnormal{d}t}
+\def\d{\,\textnormal{d}}
 
 \DeclareMathOperator*{\esssup}{ess\,sup}
 \newcommand\magenta[1]{{\color{magenta} #1}}
@@ -64,206 +72,154 @@
 
 \title{\bf The super paper}
 
-\author{ V\'ictor Hern\'andez-Santamar\'ia \thanks{E-mail: \texttt{vhernandez@ctrl.cinvestav.mx}} \and Liliana Peralta \thanks{E-mail: \texttt{liliana\_peralta@uaeh.edu.mx}}}
+\author{ V\'ictor Hern\'andez-Santamar\'ia \thanks{Institut de Math\'{e}matiques de
+    Toulouse, UMR 5219,
+    Universit\'e de Toulouse, CNRS, UPS IMT, F-31062 Toulouse Cedex 9,
+    France. E-mail: \texttt{victor.santamaria@math.univ-toulouse.fr}} \and Liliana Peralta \thanks{E-mail: \texttt{liliana\_peralta@uaeh.edu.mx}}}
 
 
 \maketitle
 
-\abstract{In this paper, we present some controllability results for parabolic equations in the framework of hierarchic control. In the first part, we present a Stackelberg strategy combining the concept of controllability with robustness: the main control (the leader) is in charge of a null-controllability objective while a secondary control (the follower) solves a robust control problem, this is, we look for an optimal control in the presence of the worst disturbance. We improve previous results by considering that either the leader or follower control acts on a small part of the boundary.  
-
-On a second result, we present a Stackelberg-Nash strategy for the heat equation where we act on the system through several followers --solving a Nash multi-objective equilibrium-- and where the classical null-controllability objective for the leader is replaced by an insensitizing control problem.}
+\abstract{
+\magenta{cambiar el abstract de acuerdo a los resultados finales...}
+%In this paper, we present some controllability results for parabolic equations in the framework of hierarchic control. In the first part, we present a Stackelberg strategy combining the concept of controllability with robustness: the main control (the leader) is in charge of a null-controllability objective while a secondary control (the follower) solves a robust control problem, this is, we look for an optimal control in the presence of the worst disturbance. We improve previous results by considering that either the leader or follower control acts on a small part of the boundary.  
+%
+%On a second result, we present a Stackelberg-Nash strategy for the heat equation where we act on the system through several followers --solving a Nash multi-objective equilibrium-- and where the classical null-controllability objective for the leader is replaced by an insensitizing control problem.}
 
 
 \keywords{Hierarchic control, robust control, Carleman estimates, controllability.}
 
 \section{Introduction}
 %
-\subsection{The hierarchic control problem}
+%\subsection{The hierarchic control problem}
 %
-Optimization and control problems arise in many applications of engineering and mathematics. Traditionally, such problems deal with a single objective: minimize cost, maximize benefit, etc. When studying more realistic and complex situations, it is desirable to include several different objectives.  Therefore, the introduction of multi-objective optimization is essential. 
+Optimization and control problems arise in many applications of engineering and mathematics. Traditionally, such problems deal with a single objective: minimize cost, maximize benefit, etc. However, when studying more realistic and complex situations, it is desirable to include several different objectives and therefore the introduction of multi-objective optimization is essential. 
 
-Unlike the single-objective case, there are different strategies in order to choose the controls in a multi-objective problem and the election greatly depends on the character of the problem. Different notions for the solution of a multi-objective problem were introduced in economics and game theory, see \cite{Nash}, \cite{Pareto}, \cite{Stackelber}. %In this sense, when
-%dealing with multi-objective optimization problems, a concept of solution needs to be clarified.
+%Unlike the single-objective case, there are different strategies in order to choose the controls in a multi-objective problem and the election greatly depends on the character of the problem. Different notions for the solution of a multi-objective problem were introduced in economics and game theory, see \cite{Nash}, \cite{Pareto}, \cite{Stackelber}. %In this sense, when
+%%dealing with multi-objective optimization problems, a concept of solution needs to be clarified.
 
-In the framework of control of PDEs, the so-called hierarchic control was introduced in \cite{LionsHier,LionsSta} by J.-L. Lions to study a bi-objective control problem for the heat equation. Such methodology uses the notion of Stackelberg optimization (\cite{Stackelber}) and deals with a non-cooperative decision problem where one of the participants (the \emph{leader}) enforces its strategy on the other participants (the \emph{followers}). In what follows, we recall briefly the notion of hierarchic control.
+In the framework of control of PDEs, the so-called hierarchic control was introduced in \cite{LionsHier,LionsSta} by J.-L. Lions to study a bi-objective control problem for the wave and heat equation, respectively. In these works, the hierarchic control method is proposed as a tool to combine the concepts of optimal control and controllability. Such methodology employs the notion of Stackelberg optimization (\cite{Stackelber}) to deal with a multi-objective decision problem where one of the participants, the \emph{leader}, is in charge of a controllability objective and the other participant, the \emph{follower}, deals with an optimal control one. 
 
- Let $\Omega\subset \mathbb{R}^N$, $N\geq 1$, be a bounded open set with boundary $\partial \Omega$ regular enough and let $\omega$ and $\mathcal O$ be nonempty subsets of $\Omega$, with $\omega\cap\mathcal O=\emptyset$. Given $T>0$, we denote the cylinder domain $Q=\Omega\times(0,T)$ with lateral boundary $\Sigma=\partial \Omega\times(0,T)$. 
+In the recent past, several authors have applied successfully the hierarchic control method for a wide variety of equations and solving different kind of objectives, see, among others, \cite{a_araujo,araruna,araruna1,carreno,Guillen,vhs_deT_rob,jesus,montoya}. In  particular, in \cite{vhs_deT_rob}, the authors presented a methodology to combine the notion of hierarchic control introduced by Lions in \cite{LionsSta} with the concept of robust control appearing in optimal control problems (see \cite{aziz,temam,temam_nonlinear}). 
 
-Let us consider the controlled heat equation
+However, all of the previous works have one thing in common: they deal with hierarchic control when the controls are localized in the interior of the domain, namely, for distributed controls. As far as we know, there is only one paper dealing with the boundary case: in \cite{da_silva}, the authors study a Stackelberg-Nash strategy for  (semilinear) parabolic equations with the possibility of the leader or the followers being placed on the boundary. 
+
+Here, adapting some arguments in \cite{da_silva}, we extend and discuss some results concerning the robust hierarchic strategy for the heat equation introduced in \cite{vhs_deT_rob} but using boundary controls instead of distributed ones. \magenta{As in other control problems, the change from distributed to boundary controls imposes additional difficulties which, together with the intricacy of the hierarchic methodology,  allows us to obtain results for some configurations and hence motivate interesting open problems. }
+
+\subsection{The problem and its formulation}
+
+In this paper, we are interested in a robust control strategy for the heat equation where we assume that we can act on the dynamics of the system through a hierarchy of controls. Especially, we are interested in the case where some of the controls act through a (small) portion of the boundary. To fix ideas, we begin by explaining one of the control problems addressed in this paper. 
+
+Let us consider a bounded open set $\Omega\subset \mathbb{R}^N$, $N\geq 1$ with boundary $\partial \Omega$ of class $\mathcal C^2$. Let $\omega\subset \Omega$ be a nonempty open subset and $\cbd$ be a nonempty open subset of $\partial \Omega$.  Given $T>0$, we will use the notation $Q:=\Omega\times(0,T)$ and $\Sigma:=\partial \Omega\times(0,T)$, while $n(x)$ will denote the outward unit normal vector at the point $x\in \partial \Omega$. 
+
+Let us consider the system
 %
 \begin{equation}\label{heat_lin}
 \begin{cases}
-y_t-\Delta y=h\chi_{\omega}+v\chi_{\mathcal O}, & \text{in Q}, \\
-y=0 &\text{on } \Sigma, \\
+y_t-\Delta y=\csin{\omega}h+\psi, & \text{in Q}, \\
+y=v\csbd &\text{on } \Sigma, \\
 y(x,0)=y^0(x), & \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
+where $y_0\in L^2(\Omega)$ is a given initial datum and $\psi\in L^2(Q)$ is an unknown perturbation. 
 
-In \eqref{heat_lin}, $y=y(x,t)$ is the state, $y^0$ is the initial datum, and $h=h(x,t)$ and $v=v(x,t)$ are control functions applied on $\omega$ and $\mathcal O$, respectively. Here, $\chi_A$ denotes the characteristic function of the set $A$. 
+In \eqref{heat_lin}, $y=y(x,t)$ is the state while $h=h(x,t)$ and $v=v(x,t)$ are control functions applied on $\omega$ and $\mathcal O$, respectively. Here $\csin{\omega}$ is the characteristic function of the set $\omega$ and $\csbd$ is a smooth nonnegative function such that $\supp\csbd=\overline \cbd$. \magenta{checar si es igualdad o $\subset\subset$}
 
-We would like to choose $v$ and $h$ in order to achieve two different optimal objectives:
+The intuitive idea of the robust hierarchic control is to choose ``simultaneously'' the control functions  $v$ and $h$ in such way that the following optimality problems are solved: 
 %
 \begin{enumerate}
-\item[1)] find the minimal $L^2$-norm control $h$ such that $y(\cdot,T)=0$,
-\item[2)] find the best control $v$ such that $y$ is ``not too far from'' a desired target $y_d$. 
+\item find the ``best'' control $v$ such that the solution to $y$ is ``not too far'' from a desired target $y_d$ even in the presence of the ``worst'' disturbance $\psi$, and
+\item find the minimal norm control $h$ such that $y(\cdot,T)=0$. 
 \end{enumerate}
-%
 
-\magenta{REESCRIBIR:
-These objectives can be stated more precisely by introducing the cost functionals
+Seen independently, Problem 1 (i.e. $h\equiv 0$) is a classical robust control problem (cf. \cite{temam,temam_nonlinear,aziz}) which looks for a control such that a given cost functional achieves its minimum in presence of the worst disturbance possible. Problem 2 (i.e. $v\equiv\psi\equiv 0$) is a classical null controllability problem and it has been studied for a broad class of systems described by parabolic PDEs, see for instance \cite{cara_guerrero} and the references within.
+
+Consider a nonempty open set $\mathcal O_d\subset \Omega$ and define the cost functional
 %
-\begin{equation}
-J_1(h)=\frac{1}{2}\iint_{\omega\times(0,T)}|h|^2\dx\dt
+\begin{equation}\label{func_rob}
+J_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\partial \Omega\times(0,T)}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right]
 \end{equation}
 %
-and
+where $\ell,\gamma>0$ are constants and $y_d\in L^2(\mathcal O_d\times(0,T))$ is given. This functional describes Problem 1, that is, we look for an optimal pair $(\bar v,\bar \psi)$ such that simulatenously maximize $J_r$ with respect to $\psi$ and minimize it with respect to $v$, while maintaining the state $y$ ``close enough'' to a desired target $y_d$ in the observation domain $\mathcal O_d\times(0,T)$. 
+
+Now, we are in position to describe the Robust hierarchic control problem. According to the formulation introduced by Lions \cite{LionsSta} (originally from \cite{Stackelber}), we denote $h$ as the leader control and $v$ as the follower control. Then, the proposed methodology consints of two parts:
+
+\begin{enumerate}
+\item[(i)] For a fixed leader $h\in L^2(\omega\times(0,T))$, we look for an optimal pair $(\bar v,\bar \psi)$ solving the robust control problem:
 %
-\begin{equation}
-J_2(v)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{\beta}{2}\iint_{\mathcal O\times(0,T)}|v|^2\dx\dt,
-\end{equation}
-where $\beta>0$ is a constant, $ \mathcal O_d\subset \Omega$ is a non empty open subset and $y_d\in L^2(\mathcal O_d\times (0,T) )$ is given. In this way, the first and second optimal objectives become in: find controls $h$ and $v$ such that
+\begin{definition}\label{defi_rob}
+Let $h\in L^2(\omega\times(0,T))$ be fixed. The control $\bar v\in L^2(\Gamma\times(0,T))$, the disturbance $\bar \psi\in L^2(Q)$ and the state $\bar y=\bar y(h,\bar v,\bar \psi)$ solution to \eqref{heat_lin} associated to $(\bar v,\bar \psi)$ are said to solve the robust control problem when a saddle point $(\bar v,\bar \psi)$ (which depends on $h$) of the cost functional $J_r$ is reached, namely
 %
-blablabla...
-}
-
-Problem \ref{} is a null-controllability  
-
-
-
-
-\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
-
-
-
-
-
-
-
-
-As above, we can associate a cost functional for the first objective and design the control $v$ subject to the null control controllability constraint. On the other hand, consider the quadratic cost functional
-%
-\begin{equation}\label{func_clasico}
-J_2(v)=\frac{1}{2}\iint_{\mathcal O_d\times (0,T)}|y-y_d|^2+\frac{\beta}{2}\iint_{\omega\times(0,T)}|v|^2,
+\begin{equation}\label{saddle}
+J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\partial \Omega\times(0,T))\times L^2(Q).
 \end{equation}
 %
-where $\beta>0$ is a constant, $ \mathcal O_d\subset \Omega$ is a non empty open subset and $y_d\in L^2(\mathcal O_d\times (0,T) )$ is given. Then, the second control objective is to achieve  the optimization problem
+In this case,
 %
-\begin{equation}\label{min_clasico}
-\min_{v\in L^2(\omega\times(0,T)) } J_2(v).
+\begin{equation}\label{saddle_minmax}
+J_r(\bar v,\bar \psi;h)=\max_{\psi\in L^2(Q)}\min_{v\in L^2(\partial\Omega\times(0,T))}J_r(v,\psi;h)=\min_{v\in L^2(\partial\Omega\times(0,T))}\max_{\psi\in L^2(Q)}J_r(v,\psi;h).
 \end{equation}
 %
-This classical optimal control problem has been thoroughly studied, see, for instance, \cite{Lions_optim,trol}, and the references within. Since the functional $J_2$ is continuous, strictly convex and coercive, there exists a unique element $\bar v\in L^2(\omega\times(0,T))$ such that \eqref{min_clasico} holds. 
-
-It is clear that the control problems 1-2 are well posed and have a solution. Nevertheless, it is not clear how to design the control $v$ satisfying both control objectives. In fact,  it is impossible in general to  choose the same $v$ fulfilling the control problems 1-2.
-
-According to the original work of Lions, to apply this idea we divide first the control set $\omega$ into two parts
+\end{definition} 
 %
-\begin{equation*}
-\omega=\omega_1\cup\omega_2, \quad\text{up to a set of measure $\omega$},
-\end{equation*}
+Under certain conditions, we will prove that there exists a unique pair $(\bar v,\bar \psi)$ and the associated state $\bar y$ such that \eqref{saddle} holds.
 %
-where $\omega_i$ are open sets of $\Omega$ and $\omega_1\cap\omega_2=\emptyset$. If $\chi_{\omega_i}$ denotes the characteristic function of $\omega_i$ and $v^{i}$ denotes the restriction of $v$ to $\omega_i\times(0,T)$, then \eqref{heat_lin} becomes
+\item[(ii)] After identifying the saddle point for each $h$, we look for the control of minimal norm $\bar h$ satisfying null controllability constraints, i.e., we look for an optimal control $\bar h$  such that
 %
-\begin{equation}\label{heat_hier}
-\begin{cases}
-y_t-\Delta y=v^1\chi_{\omega_1}+v^2\chi_{\omega_2}, \quad \text{in Q}, \\
-y=0 \quad\text{on } \Sigma, \\
-y(0)=y^0, \quad \text{in } \Omega.
-\end{cases}
+\begin{equation}\label{opt_leader}
+J(\bar h)=\min_{h\in L^2(\omega\times(0,T))}\frac{1}{2}\iint_{\omega\times(0,T)}|h|^2\dx\dt, \quad \text{subject to } y(\cdot,T)=0.
 \end{equation}
-%
-For given $v^i\in L^2(\omega_i\times(0,T))$, $i=1,2$, system \eqref{heat_hier} admits a unique solution that we denote as $y(v^1,v^2)=y(x,t;v^1,v^2)$. 
-
-Following \cite{LionsSta}, we will design first the follower control $v^2$. To this end, consider the problem 
-%
-\begin{equation}\label{heat_prob_foll}
-\left\{
-\begin{aligned}
-&\text{given $v^1\in L^2(\omega_1\times(0,T))$, find} \\
-&\min_{v^2} J_2(v^1,v^2)
-\end{aligned}
-\right.
-\end{equation}
-%
-where 
-%
-\begin{equation}\label{func_clasico_sta}
-J_2(v^1,v^2)=\frac{1}{2}\iint_{\mathcal O_d\times (0,T)}|y-y_d|^2+\frac{\beta}{2}\iint_{\omega_2\times(0,T)}|v^2|^2, 
-\end{equation}
-%
-and $y$ is the solution to \eqref{heat_hier}. Problem \eqref{heat_prob_foll} admits a unique solution for each $v^1\in L^2(\omega_1\times(0,T))$. Indeed, note that $v^1$ participates in the minimization problem by means of the variable $y$, but it can be seen as a constant during the process. Therefore, we write the solution as
-%
-\begin{equation}\label{v2_sol}
-v^2=\mathcal F(v^1).
-\end{equation}
-%
-In the second step, we replace $v^2$ as given in \eqref{v2_sol} and obtain
-%
-\begin{equation}\label{sol_id}
-y(v^1,\mathcal F(v^1)). 
-\end{equation}
-%
-Then, in a very natural fashion, we address the problem
-%
-\begin{equation}\label{heat_prob_lid}
-\left\{
-\begin{aligned}
-&\text{find $v^1\in L^2(\omega_1\times(0,T))$, which minimizes} \\
-&J_1(v^1)=\frac{1}{2}\iint_{\omega_1\times(0,T)}|v^1|^2 \quad\text{subject to}\quad y(\cdot,T;v^1,\mathcal F(v^1))=0. 
-\end{aligned}
-\right.
-\end{equation}
-%
-In this way, the Stackelberg problem we consider here is:
-%
-{\renewcommand\labelitemi{}
-\begin{itemize}
-\item \textit{Step 1.} Given $v^1$ (the leader), we choose $v^2$ (the follower) using \eqref{heat_prob_foll}--\eqref{v2_sol}.
-\item \textit{Step 2.} We choose the leader $v^1$ using \eqref{heat_prob_lid}.
-\end{itemize}
-}
-%
-
-
+%%
+%subject to 
+%%
+%\begin{equation}\label{opt_rest}
+%\bar y(\cdot,T;h,\bar v(h),\bar \psi(h))=0 \quad \text{in}\quad  H^{-1}(\Omega).
+%\end{equation}
+\end{enumerate}
 
 \subsection{Main results}
 
-%Hereinafter, we denote by $\nu$ the outward unit normal vector to $\Omega$.
+In this paper, we are interested in studying different configurations for the positioning of the boundary controls.
 
-We consider control systems of the form
+In a first result, we address the robust hierarchic control of system \eqref{heat_lin}, that is, the case where the follower control is applied on the boundary and the leader control is a distributed one. In this regard, we have the following
 %
-\begin{equation}\label{heat_b1}
+\begin{theorem}
+Assume that $\omega\cap\mathcal O_d\neq \emptyset$. Then, there exist $\gamma_0$, $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\gamma>\gamma_0$, $\ell>\ell_0$, $y^0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ verifying 
+%
+\begin{equation}\label{integ_yd}
+\iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
+\end{equation}
+%
+we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\partial\Omega\times(0,T))\times L^2(Q)$, for the functional given by \eqref{func_rob}, such that the associated solution to \eqref{heat_lin} verifies $y(\cdot,T)=0$ in $\Omega$. 
+%
+\end{theorem}
+
+As is common in robust control problems, the assumption on $\gamma$ means that the possible disturbances spoiling the control objectives should have moderate $L^2$-norms. Indeed, without this condition, it is not possible to prove the existence of the saddle point. On the other hand, the assumption on the target $y_d$ means that should approach 0 as $t\to T$. This is a standard feature in some null controllability problems and has been discussed, for instance, in \cite{araruna,deteresa2000}. 
+
+A first question that arises naturally is the possibility to exchange the position of the leader $h$ and the follower control $v$. Following \cite{da_silva}, we will see that this is indeed possible by considering systems of the form 
+%
+\begin{equation}\label{heat_dif}
 \begin{cases}
-y_t-\Delta y=h\mathbf{1}_{\omega}+\psi \quad &\text{in $Q$}, \\
-y=v\mathbf{1}_{\mathcal O} \quad &\text{on $\Sigma$,} \\
-y(x,0)=y_0(x) \quad &\text{in $\Omega$},
+z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi, & \text{in Q}, \\
+y=h\csbd &\text{on } \Sigma, \\
+y(x,0)=y^0(x), & \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
-and
+where $\mathcal B_i\subset \Omega$, $i=1,2,$ are nonempty open subsets. In this case, the cost functional \eqref{func_rob} should be replaced by 
 %
-\begin{equation}\label{heat_b2}
-\begin{cases}
-z_t-\Delta z=v\mathbf{1}_{\mathcal B_1}+\psi\mathbf{1}_{\mathcal B_2} \quad &\text{in $Q$}, \\
-z=h\mathbf{1}_{\mathcal S} \quad &\text{on $\Sigma$,} \\
-z(x,0)=z_0(x) \quad &\text{in $\Omega$}.
-\end{cases}
+\begin{equation}\label{func_rob_dif}
+K_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\d\sigma\dt-\gamma^2\iint_{\mathcal B_2}|\psi|^2\dx\dt\right]
 \end{equation}
-where $h=h(x,t)$ and $v=v(x,t)$ are control functions, $\psi=\psi(x,t)$ is an undesired perturbation, and  $y_0,z_0$ are given initial data. All of these functions are given in appropriate functional spaces and will be clarified below.
-
-Here, we want to choose the control functions  $v$ and $h$ in such way that the following optimality problems are solved: 
-%
-\begin{itemize}
-\item find the ``best'' control $v$ such that the solution to $y$ is ``not too far'' from a desired target $y_d$ even in the presence of the ``worst'' disturbance $\psi$, and
-\item find the minimal norm control $h$ such that $y(\cdot,T)=0$. 
-\end{itemize}
-%
-The first problem, originally introduced in \cite{temam_nonlinear}, looks for a control such that a given cost functional achieves its minimum in presence of the worst disturbance case. In this way, the controlled system will be robust to other possible perturbations. The second problem is a classical null controllability problem and it has been studied for a broad class of systems described by parabolic PDEs, see for instance \cite{cara_guerrero} and the references within. 
 
 
 
 
+
+
+\vspace{5 cm}
+\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
 
 In \cite{vhs_deT_rob}, the authors presented a methodology to solve simultaneously the above problems. They propose to combine the notion of hierarchic control introduced by Lions in \cite{LionsSta} with the concept of robust control appearing in optimal control problems (see \cite{aziz,temam,temam_nonlinear}). The hierarchic control technique uses the concept of Stackelberg optimization and has been recently used to study several multi-objective control problems, see for instance \cite{araruna,AMR, Glowinski,Guillen,Limaco,LionsHier}. 
 
@@ -273,13 +229,7 @@ In this paper, we use the methodology introduced \cite{vhs_deT_rob} to study the
 %
 We begin by describing the control problem for system \eqref{heat_b1}. As mentioned before, it consists of two parts: a robust control problem and a controllability one.
 
-Let us consider a nonempty open set $\mathcal O_d\subset \Omega$. We define the cost functional
-%
-\begin{equation}\label{func_rob}
-J_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2dxdt+\frac{1}{2}\left[\ell^2\iint_{\Gamma\times(0,T)}|v|^2d\sigma dt-\gamma^2\iint_Q|\psi|^2dxdt\right]
-\end{equation}
-%
-where $\ell,\gamma>0$ are constants and $y_d\in L^2(\mathcal O_d\times(0,T))$ is given. This functional describes the robust control problem. We look for an optimal pair such that simulatenously maximize $J_r$ with respect to $\psi$ and minimize it with respect to $v$, while maintaining the state $y$ ``close enough'' to a desired target $y_d$ in the observation domain $\mathcal O_d\times(0,T)$. The problem will be solved when a saddle point $(\bar v,\bar \psi)$ is reached (see Definition \ref{defi_rob} below). 
+
 
 In the second problem, we look for a control $h\in L^2(\omega\times(0,T))$ minimizing 
 %
@@ -298,22 +248,7 @@ y\in L^2(Q)\cap C^0([0,T];H^{-1}(\Omega)).
 Following the notation of \cite{LionsSta} (originally introduced in \cite{Stackelber}), we denote $h$ as the \textit{leader} control and $v$ as the \textit{follower} control. As proposed in \cite{vhs_deT_rob}, we will use the following hierarchic control strategy to solve the optimization problems related to the cost functionals \eqref{func_rob}--\eqref{func_null}: 
 %
 \begin{enumerate}
-\item For a fixed control $h$, we look for an optimal pair $(\bar v,\bar \psi)$ solving the robust control problem:
-%
-\begin{definition}\label{defi_rob}
-Let $h\in L^2(\omega\times(0,T))$ be fixed. The control $\bar v\in L^2(\Gamma\times(0,T))$, the disturbance $\bar \psi\in L^2(Q)$ and the state $\bar y=\bar y(h,\bar v,\bar \psi,y_0)$ solution to \eqref{heat_b1} associated to $(\bar v,\bar \psi)$ are said to solve the robust control problem when a saddle point $(\bar v,\bar \psi)$ (which depends on $h$) of the cost functional $J_r$ is achieved, namely
-%
-\begin{equation}\label{saddle}
-J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\Gamma\times(0,T))\times L^2(Q).
-\end{equation}
-%
-In this case,
-%
-\begin{equation}\label{saddle_minmax}
-J_r(\bar v,\bar \psi;h)=\max_{\psi\in L^2(Q)}\min_{v\in L^2(\Gamma\times(0,T))}J_r(v,\psi;h)=\min_{v\in L^2(\Gamma\times(0,T))}\max_{\psi\in L^2(Q)}J_r(v,\psi;h).
-\end{equation}
-%
-\end{definition}
+\item 
 %
 Under certain conditions, we will prove that there exists a unique pair $(\bar v,\bar \psi)$ and the associated state $\bar y$ such that \eqref{saddle} holds.
 %
@@ -381,9 +316,7 @@ Aqui van los resultados (que a\'un no tengo...), algunas hipotesis utiles
 \omega\cap\mathcal O_d\neq \emptyset
 \end{equation}
 
-\begin{equation}\label{integ_yd}
-\iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty
-\end{equation}
+
 
 \section{The case with boundary follower and distributed leader}
 
@@ -867,10 +800,25 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \frenchspacing
 \begin{thebibliography}{7}
 
+\bibitem{a_araujo}
+\textsc{F. D. Araruna, B. S. V. Ara\'ujo and E. Fern\'andez-Cara.}
+\newblock Stackelberg-Nash null controllability for some linear and semilinear degenerate parabolic equations. 
+\newblock {\em Math. Control Signals Systems}, \textbf{30} (2018).
+
 \bibitem{araruna}
 \textsc{F. D. Araruna, E. Fern\'andez-Cara, and M. C. Santos.}
 \newblock {S}tackelberg-{N}ash exact controllability for linear and semilinear parabolic equations.
 \newblock {\em ESAIM: Control Optim. Calc. Var.}, \textbf{21}, 3 (2015), 835--856.
+%
+\bibitem{araruna1}
+\textsc{F.D. Araruna, E. Fern\'andez-Cara, S. Guerrero, \& M. C.  Santos.} 
+\newblock New results on the Stackelberg Nash exact controllability for parabolic equations. 
+\newblock {\em Systems \& Control Letters}, \textit{104} (2017)., 78--85. 
+%
+\bibitem{da_silva}
+\textsc{F. D. Araruna, E. Fern\'andez-Cara and L. C. da Silva}
+\newblock Hierarchical exact controllability of semilinear parabolic equations with distributed and boundary controls.
+\newblock {\em Preprint}, (2018). 
 %
 \bibitem{AMR}
 \textsc{F.D. Araruna,  S.D.B. de Menezes, and  M.A. Rojas-Medar.}
@@ -896,6 +844,11 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \textsc{O. Bodart, M. Gonz\'alez-Burgos, and R. P\'erez-Garc\'ia.}
 \newblock Insensitizing controls for a heat equation with a nonlinear term involving the state and the gradient. 
 \newblock {\em Nonlinear Anal.}, \textbf{57}, 5-6 (2004), 687--711.
+%
+\bibitem{carreno}
+\textsc{N. Carre\~{n}o and M. C. Santos}.
+\newblock Stackelberg-Nash exact controllability for the Kuramoto-Sivashinsky equation.
+\newblock {\em Preprint}, (2018). 
 %
 \bibitem{Ekeland}
 \textsc{I. Ekeland and R. Temam.}
@@ -1150,25 +1103,21 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Insensitizing controls for the Navier-Stokes equations.
 \newblock {\em Ann. I. H. Poincar\'e--AN}, \textbf{30}, 5 (2013), 825--844.
 %
+\bibitem{jesus}
+\textsc{I. P. de Jesus, J. Limaco and M. R. Clark.}
+\newblock Hierarchical control for the one-dimensional plate equation with a moving boundary. 
+\newblock {\em J. Dyn. Control Syst.}, \textbf{24} (2018), no. 4, 635--655.
 %
-%
-\bibitem{kavian_deT}
-\textsc{O. Kavian and L. de Teresa.}
-\newblock Unique continuation principle for systems of parabolic equations.
-\newblock {\em ESAIM Control Optim. Calc. Var.}, \textbf{16}, 2 (2010), 247--274.
-%
-\bibitem{labbe}
-\textsc{S. Labb\'e and E. Tr\'elat.}
-\newblock Uniform controllability of semidiscrete approximations of parabolic control systems.
-\newblock {\em Syst. Control Lett.}, \textbf{55} (2006), 597--609.
-%
-  
 %%
 \bibitem{lions}
 \textsc{J.-L. Lions.}
 \newblock Quelques notions dans l'analyse et le contr\^{o}le de syst\`{e}mes \`a donn\'{e}es incompl\`{e}tes.
 \newblock {\em Proceedings of the XIth Congress on Differential Equations and Applications/First Congress on Applied Mathematics,} University of M\'{a}laga, 1990, 43--54.
 %
+\bibitem{montoya}
+\textsc{C. Montoya and L. de Teresa.}
+\newblock Robust Stackelberg controllability for the Navier-Stokes equations. 
+\newblock {\em NoDEA Nonlinear Differential Equations Appl.}, \textbf{25} (2018).
 %
 \bibitem{munch_zuazua}
 \textsc{A. M\"unch and E. Zuazua.}
