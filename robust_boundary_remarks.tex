@@ -141,7 +141,9 @@ Consider a nonempty open set $\mathcal O_d\subset \Omega$ and define the cost fu
 J_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\partial \Omega\times(0,T)}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right]
 \end{equation}
 %
-where $\ell,\gamma>0$ are constants and $y_d\in L^2(\mathcal O_d\times(0,T))$ is given. This functional describes Problem 1, that is, we look for an optimal pair $(\bar v,\bar \psi)$ such that simulatenously maximize $J_r$ with respect to $\psi$ and minimize it with respect to $v$, while maintaining the state $y$ ``close enough'' to a desired target $y_d$ in the observation domain $\mathcal O_d\times(0,T)$. 
+%where $\ell,\gamma>0$ are constants and $y_d\in L^2(\mathcal O_d\times(0,T))$ is given. This functional is used to formulate and solve Problem 1. Indeed, we will look for a saddle point $(\bar v,\bar \psi)$ which simultaneously maximize $J_r$ with respect to $\psi$ and minimize it with respect to $v$, while maintaining the state $y$ ``close enough'' to a desired target $y_d$ in the observation domain $\mathcal O_d\times(0,T)$. The parameters $\ell$ and $\gamma$ will play a key role and take into account the relative weight of each term. 
+%
+where $\ell,\gamma>0$ are constants and $y_d\in L^2(\mathcal O_d\times(0,T))$ is given. This functional is used to formulate and solve Problem 1. Indeed, we will look for a saddle point $(\bar v,\bar \psi)$ which simultaneously maximize $J_r$ with respect to $\psi$ and minimize it with respect to $v$. The parameters $\ell$ and $\gamma$ play a key role and take into account the relative weight of each term: the term $-\gamma^2\|\psi\|^2_{L^2(Q)}$ constrains the magnitude of the disturbance allowed in the optimization process while the term associated to $\ell^2\|v\|^2_{L^2(\partial\Omega\times(0,T))}$ moderates the effort made by the control. 
 
 Now, we are in position to describe the Robust hierarchic control problem. According to the formulation introduced by Lions \cite{LionsSta} (originally from \cite{Stackelber}), we denote $h$ as the leader control and $v$ as the follower control. Then, the proposed methodology consints of two parts:
 
@@ -149,7 +151,7 @@ Now, we are in position to describe the Robust hierarchic control problem. Accor
 \item[(i)] For a fixed leader $h\in L^2(\omega\times(0,T))$, we look for an optimal pair $(\bar v,\bar \psi)$ solving the robust control problem:
 %
 \begin{definition}\label{defi_rob}
-Let $h\in L^2(\omega\times(0,T))$ be fixed. The control $\bar v\in L^2(\Gamma\times(0,T))$, the disturbance $\bar \psi\in L^2(Q)$ and the state $\bar y=\bar y(h,\bar v,\bar \psi)$ solution to \eqref{heat_lin} associated to $(\bar v,\bar \psi)$ are said to solve the robust control problem when a saddle point $(\bar v,\bar \psi)$ (which depends on $h$) of the cost functional $J_r$ is reached, namely
+Let $h\in L^2(\omega\times(0,T))$ be fixed. The control $\bar v\in L^2(\partial \Omega\times(0,T))$, the disturbance $\bar \psi\in L^2(Q)$ and the state $\bar y=\bar y(h,\bar v,\bar \psi)$ solution to \eqref{heat_lin} associated to $(\bar v,\bar \psi)$ are said to solve the robust control problem when a saddle point $(\bar v,\bar \psi)$ (which depends on $h$) of the cost functional $J_r$ is reached, namely
 %
 \begin{equation}\label{saddle}
 J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\partial \Omega\times(0,T))\times L^2(Q).
@@ -163,12 +165,12 @@ J_r(\bar v,\bar \psi;h)=\max_{\psi\in L^2(Q)}\min_{v\in L^2(\partial\Omega\times
 %
 \end{definition} 
 %
-Under certain conditions, we will prove that there exists a unique pair $(\bar v,\bar \psi)$ and the associated state $\bar y$ such that \eqref{saddle} holds.
+Under certain conditions, we will prove that there exists a unique pair $(\bar v,\bar \psi)$ and the associated state $\bar y=\bar y(h,\bar v,\bar\psi)$ such that \eqref{saddle} holds.
 %
 \item[(ii)] After identifying the saddle point for each $h$, we look for the control of minimal norm $\bar h$ satisfying null controllability constraints, i.e., we look for an optimal control $\bar h$  such that
 %
 \begin{equation}\label{opt_leader}
-J(\bar h)=\min_{h\in L^2(\omega\times(0,T))}\frac{1}{2}\iint_{\omega\times(0,T)}|h|^2\dx\dt, \quad \text{subject to } y(\cdot,T)=0.
+J(\bar h)=\min_{h\in L^2(\omega\times(0,T))}\frac{1}{2}\iint_{\omega\times(0,T)}|h|^2\dx\dt, \quad \text{subject to } y(\cdot,T;\bar v,\bar \psi)=0.
 \end{equation}
 %%
 %subject to 
@@ -178,13 +180,17 @@ J(\bar h)=\min_{h\in L^2(\omega\times(0,T))}\frac{1}{2}\iint_{\omega\times(0,T)}
 %\end{equation}
 \end{enumerate}
 
+\begin{remark}
+As in \cite{LionsSta} and other related papers, we address the multi-objective optimization problem by solving the mono-objective problems \eqref{saddle_minmax} and \eqref{opt_leader}. Note, however, that in the second minimization problem the solution of the robust control is fixed and therefore its characterization needs to be considered.
+\end{remark}
+
 \subsection{Main results}
 
-In this paper, we are interested in studying different configurations for the positioning of the boundary controls.
+%
 
 In a first result, we address the robust hierarchic control of system \eqref{heat_lin}, that is, the case where the follower control is applied on the boundary and the leader control is a distributed one. In this regard, we have the following
 %
-\begin{theorem}
+\begin{theorem}\label{teo_main1}
 Assume that $\omega\cap\mathcal O_d\neq \emptyset$. Then, there exist $\gamma_0$, $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\gamma>\gamma_0$, $\ell>\ell_0$, $y^0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ verifying 
 %
 \begin{equation}\label{integ_yd}
@@ -197,24 +203,70 @@ we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique saddle p
 
 As is common in robust control problems, the assumption on $\gamma$ means that the possible disturbances spoiling the control objectives should have moderate $L^2$-norms. Indeed, without this condition, it is not possible to prove the existence of the saddle point. On the other hand, the assumption on the target $y_d$ means that should approach 0 as $t\to T$. This is a standard feature in some null controllability problems and has been discussed, for instance, in \cite{araruna,deteresa2000}. 
 
-A first question that arises naturally is the possibility to exchange the position of the leader $h$ and the follower control $v$. Following \cite{da_silva}, we will see that this is indeed possible by considering systems of the form 
+We shall prove Theorem \ref{teo_main1} in two steps. In a first one, we will adapt the methodology in \cite{vhs_deT_rob} to the boundary case  to prove the existence and uniqueness of a saddle point to \eqref{func_rob}. As common in optimal control problems, the solution can be characterized by means of an optimality system leading to a coupled system. In the second part, we will use Carleman estimates for parabolic equations with non-homogenous boundary terms to deduce an observability inequality for a suitable adjoint system, which will imply the desired null controllability objective. 
+
+In this paper, we are also interested in studying different configurations for the positioning of the boundary controls. A first question that arises naturally is the possibility to exchange the position of the leader $h$ and the follower control $v$. Adapting some of the arguments in \cite{da_silva}, we will see that this is in fact possible by considering systems of the form 
 %
 \begin{equation}\label{heat_dif}
 \begin{cases}
 z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi, & \text{in Q}, \\
-y=h\csbd &\text{on } \Sigma, \\
-y(x,0)=y^0(x), & \text{in } \Omega.
+z=h\csbd &\text{on } \Sigma, \\
+z(x,0)=z^0(x), & \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
-where $\mathcal B_i\subset \Omega$, $i=1,2,$ are nonempty open subsets. In this case, the cost functional \eqref{func_rob} should be replaced by 
+where \magenta{$\mathcal B_i \subsetneq \Omega$}, $i=1,2,$ are nonempty open subsets and $z^0(x)\in H_0^1(\Omega)$ is a given initial datum. 
+
+The same methodology presented above can be used to address the Robust hierarchic control of \eqref{heat_dif}. In this case, the cost functional \eqref{func_rob} should be replaced by 
 %
 \begin{equation}\label{func_rob_dif}
-K_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\d\sigma\dt-\gamma^2\iint_{\mathcal B_2}|\psi|^2\dx\dt\right]
+K_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\dx\dt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2\dx\dt\right]
 \end{equation}
+%
+As before, we will see that the robust control can be solved by selecting appropriate parameters $\ell$ and $\gamma$. Notice that unlike \eqref{heat_dif}, here we maximize for disturbances $\psi$ localized in the region $\mathcal B_2$. This comes from a technical reason concerning the resolution of the null controllability objective (see Section \ref{} for details), but which is not necessary to solve the robust control part. 
 
+Once a characterization for the saddle point of $K_r$ is known, the resulting optimality system is a coupled system of PDEs. It is well-known that controllability problems using boundary controls is a difficult task for systems of two or more equations (see, e.g, \cite{assia_survey,assia_luz_new}). Here, using that the parameters $\ell,\gamma$ coming from the solution of the robust control part are sufficiently large, we will combine Carleman estimates with boundary observations together with weighted energy estimates to obtain an observability inequality for a system with two equations and only one observation at the boundary.
 
+The result can be summarized as follows. 
+%
+\begin{theorem}\label{teo_main2}
+Assume that 
+%
+\begin{equation}\label{loc_teo2}
+\mathcal O_d\cap \mathcal B_i =\emptyset \quad\text{and}\quad \bar{\mathcal O}\subset \partial \mathcal B_i, \quad i=1,2.
+\end{equation}
+%
+Then, there exist $\gamma_0$, $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\gamma>\gamma_0$, $\ell>\ell_0$, $y^0\in H_0^1(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ verifying 
+%
+\begin{equation}%\label{integ_yd}
+\iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
+\end{equation}
+%
+we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\mathcal B_1\times(0,T))\times L^2(\mathcal B_2\times(0,T))$, for the functional given by \eqref{func_rob_dif}, such that the associated solution to \eqref{heat_dif} verifies $y(\cdot,T)=0$ in $\Omega$. 
+%
+\end{theorem}
 
+Hypothesis \eqref{loc_teo2} plays a fundamental role in the selection of the weight functions participating in the Carleman estimates needed to prove Theorem \ref{teo_main2}. This is not a common selection and the proof can only be achieved thanks to the special structure of the adjoint system (see eq. \eqref{}). This special selection has been recently used in other hierarchic control problems, see \cite{da_silva}. 
+
+\magenta{Lo que viene abajo aun no es definitivo, pero creo que se puede probar y complementaria el trabajo de buena forma. EL chiste es mencionar que es interesante ver que se puede hacer en el caso donde todos los controles estan sobre la frontera. La cosa se pone fea y la idea es usar una idea que hicimos en nuestro corrigendum. Tengo casi todo para usar esa idea pero hay un estimado que no se si sea cierto. De cualquier forma no es un estimado comun que venga en los libros pero creo qeu Umberto (tal vez franck, pero no se) puede saber.}
+
+A second question that arises in this context is if it is possible to put both controls on the boundary of the system, that is
+%
+\begin{equation*}%\label{heat_all}
+\begin{cases}
+w_t-\Delta w=\psi, & \text{in Q}, \\
+w=h\chi_{\mathcal O_1}+ v\chi_{\mathcal O_2}&\text{on } \Sigma, \\
+w(x,0)=w^0(x), & \text{in } \Omega.
+\end{cases}
+\end{equation*}
+%
+We provide a partial answer to this problem for the case where $\psi\equiv 0$ and the cost functional corresponding to the optimal control problem takes the form
+%
+\begin{equation}
+I(v;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt+\frac{\ell^2}{2}\iint_{\partial\Omega\times(0,T)}\rho_\star^2|v|^2\d\sigma\dt
+\end{equation}
+%
+where $\rho_\star=\rho_\star(t)$ is a suitable positive weight function blowing up at $t=T$. This is a classical o
 
 
 
@@ -308,15 +360,6 @@ subject to the null controllability condition
 \bar z(\cdot,T; h,\bar v(h), \bar \psi(h))=0 \quad \text{in } \Omega.
 \end{equation}
 %
-\subsection{Main results}
-
-Aqui van los resultados (que a\'un no tengo...), algunas hipotesis utiles  
-
-\begin{equation}\label{cond_omega}
-\omega\cap\mathcal O_d\neq \emptyset
-\end{equation}
-
-
 
 \section{The case with boundary follower and distributed leader}
 
@@ -825,6 +868,17 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock On the approximate controllability of Stackelberg-Nash strategies for linearized microplar fluids.
 \newblock {\em Applied Mathematics \& Optimization},  \textbf{70},  3 (2014), 373--393.
 %
+\bibitem{assia_survey}
+\textsc{F. Ammar-Khodja, A. Benabdallah, M. Gonz\'alez-Burgos, and L. de Teresa.}
+\newblock Recent results on the controllability of linear coupled parabolic problems: a survey. 
+\newblock {\em Math. Control Relat. Fields}, \textbf{1} (2011), no. 3, 267--306.
+%
+\bibitem{assia_luz_new}
+\textsc{F. Ammar-Khojda, A. Benabdallah, M. Gonz\'alez-Burgos, and L. de Teresa.}
+\newblock New phenomena for the null controllability of parabolic systems: Minimal time and geometrical dependence.
+\newblock {\em J. Math. Anal. Appl.}, \textbf{444}, 2 (2016), 1071--1113.
+
+%
 \bibitem{aziz}
 \textsc{A. Belmiloudi.}
 \newblock On some robust control problems for nonlinear parabolic equations.
@@ -855,33 +909,33 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Convex analysis and variational problems.
 \newblock {\em North-Holland}, (1976).
 %
-\bibitem{evans}
-\textsc{L. C. Evans.}
-\newblock Partial differential equations. 
-\newblock {\em Graduate studies in Mathematics, AMS}, Providence, (1991). 
+%\bibitem{evans}
+%\textsc{L. C. Evans.}
+%\newblock Partial differential equations. 
+%\newblock {\em Graduate studies in Mathematics, AMS}, Providence, (1991). 
+%%
+%\bibitem{zuazua_fer}
+%\textsc{L. A. Fern\'andez and E. Zuazua.}
+%\newblock Approximate controllability for the semilinear heat equation involving gradient terms.
+%\newblock {\em J. Optim. Theor. Appl.,} \textbf{101}, 2 (1999), 307--328.
 %
-\bibitem{zuazua_fer}
-\textsc{L. A. Fern\'andez and E. Zuazua.}
-\newblock Approximate controllability for the semilinear heat equation involving gradient terms.
-\newblock {\em J. Optim. Theor. Appl.,} \textbf{101}, 2 (1999), 307--328.
-%
-\bibitem{zuazua_fabre}
-\textsc{C. Fabre, J. P. Puel, and E. Zuazua.}
-\newblock Approximate controllability of the semilinear heat equation.
-\newblock {\em Proc. Roy. Soc. Edinburgh Sect. A} \textbf{125}, 3 (1995), 31--61.
+%\bibitem{zuazua_fabre}
+%\textsc{C. Fabre, J. P. Puel, and E. Zuazua.}
+%\newblock Approximate controllability of the semilinear heat equation.
+%\newblock {\em Proc. Roy. Soc. Edinburgh Sect. A} \textbf{125}, 3 (1995), 31--61.
 %
 \bibitem{cara_guerrero}
 \textsc{E. Fern\'andez-Cara and S. Guerrero.}
 \newblock Global {C}arleman inequalities for parabolic systems and applications to controllability.
 \newblock {\em SIAM J. Control Optim.}, \textbf{45}, 4 (2006), 1395--1446.
 %
-\bibitem{cara_NS}
-\textsc{E. Fern\'andez-Cara, S. Guerrero, O. Yu. Imanuvilov and  J. P.  Puel.}  Local exact controllability of the Navier-Stokes system. {\em J. Math. Pures Appl.} \textbf{83}, 12 (2004),  1501--1542.
-%
-\bibitem{fc_zuazua}
-\textsc{E. Fern\'andez-Cara and E. Zuazua.}
-\newblock Null and approximate controllability for weakly blowing up semilinear heat equations. 
-\newblock {\em Ann. I. H. Poincar\'e-AN}, \textbf{17}, 5 (2000), 583--616.
+%\bibitem{cara_NS}
+%\textsc{E. Fern\'andez-Cara, S. Guerrero, O. Yu. Imanuvilov and  J. P.  Puel.}  Local exact controllability of the Navier-Stokes system. {\em J. Math. Pures Appl.} \textbf{83}, 12 (2004),  1501--1542.
+%%
+%\bibitem{fc_zuazua}
+%\textsc{E. Fern\'andez-Cara and E. Zuazua.}
+%\newblock Null and approximate controllability for weakly blowing up semilinear heat equations. 
+%\newblock {\em Ann. I. H. Poincar\'e-AN}, \textbf{17}, 5 (2000), 583--616.
 %
 \bibitem{fursi}
 \textsc{A. Fursikov and O. Yu. Imanuvilov.}
@@ -911,15 +965,15 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Robust Stackelberg controllability for linear and semilinear heat equations.
 \newblock {\em Preprint}, (2017).
  % 
-\bibitem{ima_yama}
-\textsc{O. Yu. Imanuvilov and M. Yamamoto.}
-\newblock Carleman inequalities for parabolic equations in {S}obolev spaces of negative order and exact controllability for semilinear parabolic equations.
-\newblock {\em Publ. RIMS, Kyoto Univ.}, \textbf{39}, (2003), 227--274.
-%
- \bibitem{lady}
-\textsc{O. A. Ladyzhenskaya, V. A. Solonnikov, and N. N. Ural'ceva.}
-\newblock Linear and quasi-linear equations of parabolic type.
-\newblock {\em Translations of Mathematical Monographs 23} (1968).
+%\bibitem{ima_yama}
+%\textsc{O. Yu. Imanuvilov and M. Yamamoto.}
+%\newblock Carleman inequalities for parabolic equations in {S}obolev spaces of negative order and exact controllability for semilinear parabolic equations.
+%\newblock {\em Publ. RIMS, Kyoto Univ.}, \textbf{39}, (2003), 227--274.
+%%
+% \bibitem{lady}
+%\textsc{O. A. Ladyzhenskaya, V. A. Solonnikov, and N. N. Ural'ceva.}
+%\newblock Linear and quasi-linear equations of parabolic type.
+%\newblock {\em Translations of Mathematical Monographs 23} (1968).
 %
 \bibitem{Limaco}
 \textsc{J. Limaco, H. Clark, and L. Medeiros.}
@@ -927,10 +981,10 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock {\em Journal of Mathematical Analysis and Applications}, \textbf{359}, 1
   (2009), 368--383.
 %
-\bibitem{Lions_optim}
-\textsc{J.-L Lions.}
-\newblock Optimal control of systems governed by partial differential equations. 
-\newblock {\em Springer-Verlag}, 1971.
+%\bibitem{Lions_optim}
+%\textsc{J.-L Lions.}
+%\newblock Optimal control of systems governed by partial differential equations. 
+%\newblock {\em Springer-Verlag}, 1971.
 %
 \bibitem{LionsHier}
 \textsc{J.-L. Lions.}
@@ -944,20 +998,20 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock {\em Mathematical Models and Methods in Applied Sciences 4}, 4
   (1994), 477--487.
 %
-\bibitem{Nash}
-\textsc{J. F. Nash.}
-\newblock Non-cooperative games.
-\newblock {\em Annals of Mathematics,} \textbf 54, 2 (1951), 286--295.
-%
-\bibitem{Pareto}
-\textsc{V. Pareto.}
-\newblock Cours d'\'economie politique.
-\newblock {\em Switzerland\/} (1896).
-%
-\bibitem{seidman}
-\textsc{T. Seidman and H.Z. Zhou.}
-\newblock Existence and uniqueness of optimal controls for a quasilinear parabolic equation.
-\newblock {\em SIAM J. Control Optim.}, \textbf{20}, 6 (1982), 747--762.
+%\bibitem{Nash}
+%\textsc{J. F. Nash.}
+%\newblock Non-cooperative games.
+%\newblock {\em Annals of Mathematics,} \textbf 54, 2 (1951), 286--295.
+%%
+%\bibitem{Pareto}
+%\textsc{V. Pareto.}
+%\newblock Cours d'\'economie politique.
+%\newblock {\em Switzerland\/} (1896).
+%%
+%\bibitem{seidman}
+%\textsc{T. Seidman and H.Z. Zhou.}
+%\newblock Existence and uniqueness of optimal controls for a quasilinear parabolic equation.
+%\newblock {\em SIAM J. Control Optim.}, \textbf{20}, 6 (1982), 747--762.
 %
 \bibitem{Stackelber}
 \textsc{H. von Stackelberg.}
@@ -969,72 +1023,16 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Insensitizing controls for a semilinear heat equation.
 \newblock {\em Comm. Partial Differential Equations,} \textbf{25}, 1--2 (2000) 39--72.
 %
-\bibitem{trol}
-\textsc{F. Tr\"oltzsch.}
-\newblock Optimal control of partial differential equations: theory, methods and applications.
-\newblock {\em American Mathematical Society}, (2010).
-%
-\bibitem{zuazua_ondas}
-\textsc{E. Zuazua.}
-\newblock Exact boundary controllability for the semilinear wave equation.
-\newblock {\em Nonlinear partial differential equations and their applications,} Vol. X (Paris 1987--1988), 357--391, Pitman Res. Notes Math. Ser., 220, Longman Sci. Tech., Harlow, 1991. 
-
+%\bibitem{trol}
+%\textsc{F. Tr\"oltzsch.}
+%\newblock Optimal control of partial differential equations: theory, methods and applications.
+%\newblock {\em American Mathematical Society}, (2010).
 %
 %\bibitem{Ekeland}
 %{I. Ekeland and R. Temam.}
 %\newblock Convex analysis and variational problems.
 %\newblock North-Holland, 1976.
 %
-\bibitem{assia_luz_new}
-\textsc{F. Ammar-Khojda, A. Benabdallah, M. Gonz\'alez-Burgos, and L. de Teresa.}
-\newblock New phenomena for the null controllability of parabolic systems: Minimal time and geometrical dependence.
-\newblock {\em J. Math. Anal. Appl.}, \textbf{444}, 2 (2016), 1071--1113.
-
-\bibitem{bodart_fabre}
-\textsc{O. Bodart and C. Fabre.}
-\newblock Controls insensitizing the norm of the solutions of a semilinear heat equation.
-\newblock {\em J. Math. Anal. and App.}, \textbf{195}, 1995, 658--683.
-%
-\bibitem{b_gb_r_1}
-\textsc{O. Bodart, M. Gonz\'alez-Burgos and R. P\'erez-Garc\'ia.}
-\newblock Insensitizing controls for a semilinear heat equation with a superlinear nonlinearity. 
-\newblock {\em C.R. Acad. Sci. Paris, Ser I}, \textbf{335}, 8 (2002), 677--682.
-%
-\bibitem{b_gb_r_2}
-\textsc{O. Bodart, M. Gonz\'alez-Burgos, and R. P\'erez-Garc\'ia.}
-\newblock Insensitizing controls for a heat equation with a nonlinear term involving the state and the gradient. 
-\newblock {\em Nonlinear Anal.}, \textbf{57}, 5-6 (2004), 687--711.
-%
-\bibitem{boyer_HUM}
-\textsc{F. Boyer.}
-\newblock On the penalised HUM approach and its applications to the numerical approximation of null-controls for parabolic problems.
-\newblock {\em ESAIM Proceedings,} \textbf{41} (2013), 15--58.
-%
-\bibitem{boyer_ell}
-\textsc{F. Boyer, F. Hubert, and J. Le Rousseau.}
-\newblock Discrete Carleman estimates for elliptic operators and uniform controllability of semi-discretized parabolic equations.
-\newblock {\em J. Math Pures Appl.,} \textbf{93} (2010), 240--276.
-%
-\bibitem{boyer_ell_N}
-\textsc{F. Boyer, F. Hubert, and J. Le Rousseau.}
-\newblock Discrete Carleman estimates for elliptic operators in arbitrary dimension and applications.
-\newblock {\em SIAM J. Control Optim.,} \textbf{48} (2010), 5357--5397.
-%
-\bibitem{boyer_full}
-\textsc{F. Boyer, F. Hubert, and J. Le Rousseau.}
-\newblock Uniform null-controllability for space/time-discretized parabolic equations.
-\newblock {\em Numer. Math.,} \textbf{118} (2011), 601--661.
-%
-\bibitem{boyer_par}
-\textsc{F. Boyer and J. Le Rousseau.}
-\newblock Carleman estimates for semi-discrete parabolic operators and application to the controllability of semi-linear and semi-discrete parabolic equations.
-\newblock {\em Ann. I. H. Poincar\'e--AN,} \textbf{31} (2014), 1035--1078.
-%
-%
-\bibitem{mamadou_guerrero}
-\textsc{N. Carre\~no, M. Gueye, and S. Guerrero.}
-\newblock Insensitizing control with two vanishing components for the three-dimensional Boussinesq system. 
-\newblock {\em to appear in ESAIM Control Optim. Calc. Var.}
 %
 %
 %\bibitem{zuazua_manuel}
@@ -1050,16 +1048,16 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 %
 %
 %
-\bibitem{fabre}
-\textsc{C. Fabre, J.P. Puel, and E. Zuazua.}
-\newblock Approximate controllability of the semilinear heat equation. 
-\newblock {\em Proc. Royal Soc. Edinburgh}, \textbf{125} A, (1995), 31--61.
-%
-%
-\bibitem{fc_zuazua}
-\textsc{E. Fern\'andez-Cara and E. Zuazua.}
-\newblock Null and approximate controllability for weakly blowing up semilinear heat equations. 
-\newblock {\em Ann. I. H. Poincar\'e-AN}, \textbf{17}, 5 (2000), 583--616.
+%\bibitem{fabre}
+%\textsc{C. Fabre, J.P. Puel, and E. Zuazua.}
+%\newblock Approximate controllability of the semilinear heat equation. 
+%\newblock {\em Proc. Royal Soc. Edinburgh}, \textbf{125} A, (1995), 31--61.
+%%
+%%
+%\bibitem{fc_zuazua}
+%\textsc{E. Fern\'andez-Cara and E. Zuazua.}
+%\newblock Null and approximate controllability for weakly blowing up semilinear heat equations. 
+%\newblock {\em Ann. I. H. Poincar\'e-AN}, \textbf{17}, 5 (2000), 583--616.
 %
 
 %\bibitem{zuazua_cara}
@@ -1073,57 +1071,52 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Controllability of evolution equations.
 \newblock {\em Lecture Notes, Research Institute of Mathematics}, Seoul National University, Korea, (1996).
 
-\bibitem{glo_lions}
-\textsc{R. Glowinski and J.-L. Lions.}
-\newblock Exact and approximate controllability for distributed parameter systems.
-\newblock {\em Acta Numer.,} (1994), 269--378.
-
-\bibitem{glo_lions_he}
-\textsc{R. Glowinski, J.-L. Lions, and J. He.}
-\newblock Exact and approximate controllability for distributed parameter systems.
-\newblock {\em Encyclopedia of Mathematics and its Applications}, vol. 117, Cambridge University Press, Cambridge, (2008).
+%\bibitem{glo_lions}
+%\textsc{R. Glowinski and J.-L. Lions.}
+%\newblock Exact and approximate controllability for distributed parameter systems.
+%\newblock {\em Acta Numer.,} (1994), 269--378.
+%
+%\bibitem{glo_lions_he}
+%\textsc{R. Glowinski, J.-L. Lions, and J. He.}
+%\newblock Exact and approximate controllability for distributed parameter systems.
+%\newblock {\em Encyclopedia of Mathematics and its Applications}, vol. 117, Cambridge University Press, Cambridge, (2008).
 %
 \bibitem{luz_manuel}
 \textsc{M. Gonz\'alez-Burgos and L. de Teresa.}
 \newblock Controllability results for cascade systems of $m$ coupled parabolic PDEs by one control force.
 \newblock {\em Portugal. Math.}, \textbf{67}, 1 (2010), 91--113.
 
-\bibitem{guerrero_stokes}
-\textsc{S. Guerrero.}
-\newblock Controllability of systems of Stokes equations with one control force: existence of insensitizing controls.
-\newblock {\em Ann. I. H. Poincar\'e--AN}, \textbf{24}, 6 (2007), 1029--1054.
+%\bibitem{guerrero_stokes}
+%\textsc{S. Guerrero.}
+%\newblock Controllability of systems of Stokes equations with one control force: existence of insensitizing controls.
+%\newblock {\em Ann. I. H. Poincar\'e--AN}, \textbf{24}, 6 (2007), 1029--1054.
 %
-\bibitem{guerrero}
-\textsc{S. Guerrero.}
-\newblock Null controllability of some systems of two parabolic equations with one control force.
-\newblock {\em SIAM J. Control Optim.} \textbf{46}, 2 (2007), 379--394.
-%
-\bibitem{mamadou}
-\textsc{M. Gueye.}
-\newblock Insensitizing controls for the Navier-Stokes equations.
-\newblock {\em Ann. I. H. Poincar\'e--AN}, \textbf{30}, 5 (2013), 825--844.
+%\bibitem{guerrero}
+%\textsc{S. Guerrero.}
+%\newblock Null controllability of some systems of two parabolic equations with one control force.
+%\newblock {\em SIAM J. Control Optim.} \textbf{46}, 2 (2007), 379--394.
+%%
+%\bibitem{mamadou}
+%\textsc{M. Gueye.}
+%\newblock Insensitizing controls for the Navier-Stokes equations.
+%\newblock {\em Ann. I. H. Poincar\'e--AN}, \textbf{30}, 5 (2013), 825--844.
 %
 \bibitem{jesus}
 \textsc{I. P. de Jesus, J. Limaco and M. R. Clark.}
 \newblock Hierarchical control for the one-dimensional plate equation with a moving boundary. 
 \newblock {\em J. Dyn. Control Syst.}, \textbf{24} (2018), no. 4, 635--655.
 %
-%%
-\bibitem{lions}
-\textsc{J.-L. Lions.}
-\newblock Quelques notions dans l'analyse et le contr\^{o}le de syst\`{e}mes \`a donn\'{e}es incompl\`{e}tes.
-\newblock {\em Proceedings of the XIth Congress on Differential Equations and Applications/First Congress on Applied Mathematics,} University of M\'{a}laga, 1990, 43--54.
 %
 \bibitem{montoya}
 \textsc{C. Montoya and L. de Teresa.}
 \newblock Robust Stackelberg controllability for the Navier-Stokes equations. 
 \newblock {\em NoDEA Nonlinear Differential Equations Appl.}, \textbf{25} (2018).
 %
-\bibitem{munch_zuazua}
-\textsc{A. M\"unch and E. Zuazua.}
-\newblock Numerical approximation of null controls for the heat equation: ill-posedness  and remedies. 
-\newblock {\em Inverse problems,} \textbf{26}, 8 (2010), 085018, 39pp.
-  
+%\bibitem{munch_zuazua}
+%\textsc{A. M\"unch and E. Zuazua.}
+%\newblock Numerical approximation of null controls for the heat equation: ill-posedness  and remedies. 
+%\newblock {\em Inverse problems,} \textbf{26}, 8 (2010), 085018, 39pp.
+%  
 % \bibitem{mauffrey}
 % \textsc{Mauffrey, K.}
 % \newblock Contr\^olabilit\'e de syst\`emes gouvern\'es par des \'equations aux d\'eriv\'ees partielles. 
@@ -1134,17 +1127,17 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Insensitizing controls for a semilinear heat equation.
 \newblock {\em Comm. Partial Differential Equations}, \textbf{25}, 1--2 (2000) 39--72.
 
-\bibitem{deteresa_zuazua}
-\textsc{L. de Teresa and E. Zuazua.}
-\newblock Identification of the class of initial data for the insensitizing control of the heat equation.
-\newblock {\em Commun. Pure. Appl. Anal.,} \textbf{8}, 1 (2009) 457--471.
+%\bibitem{deteresa_zuazua}
+%\textsc{L. de Teresa and E. Zuazua.}
+%\newblock Identification of the class of initial data for the insensitizing control of the heat equation.
+%\newblock {\em Commun. Pure. Appl. Anal.,} \textbf{8}, 1 (2009) 457--471.
+%%
+%%
 %
-%
-
-\bibitem{zuazua_num}
-\textsc{E. Zuazua.}
-\newblock Control and numerical approximation of the wave and heat equation.
-\newblock {\em International Congress of Mathematicians,} Madrid, Spain \textbf{III} (2006) 1389--1417.
+%\bibitem{zuazua_num}
+%\textsc{E. Zuazua.}
+%\newblock Control and numerical approximation of the wave and heat equation.
+%\newblock {\em International Congress of Mathematicians,} Madrid, Spain \textbf{III} (2006) 1389--1417.
 
 
 \end{thebibliography}
