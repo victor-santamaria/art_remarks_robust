@@ -830,15 +830,49 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \subsubsection*{The observability inequality}
 
 
-
+\magenta{Modificando desde ac\'a}
 
 
 
 \section{The case with distributed follower and boundary leader}
 
+Now we will considere systems of the form 
+%
+\begin{equation}\label{heat_dif1}
+\begin{cases}
+z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi, & \text{in Q}, \\
+z=h\csbd &\text{on } \Sigma, \\
+z(x,0)=z^0(x), & \text{in } \Omega.
+\end{cases}
+\end{equation}
 
+The proof of the existence and uniqueness of the saddle point of \eqref{heat_dif1} is equivalent to the problem \magenta{(\ref{}introduzca la cita adecuada)}. In consequence, we get the following coupled system 
+%
+\begin{equation}\label{couple1}
+\begin{cases}
+z_t-\Delta z=-\frac{1}{\ell^2}p\csin{\mathcal B_1}+\frac{1}{\gamma^2}p, & \text{in Q}, \\
+-p_t-\Delta p=(z-z_d)\csin{\mathcal \cbd_d}, & \text{in Q}, \\
+z=h\csbd, \quad p=0 &\text{on } \Sigma, \\
+z(x,0)=z^0(x), \quad p(x,T)=p^T(x)& \text{in } \Omega.
+\end{cases}
+\end{equation}
 
+To find the optimal control $\bar h$ such that minimizes the functional \eqref{opt_leader} we will use the Fenchel-Rockafellar technique, hence, it is necessary consider the adjoint system of \eqref{couple1} 
 
+\begin{equation}\label{adjunto1}
+\begin{cases}
+-\varphi_t-\Delta \varphi=\theta\csin{\mathcal \cbd_d}, & \text{in Q}, \\
+\theta_t-\Delta \theta=-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi, & \text{in Q}, \\
+\theta=0, \quad \varphi=0 &\text{on } \Sigma, \\
+\theta(x,0)=\theta^0(x), \quad \varphi(x,T)=\varphi^T(x)& \text{in } \Omega,
+\end{cases}
+\end{equation}
+%
+and  define the dual functional 
+
+\begin{equation}\label{func_FR}
+F_{\epsilon}()=\frac{1}{2}\iint_{\partial \Omega\times(0,T)}|\frac{\partial}{}|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\partial \Omega\times(0,T)}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right]
+\end{equation}
 
 \frenchspacing
 \begin{thebibliography}{7}
