@@ -864,7 +864,7 @@ To find the optimal control $\bar h$ such that minimizes the functional \eqref{o
 -\varphi_t-\Delta \varphi=\theta\csin{\mathcal \cbd_d}, & \text{in Q}, \\
 \theta_t-\Delta \theta=-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi, & \text{in Q}, \\
 \theta=0, \quad \varphi=0 &\text{on } \Sigma, \\
-\theta(x,0)=\theta^0(x), \quad \varphi(x,T)=\varphi^T(x)& \text{in } \Omega,
+\theta(x,0)=0, \quad \varphi(x,T)=\varphi^T(x)& \text{in } \Omega,
 \end{cases}
 \end{equation}
 %
@@ -874,8 +874,14 @@ and  define the dual functional
 F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\Sigma}\left|\frac{\partial \varphi}{\partial n}\csbd \right|^2\dx\dt+\frac{\epsilon}{2}\left\|\varphi^T\right\|+\int_{\Omega}\varphi(0)z^0(x)\dx-\iint_{Q}\theta z_d \dx\dt
 \end{equation}
 
+Previously to proof our first result it is necessary intoduced the following notation. 
+
+\begin{notation}\magenta{creo que no es notaci\'on. Por otro lado, no s\'e quien es $S^{'}$, creo que $S^{\prime}\subset\subset \mathcal{O}$}
+\begin{equation}\tilde{\xi}=\frac{e^{\lambda\eta(x)}}{t^2(T-t)^2}\qquad \Sigma^{\prime}=S^{\prime}\times (0,T)\end{equation}
+\end{notation}
+
 \begin{proposition}
-\magenta{Under the hypotheses ....}. Then, there exists a constant $C$ \magenta{maybe $\sigma$} such that
+\magenta{Under the hypotheses ....}. Then, there exists a constant $C$ \magenta{maybe $\sigma$, $s$ large enough} such that
 %
 
 \begin{equation}
@@ -884,9 +890,35 @@ F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\Sigma}\left|\frac{\partial \varphi}{\
  \end{proposition}
  
  \begin{proof}
- We begin with the following Carleman estimate 
+ We begin with the following Carleman estimate \magenta{\cite{} fernandez cara},
  
- \end{proof}
+\magenta{ \begin{equation*}
+\iint_{Q}e^{-2s\tilde{\alpha}}s\tilde{\xi}|\nabla q|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}}s^2\lambda^2\tilde{\xi}^3|q|^2\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}}|f|^2+s\iint_{\Sigma}e^{-2s\tilde{\alpha}}\tilde{\xi}\left|\frac{\partial q}{\partial n}\right|^2\dx\dt\right),
+\end{equation*}}
+%
+\magenta{for $\lambda>1$. Hubo un procedimiento para llegar al siguiente estimado usando el anterior. No tengo le procedimiento y no lo repet\'i, adem\'as no s\'e que pas\'o con la $\lambda^2$} 
+ \begin{equation}\label{Est1}
+ \begin{split}
+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla q|^2\dx\dt+&\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|q|^2\\
+&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^m|f|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial q}{\partial n}\right|^2\dx\dt\right),
+\end{split}
+\end{equation}
+%
+for $m\in$.
+
+Applying the estimate \eqref{Est1} to the couple system \eqref{adjunto1} implies 
+
+\begin{align}\notag
+&\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla \varphi|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|\varphi|^2\\ \notag
+&+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla \theta|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|\theta|^2\\ \notag
+&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^m|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\
+&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^m|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\
+&\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
+\end{align}
+\magenta{viene lo de las hojas que me mandaste}
+\
+
+\end{proof}
 
 \frenchspacing
 \begin{thebibliography}{7}
