@@ -871,8 +871,22 @@ To find the optimal control $\bar h$ such that minimizes the functional \eqref{o
 and  define the dual functional 
 
 \begin{equation}\label{func_FR}
-F_{\epsilon}()=\frac{1}{2}\iint_{\partial \Omega\times(0,T)}|\frac{\partial}{}|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\partial \Omega\times(0,T)}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right]
+F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\Sigma}\left|\frac{\partial \varphi}{\partial n}\csbd \right|^2\dx\dt+\frac{\epsilon}{2}\left\|\varphi^T\right\|+\int_{\Omega}\varphi(0)z^0(x)\dx-\iint_{Q}\theta z_d \dx\dt
 \end{equation}
+
+\begin{proposition}
+\magenta{Under the hypotheses ....}. Then, there exists a constant $C$ \magenta{maybe $\sigma$} such that
+%
+
+\begin{equation}
+\left\|\varphi(x,0)\right\|^2_{L^2(\Omega)}+\iint_{Q}\sigma^2|\theta|^2dxdt\leq C\iint_{\Sigma}\left|\frac{\partial \varphi}{\partial n}\csbd \right|^2\dx\dt
+\end{equation}
+ \end{proposition}
+ 
+ \begin{proof}
+ We begin with the following Carleman estimate 
+ 
+ \end{proof}
 
 \frenchspacing
 \begin{thebibliography}{7}
