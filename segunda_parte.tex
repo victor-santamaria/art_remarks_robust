@@ -881,7 +881,7 @@ Previously to proof our first result it is necessary intoduced the following not
 \begin{split}
 &\beta_i=\begin{cases}
      \frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{T^4/16}, & \text{on } [0,T/2]\\
-     \alpha_i & \text{on } [T/2,T],
+     \tilde{\alpha}_i & \text{on } [T/2,T],
 \end{cases}\\
 &\phi_i=\begin{cases}
      \frac{e^{\lambda \eta_i(x)}}{T^4/16}, & \text{on } [0,T/2]\\
@@ -893,7 +893,7 @@ where
 %
 \begin{equation*}
 \begin{split}
-\tilde{\xi}_i=&\frac{e^{\lambda\eta_i(x)}}{t^2(T-t)^2},\qquad \alpha_i=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{t^2(T-t)^2}.
+\tilde{\xi}_i=&\frac{e^{\lambda\eta_i(x)}}{t^2(T-t)^2},\qquad \tilde{\alpha}_i=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{t^2(T-t)^2}.
 \end{split}\end{equation*}
 \end{notation}
 %
@@ -923,29 +923,30 @@ We can note that,
 \magenta{for $\lambda>1$. Hubo un procedimiento para llegar al siguiente estimado usando el anterior. No tengo le procedimiento y no lo repet\'i, adem\'as no s\'e que pas\'o con la $\lambda^2$} 
  \begin{equation}\label{Est1}
  \begin{split}
-\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla q|^2\dx\dt+&\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|q|^2\\
-&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^m|f|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial q}{\partial n}\right|^2\dx\dt\right),
+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla q|^2\dx\dt+&\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|q|^2\dx\dt\\
+&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^m|f|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}\left|\frac{\partial q}{\partial n}\right|^2\dx\dt\right),
 \end{split}
 \end{equation}
 %
-for $m\in$.
+for $m\in\mathbb{R}$ and $i=1,2$.
 
 Applying the estimate \eqref{Est1} to the couple system \eqref{adjunto1} implies 
 
 \begin{align}\notag
-&I(\varphi)+I(\theta)\\\notag
-&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha_2}}(s\tilde{\xi}_2)^m|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi}_1)^{1+m}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\
-&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi}_1)^m|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi}_1)^{1+m}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\
-&\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi}_1)^{1+m}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha_2}}(s\tilde{\xi}_2)^{1+m}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
+&I(\varphi,1,0)+I(\theta, 2, -1)\\\notag
+&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_1}|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\
+&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\
+&\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
 \end{align}
 %
 where
 \begin{equation*}
-\begin{split}
-I(\varphi)&:=\iint_{Q}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi}_1)^{1+m}|\nabla \varphi|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi}_1)^{3+m}|\varphi|^2\dx\dt,\\
-I(\theta)&:=\iint_{Q}e^{-2s\tilde{\alpha_2}}(s\tilde{\xi}_2)^{1+m}|\nabla \theta|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha_2}}(s\tilde{\xi}_2)^{3+m}|\theta|^2\dx\dt
-\end{split}
+I(\cdot,i,m):=\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla \cdot|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|\cdot|^2\dx\dt.
 \end{equation*}
+Note that we can replace $\tilde{\xi}_i, \tilde{\alpha}_i$ by $\beta_i, \phi_i$ in the interval $[T/2,T]$ hence,
+
+\
+
 \magenta{viene lo de las hojas que me mandaste}
 \
 
