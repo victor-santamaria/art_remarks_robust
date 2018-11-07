@@ -877,11 +877,35 @@ F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\Sigma}\left|\frac{\partial \varphi}{\
 Previously to proof our first result it is necessary intoduced the following notation. 
 
 \begin{notation}\magenta{creo que no es notaci\'on. Por otro lado, no s\'e quien es $S^{'}$, creo que $S^{\prime}\subset\subset \mathcal{O}$}
-\begin{equation}\tilde{\xi}=\frac{e^{\lambda\eta(x)}}{t^2(T-t)^2}\qquad \Sigma^{\prime}=S^{\prime}\times (0,T)\end{equation}
+\begin{equation*}
+\begin{split}
+&\beta_i=\begin{cases}
+     \frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{T^4/16}, & \text{on } [0,T/2]\\
+     \alpha_i & \text{on } [T/2,T],
+\end{cases}\\
+&\phi_i=\begin{cases}
+     \frac{e^{\lambda \eta_i(x)}}{T^4/16}, & \text{on } [0,T/2]\\
+      \tilde{\xi}_i & \text{on } [T/2,T],
+\end{cases}\\
+\end{split}\end{equation*}
+%
+where
+%
+\begin{equation*}
+\begin{split}
+\tilde{\xi}_i=&\frac{e^{\lambda\eta_i(x)}}{t^2(T-t)^2},\qquad \alpha_i=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{t^2(T-t)^2}.
+\end{split}\end{equation*}
 \end{notation}
+%
+\begin{remark}
+We can note that,
+\begin{equation*}
+\tilde{\xi}_2\leq \tilde{\xi}_1,\quad \alpha_1\leq \alpha_2\quad\text{in}\quad \Omega\quad\text{and}\quad\tilde{\xi}_2= \tilde{\xi}_1,\quad \alpha_1=\alpha_2\quad\text{in}\quad \mathcal{O}_d. 
+\end{equation*}
+\end{remark} 
 
 \begin{proposition}
-\magenta{Under the hypotheses ....}. Then, there exists a constant $C$ \magenta{maybe $\sigma$, $s$ large enough} such that
+\magenta{Under the hypotheses .... $\Sigma^{\prime}=S^{\prime}\times (0,T)$}. Then, there exists a constant $C$ \magenta{maybe $\sigma$, $s$ large enough} such that
 %
 
 \begin{equation}
@@ -909,12 +933,19 @@ for $m\in$.
 Applying the estimate \eqref{Est1} to the couple system \eqref{adjunto1} implies 
 
 \begin{align}\notag
-&\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla \varphi|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|\varphi|^2\\ \notag
-&+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla \theta|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|\theta|^2\\ \notag
-&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^m|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\
-&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^m|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\
+&I(\varphi)+I(\theta)\\\notag
+&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha_2}}(s\tilde{\xi}_2)^m|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi}_1)^{1+m}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\
+&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha_1}}(s\tilde{\xi})^m|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\
 &\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
 \end{align}
+%
+where
+\begin{equation*}
+\begin{split}
+I(\varphi)&:=\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla \varphi|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|\varphi|^2\dx\dt,\\
+I(\theta)&:=\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{1+m}|\nabla \theta|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}}(s\tilde{\xi})^{3+m}|\theta|^2\dx\dt
+\end{split}
+\end{equation*}
 \magenta{viene lo de las hojas que me mandaste}
 \
 
