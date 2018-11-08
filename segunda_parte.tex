@@ -895,6 +895,12 @@ where
 \begin{split}
 \tilde{\xi}_i=&\frac{e^{\lambda\eta_i(x)}}{t^2(T-t)^2},\qquad \tilde{\alpha}_i=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{t^2(T-t)^2}.
 \end{split}\end{equation*}
+Set $\bar{\eta} \in C^1([0,T])$ such that 
+\begin{equation}
+\bar{\eta}=\begin{cases}
+    1,  & \text{on }[0,T/2] \\
+    0, & \text{on } [3T/4,T].
+\end{cases}\end{equation}
 \end{notation}
 %
 \begin{remark}
@@ -934,17 +940,30 @@ Applying the estimate \eqref{Est1} to the couple system \eqref{adjunto1} implies
 
 \begin{align}\notag
 &I(\varphi,1,0)+I(\theta, 2, -1)\\\notag
-&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_1}|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\
-&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\
+&\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_1}|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\ \notag
+&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\ \label{igualda1}
 &\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
 \end{align}
 %
 where
-\begin{equation*}
+\begin{equation}\label{nota1}
 I(\cdot,i,m):=\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla \cdot|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|\cdot|^2\dx\dt.
-\end{equation*}
-Note that we can replace $\tilde{\xi}_i, \tilde{\alpha}_i$ by $\beta_i, \phi_i$ in the interval $[T/2,T]$ hence,
+\end{equation}
+Note that we can replace the functions $\tilde{\xi}_i, \tilde{\alpha}_i$ by $\beta_i, \phi_i$ in the interval $[T/2,T]$ in the second integral of \eqref{nota1} hence,
 
+\begin{equation}
+\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_i}(s\phi_i)^{3+m}|\cdot|^2\dx\dt\leq I(\cdot,i,m).
+\end{equation}
+%
+In consequence and from inequality \eqref{igualda1} we get
+
+
+\begin{align}\notag
+&\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_1}\phi_1^{3}|\varphi|^2\dx\dt+\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_2}(s\phi_2)^{2}|\theta|^2\dx\dt\\
+&\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\beta_1}\phi_1\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right),
+\end{align}
+%
+for some constant $C=C(s,T)$.
 \
 
 \magenta{viene lo de las hojas que me mandaste}
