@@ -1,7 +1,7 @@
 \documentclass[preprint,10pt]{article}
 
 \usepackage{amsfonts}
-\usepackage{amsmath}
+\usepackage{amsmath,amsthm}
 \usepackage{amssymb}
 \usepackage{enumerate}
 \usepackage[english]{babel}
@@ -13,12 +13,14 @@
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{epsfig}
-%\usepackage[colorlinks=true,citecolor=red,linkcolor=blue,pdfpagetransition=Blinds]{hyperref}
+\usepackage[colorlinks=true,citecolor=red,linkcolor=blue,pdfpagetransition=Blinds]{hyperref}
 \usepackage{fullpage}
 \usepackage{pgfplotstable}
 \usepackage{lipsum}
 \usepackage{cases}
 \providecommand{\keywords}[1]{\noindent {\textbf{Keywords:}} #1}
+\usepackage{lineno}\linenumbers
+%\usepackage{showkeys}
 
 %\usepackage[margin=2cm]{geometry}
 
@@ -48,7 +50,7 @@
 \newtheorem{assumption}[theorem]{Assumption}
 \newtheorem{solution}[theorem]{Solution}
 \newtheorem{summary}[theorem]{Summary}
-\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+%\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
 \numberwithin{equation}{section} 
 \numberwithin{theorem}{section}
 
@@ -196,7 +198,7 @@ Assume that $\omega\cap\mathcal O_d\neq \emptyset$. Then, there exist $\gamma_0$
 \iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
 \end{equation}
 %
-we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\partial\Omega\times(0,T))\times L^2(Q)$, for the functional given by \eqref{func_rob}, such that the associated solution to \eqref{heat_lin} verifies $y(\cdot,T)=0$ in $\Omega$. 
+we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\Sigma)\times L^2(Q)$, for the functional given by \eqref{func_rob}, such that the associated solution to \eqref{heat_lin} verifies $y(\cdot,T)=0$ in $\Omega$. 
 %
 \end{theorem}
 
@@ -249,7 +251,7 @@ Hypothesis \eqref{loc_teo2} plays a fundamental role in the selection of the wei
 
 A second question that arises in this context is if it is possible to put both controls on the boundary of the system, namely
 %
-\begin{equation}\label{func_teo3}
+\begin{equation}\label{sys_teo3}
 \begin{cases}
 w_t-\Delta w=\psi, & \text{in Q}, \\
 w=h\chi_{\mathcal O_1}+ v\chi_{\mathcal O_2}&\text{on } \Sigma, \\
@@ -267,108 +269,39 @@ where $\rho_\star=\rho_\star(t)$ is a suitable positive weight function blowing 
 %
 \begin{theorem}\label{teo3}
 Suppose that $\psi\equiv 0$. Then, there exist $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\ell>\ell_0$, $w_0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ 
-\begin{equation}%\label{integ_yd}
+\begin{equation*}%\label{integ_yd}
 \iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
-\end{equation}
-we can find a leader control $h\in \magenta{X}$ and a unique follower control $\bar v$ minimizing \eqref{func_teo3}, such that the associated solution to \eqref{func_teo3} verifies $w(\cdot,T)=0$. 
+\end{equation*}
+we can find a leader control $h\in \magenta{X}$ and a unique follower control $\bar v$ minimizing \eqref{func_teo3}, such that the associated solution to \eqref{sys_teo3} verifies $w(\cdot,T)=0$. 
 \end{theorem}
 
 The role of the weight function  $\rho_\star$ is clear. By minimizing \eqref{func_teo3}, we enforce the follower $v$ to vanish at $t=0$ and $t=T$ and therefore the leader $h$ finds no obstruction to control the system during the second part of the hierarchic methodology. We refer to \cite{araruna} and \cite{vhs_corri} for a similar use of weighted functionals as \eqref{func_teo3}. 
 
+The rest of the paper is organized as follows. In section \ref{bound_follow}, we study the robust hierarchic problem concerning the case of boundary follower and distributed leader, this is, the case of system \eqref{heat_lin}. On the first stage, we address the robust control problem with boundary control and then we deal with the null controllability of the resulting system. These allow to establish the proof of Theorem \ref{teo_main1}. In section \ref{sec_bound_leader}, we deal with the case of a boundary leader. We will emphasize the difficulties of controlling the  coupled system arising from the robust control part from its boundary  and how using \eqref{loc_teo2} allows us to obtain an observability inequality implying Theorem \ref{teo_main2}. Section \ref{sec_bound} is devoted to analyze a hierarchic control strategy (in the sense of \cite{LionsSta}) for system \eqref{func_teo3} in the case when $\psi\equiv 0$. Due to the special selection of the cost functional \eqref{func_teo3}, we are able to proof Theorem \ref{teo3}. Finally, in Section \ref{sec_conclusion} we make some concluding remarks. 
 
+\section{The case with boundary follower and distributed leader}\label{bound_follow}
 
-\vspace{5 cm}
-\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
+\subsection{Existence, uniqueness and characterization of the saddle point}
 
-\subsection{The problem and its formulation}
-%
-We begin by describing the control problem for system \eqref{heat_b1}. As mentioned before, it consists of two parts: a robust control problem and a controllability one.
+%The aim of this section is to study the robust hierarchic controllability of system \eqref{heat_lin}. 
 
+In the first step, we analyze the robust control problem associated to \eqref{func_rob} and we establish conditions on the parameters $\ell$ and $\gamma$ leading to the existence of a saddle point. The proof is closely related to the one presented in \cite{vhs_deT_rob} but, for completeness, we sketch it briefly. In what follows, we assume that the leader has made a choice $h$. 
 
-
-In the second problem, we look for a control $h\in L^2(\omega\times(0,T))$ minimizing 
-%
-\begin{equation}\label{func_null}
-J(h)=\frac{1}{2}\iint_{\omega\times(0,T)}|h|^2dxdt \quad\text{subject to}\quad y(\cdot,T)=0. 
-\end{equation}
-%
-This is a classical null controllability problem. In the case where $\psi=v=0$, it its well-known that system \eqref{heat_b1} is null controllable, see, for instance, \cite{fursi,cara_guerrero}. 
-
-It is well-known that for every $h\in L^2(\omega\times(0,T))$, $v\in L^2(\Gamma\times(0,T))$, $\psi\in L^2(Q)$, and $y_0\in H^{-1}(\Omega)$, system \eqref{heat_b1} admits a unique weak solution (defined by transposition) that satisfies
+The first thing to check is that the solution $y$ to \eqref{heat_lin} is well posed and is uniquely determined by the data of the problem. It is well-known (see, e.g., \cite{lions_magenes}) that for any $v\in L^2(\Sigma)$, $\psi\in L^2(Q)$, $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$, system \eqref{heat_lin} admits a unique weak solution (defined by transposition) that satisfies
 %
 \begin{equation}
 y\in L^2(Q)\cap C^0([0,T];H^{-1}(\Omega)).
 \end{equation} 
 
-Following the notation of \cite{LionsSta} (originally introduced in \cite{Stackelber}), we denote $h$ as the \textit{leader} control and $v$ as the \textit{follower} control. As proposed in \cite{vhs_deT_rob}, we will use the following hierarchic control strategy to solve the optimization problems related to the cost functionals \eqref{func_rob}--\eqref{func_null}: 
+Moreover, $y$ satisfies an estimate of the form
 %
-\begin{enumerate}
-\item 
-%
-Under certain conditions, we will prove that there exists a unique pair $(\bar v,\bar \psi)$ and the associated state $\bar y$ such that \eqref{saddle} holds.
-%
-\item After identifying the saddle point for each leader control $h$, we look for an optimal control $\hat h$ such that 
-%
-\begin{equation}\label{opt_leader}
-J(\hat h)=\min_{h\in L^2(\omega\times(0,T))}J(h), 
+\begin{equation}\label{ener_trans}
+\|y\|_{L^2(Q)}\leq C\left(\|y_0\|_{H^{-1}(\Omega)}+\|v\|_{L^2(\Sigma)}+\|h\|_{L^2(\omega\times(0,T))}+\|\psi\|_{L^2(Q)}\right)
 \end{equation}
 %
-subject to 
-%
-\begin{equation}\label{opt_rest}
-\bar y(\cdot,T;h,\bar v(h),\bar \psi(h))=0 \quad \text{in}\quad  H^{-1}(\Omega).
-\end{equation}
-%
-\end{enumerate}
+where $C$ is a positive constant not depending on $\psi$, $v$, $h$ nor $y_0$. 
 
-\begin{remark}
-As in \cite{LionsSta} and other related papers, we address the multi-objective optimization problem by solving the mono-objective problems \eqref{saddle_minmax} and \eqref{opt_leader}--\eqref{opt_rest}. Note, however, that in the second minimization problem the optimal strategy for the follower is fixed and therefore its characterization needs to be considered.
-\end{remark}
-
-Analogously, we may define the functionals for the multi-objective problem related to system \eqref{heat_b2}. We define the Hilbert spaces $H^{r,s}(\Sigma):=L^2(0,T;H^r(\Gamma))\cap H^s(0,T:L^2(\Gamma))$ and introduce the following space
-%
-\begin{equation}
-V:=\left\{u\in H^2(\Omega): \  u=0 \ \text{on } \Gamma\backslash \mathcal S\right\}.
-\end{equation}
-
-Consider the cost functional 
-%
-\begin{equation}\label{func_S_rob}
-K_r(v,\psi;h)=\frac{1}{2}\iint_{\Gamma_d\times(0,T)}\left|\frac{\partial z}{\partial \nu}-\zeta_d\right|^2d\sigma dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2dxdt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2dxdt\right]
-\end{equation}
-%
-where $\Gamma_d$ is a nonempty closed subset of $\Gamma$, $\zeta_d$ is a given function and $\ell,\gamma$ are positive constants. This functional describes the robust control problem for \eqref{heat_b2}. The leader functional is the following
-%
-\begin{equation}
-K(h):=\frac{1}{2}\|h\|^2_{H^{\frac{3}{2},\frac{3}{4}}(\mathcal S\times(0,T))}
-\end{equation}
-%
-
-As before, for each leader control $h$, we will find a saddle point for the cost functional \eqref{func_S_rob}, more precisely, 
-we look for an optimal pair $(\bar v,\bar \psi)$ and the associated state $\bar z=\bar z(h,\bar v,\bar \psi, z_0)$ such that 
-%
-\begin{equation}\label{saddle_2}
-J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\mathcal B_1\times(0,T))\times L^2(\mathcal B_2\times(0,T)).
-\end{equation}
-%
-Once we prove the existence and uniqueness of the saddle point, we look for a control $\hat h\in H^{\frac{3}{2},\frac{3}{4}}(\mathcal S\times(0,T))$ verifying 
-%
-\begin{equation}
-K(\hat h)=\min_{h} K(h)
-\end{equation}
-%
-subject to the null controllability condition
-%
-\begin{equation}
-\bar z(\cdot,T; h,\bar v(h), \bar \psi(h))=0 \quad \text{in } \Omega.
-\end{equation}
-%
-
-\section{The case with boundary follower and distributed leader}
-
-\subsection{Existence, uniqueness and characterization of the saddle point}
-
-The existence of a solution $(\bar v,\bar \psi)$ to the robust control problem is based on the following result
+The main goal of this section is to proof the existence and uniqueness of a saddle point $(\bar v,\bar\psi)$ to the robust control problem in Definition \ref{defi_rob}. The result is based on the following:
 %
 \begin{proposition}\label{prop_saddle}
 Let $J$ be a functional defined on $X\times Y$, where $X$ and $Y$ are non-empty, closed, unbounded, convex sets. If $J$ satisfies
@@ -386,17 +319,18 @@ then the functional $J$ has at least one saddle point $(\bar v,\bar \psi)$ and
 J(\bar v,\bar \psi)=\min_{v\in X}\sup_{\psi\in Y} J(v,\psi)=\max_{\psi\in Y}\min_{v\in X}J(v,\psi).
 \end{equation}
 %
+Moreover, if $\{\psi\mapsto J(v,\psi)\}$ is strictly concave $\forall v\in X$ and $\{v\mapsto J(v,\psi)\}$ is strictly convex $\forall \psi\in Y$, the saddle point $(\bar v,\bar \psi)$ is unique. 
 \end{proposition}
 
- The proof can be found on \cite[Prop. 2.2, p. 173]{Ekeland}. The goal here is to apply Proposition \ref{prop_saddle} to functional \eqref{func_rob} with $X=L^2(\Gamma\times(0,T))$ and $Y=L^2(Q)$. To verify conditions 1--4 for our problem, we need the following auxiliary lemma. Recall that in the first part, the leader control $h$ is fixed.
-%
+ The proof can be found on \cite[Prop. 1.5 and 2.2, Ch. VI]{Ekeland}. The aim here is to apply Proposition \ref{prop_saddle} to functional \eqref{func_rob} with $X=L^2(\Sigma)$ and $Y=L^2(Q)$. To verify conditions 1--4 for our problem, we need the following auxiliary lemma.
+
 \begin{lemma}\label{lemma_prop_sol1}
-Let $h\in L^2(\omega\times(0,T))$ and $y_0\in L^2(\Omega)$ be given. The mapping $(v,\psi)\mapsto y(v,\psi)$ from $L^2(\Gamma\times(0,T))\times L^2(Q)$ into $L^2(Q)$ is affine, continuous, and has G\^{a}teau derivative $y^\prime(v^\prime,\psi^\prime)$ in every direction $(v^\prime,\psi^\prime)\in L^2(\Gamma\times(0,T))\times L^2(Q)$. Moreover, the derivative $y^\prime(v^\prime,\psi^\prime)$ solves the system
+Let $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$ be given. The mapping $(v,\psi)\mapsto y(v,\psi)$ from $L^2(\Sigma)\times L^2(Q)$ into $L^2(Q)$ is affine, continuous, and has G\^{a}teaux derivative $y^\prime(v^\prime,\psi^\prime)$ in every direction $(v^\prime,\psi^\prime)\in L^2(\Sigma)\times L^2(Q)$. Moreover, the derivative $y^\prime(v^\prime,\psi^\prime)$ solves the system
 %
 \begin{equation}\label{deriv_sys1}
 \begin{cases}
 y^\prime_t-\Delta y^\prime=\psi^\prime \quad &\textnormal{in $Q$}, \\
-y^\prime=v^\prime\mathbf{1}_{\mathcal O} \quad &\textnormal{on $\Sigma$,} \\
+y^\prime=v^\prime\csbd \quad &\textnormal{on $\Sigma$,} \\
 y^\prime(x,0)=0 \quad &\textnormal{in $\Omega$},
 \end{cases}
 \end{equation}
@@ -404,79 +338,83 @@ y^\prime(x,0)=0 \quad &\textnormal{in $\Omega$},
 \end{lemma}
 
 \begin{proof}
-The fact that the mapping $(v,\psi)\mapsto y(v,\psi)$ follows from the linearity of system \eqref{heat_b1} and Lemma \ref{lemma_trans}. The existence of the G\^{a}teau derivative and its characterization can be easily obtained by taking the limit $\lambda\to 0$ in the expression $y^\lambda:=\frac{y(v+\lambda v^\prime,\psi+\lambda\psi^\prime)-y(v,\psi)}{\lambda}.
-$
+The fact that the mapping $(v,\psi)\mapsto y(v,\psi)$ is affine and continuous follow from the linearity of system \eqref{heat_lin} and the energy estimate \eqref{ener_trans}. The existence of the G\^{a}teaux derivative and its characterization can be easily obtained by taking the limit $\lambda\to 0$ in the expression $y^\lambda:=\frac{y(v+\lambda v^\prime,\psi+\lambda\psi^\prime)-y(v,\psi)}{\lambda}$.
+%
 \end{proof}
 
-With this lemma, we can verify conditions 1-4 of Proposition \ref{prop_saddle}. 
+With this lemma, we can verify conditions 1-4 of Proposition \ref{prop_saddle} for the cost functional \eqref{func_rob}.
 %
 \begin{proposition}\label{verif_cond}
-Let $h\in L^2(\omega\times(0,T))$ and $y_0\in L^2(\Omega)$ be given. There exists $\gamma$ large enough such that we have 
+Let $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$ be given. There exists $\gamma$ large enough such that we have 
 %
 \begin{enumerate}
 \item $\forall \psi\in L^2(Q)$, $v\mapsto J_r(v,\psi)$ is strictly convex, lower semicontinuous,
-\item $\forall v\in L^2(\Gamma\times(0,T))$, $\psi\mapsto J_r(v,\psi)$ is strictly concave upper semicontinuous,
-\item $\lim_{\|v\|_{L^2(\Gamma\times(0,T))}\to+\infty}J_r(v,0)=+\infty$, 
+\item $\forall v\in L^2(\Sigma)$, $\psi\mapsto J_r(v,\psi)$ is strictly concave upper semicontinuous,
+\item $\lim_{\|v\|_{L^2(\Sigma)}\to+\infty}J_r(v,0)=+\infty$, 
 \item $\lim_{\|\psi\|_{L^2(Q)}\to+\infty}J_r(0,\psi)=-\infty$.
 \end{enumerate}
 %
 \end{proposition}
 %
-\begin{proof}
-\textit{Condition 1.} By Lemma \ref{lemma_prop_sol1}, the map $v\mapsto J(v,\psi)$ is lower semicontinuous. Since $v\mapsto y(v,\psi)$ is linear and affine a straightforward computation yields the strict convexity of $J(v,\psi)$. 
 
+\begin{proof}
+\textit{Condition 1.} By Lemma \ref{lemma_prop_sol1}, the map $v\mapsto J(v,\psi)$ is lower semicontinuous. Since $v\mapsto y(v,\psi)$ is linear and affine a straightforward computation yields the strict convexity of $J_r(v,\psi)$. 
+
+\smallskip\noindent
 \textit{Condition 2.} Again, by Lemma \ref{lemma_prop_sol1}, we deduce that the map $\psi\mapsto J(v,\psi)$ is upper semicontinuous. To prove strict concavity, we will argue as in \cite{temam_nonlinear}. Consider
 %
-\begin{equation}
+\begin{equation*}
 \mathcal{G}(\tau)=J_r(v,\psi+\tau \psi^\prime).
-\end{equation}
+\end{equation*}
 %
 We will show that $\mathcal G(\tau)$ is sctrictly concave with respect to $\tau$, i.e. $\mathcal G^{\prime\prime}(\tau)<0$. We compute
 %
-\begin{equation}
+\begin{equation*}
 \mathcal G^\prime(\tau)=\iint_{\mathcal O_d\times(0,T)}(y+\tau y^\prime-y_d)y^\prime-\gamma^2\iint_{Q}(\psi+\tau\psi^\prime)\psi^\prime
-\end{equation}
+\end{equation*}
 %
 where $y^\prime$ is solution to \eqref{deriv_sys1} with $v^\prime=0$. Since $y^\prime$ is clearly independent of $\tau$, a further computations yields
 %
-\begin{equation}
+\begin{equation*}
 \mathcal G^{\prime\prime}(\tau)=\iint_{\mathcal O_d\times(0,T)}|y^\prime|^2-\gamma^2\iint_{Q}|\psi^\prime|^2
-\end{equation}
+\end{equation*}
 %
 Using standard energy estimates for the heat equation, it is not difficult to see that 
 %
-\begin{equation}
-G^{\prime\prime}(\tau)\leq -(\gamma^2-C)\|\gamma^\prime\|^2_{L^2(Q)}, \quad \forall \psi^\prime\in L^2(Q)
-\end{equation}
+\begin{equation*}
+G^{\prime\prime}(\tau)\leq -(\gamma^2-C)\|\psi^\prime\|^2_{L^2(Q)}, \quad \forall \psi^\prime\in L^2(Q)
+\end{equation*}
 %
 where $C=C(\Omega,\mathcal O_d,T)$ is a positive constant. We deduce that for a sufficiently large value of $\gamma$, we have $\mathcal G^{\prime\prime}(\tau)<0$, $\forall \tau\in \mathbb{R}$. Thus, the function $\mathcal G$ is striclty concave, and the strict concavity of $\psi$ follows immediately. 
-%
 
+\smallskip\noindent
 \textit{Condition 3.} It is straightforward, taking $\psi=0$ in \eqref{func_rob} the result follows. 
 
-\textit{Condition 4.} Since \eqref{heat_b1} is linear and using the estimate \eqref{est_trans}, we have
+\smallskip\noindent
+\textit{Condition 4.} Since \eqref{heat_lin} is linear and using the estimate \eqref{ener_trans}, we have
 %
-\begin{equation}
+\begin{equation*}
 J(\psi,0)\leq \tilde C+C\|\psi\|_{L^2(Q)}^2-\frac{\gamma^2}{2}\|\psi\|_{L^2(Q)}^2
-\end{equation}
+\end{equation*}
 %
-where $\tilde C$ is a positive constant only depending on $y_0$, $h$ and $y_d$. Hence, for $\gamma$ large enough, condition 4 holds.
+where $\tilde C$ is a positive constant only depending on $y_0$, $h$ and $y_d$. Hence, for $\gamma$ large enough, condition 4 holds. This concludes the proof.
+%
 \end{proof}
 
-Combining the statements of Propositions \ref{prop_saddle} and \ref{verif_cond}, we are able to deduce the existence of at most one saddle point $(\bar v,\bar \psi)\in L^2(\Gamma\times(0,T))\times L^2(Q)$ for the cost functional \eqref{func_rob}. In particular, the existence of this saddle point implies that 
+Combining the statements of Propositions \ref{prop_saddle} and \ref{verif_cond}, we are able to deduce the existence of at most one saddle point $(\bar v,\bar \psi)\in L^2(\Sigma)\times L^2(Q)$ for the cost functional \eqref{func_rob}. In particular, the existence of this saddle point implies that 
 %
-\begin{equation}
+\begin{equation*}
 \frac{\partial J_r}{\partial v}(\bar v,\bar \psi)=0 \quad \text{and}\quad \frac{\partial J_r}{\partial \psi}(\bar v,\bar \psi)=0.
-\end{equation}
+\end{equation*}
 %
 By differentiating \eqref{func_rob}, we obtain the expressions 
 %
 \begin{align}\label{deriv_J1}
-&\left(\frac{\partial J_r}{\partial v}(v,\psi),(v^\prime,0)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\ell^2\iint_{\Gamma\times(0,T)}vv^\prime\,d\sigma dt \\
+&\left(\frac{\partial J_r}{\partial v}(v,\psi),(v^\prime,0)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\ell^2\iint_{\Sigma}\csbd vv^\prime\,d\sigma dt \\ \label{deriv_J2}
 &\left(\frac{\partial J_r}{\partial v}(v,\psi),(0,\psi^\prime)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_\psi\,dxdt-\gamma^2\iint_{Q}\psi\psi^\prime\,dxdt
 \end{align}
 %
-where we have denoted $y_v$ and $y_\psi$ the directional derivatives of $y$ solution to \eqref{heat_b1} (see Lemma \ref{lemma_prop_sol1}) in the directions $(v^\prime,0)$ and $(0,\psi^\prime)$, respectively. 
+where we have denoted $y_v$ and $y_\psi$ the directional derivatives of $y$ solution to \eqref{heat_lin} (see Lemma \ref{lemma_prop_sol1}) in the directions $(v^\prime,0)$ and $(0,\psi^\prime)$, respectively. 
 
 To characterize the solution to the robust control problem, we introduce the adjoint state to system \eqref{deriv_sys1}
 %
@@ -491,37 +429,37 @@ q(x,T)=0 \quad &\textnormal{in $\Omega$}.
 Multiplying \eqref{adj_frontera} by $y_v$ in $L^2(Q)$ and integrating by parts, we obtain 
 %
 \begin{equation*}
-\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\iint_{\mathcal O\times(0,T)}v^\prime\frac{\partial q}{\partial \nu}\,d\sigma dt=0,
+\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\iint_{\Sigma}\csbd v^\prime\frac{\partial q}{\partial \nu}\,d\sigma dt=0,
 \end{equation*}
 %
 and upon substitution in \eqref{deriv_J1}, we get 
 %
-\begin{equation}
-\frac{\partial J_r}{\partial v}(v,\psi)=\left.\left(\frac{\partial q}{\partial \nu}-\ell^2v\right)\right|_{\mathcal O}. 
-\end{equation}
+\begin{equation*}
+\frac{\partial J_r}{\partial v}(v,\psi)=\frac{\partial q}{\partial \nu}-\ell^2v\csbd  
+\end{equation*}
 %
-In a similar fashion, we multiply \eqref{adj_frontera} by $y_\psi$ in $L^2(Q)$ and integrate by parts. We deduce that 
+In a similar fashion, we multiply \eqref{adj_frontera} by $y_\psi$ in $L^2(Q)$ and integrate by parts. Then, from \eqref{deriv_J2}we deduce that 
 %
-\begin{equation}
+\begin{equation*}
 \frac{\partial J_r}{\partial \psi}(v,\psi)=q-\gamma^2\psi. 
-\end{equation}
+\end{equation*}
 
 Thus, so far, we have proved the following
 %
 \begin{proposition}
-Let $y_0\in L^2(\Omega)$ and $h\in L^2(\omega\times(0,T))$ be given. Then
+Let $y_0\in H^{-1}(\Omega)$ and $h\in L^2(\omega\times(0,T))$ be given. Then
 %
 \begin{equation}
-\bar v=\left.\frac{1}{\ell^2}\frac{\partial q}{\partial \nu}\right|_{\mathcal O} \quad\text{and}\quad \bar \psi=\frac{1}{\gamma^2}q
+\bar v=\frac{1}{\ell^2}\frac{\partial q}{\partial \nu}\csbd \quad\text{and}\quad \bar \psi=\frac{1}{\gamma^2}q
 \end{equation}
 % 
-are the solution to the robust control problem stated in Definition \ref{defi_rob}, where $q$ is found from the solution $(y,q)$ to the coupled system 
+are the solution to the robust control problem stated in Definition \ref{defi_rob}, where $q$ is found from the solution $(y,q)$ to the optimality system 
 %
 \begin{equation}\label{sys_foll}
 \begin{cases}
-y_t-\Delta y= h\mathbf{1}_\omega+\frac{1}{\gamma^2}q \quad&\textnormal{in }Q, \\
+y_t-\Delta y= \mathbf{1}_\omega h+\frac{1}{\gamma^2}q \quad&\textnormal{in }Q, \\
 -q_t-\Delta q=(y-y_d)\mathbf{1}_{\mathcal O_d} \quad& \textnormal{in }Q, \\
-y=\frac{1}{\ell^2}\frac{\partial q}{\partial \nu}\mathbf {1}_\mathcal O, \quad q=0 \quad &\textnormal{on $\Sigma$,} \\
+y=\frac{1}{\ell^2}\frac{\partial q}{\partial \nu}\csbd, \quad q=0 \quad &\textnormal{on $\Sigma$,} \\
 y(x,0)=y_0(x), \quad q(x,T)=0 \quad &\textnormal{in $\Omega$}.
 \end{cases}
 \end{equation}
@@ -529,14 +467,13 @@ y(x,0)=y_0(x), \quad q(x,T)=0 \quad &\textnormal{in $\Omega$}.
 which admits a unique solution for $\gamma>0$ large enough. 
 %
 \end{proposition}
-%
+
 \begin{remark}
-As in other robust control problems (see \cite{temam_nonlinear,aziz,vhs_deT_rob}), the characterization of the saddle point leads to a system of coupled equations. This characterization needs to be considered in the following step of the hierarchic control methodology, where a null control $h$ of minimal norm must be designed.
+As in other robust control problems (cf. \cite{aziz,temam_nonlinear}), the characterization of the saddle point leads to a system of coupled equations. This characterization needs to be considered in the following step of the hierarchic control methodology, where a null control $h$ of minimal norm must be designed.
 \end{remark}
-%
-%
+
 \subsection{Null controllability}
-%
+
 In this section, we will proof an observability inequality that allows to establish the null controllability of system \eqref{sys_foll}. It is classical by now that null controllability is related to the observability of a proper adjoint system (see, for instance, \cite{cara_guerrero,zab}). 
 
 For our particular case, let us consider the adjoint of system \eqref{sys_foll}:
@@ -545,25 +482,24 @@ For our particular case, let us consider the adjoint of system \eqref{sys_foll}:
 \begin{cases}
 -\varphi_t-\Delta \varphi= \theta\mathbf{1}_{\mathcal O_d} \quad&\textnormal{in }Q, \\
 \theta_t-\Delta \theta=\frac{1}{\gamma^2}\varphi \quad& \textnormal{in }Q, \\
-\varphi=0, \quad \theta=\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\mathbf {1}_\mathcal O \quad &\textnormal{on $\Sigma$,} \\
+\varphi=0, \quad \theta=\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\csbd \quad &\textnormal{on $\Sigma$,} \\
 \varphi(x,T)=\varphi^T(x), \quad \theta(x,0)=0 \quad &\textnormal{in $\Omega$}.
 \end{cases}
 \end{equation}
 %
-where $\varphi^T\in H^{1}_0(\Omega)$. Then, the controllability of \eqref{sys_foll} can be characterized in terms of appropriate properties of the solutions to \eqref{adj_sys_foll}. 
-More precisely, we have
+where $\varphi^T\in H^{1}_0(\Omega)$. Then, the controllability of \eqref{sys_foll} can be characterized in terms of appropriate properties of the solutions to \eqref{adj_sys_foll}. More precisely, we have
 
 \begin{proposition}\label{prop_control}
-Assume that $\omega\cap\mathcal O_d\neq \emptyset$. The following properties are equivalent
+Assume that $\omega\cap\mathcal O_d\neq \emptyset$ and $\ell,\gamma$ are large enough. The following statements are equivalent
 %
 \begin{enumerate}
 \item There exists a positive constant $C$, such that for any $y_0\in H^{-1}(\Omega)$ and any $y_d\in L^2(Q)$ such that \eqref{integ_yd} holds, there exists a control $h\in L^2(\omega\times(0,T))$ of minimal norm such that 
 %
-\begin{equation}
+\begin{equation*}
 \|h\|_{L^2(\omega\times(0,T))}\leq \sqrt C\left(\|y_0\|_{H^{-1}(\Omega)}+\|\rho y_d\|_{L^2(Q)}\right)
-\end{equation}
+\end{equation*}
 %
-and the associated state satisfies $y(T)=0$, where $y$ is the first component of \eqref{sys_foll}.  
+and the associated state satisfies $y(\cdot,T)=0$, where $y$ is the first component of \eqref{sys_foll}.  
 %
 \item There exist a positive constant $C$ and a weight function $\rho$ blowing up at $t=T$ such that the observability inequality 
 %
@@ -576,7 +512,143 @@ holds for every $\varphi^T\in H^1_{0}(\Omega)$, where $(\varphi,\theta)$ is the 
 %
 \end{proposition}
 
-The equivalence between the statements of Proposition \ref{prop_control} is by now standard and relies on several classical arguments, so we omit the proof. For the interested reader, we refer to \cite{araruna,vhs_deT_rob} where null controllability properties for similar hierarchic control problems are addressed. Our task now is to prove the observability inequality \eqref{obs_ineq_1}. It will be consequence of global Carleman inequalities and some energy estimates
+Observe that the first statement implies Theorem \ref{teo_main1}. The equivalence between the statements of Proposition \ref{prop_control} is by now standard and relies on several classical arguments, so we omit the proof. For the interested reader, we refer to \cite{araruna,vhs_deT_rob} where such equivalence was addressed for similar hierarchic control problems. 
+
+Hence, our task amounts to prove \eqref{obs_ineq_1}. To do so, let us introduce first the Hilbert space
+%
+\begin{equation*}
+W(Q):=\left\{u\in L^2(0,T;H^1(\Omega)), \ u_t\in L^2(0,T;H^{-1}(\Omega)) \right\}
+\end{equation*}
+%
+equipped with the norm
+%
+\begin{equation*}
+\|u\|_{W(Q)}=\left(\|u\|_{L^2(0,T;H^1(\Omega))}^2+\|u_t\|^2_{L^2(0,T;H^{-1}(\Omega))}\right)^{1/2},
+\end{equation*}
+%
+and, for $r,s\geq 0$, we denote the Hilbert spaces $H^{r,s}(Q)=L^2(0,T;H^r(\Omega))\cap H^s(0,T;L^2(\Omega))$ endowed with  norms
+%
+\begin{equation}\label{norm_hrs}
+\|u\|_{H^{r,s}(Q)}=\left(\|u\|^2_{L^2(0,T;H^r(\Omega))}+\|u\|_{H^s(0,T;L^2(\Omega))}^2\right)^{1/2}
+\end{equation}
+%
+\begin{remark}
+We shall replace $Q$ and $\Omega$ by $\Sigma$ and $\partial\Omega$ in \eqref{norm_hrs} to refer to the analogous space for functions defined on the boundary.  
+\end{remark}
+
+The observability inequality \eqref{obs_ineq_1} will be consequence of global Carleman inequalities for parabolic equations with non-homogenous boundary conditions obtained in \cite{ima_yama_boundary}. To apply them, we need first to prove the following regularity result for the solutions to \eqref{adj_sys_foll}.
+
+\begin{proposition}
+Assume that $\varphi^T\in H_0^1(\Omega)$ and that $\ell,\gamma$ are large enough. Then, \eqref{adj_sys_foll} admits a unique solution $(\varphi,\theta)\in H^{2,1}(Q)\times W(Q)$.  
+\end{proposition}
+%
+\begin{proof}
+For any arbitrary $\bar \theta\in L^2(Q)$, let us consider the system
+%
+\begin{equation}\label{heat_fixed}
+\begin{cases}
+-\varphi_t-\Delta \varphi=\bar\theta\mathbf{1}_{\mathcal O_d}, & \text{in Q}, \\
+\varphi=0 &\text{on } \Sigma, \\
+\varphi(x,T)=\varphi^T(x), & \text{in } \Omega.
+\end{cases}
+\end{equation}
+%
+Then, from classical regularity results (see, for instance, \cite{evans}), we have that 
+%
+\begin{equation*}
+\varphi\in L^2(0,T;H^2(\Omega))\cap L^\infty(0,T;H_0^1(\Omega)), \quad \varphi_t\in L^2(Q)
+\end{equation*}
+%
+This implies that $\varphi\in H^{2,1}(Q)$. Moreover, there exists a positive constant $C$ such that
+%
+\begin{equation}\label{norm_varphi_h21}
+\|\varphi\|_{H^{2,1}(Q)}\leq C\left(\|\bar \theta\|_{L^2(Q)}+\|\varphi^T\|_{H_{0}^{1}(\Omega)} \right).
+\end{equation}
+%
+Due to the regularity of $\varphi$, from \cite[Th. 2.1, p.9]{lions_magenes} we have that 
+%
+\begin{equation}
+\frac{\partial\varphi}{\partial n}\in H^{\frac12,\frac14}(\Sigma)
+\end{equation}
+%
+and, moreover, since $\varphi \mapsto \frac{\partial \varphi }{\partial n}$ is a continuous and linear map of $H^{\frac12,\frac14}(\Sigma)\to H^{2,1}(Q)$ we have
+%
+\begin{equation}\label{est_phi_h1214}
+\|\tfrac{\partial \varphi}{\partial n}\csbd\|_{H^{\frac12,\frac14}(\Sigma)}\leq C\left(\|\bar \theta\|_{L^2(Q)}+\|\varphi^T\|_{H_{0}^{1}(\Omega)} \right)
+\end{equation}
+%
+where we have used the fact that $\mathcal{O}\subset \partial \Omega$ and $\csbd$ is a smooth function. 
+
+On the other hand, for $\varphi$ solution to \eqref{heat_fixed}, we consider the system
+%
+\begin{equation}\label{theta_fixed}
+\begin{cases}
+\theta_t-\Delta \theta=\frac{1}{\gamma^2}\varphi, & \text{in Q}, \\
+\theta=\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\csbd &\text{on } \Sigma, \\
+\theta(x,0)=0, & \text{in } \Omega.
+\end{cases}
+\end{equation}
+%
+From the results in \cite[Ch. 4, \S15.5]{lions_magenes} and estimates \eqref{norm_varphi_h21}, \eqref{est_phi_h1214}, we deduce the existence of $C>0$ such that
+%
+\begin{align}\notag
+\|\theta\|_{W(Q)}&\leq C\left(\frac{1}{\gamma^2}\|\varphi\|_{L^2(Q)}+\frac{1}{\ell^2}\|\tfrac{\partial \varphi}{\partial n}\csbd \|_{H^{\frac12,\frac14}(\Sigma)}\right) \\ \label{est_theta_fixed}
+&\leq \frac{C}{\mu}\left(\|\bar\theta\|_{L^2(Q)}+\|\varphi^T\|_{H^{1}_0(\Omega)}\right)
+\end{align}
+%
+where we have denoted $\mu=\min\{\ell^2,\gamma^2\}$.
+
+Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system \eqref{heat_fixed},\eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and Aubin-Lions Theorem (see, e.g., \cite{simon}) we see that $\Lambda$ is a continous and linear map of $L^2(Q)\to L^2(Q)$. 
+
+For any $\bar\theta_1,\bar\theta_2\in L^2(Q)$, we consider the difference $\Lambda\bar\theta_1-\Lambda\bar\theta_2$. Then, it is not difficult to see that
+%
+\begin{equation}
+\|\Lambda \bar\theta_1-\Lambda \bar\theta_2\|
+\end{equation}
+%
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\vspace{6 cm}
+\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
+
+ i.e., for systems of the form
+%
+\begin{equation}
+\begin{cases}
+u_t-\Delta u=f \quad& \textnormal{in } Q, \\
+u=g \quad& \textnormal{on } \Sigma, \\
+u(0)=u_0 \quad& \textnormal{in } \Omega,
+\end{cases}
+\end{equation}
+%
+with $f\in L^2(Q)$, $u_0\in L^2(\Omega)$ and $g\in H^{\frac12,\frac14}(\Sigma)$ where we have denoted the Hilbert space $H^{r,s}(\Sigma)=L^2(0,T;H^{r}(\partial \Omega))\cap H^{s}(0,T;L^2(\partial \Omega))$, for $r,s\geq 0$, and equipped with the norm
+%
+\begin{equation}
+\|u\|_{H^{r,s}(\Sigma)}:=\left(\|u\|_{L^2(0,T;H^r(\partial \Omega))}^2+\|u\|^2_{H^s(0,T;L^2(\partial \Omega))}\right)^{1/2}.
+\end{equation}
+%
+
+
+%
+
+%
+%
+
+%
+
+
+
+
+ Our task now is to prove the observability inequality \eqref{obs_ineq_1}. It will be consequence of global Carleman inequalities and some energy estimates
 
 \subsubsection*{The Carleman estimate}
 
@@ -837,8 +909,100 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 
 
 
-\section{The case with distributed follower and boundary leader}
+\section{The case with distributed follower and boundary leader}\label{sec_bound_leader}
 
+\section{All controls on the boundary}\label{sec_bound}
+
+\section{Concluding remarks}\label{sec_conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Algunas cosas viejas que pueden o no servir
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\subsection{The problem and its formulation}
+%%
+%We begin by describing the control problem for system \eqref{heat_b1}. As mentioned before, it consists of two parts: a robust control problem and a controllability one.
+%
+%
+%
+%In the second problem, we look for a control $h\in L^2(\omega\times(0,T))$ minimizing 
+%%
+%\begin{equation}\label{func_null}
+%J(h)=\frac{1}{2}\iint_{\omega\times(0,T)}|h|^2dxdt \quad\text{subject to}\quad y(\cdot,T)=0. 
+%\end{equation}
+%%
+%This is a classical null controllability problem. In the case where $\psi=v=0$, it its well-known that system \eqref{heat_b1} is null controllable, see, for instance, \cite{fursi,cara_guerrero}. 
+%
+%It is well-known that for every $h\in L^2(\omega\times(0,T))$, $v\in L^2(\Gamma\times(0,T))$, $\psi\in L^2(Q)$, and $y_0\in H^{-1}(\Omega)$, system \eqref{heat_b1} admits a unique weak solution (defined by transposition) that satisfies
+%%
+%\begin{equation}
+%y\in L^2(Q)\cap C^0([0,T];H^{-1}(\Omega)).
+%\end{equation} 
+%
+%Following the notation of \cite{LionsSta} (originally introduced in \cite{Stackelber}), we denote $h$ as the \textit{leader} control and $v$ as the \textit{follower} control. As proposed in \cite{vhs_deT_rob}, we will use the following hierarchic control strategy to solve the optimization problems related to the cost functionals \eqref{func_rob}--\eqref{func_null}: 
+%%
+%\begin{enumerate}
+%\item 
+%%
+%Under certain conditions, we will prove that there exists a unique pair $(\bar v,\bar \psi)$ and the associated state $\bar y$ such that \eqref{saddle} holds.
+%%
+%\item After identifying the saddle point for each leader control $h$, we look for an optimal control $\hat h$ such that 
+%%
+%\begin{equation}\label{opt_leader}
+%J(\hat h)=\min_{h\in L^2(\omega\times(0,T))}J(h), 
+%\end{equation}
+%%
+%subject to 
+%%
+%\begin{equation}\label{opt_rest}
+%\bar y(\cdot,T;h,\bar v(h),\bar \psi(h))=0 \quad \text{in}\quad  H^{-1}(\Omega).
+%\end{equation}
+%%
+%\end{enumerate}
+%
+%\begin{remark}
+%As in \cite{LionsSta} and other related papers, we address the multi-objective optimization problem by solving the mono-objective problems \eqref{saddle_minmax} and \eqref{opt_leader}--\eqref{opt_rest}. Note, however, that in the second minimization problem the optimal strategy for the follower is fixed and therefore its characterization needs to be considered.
+%\end{remark}
+%
+%Analogously, we may define the functionals for the multi-objective problem related to system \eqref{heat_b2}. We define the Hilbert spaces $H^{r,s}(\Sigma):=L^2(0,T;H^r(\Gamma))\cap H^s(0,T:L^2(\Gamma))$ and introduce the following space
+%%
+%\begin{equation}
+%V:=\left\{u\in H^2(\Omega): \  u=0 \ \text{on } \Gamma\backslash \mathcal S\right\}.
+%\end{equation}
+%
+%Consider the cost functional 
+%%
+%\begin{equation}\label{func_S_rob}
+%K_r(v,\psi;h)=\frac{1}{2}\iint_{\Gamma_d\times(0,T)}\left|\frac{\partial z}{\partial \nu}-\zeta_d\right|^2d\sigma dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2dxdt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2dxdt\right]
+%\end{equation}
+%%
+%where $\Gamma_d$ is a nonempty closed subset of $\Gamma$, $\zeta_d$ is a given function and $\ell,\gamma$ are positive constants. This functional describes the robust control problem for \eqref{heat_b2}. The leader functional is the following
+%%
+%\begin{equation}
+%K(h):=\frac{1}{2}\|h\|^2_{H^{\frac{3}{2},\frac{3}{4}}(\mathcal S\times(0,T))}
+%\end{equation}
+%%
+%
+%As before, for each leader control $h$, we will find a saddle point for the cost functional \eqref{func_S_rob}, more precisely, 
+%we look for an optimal pair $(\bar v,\bar \psi)$ and the associated state $\bar z=\bar z(h,\bar v,\bar \psi, z_0)$ such that 
+%%
+%\begin{equation}\label{saddle_2}
+%J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\mathcal B_1\times(0,T))\times L^2(\mathcal B_2\times(0,T)).
+%\end{equation}
+%%
+%Once we prove the existence and uniqueness of the saddle point, we look for a control $\hat h\in H^{\frac{3}{2},\frac{3}{4}}(\mathcal S\times(0,T))$ verifying 
+%%
+%\begin{equation}
+%K(\hat h)=\min_{h} K(h)
+%\end{equation}
+%%
+%subject to the null controllability condition
+%%
+%\begin{equation}
+%\bar z(\cdot,T; h,\bar v(h), \bar \psi(h))=0 \quad \text{in } \Omega.
+%\end{equation}
+%%
 
 
 
@@ -912,10 +1076,10 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Convex analysis and variational problems.
 \newblock {\em North-Holland}, (1976).
 %
-%\bibitem{evans}
-%\textsc{L. C. Evans.}
-%\newblock Partial differential equations. 
-%\newblock {\em Graduate studies in Mathematics, AMS}, Providence, (1991). 
+\bibitem{evans}
+\textsc{L. C. Evans.}
+\newblock Partial differential equations. 
+\newblock {\em Graduate studies in Mathematics, AMS}, Providence, (1991). 
 %%
 %\bibitem{zuazua_fer}
 %\textsc{L. A. Fern\'andez and E. Zuazua.}
@@ -972,6 +1136,11 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \textsc{V. Hern\'andez-Santamar\'ia and L. de Teresa}
 \newblock Robust Stackelberg controllability for linear and semilinear heat equations. 
 \newblock {\em Evol. Equ. Control Theory}, \textbf{7} (2018), no. 2, 247--273.
+%
+\bibitem{ima_yama_boundary}
+\textsc{O. Yu. Imanuvilov, J. P. Puel, and M. Yamamoto.}
+\newblock Carleman estimates for parabolic equations with nonhomogeneous boundary conditions. 
+\newblock {\em Chin. Ann. Math. Ser. B}, \textbf{30} (2009), no. 4, 333--378.
  % 
 %\bibitem{ima_yama}
 %\textsc{O. Yu. Imanuvilov and M. Yamamoto.}
@@ -1006,6 +1175,11 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Some remarks on {S}tackelberg's optimization.
 \newblock {\em Mathematical Models and Methods in Applied Sciences 4}, 4
   (1994), 477--487.
+ 
+\bibitem{lions_magenes}
+\textsc{J.-L Lions and E. Magenes.}
+ Non-homogeneous boundary value problems and applications. Vol. II. Springer-Verlag, New York-Heidelberg, 1972.
+  
 %
 %\bibitem{Nash}
 %\textsc{J. F. Nash.}
@@ -1121,15 +1295,10 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock Robust Stackelberg controllability for the Navier-Stokes equations. 
 \newblock {\em NoDEA Nonlinear Differential Equations Appl.}, \textbf{25} (2018).
 %
-%\bibitem{munch_zuazua}
-%\textsc{A. M\"unch and E. Zuazua.}
-%\newblock Numerical approximation of null controls for the heat equation: ill-posedness  and remedies. 
-%\newblock {\em Inverse problems,} \textbf{26}, 8 (2010), 085018, 39pp.
-%  
-% \bibitem{mauffrey}
-% \textsc{Mauffrey, K.}
-% \newblock Contr\^olabilit\'e de syst\`emes gouvern\'es par des \'equations aux d\'eriv\'ees partielles. 
-% Analysis of PDEs. Universit\'e de Franche-Comt\'e. French. 
+\bibitem{simon}
+\textsc{J. Simon.} 
+\newblock Compact sets in the space $L^p(0,T;B)$. 
+\newblock \emph{Ann. Mat. Pura Appl.}, (4) 146 (1987), 65--96.
 %
 \bibitem{deteresa2000}
 \textsc{L. de Teresa.}
@@ -1142,6 +1311,10 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 %\newblock {\em Commun. Pure. Appl. Anal.,} \textbf{8}, 1 (2009) 457--471.
 %%
 %%
+\bibitem{zab}
+\textsc{J. Zabczyk.}
+\newblock Mathematical control theory: an introduction. 
+\newblock Systems \& control: Foundations \& applications, {\em Birkh\"auser}, Boston, (1992).
 %
 %\bibitem{zuazua_num}
 %\textsc{E. Zuazua.}
