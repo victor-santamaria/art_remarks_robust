@@ -897,10 +897,13 @@ where
 \end{split}\end{equation*}
 Set $\bar{\eta} \in C^1([0,T])$ such that 
 \begin{equation}
+\label{etabar}
 \bar{\eta}=\begin{cases}
     1,  & \text{on }[0,T/2] \\
     0, & \text{on } [3T/4,T].
 \end{cases}\end{equation}
+%
+and $|\bar{\eta}^{\prime}|\leq C/T$ for some constant $C$. 
 \end{notation}
 %
 \begin{remark}
@@ -964,6 +967,25 @@ In consequence and from inequality \eqref{igualda1} we get
 \end{align}
 %
 for some constant $C=C(s,T)$.
+
+To analyze the above inequality in the interval $[0,T/2]$ we use the function defined in \eqref{etabar}. Indeed, applying Green's identities to equation  
+
+\begin{equation*}\int_{\Omega}(-\varphi_t\bar{\eta}\varphi-\bar{\eta}\varphi\Delta \varphi)\dx=\int_{\Omega}\bar{\eta}\varphi\theta\csin{\mathcal \cbd_d}\dx,\end{equation*}
+%
+replacing the term $\varphi_t\bar{\eta}\varphi$ by the following identity \begin{equation*}\varphi_t\bar{\eta}\varphi=\frac12\left(\frac{d(\bar{\eta}\varphi^2)}{dt}-\bar{\eta}_t\varphi^2\right),\end{equation*}
+%
+and bounded appropriately, we get
+\begin{align}\label{aux0}
+-\frac12 \frac{d}{dt}\int_{\Omega}\bar{\eta}\varphi^2\leq&\frac12\int_{\Omega}|\bar{\eta}_{t}| |\varphi|^2\dx+\int_{\mathcal{O}_{d}}|\theta|^2\bar{\eta}\dx\\\notag
+-\frac12 \frac{d}{dt}\int_{\Omega}\bar{\eta}\varphi^2\leq& \frac{1}{2}\left(\int_{\Omega}\bar{\eta}|\varphi|^2\dx+\int_{\Omega}|\bar{\eta}_{t}| |\varphi|^2\dx+\int_{\mathcal{O}_{d}}|\theta|^2\bar{\eta}\dx
+\right). 
+\end{align}
+Finally, after using H\"older and young's inequalities in the last integral of \eqref{aux0}, the Gronwas's inequality and the properties of $\bar{\eta}$ imply that
+
+\begin{equation}
+\int_{\Omega}|\varphi(0)|^2\dx\leq C\left(\int_0^{3T/4}\int_{\mathcal{O}_{d}}|\theta|^2\dx\dt+\int_{t/2}^{3T/4}\int_{\mathcal{O}_{d}}|\varphi|^2\dx\dt\right)
+\end{equation}
+
 \
 
 \magenta{viene lo de las hojas que me mandaste}
