@@ -1051,12 +1051,50 @@ and using H\"older and young's inequalities we get
 \label{aux8}
 \begin{split}
 \frac12\frac{d}{dt}\int_{\Omega}e^{-2s\hat{\beta}_2}|\theta|^2\dx+&\int_{\Omega}e^{-2s\beta_2}|\triangledown \theta|^2\dx\\
-&\leq \frac{C}{\ell^4}\int_{\mathcal B_1}|\varphi|e^{-2s\hat{\beta}_2}\dx+\frac{C}{\gamma^4}\int_{\mathcal B_2}|\varphi|e^{-2s\hat{\beta}_2}\dx+\frac12\int_{\Omega}e^{-2s\hat{\beta}_2}|\theta|^2\dx
+&\leq \frac{C}{\ell^4}\int_{\mathcal B_1}|\varphi|e^{-2s\hat{\beta}_2}\dx+\frac{C}{\gamma^4}\int_{\mathcal B_2}|\varphi|e^{-2s\hat{\beta}_2}\dx+\frac12\int_{\Omega}e^{-2s\hat{\beta}_2}|\theta|^2\dx.
 \end{split}
 \end{equation}
 
-\magenta{viene lo de las hojas que me mandaste}
-\
+Applying Gronwall's inequality in \eqref{aux8} and integrating in $[0,T]$ imply
+
+\begin{equation}
+\label{aux9}
+\int_0^T\int_{\Omega}e^{-2s\hat{\beta}_2}|\theta|^2\dx\dt\leq \frac{C}{\ell^4}\int_0^T\int_{\mathcal B_1}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt+\frac{C}{\gamma^4}\int_0^T\int_{\mathcal B_2}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt.
+\end{equation}
+
+We can apply the same analysis to de equation
+
+\begin{equation*}\int_{\Omega}\left(\bigtriangleup\theta e^{-s\hat{\beta}_2}\theta_t-\bigtriangleup\theta e^{-s\hat{\beta}_2}\Delta \theta\right)\dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-s\hat{\beta}_2}\bigtriangleup\theta\dx,\end{equation*}
+%
+ to get 
+%
+\begin{equation}
+\label{aux10}
+\int_0^T\int_{\Omega}e^{-2s\hat{\beta}_2}|\triangle\theta|^2\dx\dt\leq \frac{C}{\ell^4}\int_0^T\int_{\mathcal B_1}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt+\frac{C}{\gamma^4}\int_0^T\int_{\mathcal B_2}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt.
+\end{equation}
+%
+therefore \eqref{aux9} and \eqref{aux10} yields 
+
+\begin{equation}
+\label{aux11}
+\iint_{Q}e^{-2s\hat{\beta}_2}|\theta|^2\dx\dt+\iint_{Q}e^{-2s\hat{\beta}_2}|\triangle\theta|^2\dx\dt\leq \frac{C}{\ell^4}\int_0^T\int_{\mathcal B_1}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt+\frac{C}{\gamma^4}\int_0^T\int_{\mathcal B_2}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt.
+\end{equation} 
+
+Finally, substituting \eqref{aux11} in the following trace estimate 
+
+\begin{equation*}
+\iint_{\Sigma^{'}}\left|\frac{\partial \theta}{\partial n}\right|^2e^{-2s\hat{\beta}_2}\dx\dt\leq C\left(\iint_{Q}e^{-2s\hat{\beta}_2}|\theta|^2\dx\dt+\iint_{Q}e^{-2s\hat{\beta}_2}|\bigtriangleup\theta|^2\dx\dt\right),
+\end{equation*}
+%
+implies that 
+% 
+\begin{equation}
+\label{aux12}
+\iint_{\Sigma^{'}}\left|\frac{\partial \theta}{\partial n}\right|^2e^{-2s\hat{\beta}_2}\dx\dt\leq C \left(\frac{1}{\ell^4}\int_0^T\int_{\mathcal B_1}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt+\frac{1}{\gamma^4}\int_0^T\int_{\mathcal B_2}|\varphi|^2e^{-2s\hat{\beta}_2}\dx\dt\right),\end{equation}
+and the result is obtained applying \eqref{aux12} in \eqref{aux7}.
+
+
+\magenta{ya no me fije si realmente se obtiene la eq 3.7}
 
 \end{proof}
 
