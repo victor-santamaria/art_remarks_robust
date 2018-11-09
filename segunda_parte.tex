@@ -862,7 +862,7 @@ To find the optimal control $\bar h$ such that minimizes the functional \eqref{o
 \begin{equation}\label{adjunto1}
 \begin{cases}
 -\varphi_t-\Delta \varphi=\theta\csin{\mathcal \cbd_d}, & \text{in Q}, \\
-\theta_t-\Delta \theta=-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi, & \text{in Q}, \\
+\theta_t-\Delta \theta=-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}, & \text{in Q}, \\
 \theta=0, \quad \varphi=0 &\text{on } \Sigma, \\
 \theta(x,0)=0, \quad \varphi(x,T)=\varphi^T(x)& \text{in } \Omega,
 \end{cases}
@@ -876,7 +876,14 @@ F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\Sigma}\left|\frac{\partial \varphi}{\
 
 Previously to proof our first result it is necessary intoduced the following notation. 
 
-\begin{notation}\magenta{creo que no es notaci\'on. Por otro lado, no s\'e quien es $S^{'}$, creo que $S^{\prime}\subset\subset \mathcal{O}$}
+\begin{notation}\label{notation3.1}
+\magenta{creo que no es notaci\'on. Por otro lado, no s\'e quien es $S^{'}$, creo que $S^{\prime}\subset\subset \mathcal{O}$ and por otro lado en alg\'un lado se pone que $\bar{\mathcal O}_d\cap \bar{\mathcal B_i}=\emptyset$}\\
+Consider the weight functions $\eta_1,\eta_2 \in C^2(\bar{\Omega})$ such that
+
+\begin{equation}
+\eta_1\geq \eta_2 \text{  on  }\Omega, \quad\eta_1=\eta_2\text{  on  }\mathcal O_d,\quad\eta_1\geq \max_{x\in \bar{\mathcal B}_i} \eta_2 \quad i=1,2.
+\end{equation}
+
 \begin{equation*}
 \begin{split}
 &\beta_i=\begin{cases}
@@ -903,8 +910,7 @@ Set $\bar{\eta} \in C^1([0,T])$ such that
     0, & \text{on } [3T/4,T].
 \end{cases}\end{equation}
 %
-and $|\bar{\eta}^{\prime}|\leq C/T$ for some constant $C$. 
-\end{notation}
+and $|\bar{\eta}^{\prime}|\leq C/T$ for some constant $C$. \end{notation}
 %
 \begin{remark}
 We can note that,
@@ -914,7 +920,7 @@ We can note that,
 \end{remark} 
 
 \begin{proposition}
-\magenta{Under the hypotheses .... $\Sigma^{\prime}=S^{\prime}\times (0,T)$}. Then, there exists a constant $C$ \magenta{maybe $\sigma$, $s$ large enough} such that
+\magenta{Under the hypotheses .... $\Sigma^{\prime}=S^{\prime}\times (0,T)$ $S\subset \bar{\mathcal B}_i$}. Then, there exists a constant $C$ \magenta{maybe $\sigma$, $s$ large enough} such that
 %
 
 \begin{equation}
@@ -932,7 +938,7 @@ We can note that,
 \magenta{for $\lambda>1$. Hubo un procedimiento para llegar al siguiente estimado usando el anterior. No tengo le procedimiento y no lo repet\'i, adem\'as no s\'e que pas\'o con la $\lambda^2$} 
  \begin{equation}\label{Est1}
  \begin{split}
-\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla q|^2\dx\dt+&\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|q|^2\dx\dt\\
+I(q,i,m):=\iint_{Q}e^{-2s\tilde{\alpha}_i}&(s\tilde{\xi}_i)^{1+m}|\nabla q|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|q|^2\dx\dt\\
 &\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^m|f|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}\left|\frac{\partial q}{\partial n}\right|^2\dx\dt\right),
 \end{split}
 \end{equation}
@@ -944,25 +950,22 @@ Applying the estimate \eqref{Est1} to the couple system \eqref{adjunto1} implies
 \begin{align}\notag
 &I(\varphi,1,0)+I(\theta, 2, -1)\\\notag
 &\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_1}|\theta|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\ \notag
-&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\ \label{igualda1}
+&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right)\\ \label{igualda1}
 &\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
 \end{align}
 %
-where
-\begin{equation}\label{nota1}
-I(\cdot,i,m):=\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla \cdot|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|\cdot|^2\dx\dt.
-\end{equation}
-Note that we can replace the functions $\tilde{\xi}_i, \tilde{\alpha}_i$ by $\beta_i, \phi_i$ in the interval $[T/2,T]$ in the second integral of \eqref{nota1} hence,
+
+Note that we can replace the functions $\tilde{\xi}_i, \tilde{\alpha}_i$ by $\beta_i, \phi_i$ in the interval $[T/2,T]$ in the second integral of $I(q,i,m)$ hence,
 
 \begin{equation}
-\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_i}(s\phi_i)^{3+m}|\cdot|^2\dx\dt\leq I(\cdot,i,m).
+\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_i}(s\phi_i)^{3+m}|q|^2\dx\dt\leq I(q,i,m).
 \end{equation}
 %
 In consequence and from inequality \eqref{igualda1} we get
 
 
 \begin{align}\notag
-&\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_1}\phi_1^{3}|\varphi|^2\dx\dt+\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_2}(s\phi_2)^{2}|\theta|^2\dx\dt\\
+&\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_1}\phi_1^{3}|\varphi|^2\dx\dt+\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_2}\phi_2^{2}|\theta|^2\dx\dt\\ \label{aux00}
 &\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\beta_1}\phi_1\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right),
 \end{align}
 %
@@ -999,26 +1002,58 @@ Through standard arguments and adding the integral to the equation \eqref{aux1} 
 
 Using classic energy estimates we will absorbe the term $\int_0^{T/2}\int_{\Omega}|\theta|^2\dx\dt$ in \eqref{aux2}. First, we apply Green's identities to the equation 
 
-\begin{equation*}\int_{\Omega}\left(\theta\theta_t-\theta\Delta \theta\right)\dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi\right)\theta\dx,\end{equation*}
+\begin{equation*}\int_{\Omega}\left(\theta\theta_t-\theta\Delta \theta\right)\dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)\theta\dx,\end{equation*}
 %
 and we use the equality $\theta\theta_t=\frac{1}{2}\frac{d}{dt}|\theta|^2$ to get,
 
 \begin{align}\label{aux3}
-\frac{1}{2}\frac{d}{dt}\int_{\Omega}|\theta|^2\dx+\int_{\Omega}|\triangledown \theta|^2\dx&=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi\right)\theta\dx, 
+\frac{1}{2}\frac{d}{dt}\int_{\Omega}|\theta|^2\dx+\int_{\Omega}|\triangledown \theta|^2\dx&=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)\theta\dx, 
 \end{align}
 then applying H\"older and young's inequalities we get,
 
-\begin{align}\label{aux3}
-\frac{1}{2}\frac{d}{dt}\int_{\Omega}|\theta|^2\dx+\int_{\Omega}|\triangledown \theta|^2\dx&\leq C\left(\frac{1}{\ell^4}\int_{\mathcal B_1}|\varphi|^2\dx+\frac{1}{\gamma^4}\int_{\Omega}|\varphi|^2\dx\right)+\frac12 \int_{\Omega}|\theta|^2\dx
+\begin{align}\label{aux5}
+\frac{1}{2}\frac{d}{dt}\int_{\Omega}|\theta|^2\dx+\int_{\Omega}|\triangledown \theta|^2\dx&\leq C\left(\frac{1}{\ell^4}\int_{\mathcal B_1}|\varphi|^2\dx+\frac{1}{\gamma^4}\int_{\mathcal B_1}|\varphi|^2\dx\right)+\frac12 \int_{\Omega}|\theta|^2\dx
 \end{align}
 
-Applying Gronwall's inequality in \eqref{aux3}, integrating in $[0,T/2]$ and using that \magenta{$ \mathcal {B}_1\subset\Omega$} we have,
+Applying Gronwall's inequality in \eqref{aux3}, integrating in $[0,T/2]$ and using that \magenta{$ \mathcal {B}_1, \mathcal {B}_2\subset\Omega$} we have,
 
 \begin{align}\label{aux4}
-\int_{0}^{T/2}\int_{\Omega}|\theta|^2\dx\dt\leq C(T)\frac{1}{\mu}\int_{0}^{T/2}\int_{\Omega}|\varphi|^2\dx\dt,
+\int_{0}^{T/2}\int_{\Omega}|\theta|^2\dx\dt\leq C\frac{1}{\mu}\int_{0}^{T/2}\int_{\Omega}|\varphi|^2\dx\dt,
 \end{align}
 %
-where $\mu=\min\{\ell^4,\gamma^4\}$.
+where $\mu=\min\{\ell^4,\gamma^4\}$. Hence from \eqref{aux2}, taking $\mu$ large enough and the fact that $\beta_i$ and $\phi_i$ are constant on $[0,T/2]$ and they have lower bound on $[T/2,3T/4]$, we obtain 
+
+\begin{equation}
+\label{aux6}
+\begin{split}
+\int_{\Omega}|\varphi(0)|^2\dx+&\int_0^{T/2}\int_{\Omega}e^{-2s\beta_1}\phi_1^{3}|\varphi|^2\dx\dt+\int_0^{T/2}\int_{\Omega}e^{-2s\beta_2}\phi_2^{2}|\theta|^2\dx\dt\\
+&\leq C\left(\int_{T/2}^{T}\int_{\Omega}e^{-2s\beta_2}\phi_2^{2}|\theta|^2+e^{-2s\beta_1}\phi_1^3|\varphi|^2\dx\dt\right),
+\end{split}
+\end{equation}
+%
+in consequence, combining the inequalities \eqref{aux00} and \eqref{aux6} we get
+
+\begin{equation}
+\label{aux7}
+\begin{split}
+\int_{\Omega}|\varphi(0)|^2\dx+&\int_0^{T}\int_{\Omega}e^{-2s\beta_1}\phi_1^{3}|\varphi|^2\dx\dt+\int_0^{T}\int_{\Omega}e^{-2s\beta_2}\phi_2^{2}|\theta|^2\dx\dt\\
+&\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\beta_1}\phi_1\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
+\end{split}
+\end{equation}
+
+Now, observe that from properties given in Notation \ref{notation3.1} we can define $\hat{\beta}_2:=\max_{x\in S^{'}}\beta_2$. Then proceeding as before, applying Green's identity and using $\frac12\frac{d}{dt}e^{-2s\hat{\beta}_2}|\theta|^2=e^{-2s\hat{\beta}_2}\theta \theta_t-se^{-2s\hat{\beta}_2}|\theta|^2(\hat{\beta}_2)_t$ to equation  
+%
+\begin{equation*}\int_{\Omega}\left(\theta e^{-s\hat{\beta}_2}\theta_t-\theta e^{-s\hat{\beta}_2}\Delta \theta\right)\dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-s\hat{\beta}_2}\theta\dx,\end{equation*}
+%
+and using H\"older and young's inequalities we get
+
+\begin{equation}
+\label{aux8}
+\begin{split}
+\frac12\frac{d}{dt}\int_{\Omega}e^{-2s\hat{\beta}_2}|\theta|^2\dx+&\int_{\Omega}e^{-2s\beta_2}|\triangledown \theta|^2\dx\\
+&\leq \frac{C}{\ell^4}\int_{\mathcal B_1}|\varphi|e^{-2s\hat{\beta}_2}\dx+\frac{C}{\gamma^4}\int_{\mathcal B_2}|\varphi|e^{-2s\hat{\beta}_2}\dx+\frac12\int_{\Omega}e^{-2s\hat{\beta}_2}|\theta|^2\dx
+\end{split}
+\end{equation}
 
 \magenta{viene lo de las hojas que me mandaste}
 \
