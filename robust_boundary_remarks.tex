@@ -512,9 +512,9 @@ holds for every $\varphi^T\in H^1_{0}(\Omega)$, where $(\varphi,\theta)$ is the 
 %
 \end{proposition}
 
-Observe that the first statement implies Theorem \ref{teo_main1}. The equivalence between the statements of Proposition \ref{prop_control} is by now standard and relies on several classical arguments, so we omit the proof. For the interested reader, we refer to \cite{araruna,vhs_deT_rob} where such equivalence was addressed for similar hierarchic control problems. 
+Observe that the first statement implies Theorem \ref{teo_main1}. The equivalence between the statements of Proposition \ref{prop_control} is by now standard and relies on several classical arguments, so we omit the proof. For the interested reader, we refer to \cite{araruna,vhs_deT_rob} where such equivalence is addressed for similar hierarchic control problems. 
 
-Hence, our task amounts to prove \eqref{obs_ineq_1}. To do so, let us introduce first the Hilbert space
+Hence, our task amounts to prove the estimate \eqref{obs_ineq_1}. To do so, let us introduce the Hilbert space
 %
 \begin{equation*}
 W(Q):=\left\{u\in L^2(0,T;H^1(\Omega)), \ u_t\in L^2(0,T;H^{-1}(\Omega)) \right\}
@@ -598,14 +598,15 @@ From the results in \cite[Ch. 4, \S15.5]{lions_magenes} and estimates \eqref{nor
 %
 where we have denoted $\mu=\min\{\ell^2,\gamma^2\}$.
 
-Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system \eqref{heat_fixed},\eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and Aubin-Lions Theorem (see, e.g., \cite{simon}) we see that $\Lambda$ is a continous and linear map of $L^2(Q)\to L^2(Q)$. 
+Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system \eqref{heat_fixed},\eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and the embedding $W(Q)\hookrightarrow L^2(Q)$ (this follows from the classical Aubin-Lions Theorem, see, e.g., \cite{simon}) we can check that $\Lambda$ is a well-defined, continuous and linear map of $L^2(Q)\to L^2(Q)$.
 
-For any $\bar\theta_1,\bar\theta_2\in L^2(Q)$, we consider the difference $\Lambda\bar\theta_1-\Lambda\bar\theta_2$. Then, it is not difficult to see that
+For any $\bar\theta_1,\bar\theta_2\in L^2(Q)$, we consider the difference $\Lambda\bar\theta_1-\Lambda\bar\theta_2$. Then, arguing as above, we can readily see that
 %
-\begin{equation}
-\|\Lambda \bar\theta_1-\Lambda \bar\theta_2\|
-\end{equation}
+\begin{equation*}
+\|\Lambda \bar\theta_1-\Lambda \bar\theta_2\|_{L^2(Q)}\leq \frac{C}{\mu}\left(\|\bar\theta_1-\bar\theta_2\|_{L^2(Q)}\right)
+\end{equation*}
 %
+For $\gamma,\ell$ large enough, the map $\Lambda$ is a contraction and therefore possesess a unique fixed point. The proof is complete. 
 \end{proof}
 
 
