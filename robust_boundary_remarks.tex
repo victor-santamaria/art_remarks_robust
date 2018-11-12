@@ -538,8 +538,8 @@ We shall replace $Q$ and $\Omega$ by $\Sigma$ and $\partial\Omega$ in \eqref{nor
 
 The observability inequality \eqref{obs_ineq_1} will be consequence of global Carleman inequalities for parabolic equations with non-homogenous boundary conditions obtained in \cite{ima_yama_boundary}. To apply them, we need first to prove the following regularity result for the solutions to \eqref{adj_sys_foll}.
 
-\begin{proposition}
-Assume that $\varphi^T\in H_0^1(\Omega)$ and that $\ell,\gamma$ are large enough. Then, \eqref{adj_sys_foll} admits a unique solution $(\varphi,\theta)\in H^{2,1}(Q)\times W(Q)$.  
+\begin{proposition}\label{prof_regularity}
+Assume that $\varphi^T\in H_0^1(\Omega)$ and that $\ell,\gamma$ are large enough. Then, \eqref{adj_sys_foll} admits a unique solution $(\varphi,\theta)\in H^{2,1}(Q)\times W(Q)$. Moreover, $\frac{\partial \varphi}{\partial n}\in H^{\frac12,\frac14}(\Sigma)$. 
 \end{proposition}
 %
 \begin{proof}
@@ -565,13 +565,13 @@ This implies that $\varphi\in H^{2,1}(Q)$. Moreover, there exists a positive con
 \|\varphi\|_{H^{2,1}(Q)}\leq C\left(\|\bar \theta\|_{L^2(Q)}+\|\varphi^T\|_{H_{0}^{1}(\Omega)} \right).
 \end{equation}
 %
-Due to the regularity of $\varphi$, from \cite[Th. 2.1, p.9]{lions_magenes} we have that 
+Thanks to the regularity of $\varphi$, we have from \cite[Th. 2.1, p.9]{lions_magenes} that 
 %
-\begin{equation}
+\begin{equation*}
 \frac{\partial\varphi}{\partial n}\in H^{\frac12,\frac14}(\Sigma)
-\end{equation}
+\end{equation*}
 %
-and, moreover, since $\varphi \mapsto \frac{\partial \varphi }{\partial n}$ is a continuous and linear map of $H^{\frac12,\frac14}(\Sigma)\to H^{2,1}(Q)$ we have
+and, moreover,  $\varphi \mapsto \frac{\partial \varphi }{\partial n}$ is a continuous and linear map of $H^{\frac12,\frac14}(\Sigma)\to H^{2,1}(Q)$. Thus, we get
 %
 \begin{equation}\label{est_phi_h1214}
 \|\tfrac{\partial \varphi}{\partial n}\csbd\|_{H^{\frac12,\frac14}(\Sigma)}\leq C\left(\|\bar \theta\|_{L^2(Q)}+\|\varphi^T\|_{H_{0}^{1}(\Omega)} \right)
@@ -579,7 +579,7 @@ and, moreover, since $\varphi \mapsto \frac{\partial \varphi }{\partial n}$ is a
 %
 where we have used the fact that $\mathcal{O}\subset \partial \Omega$ and $\csbd$ is a smooth function. 
 
-On the other hand, for $\varphi$ solution to \eqref{heat_fixed}, we consider the system
+On the other hand, for $\varphi$ solution to \eqref{heat_fixed}, let us consider the system
 %
 \begin{equation}\label{theta_fixed}
 \begin{cases}
@@ -589,7 +589,7 @@ On the other hand, for $\varphi$ solution to \eqref{heat_fixed}, we consider the
 \end{cases}
 \end{equation}
 %
-From the results in \cite[Ch. 4, \S15.5]{lions_magenes} and estimates \eqref{norm_varphi_h21}, \eqref{est_phi_h1214}, we deduce the existence of $C>0$ such that
+From the results in \cite[Ch. 4, \S15.5]{lions_magenes} and estimates \eqref{norm_varphi_h21}--\eqref{est_phi_h1214}, we deduce the existence of $C>0$ such that
 %
 \begin{align}\notag
 \|\theta\|_{W(Q)}&\leq C\left(\frac{1}{\gamma^2}\|\varphi\|_{L^2(Q)}+\frac{1}{\ell^2}\|\tfrac{\partial \varphi}{\partial n}\csbd \|_{H^{\frac12,\frac14}(\Sigma)}\right) \\ \label{est_theta_fixed}
@@ -609,57 +609,16 @@ For any $\bar\theta_1,\bar\theta_2\in L^2(Q)$, we consider the difference $\Lamb
 For $\gamma,\ell$ large enough, the map $\Lambda$ is a contraction and therefore possesess a unique fixed point. The proof is complete. 
 \end{proof}
 
-
-
-
-
-
-
-
-
-
-\vspace{6 cm}
-\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
-
- i.e., for systems of the form
-%
-\begin{equation}
-\begin{cases}
-u_t-\Delta u=f \quad& \textnormal{in } Q, \\
-u=g \quad& \textnormal{on } \Sigma, \\
-u(0)=u_0 \quad& \textnormal{in } \Omega,
-\end{cases}
-\end{equation}
-%
-with $f\in L^2(Q)$, $u_0\in L^2(\Omega)$ and $g\in H^{\frac12,\frac14}(\Sigma)$ where we have denoted the Hilbert space $H^{r,s}(\Sigma)=L^2(0,T;H^{r}(\partial \Omega))\cap H^{s}(0,T;L^2(\partial \Omega))$, for $r,s\geq 0$, and equipped with the norm
-%
-\begin{equation}
-\|u\|_{H^{r,s}(\Sigma)}:=\left(\|u\|_{L^2(0,T;H^r(\partial \Omega))}^2+\|u\|^2_{H^s(0,T;L^2(\partial \Omega))}\right)^{1/2}.
-\end{equation}
-%
-
-
-%
-
-%
-%
-
-%
-
-
-
-
- Our task now is to prove the observability inequality \eqref{obs_ineq_1}. It will be consequence of global Carleman inequalities and some energy estimates
-
 \subsubsection*{The Carleman estimate}
 
-We introduce several weight functions that will be useful in the remainder of this paper. Since \eqref{cond_omega} holds, there exists a nonempty open set $\omega_0\subset\subset\omega\cap\mathcal O_d$. Let $\eta^0\in C^2(\overline\Omega)$ be a function verifying
+Now, we are in position to prove one of the main results of this section. We begin by introducing several weight functions that will be useful in the remainder of this paper. Ny hypothesis $\omega\cap\mathcal O_d\neq \emptyset$, then there exists a nonempty open set $\omega_0\subset\subset\omega\cap\mathcal O_d$. Let $\eta^0\in C^2(\overline\Omega)$ be a function verifying
 %
 \begin{equation}
 \eta^0(x)>0 \ \text{in} \ \Omega, \quad \eta^0=0 \ \text{on} \ \Gamma, \quad |\nabla\eta^0|>0 \ \text{in} \ \overline{\Omega}\backslash\omega_0.
 \end{equation}
 %
-The existence of such a function is given in \cite{fursi}. Let $l\in C^\infty([0,T])$ be a positive function in $(0,T)$ satisfying 
+
+The existence of such function is given in \cite{fursi}. Let $l\in C^\infty([0,T])$ be a positive function in $(0,T)$ satisfying 
 %
 \begin{equation}
 \begin{split}
@@ -668,7 +627,7 @@ The existence of such a function is given in \cite{fursi}. Let $l\in C^\infty([0
 \end{split}
 \end{equation}
 %
-Then, for all $\lambda\geq 1$ we consider the following weight functions:
+Then, for all $\lambda\geq 1$ and $m\geq 2$, we consider the following weight functions:
 %
 \begin{equation}\label{weights_l} 
 \begin{split}
@@ -681,32 +640,32 @@ The following notation will be used to abridge the estimates
 %
 \begin{equation*} 
 \begin{gathered}
-I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}(|u_t|^2+|\Delta u|^2)dxdt+s\iint_Qe^{-2s\alpha}\xi|\nabla u|^2dxdt+s^3\iint_Qe^{-2s\alpha}\xi^3|u|^2dxdt \\
-\widetilde I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}|\nabla u|^2dxdt+s\iint_{Q}e^{-2s\alpha}\xi |u|^2dxdt 
+I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}(|u_t|^2+|\Delta u|^2)\dx\dt+s\iint_Qe^{-2s\alpha}\xi|\nabla u|^2\dx\dt+s^3\iint_Qe^{-2s\alpha}\xi^3|u|^2\dx\dt \\
+\widetilde I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}|\nabla u|^2\dx\dt+s\iint_{Q}e^{-2s\alpha}\xi |u|^2\dx\dt
 \end{gathered}
 \end{equation*}
 %
 for some parameter $s>0$. 
 
-We state a Carleman estimate, due to \cite{ima_yama_puel}, which holds for the solutions of heat equations witn non-homogeneous Dirichlet boundary conditions:
+We state a Carleman estimate, due to \cite{ima_yama_boundary}, which holds for the solutions of heat equations with non-homogeneous Dirichlet boundary conditions:
 %
 \begin{lemma}
 Let us assume $u_0\in L^2(\Omega)$, $f\in L^2(Q)$ and $g\in H^{\frac{1}{2},\frac{1}{4}}(\Sigma)$. Then, there exists a a constant $\lambda_0$, such that for any $\lambda\geq \lambda_0$ there exist constants $C>0$ independent of $s$ and $s_0(\lambda)>0$, such that the solution $y\in W(Q)$ of 
 %
-\begin{equation}
+\begin{equation*}
 \begin{cases}
 u_t-\Delta u=f \quad& \textnormal{in } Q, \\
 u=g \quad& \textnormal{on } \Sigma, \\
 u(0)=u_0 \quad& \textnormal{in } \Omega. 
 \end{cases}
-\end{equation}
+\end{equation*}
 %
 satisfies
 %
 \begin{equation}\label{car_boundary}
 \begin{split}
 \widetilde I(s;u)\leq C&\left(s^{-\frac{1}{2}}\|e^{-s\alpha}\xi^{-\frac{1}{4}}g \|_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)}^2+s^{-\frac{1}{2}}\|e^{-s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}}g\|^2_{L^2(\Sigma)}\phantom{\iint_{\omega\times(0,T)}}\right. \\
-&\left.\quad+s^{-2}\iint_Qe^{-2s\alpha}\xi^{-2}|f|^2dxdt+s\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\xi|u|^2dxdt\right)
+&\left.\quad+s^{-2}\iint_Qe^{-2s\alpha}\xi^{-2}|f|^2\dx\dt+s\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\xi|u|^2\dx\dt\right)
 \end{split}
 \end{equation}
 %
@@ -715,21 +674,21 @@ for every $s\geq s_0(\lambda)$.
 
 The second result we need is the classical Carleman estimate for the linear heat equation (see, for instance, \cite{fursi,cara_guerrero}):
 \begin{lemma}
-Let us assume $u^T\in L^2(\Omega)$ and $f\in L^2(Q)$. Then, there exists a a constant $\lambda_1$, such that for any $\lambda\geq \lambda_1$ there exist constants $C>0$ independent of $s$ and $s_1(\lambda)>0$, such that the solution of 
+Let us assume $u^T\in H_0^1(\Omega)$ and $f\in L^2(Q)$. Then, there exists a a constant $\lambda_1$, such that for any $\lambda\geq \lambda_1$ there exist constants $C>0$ independent of $s$ and $s_1(\lambda)>0$, such that the solution of 
 %
-\begin{equation}
+\begin{equation*}
 \begin{cases}
 u_t+\Delta u=f \quad& \textnormal{in } Q, \\
 u=0 \quad& \textnormal{on } \Sigma, \\
 u(T)=u^T(x) \quad& \textnormal{in } \Omega. 
 \end{cases}
-\end{equation}
+\end{equation*}
 %
 satisfies
 %
 \begin{equation}\label{car_clasica}
 \begin{split}
-I(s;u)\leq C&\left(\iint_Qe^{-2s\alpha}|f|^2dxdt+s^3\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\xi^3|u|^2dxdt\right)
+I(s;u)\leq C&\left(\iint_Qe^{-2s\alpha}|f|^2\dx\dt+s^3\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\xi^3|u|^2\dx\dt\right)
 \end{split}
 \end{equation}
 %
@@ -737,58 +696,59 @@ for every $s\geq C$.
 \end{lemma}
 %
 \begin{remark}
-In \cite{fursi,cara_guerrero}, the authors use the function $l(t)=t(T-t)$ to prove the above lemma. Using the weights in\eqref{weights_l} does not change the result, since the important property is that $l(t)$ goes to 0 as $t$ tends to 0 a $T$.
+In \cite{fursi,cara_guerrero}, the authors use the function $l(t)=t(T-t)$ to prove the above lemma. Using the weights in \eqref{weights_l} does not change the result, since the important property is that $l(t)$ goes to 0 as $t$ tends to 0 a $T$.
 \end{remark}
 
-Using the previous results, we can prove a Carleman inequality for the solutions of system \eqref{adj_sys_foll}. This will be the main ingredient to prove the observability inequality \eqref{obs_ineq_1}. The result is the following:
+Thanks to Lemma \ref{prof_regularity} and using the above estimates, we can prove a Carleman inequality for the solutions of the adjoint system \eqref{adj_sys_foll}. This will be the main ingredient to prove the observability inequality \eqref{obs_ineq_1}. The result is the following:
 %
 \begin{proposition}\label{prop_carleman}
-Under assumptions of Theorem \ref{main_1}. Then, there exists a constant $C$ such that for any $\varphi^T\in H^1_0(\Omega)$, the solution $(\varphi,\theta)$ to \eqref{adj_sys_foll} satisfies
+Assume that $\omega\cap\mathcal O_d\neq \emptyset$ and $\gamma,\ell$ are large enough. Then, there exists a constant $C$ such that for any $\varphi^T\in H^1_0(\Omega)$, the solution $(\varphi,\theta)$ to \eqref{adj_sys_foll} satisfies
 %
-\begin{equation}\begin{split}
-I(s;\varphi)+\widetilde I(s;\theta) \leq C\left(s^5\iint_{\omega\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\right)
+\begin{equation}\label{car_final}
+\begin{split}
+I(s;\varphi)+\widetilde I(s;\theta) \leq C\left(s^5\iint_{\omega\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt\right)
 \end{split}
 \end{equation}
 %
 for every $s>0$ large enough.
 %
 \end{proposition}
-%
+
 \begin{proof}
 We start by applying inequality \eqref{car_clasica} to the first equation in \eqref{adj_sys_foll} and inequality \eqref{car_boundary} to the second one. We take $\hat \lambda=\max\{\lambda_0,\lambda_1\}$ and fix $\lambda\geq \hat \lambda$. Adding them up, we obtain
 %
-\begin{equation}
+\begin{equation*}
 \begin{split}
 I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right) +\iint_Q e^{-2s\alpha}\left(|\theta\mathbf{1}_{\mathcal O_d}|^2+s^{-2}\xi^{-2}|\tfrac{1}{\gamma^2}\varphi|^2\right)\right. \\
-&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}+s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \right\|^{2}_{L^2(\Sigma)}  \right)
+&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}+s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \csbd \right\|^{2}_{L^2(\Sigma)}  \right)
 \end{split}
-\end{equation}
+\end{equation*}
 %
-Taking the parameters $s$ large enough, we can absorb the lower order terms into the left-hand side in the previous inequality. More precisely, we have 
+for all $s$ large enough and some $m\geq 2$ to be fixed later. We can use the parameter $s$ to absorb the lower order terms into the left-hand side in the previous inequality. More precisely, we have 
 %
 \begin{equation}\label{car_con_bound}
 \begin{split}
-I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right) + s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \right\|^{2}_{L^2(\Sigma)} \right. \\
-&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}  \right)
+I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right) + s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \csbd \right\|^{2}_{L^2(\Sigma)} \right. \\
+&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}  \right)
 \end{split}
 \end{equation}
 %
 for all $s\geq C$, with $C>0$ only depending on $\Omega$, $\omega$, $\mathcal O_d$ and $\lambda$. 
 
-Then, we proceed to estimate the first boundary term in \eqref{car_con_bound}. Reasoning as in \eqref{duprez_lissy}, we take a functon $\kappa\in C^2(\overline \Omega)$ such that
+Then, we proceed to estimate the first boundary term in \eqref{car_con_bound}. Reasoning as in \cite{duprez_lissy}, we take a function $\kappa\in C^2(\overline \Omega)$ such that
 %
-\begin{equation}
+\begin{equation*}
 \frac{\partial \kappa}{\partial \nu}=1 \quad\text{and}\quad \kappa=1 \quad \text{on } \Gamma.
-\end{equation}
-
+\end{equation*}
+%
 Note that from the definition of the weight functions \eqref{weights_l}, we have $\alpha$ and $\alpha^*$ are equal in $\Gamma$, thus we may write
 %
-\begin{equation}
+\begin{equation*}
 \begin{split}
 \iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial \nu}\right|^2&=\int_{0}^{T}e^{-2s\alpha^*}\int_\Gamma\nabla\varphi\cdot \nabla \kappa\frac{\partial \varphi}{\partial \nu} \\
 &=\int_{0}^{T}e^{-2s\alpha^*}\int_{\Omega}\Delta \varphi\,(\nabla\varphi\cdot \nabla \kappa)+\int_{\Omega}e^{-2s\alpha^*}\int_\Omega\nabla (\nabla\varphi\cdot\nabla\kappa)\cdot\nabla \varphi
 \end{split}
-\end{equation}
+\end{equation*}
 %
 where we have integrated by parts in the right-hand side. Using Cauchy-Schwarz and Young inequalities, we get
 %
@@ -813,7 +773,7 @@ for some $a\in \mathbb R$ to be chosen later. Observe that $\rho(T)=0$. Then, $\
 \widehat{\varphi}(\cdot,T)=0 \quad&\text{in } \Omega.
 \end{cases}
 \end{equation}
- 
+
 From standard regularity estimates for the heat equation, we have that $\widehat{\varphi}$ solution to \eqref{phi_gorro} satisfies
 %
 \begin{equation}\label{est_regul}
@@ -822,17 +782,17 @@ From standard regularity estimates for the heat equation, we have that $\widehat
 %
 Using the definitions of $\alpha^*$ and $\xi^*$ given in \eqref{weights_l} together with \eqref{rho_def}, it is not difficult to see that 
 %
-\begin{equation}
+\begin{equation*}
 |\sigma_t|\leq Ce^{-s\alpha^*}(s\xi^*)^{a+{(m+1)}/{m}}.
-\end{equation}
+\end{equation*}
 %
-Using \eqref{est_regul} with $\sigma=e^{-s\alpha^*}(s\xi^*)^{-1/2}$, we obtain
+for all $s$ large enough. Employing  \eqref{est_regul} with $\sigma=e^{-s\alpha^*}(s\xi^*)^{-1/2}$, we obtain
 %
 \begin{equation}\label{estimate_2}
-\int_{0}^T e^{-2s\alpha^*}(s\xi^{*})^{-1}\|\varphi\|_{H^2(\Omega)}^2\leq C\left(\iint_Qe^{-2s\alpha^*}s\xi^*|\theta|^2+\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1+2(m+1)/m}|\varphi|^2\right)
+\int_{0}^T e^{-2s\alpha^*}(s\xi^{*})^{-1}\|\varphi\|_{H^2(\Omega)}^2\leq C\left(\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1}|\theta|^2+\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1+2(m+1)/m}|\varphi|^2\right)
 \end{equation}
 
-Putting together estimates \eqref{estimate_1} and \eqref{estimate_2}, and using the definitions of the weights $\alpha^*$ and $\xi^*$, we obtain
+Setting $m=4$ and combining estimates \eqref{estimate_1} and \eqref{estimate_2}, together with the definitions of the weights $\alpha^*$ and $\xi^*$ (see \eqref{weights_l}), yields
 %
 \begin{equation*}
 \begin{split}
@@ -840,20 +800,22 @@ Putting together estimates \eqref{estimate_1} and \eqref{estimate_2}, and using 
 \end{split}
 \end{equation*}
 %
-Thus, $\|e^{-s\alpha}\frac{\partial \varphi}{\partial \nu}\|_{L^2(\Sigma)}^2$ is bounded by the left-hand side of \eqref{car_con_bound}. By taking $s$ large enough, we can now absorb the boundary term 
+Thus, $\|e^{-s\alpha}\frac{\partial \varphi}{\partial \nu}\|_{L^2(\Sigma)}^2$ is bounded by the left-hand side of \eqref{car_con_bound} and, by taking $s$ large enough, we can now absorb the boundary term 
 %
-\[
-s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \right\|^{2}_{L^2(\Sigma)}.
-\]
+\begin{equation*}
+s^{-\frac{1}{2}}\left\| e^{-2s\alpha} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \csbd \right\|^{2}_{L^2(\Sigma)}.
+\end{equation*}
 
-To treat the second boundary term in \eqref{car_con_bound}, we use the trace estimate in Lemma \ref{ap_1}. More precisely, we have 
-%
+To deal with the second boundary term in \eqref{car_con_bound}, we can use the facts that $\varphi \mapsto \frac{\partial \varphi }{\partial n}$ is a continuous and linear map of $H^{\frac12,\frac14}(\Sigma)\to H^{2,1}(Q)$ and $\csbd$ is a smooth function. More precisely. 
+
 \begin{equation}\label{est_trace}
 \begin{split}
-s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}} \frac{\partial \varphi}{\partial \nu} \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)}&=s^{-\frac{1}{2}}\left\|e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \frac{\partial \varphi}{\partial \nu} \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)} \\
+s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}} \frac{1}{\ell^2} \frac{\partial \varphi}{\partial \nu}\csbd \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)} & \leq s^{-\frac{1}{2}}\left\|e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \frac{\partial \varphi}{\partial \nu} \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)} \\
 &\leq s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)}
 \end{split}
 \end{equation}
+%
+where we have used again that $\alpha^\star,\xi^\star$ coincide with $\alpha,\xi$ on the boundary. 
 
 Now, set $\widehat \varphi=\sigma \varphi$ with $\sigma=e^{-s\alpha^*}(s\xi)^{-\frac{1}{4}}$. Arguing as before, we readily obtain from \eqref{est_regul} the following 
 %
@@ -877,25 +839,32 @@ for all $s$ large enough. The last step is to eliminate the local term correspon
 \zeta\equiv 1\quad \text{in } \omega_0 \quad \text{and} \quad 0\leq \zeta\leq 1. 
 \end{equation}
 %
-Thanks to hypothesis \eqref{cond_omega}, we use the first equation of \eqref{adj_sys_foll} and \eqref{cut_off} to obtain
+Thanks to the hypothesis $\omega\cap\mathcal O_d\neq \emptyset$, we can use the first equation of \eqref{adj_sys_foll} and \eqref{cut_off} to obtain
 %
-\begin{equation}
+\begin{equation}\label{car_inter}
 \iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq \iint_{\omega_1\times(0,T)}e^{-2s\alpha}s\xi \theta(-\varphi_t-\Delta \varphi)\zeta
 \end{equation}
 %
-Arguing as in \cite{luz_manuel,deteresa2000,b_gb_r_2}, we integrate by parts in the right-hand side of the above inequality. Then, using the second equation of \eqref{adj_sys_foll}, \eqref{cut_off} and the definition of the weight functions \eqref{weights_l}, it is not difficult to see that 
+Arguing as in \cite{luz_manuel,deteresa2000}, we integrate by parts in time and space several times in the right-hand side of \eqref{car_inter}. Then, using the expression of the second equation of \eqref{adj_sys_foll}, it is not difficult to see that 
 %
-\begin{equation}
+\begin{equation*}
 \begin{split}
-\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2+\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\theta| |\varphi|+s^2\xi^2|\nabla \theta||\varphi|\right).
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2+\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\theta| |\varphi|+s^2\xi^2|\nabla \theta||\varphi|\right),
 \end{split}
-\end{equation}
+\end{equation*}
 %
+where we have used that for any $s$ large enough, the following inequalities hold
+%
+\begin{equation*}
+|\Delta(\zeta e^{-2s\alpha}\xi)|\leq Cs^2e^{-2s\alpha}\xi^3 \quad \text{and}\quad |(e^{-2s\alpha}\xi)_t|\leq Cse^{-2s\alpha}(\xi)^{2+\frac{1}{m}}.
+\end{equation*}
+%
+
 Using H\"older and Young inequalities, it follows 
 %
 \begin{equation}\label{est_final}
 \begin{split}
-\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2+\varepsilon \widetilde I(s;\theta)+\iint_{\omega_1\times(0,T)}e^{-2s\alpha}s^5\xi^5|\varphi|^2.
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2+\varepsilon \widetilde I(s;\theta)+s^5\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2.
 \end{split}
 \end{equation}
 %
@@ -904,6 +873,135 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \end{proof}
 
 \subsubsection*{The observability inequality}
+
+The observability inequality \eqref{obs_ineq_1} follows the Carleman estimate \eqref{car_final} and some weighted energy estimates and it is based on well-known arguments which can be adapted from \cite[Lemma 1]{cara_NS}. For the sake of completeness, we sketch it briefly. 
+
+Let us introduce the weight functions:
+%
+\begin{equation}\label{weights_rec} 
+\begin{split}
+&\beta(x,t)= \frac{e^{2\lambda\|\eta^0\|_\infty}-e^{\lambda\eta^0(x)}}{\bar l^4(t)}, \quad \phi(x,t)=\frac{e^{\lambda \eta^0(x)}}{\bar l^4(t)} \\
+&\beta^\star(t)=\max_{x\in\overline{\Omega}}\beta(x,t), \quad \phi^\star(t)=\min_{x\in\overline\Omega} \phi(x,t).
+\end{split}
+\end{equation}
+%
+where 
+\begin{equation*}
+\bar l(t)=
+\begin{cases}
+\|l\|_\infty, &\quad 0\leq t\leq T/2, \\
+l(t), &\quad T/2\leq t\leq T. 
+\end{cases}
+\end{equation*}
+
+We set $s$ to a sufficiently large fixed value. By construction, $\alpha=\beta$ in $[0,T/2]$. Thus, 
+%
+\begin{align} \notag 
+&\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi|\nabla \varphi|^2+\iint_{\Omega\times(T/2,T)}e^{-2s\beta^\star}|\theta|^2\dx\dt  \\ \notag
+&\quad = \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi^3|\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi|\nabla\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha^\star}|\theta|^2\dx\dt \\ \label{car_rec}
+&\quad \leq  C(s,T)\left(\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right)
+\end{align}
+%
+where we have used that the Carleman inequality \eqref{car_final}, the weight properties \eqref{weights_l},\eqref{weights_rec} and the fact that $\beta\leq \alpha$ in Q. 
+
+On the other hand, consider a function $\tilde \eta\in C^1([0,T])$, such that 
+%
+\begin{equation*}
+\tilde\eta \equiv 1 \quad\text{in } [0,T/2], \quad \tilde\eta\equiv 0 \quad \text{in } [3T/4,T], \quad |\tilde\eta^\prime|\leq C/T
+\end{equation*}
+%
+Let us multiply by $\tilde\eta\Delta\varphi$ the equation verified by $\varphi$ (see \eqref{adj_sys_foll}) and integrate in $\Omega$, namely 
+%
+\begin{equation*}
+-\int_{\Omega}\varphi_t\Delta\varphi\tilde\eta\dx-\int_{\Omega}|\Delta \varphi|^2\tilde\eta\dx=\int_{\mathcal O_d}\theta\Delta\varphi\tilde \eta\dx
+\end{equation*}
+%
+Integrating by parts and using H\"older and Young inequalities yield
+%
+\begin{equation*}
+-\frac{1}{2}\frac{\d}{\dt}\int_{\Omega}|\nabla\varphi|^2\tilde\eta+\int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx\leq \delta \int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx+C(\delta)\int_{\Omega}|\theta|^2\tilde\eta\dx+\frac{1}{2}\int_{\Omega}|\nabla\varphi|^2|\eta^\prime|\dx
+\end{equation*}
+%
+for some $\delta>0$.  Choosing $\delta$ small enough and dropping the positive term involving $|\Delta\varphi|^2\tilde\eta$, we integrate in $[0,T]$, from which we obtain
+%
+\begin{equation}\label{nabla_theta_0}
+\int_{\Omega}|\nabla\varphi(0)|^2\leq C\left(\iint_{\Omega\times(0,3T/4)}|\theta|^2\dx\dt+\frac{1}{T}\iint_{\Omega\times(T/2,3T/4)}|\nabla\varphi|^2\dx\dt\right).
+\end{equation}
+%
+Here we have used the properties of the function $\tilde\eta$. 
+
+Using the definition of the weight $\beta$, it can be readily seen that
+%
+\begin{equation*}
+e^{-2s\beta}\phi\geq C >0 \quad\text{and}\quad \quad  e^{-2s\beta^\star}\geq C>0, \quad \forall t\in[T/2,3T/4],
+\end{equation*}
+%
+and therefore we can bound appropriately in \eqref{nabla_theta_0} to obtain
+%
+\begin{equation*}
+\int_{\Omega}|\nabla\varphi(0)|^2\leq C\left(\iint_{\Omega\times(0,T/2)}|\theta|^2\dx\dt+\iint_{\Omega\times(T/2,3T/4)}\left(e^{-2s\beta}\phi|\nabla\varphi|^2+e^{-2s\beta^\star}|\theta|^2\right)\dx\dt\right),
+\end{equation*}
+%
+Observe that the second term in the above expression can be estimated with inequality \eqref{car_rec}, this is
+%
+\begin{equation}\label{est_h01_theta}
+\int_{\Omega}|\nabla\varphi(0)|^2\leq C\left(\iint_{\Omega\times(0,T/2)}|\theta|^2\dx\dt+\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right),
+\end{equation}
+
+Using similar arguments, one may deduce an estimate of the form,
+%
+\begin{equation}\label{est_phi_0}
+\iint_{\Omega\times(0,T/2)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt\leq C\left(\iint_{\Omega\times(0,T/2)}|\theta|^2\dx\dt+\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right),
+\end{equation}
+%
+where we have used that $\beta$ and $\phi$ are bounded functions in $\Omega\times[0,T/2]$.
+
+Arguing as in the proof of Lemma \ref{prof_regularity}, we can deduce the following estimate for the solutions to $\theta$ in the domain $\Omega\times [0,T/2]$
+%
+\begin{align}\notag 
+\|\theta\|^2_{L^2(0,T/2;L^2(\Omega))}&\leq C\|\theta\|^2_{W(\Omega\times(0,T/2))}\\ \notag
+&\leq C\left(\frac{1}{\gamma^4}\|\varphi\|^2_{L^2(\Omega\times(0,T/2))}+\frac{1}{\ell^4}\|\tfrac{\partial \varphi}{\partial n}\|^2_{H^{\frac12,\frac14}(\Omega\times(0,T/2))}\right) \\ \label{est_theta}
+&\leq \frac{C}{\mu}\|\varphi\|_{H^{2,1}(\Omega\times(0,T/2))}^2,
+\end{align}
+%
+where $\mu=\min\{\ell^4,\gamma^4\}$. Observe that in this domain, the function $\beta^\star$ is actually constant in both variables, therefore, 
+%
+\begin{align}\notag
+\iint_{\Omega\times(0,T/2)}e^{-2s\beta^\star}|\theta|^2\dx\dt &\leq \frac{C}{\mu}\|e^{-s\beta^\star}\varphi\|_{H^{2,1}(\Omega\times(0,T/2))}^2 \\ \label{est_theta_tme}
+&\leq \frac{C}{\mu}\|e^{-s\beta^\star}\varphi\|_{H^{2,1}(Q)}^2.
+\end{align}
+%
+
+Combining \eqref{car_rec} with \eqref{est_h01_theta}--\eqref{est_theta_tme} we deduce
+%
+\begin{equation}\label{obs_mu}
+\begin{split}
+\|\varphi(0)\|_{H_0^1(\Omega)}^2+\iint_{Q}&e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\beta^\star}|\theta|^2\dx\dt \\
+&\leq \frac{C}{\mu}\|e^{-s\beta^\star}\|_{H^{2,1}(Q)}^2+ C\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt
+\end{split}
+\end{equation}
+%
+
+To conclude, it is enough to estimate the $H^{2,1}$-norm in the right-hand side of \eqref{obs_mu}. To do this, we use the system \eqref{phi_gorro} and estimate \eqref{est_regul} with $\sigma=e^{-s\beta^\star}$. More precisely, we have 
+%
+\begin{equation}\label{est_C_mu}
+\|e^{-s\beta^\star}\|^2_{H^{2,1}(Q)}\leq C\left(\iint_{Q}e^{-2s\beta^\star}(\phi^\star)^{5/2}|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\beta^\star}|\theta|^2\dx\dt\right)
+\end{equation}
+%
+Finally, we obtain the observability inequality \eqref{obs_ineq_1} by combining estimates \eqref{obs_mu}--\eqref{est_C_mu} and using the definition of $\beta^\star$ and $\phi^\star$ and taking $\gamma,\ell>>1$. This concludes the proof. 
+\vspace{6 cm}
+
+
+\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1062,15 +1160,15 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 \newblock A general framework for robust control in fluid mechanics.
 \newblock {\em Physica D}, \textbf{138} (2000), 360--392.
 %
-\bibitem{b_gb_r_2}
-\textsc{O. Bodart, M. Gonz\'alez-Burgos, and R. P\'erez-Garc\'ia.}
-\newblock Insensitizing controls for a heat equation with a nonlinear term involving the state and the gradient. 
-\newblock {\em Nonlinear Anal.}, \textbf{57}, 5-6 (2004), 687--711.
-%
 \bibitem{carreno}
 \textsc{N. Carre\~{n}o and M. C. Santos}.
 \newblock Stackelberg-Nash exact controllability for the Kuramoto-Sivashinsky equation.
 \newblock {\em Preprint}, (2018). 
+%
+\bibitem{duprez_lissy}
+\textsc{M. Duprez and P. Lissy.}
+\newblock Indirect controllability of some linear parabolic systems of $m$ equations with $m-1$ controls involving coupling terms of zero or first order. 
+\newblock {\em J. Math. Pures Appl.}, \textbf{9}, 106 (2016), no. 5, 905--934.
 %
 \bibitem{Ekeland}
 \textsc{I. Ekeland and R. Temam.}
@@ -1092,10 +1190,16 @@ We replace \eqref{est_final} in \eqref{est_locales} with $\varepsilon$ small eno
 %\newblock Approximate controllability of the semilinear heat equation.
 %\newblock {\em Proc. Roy. Soc. Edinburgh Sect. A} \textbf{125}, 3 (1995), 31--61.
 %
+%
 \bibitem{cara_guerrero}
 \textsc{E. Fern\'andez-Cara and S. Guerrero.}
 \newblock Global {C}arleman inequalities for parabolic systems and applications to controllability.
 \newblock {\em SIAM J. Control Optim.}, \textbf{45}, 4 (2006), 1395--1446.
+%
+\bibitem{cara_NS}
+\textsc{E. Fern\'andez-Cara, S. Guerrero, O. Yu. Imanuvilov and  J. P.  Puel.}  
+\newblock Local exact controllability of the Navier-Stokes system. 
+\newblock {\em J. Math. Pures Appl.} \textbf{83}, 12 (2004),  1501--1542.
 %
 %\bibitem{cara_NS}
 %\textsc{E. Fern\'andez-Cara, S. Guerrero, O. Yu. Imanuvilov and  J. P.  Puel.}  Local exact controllability of the Navier-Stokes system. {\em J. Math. Pures Appl.} \textbf{83}, 12 (2004),  1501--1542.
