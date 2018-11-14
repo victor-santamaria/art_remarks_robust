@@ -18,6 +18,7 @@
 \usepackage{pgfplotstable}
 \usepackage{lipsum}
 \usepackage{cases}
+\usepackage{tikz}
 \providecommand{\keywords}[1]{\noindent {\textbf{Keywords:}} #1}
 \usepackage{lineno}\linenumbers
 %\usepackage{showkeys}
@@ -90,7 +91,7 @@ In this paper, we present some controllability results for parabolic equations i
 
 \keywords{Hierarchic control, robust control, Carleman estimates, controllability.}
 
-\section{Introduction}
+\section{Introduction}\label{sec_intro}
 %
 %\subsection{The hierarchic control problem}
 %
@@ -281,7 +282,7 @@ The rest of the paper is organized as follows. In section \ref{bound_follow}, we
 
 \section{The case with boundary follower and distributed leader}\label{bound_follow}
 
-\subsection{Existence, uniqueness and characterization of the saddle point}
+\subsection{Existence, uniqueness and characterization of the saddle point}\label{ex_uniq_saddle}
 
 %The aim of this section is to study the robust hierarchic controllability of system \eqref{heat_lin}. 
 
@@ -472,7 +473,7 @@ which admits a unique solution for $\gamma>0$ large enough.
 As in other robust control problems (cf. \cite{aziz,temam_nonlinear}), the characterization of the saddle point leads to a system of coupled equations. This characterization needs to be considered in the following step of the hierarchic control methodology, where a null control $h$ of minimal norm must be designed.
 \end{remark}
 
-\subsection{Null controllability}
+\subsection{Null controllability}\label{sec_null_1}
 
 In this section, we will proof an observability inequality that allows to establish the null controllability of system \eqref{sys_foll}. It is classical by now that null controllability is related to the observability of a proper adjoint system (see, for instance, \cite{cara_guerrero,zab}). 
 
@@ -611,7 +612,7 @@ For $\gamma,\ell$ large enough, the map $\Lambda$ is a contraction and therefore
 
 \subsubsection*{The Carleman estimate}
 
-Now, we are in position to prove one of the main results of this section. We begin by introducing several weight functions that will be useful in the remainder of this paper. Ny hypothesis $\omega\cap\mathcal O_d\neq \emptyset$, then there exists a nonempty open set $\omega_0\subset\subset\omega\cap\mathcal O_d$. Let $\eta^0\in C^2(\overline\Omega)$ be a function verifying
+Now, we are in position to prove one of the main results of this section. We begin by introducing several weight functions that will be useful in the remainder of this section. By hypothesis $\omega\cap\mathcal O_d\neq \emptyset$, then there exists a nonempty open set $\omega_0\subset\subset\omega\cap\mathcal O_d$. Let $\eta^0\in C^2(\overline\Omega)$ be a function verifying
 %
 \begin{equation}
 \eta^0(x)>0 \ \text{in} \ \Omega, \quad \eta^0=0 \ \text{on} \ \Gamma, \quad |\nabla\eta^0|>0 \ \text{in} \ \overline{\Omega}\backslash\omega_0.
@@ -674,15 +675,15 @@ for every $s\geq s_0(\lambda)$.
 
 The second result we need is the classical Carleman estimate for the linear heat equation (see, for instance, \cite{fursi,cara_guerrero}):
 \begin{lemma}
-Let us assume $u^T\in H_0^1(\Omega)$ and $f\in L^2(Q)$. Then, there exists a a constant $\lambda_1$, such that for any $\lambda\geq \lambda_1$ there exist constants $C>0$ independent of $s$ and $s_1(\lambda)>0$, such that the solution of 
+Let us assume $u^T\in H_0^1(\Omega)$ and $f\in L^2(Q)$. Then, there exists a constant $\lambda_1$, such that for any $\lambda\geq \lambda_1$ there exist constants $C>0$ independent of $s$ and $s_1(\lambda)>0$, such that the solution of 
 %
-\begin{equation*}
+\begin{equation}\label{sys_u}
 \begin{cases}
 u_t+\Delta u=f \quad& \textnormal{in } Q, \\
 u=0 \quad& \textnormal{on } \Sigma, \\
 u(T)=u^T(x) \quad& \textnormal{in } \Omega. 
 \end{cases}
-\end{equation*}
+\end{equation}
 %
 satisfies
 %
@@ -889,8 +890,8 @@ where
 \begin{equation*}
 \bar l(t)=
 \begin{cases}
-\|l\|_\infty, &\quad 0\leq t\leq T/2, \\
-l(t), &\quad T/2\leq t\leq T. 
+\|l\|_\infty &\quad\text{for}\quad 0\leq t\leq T/2, \\
+l(t) &\quad\text{for}\quad T/2\leq t\leq T. 
 \end{cases}
 \end{equation*}
 
@@ -989,7 +990,254 @@ To conclude, it is enough to estimate the $H^{2,1}$-norm in the right-hand side 
 \end{equation}
 %
 Finally, we obtain the observability inequality \eqref{obs_ineq_1} by combining estimates \eqref{obs_mu}--\eqref{est_C_mu} and using the definition of $\beta^\star$ and $\phi^\star$ and taking $\gamma,\ell>>1$. This concludes the proof. 
+
+\section{The case with distributed follower and boundary leader}\label{sec_bound_leader}
+
+In this section, we address the robust hierarchic problem for the case when the leader is now placed on the boundary. More precisely, let us consider systems of the form
+%
+\begin{equation}\label{heat_dif1}
+\begin{cases}
+z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi, & \text{in Q}, \\
+z=h\csbd &\text{on } \Sigma, \\
+z(x,0)=z^0(x), & \text{in } \Omega.
+\end{cases}
+\end{equation}
+
+It is well-known (see, e.g., \cite{ima_original,cara_guerrero}) that for $v\equiv\psi\equiv 0$, system \eqref{heat_dif1} is null controllable at time $T$ for any open set $\mathcal O\subset\partial \Omega$. Here, we will see that using a hierarchic methodology for solving first the associated robust control problem introduces additional difficulties when dealing with the null controllability objective. 
+
+Adapting the arguments of Section \ref{ex_uniq_saddle}, it is not difficult to prove the existence and uniqueness of the saddle point $(\bar v,\bar \psi)$ for the cost functional 
+%
+\begin{equation*}%\label{func_rob_dif}
+K_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\dx\dt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2\dx\dt\right].
+\end{equation*}
+%
+Indeed, for any given $h\in L^2(\mathcal O\times(0,T))$ and $y_0\in H^{-1}(\Omega)$, one can prove that
+%
+\begin{equation}
+\bar v=-\frac{1}{\ell^2}q|_{\mathcal B_1} \quad\text{and}\quad \bar \psi=\frac{1}{\gamma^2}q|_{\mathcal B_2}
+\end{equation}
+%
+are the solution to the robust control problem (see Definition \ref{defi_rob}), where $p$ is found from the solution $(z,p)$ to the optimality system 
+
+\begin{equation}\label{couple1}
+\begin{cases}
+z_t-\Delta z=-\frac{1}{\ell^2}p\csin{\mathcal B_1}+\frac{1}{\gamma^2}p, & \text{in Q}, \\
+-p_t-\Delta p=(z-z_d)\csin{\mathcal \cbd_d}, & \text{in Q}, \\
+z=h\csbd, \quad p=0 &\text{on } \Sigma, \\
+z(x,0)=z^0(x), \quad p(x,T)=0& \text{in } \Omega.
+\end{cases}
+\end{equation}
+%
+Then, the problem amounts to study the null controllability of the coupled system \eqref{couple1}. 
+
+Using once again the Fenchel-Rockafellar technique, we can build the control $h$ of minimal norm through the minimizers of the dual functional
+%
+\begin{equation}\label{func_FR}
+F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\mathcal O\times(0,T)}\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\frac{\varepsilon}{2}\|\varphi^T\|_{H_0^1(\Omega)}+\int_{\Omega}\varphi(0)z^0(x)\dx-\iint_{Q}\theta z_d \dx\dt
+\end{equation}
+%
+defined for the solutions to the adjoint system
+%
+\begin{equation}\label{adjunto1}
+\begin{cases}
+-\varphi_t-\Delta \varphi=\theta\csin{\mathcal \cbd_d}, & \text{in Q}, \\
+\theta_t-\Delta \theta=-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}, & \text{in Q}, \\
+\varphi=0, \quad \theta=0 &\text{on } \Sigma, \\
+\varphi(x,T)=\varphi^T(x), \quad \theta(x,0)=0& \text{in } \Omega,
+\end{cases}
+\end{equation}
+
+Hence, we have to prove an observability inequality to establish the coerciveness of the functional \eqref{func_FR} and thus guarantee the existence and uniqueness of a minimizer. We have the following result.
+%
+\begin{proposition}\label{prop_obs_ineq_dif}
+Assume that \eqref{loc_teo2} holds and $\ell,\gamma$ are large enough.  Then, there exist a positive constant $C$ and a weight function $\sigma$ blowing up at $t=T$ such that the observability inequality
+%
+\begin{equation}\label{obs_ineq_dif}
+\left\|\varphi(x,0)\right\|^2_{H_0^1(\Omega)}+\iint_{Q}\sigma^2|\theta|^2dxdt\leq C\iint_{\mathcal O\times(0,T)}\left|\frac{\partial \varphi}{\partial n} \right|^2\dx\dt
+\end{equation}
+%
+holds for every $\varphi^T\in H_0^{1}(\Omega)$, where $(\varphi,\theta)$ is the solution to \eqref{adjunto1} associated to the inital datum $\varphi^T$. 
+\end{proposition}
+%
+
+\begin{remark}
+Some remarks are in order.
+%
+\begin{itemize}
+\item By abuse of notation and to avoid unnecessary notation, we have decided to keep the letters $(\varphi,\theta)$ to denote the adjoint variables. Notice, however, that  systems \eqref{adj_sys_foll} and \eqref{adjunto1} are substantially different. 
+\item The well-posedness and regularity of \eqref{adjunto1} follows from an argument similar to the one in Proposition \ref{prof_regularity}. Indeed, in this case, one may prove that for any $\varphi^T\in H_0^1(\Omega)$ and $\ell,\gamma$ large enough, system \eqref{adjunto1} admits a unique solution $(\varphi,\theta)\in[H^{2,1}(Q)]^2$.
+\item From this regularity, $\varphi\in L^2(0,T;H^2(\Omega))$ which, together with the trace estimate, justifies that $\frac{\partial\varphi}{\partial n}\in L^2(\mathcal O\times(0,T))$.
+\end{itemize}
+%
+\end{remark}
+
+As in the end of Section \ref{bound_follow}, the observability inequality \eqref{obs_ineq_dif} follows from a global Carleman estimate for the solutions to \eqref{adjunto1} and some weighted energy estimates. 
+
+We begin by  introducing some useful weight functions. We set $\mathcal S^\prime\subset\subset \mathcal O$ and consider $\eta_{i}\in C^2(\overline \Omega)$, $i=1,2$, verifying
+%
+\begin{equation}
+\eta_{i}>0\quad \text{and}\quad |\nabla\eta_{i}|>0 \quad \text{in } \Omega, \quad \frac{\partial\eta_{i}}{\partial \eta}\leq 0 \quad \text{on } \partial \Omega\setminus S^\prime
+\end{equation}
+%
+This is the classical weight function introduced in \cite[Lemma 1.2]{ima_original} to prove a Carleman inequality with boundary observation for the heat equation and means that it should not have critical points inside the domain $\Omega$. In addition, we will choose the functions $\eta^1$ and $\eta^2$ in a way such that
+%
+\begin{gather}\label{props_brazil}
+\eta_1\geq \eta_2 \quad\text{in }\Omega, \quad\eta_1=\eta_2\quad \text{in  }\mathcal O_d, \\ \label{prop_impor}
+ \eta_1\geq \max_{x\in \bar{\mathcal B}_i} \eta_2 \quad \text{in } \bar{\mathcal B}_i, \quad i=1,2.
+\end{gather}
+%
+These additional features where recently used in \cite{da_silva} for solving a similar hierarchic control problem. 
+%
+\begin{remark}
+From property \eqref{props_brazil}, we can note that,
+\begin{equation}\label{weights_12}
+\tilde{\xi}_2\leq \tilde{\xi}_1,\quad \tilde\alpha_1\leq \tilde\alpha_2\quad\text{in } Q\quad\text{and}\quad\tilde{\xi}_2= \tilde{\xi}_1,\quad \tilde\alpha_1=\tilde\alpha_2\quad\text{in } \mathcal{O}_d\times(0,T), \quad i=1,2. 
+\end{equation}
+\end{remark} 
+
+For all $\lambda\geq1$, let us consider the following weight functions
+%
+\begin{equation*}
+\begin{split}
+\tilde{\alpha}_i(x,t)=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{t^2(T-t)^2}, \qquad \tilde{\xi}_i(x,t)=&\frac{e^{\lambda\eta_i(x)}}{t^2(T-t)^2}, \quad i=1,2,
+\end{split}\end{equation*}
+%
+and for some parameters $s>0$ and $m\in\mathbb R$, we set the notation
+%
+\begin{equation}
+I(u;i,m):=\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla u|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|u|^2\dx\dt
+\end{equation}
+
+We have the following
+%
+\begin{lemma}
+Assume that $u_0\in H_0^1(\Omega)$ and $f\in L^2(Q)$. For any $m\in \mathbb R$, there exists a constant $\lambda_m$, such that for any $\lambda\geq \lambda_m$ there exist constants $C>0$ independent of $s$ and $s_m(\lambda)>0$, such that the solution of \eqref{sys_u} satisfies
+%
+\begin{equation}\label{Est1}
+I(u;i,m)\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^m|f|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}\left|\frac{\partial u}{\partial n}\right|^2\dx\dt\right)
+\end{equation}
+%
+for every $s\geq s_m(\lambda)$. 
+\end{lemma}
+%
+The proof of this result can be deduced from the Carleman inequality stated in \cite[Lemma 1.1]{ima_original} and adapting the arguments in \cite[Lemma 2.3]{ima_yama}. %Now, we are in position to present the proof of \eqref{obs_ineq_dif}.
+
+\begin{proof}[Proof of Proposition \ref{prop_obs_ineq_dif}]
+We apply estimate \eqref{Est1} to the each equation of the coupled system \eqref{adjunto1} with different values of $i$ and $m$ and add them up. In more detail, we have that
+%
+\begin{align}\notag
+I(\varphi;1,0)&+I(\theta;2, -1)\\\notag
+&\leq C\left(\iint_{\mathcal O_d\times(0,T)}e^{-2s\tilde{\alpha}_1}|\theta|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right.\\ \notag
+&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).% \\ \label{igualda1}
+%&\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
+\end{align}
+
+From \eqref{weights_12}, we readily deduce that $e^{-2s\tilde\alpha_2}\leq e^{-2s\tilde\alpha_1}$ in $Q$ and that $\xi_2^{-1}\xi_1\leq C$, where $C>0$ only depends on $\Omega$ and $\mathcal S^\prime$. Moreover, $e^{-2s\tilde\alpha_1}=e^{-2s\tilde\alpha_2}$ in  $\mathcal O_d\times(0,T)$. In this way, we can absorb the lower order terms so 
+\begin{align}\notag
+I(\varphi;1,0)&+I(\theta;2, -1)\\ \label{igualda1}
+&\leq C\left(\iint_{\mathcal S^{\prime}\times(0,T)}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
+\end{align}
+holds for every $s$ sufficiently large.
+
+ Notice that unlike the proof of Propositon \ref{prop_carleman}, we cannot obtain any local information from system \eqref{adjunto1} to estimate the last term in \eqref{igualda1}. Instead, we will use the particular selection of the weight functions $\eta_i$ to eliminate the observation of $\theta$ at the boundary.
+ 
+ The first step is to improve \eqref{igualda1} in the sense that the weight functions do not vanish at $t=0$. Let us consider the function
+ %
+ \begin{equation}
+ \widetilde{l}(t)=
+ \begin{cases}
+ T^4/16 \quad &\text{for}\quad 0\leq t\leq T/2, \\
+ t^2(T-t)^2 \quad &\text{for}\quad T/2\leq t\leq T,
+ \end{cases}
+ \end{equation}
+ %
+ and the weights
+ %
+ \begin{equation*}
+\begin{split}
+\tilde{\beta}_i(x,t)=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{\widetilde{l}(t)}, \qquad \tilde{\phi}_i(x,t)=&\frac{e^{\lambda\eta_i(x)}}{\widetilde{l}(t)}, \quad i=1,2.
+\end{split}\end{equation*}
+ %
+One can prove that the following observability inequality hold:
+ %
+\begin{equation}
+\label{aux7}
+\begin{split}
+\|\varphi(x,0)\|_{H_0^1(\Omega)}^2+&\int_0^{T}\int_{\Omega}e^{-2s\tilde \beta_1}\tilde \phi_1^{3}|\varphi|^2\dx\dt+\int_0^{T}\int_{\Omega}e^{-2s\tilde \beta_2}\tilde \phi_2^{2}|\theta|^2\dx\dt\\
+&\leq C\left(\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde \beta_1}\tilde \phi_1\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\mathcal S^{\prime}\times(0,T)}e^{-2s\tilde \beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
+\end{split}
+\end{equation}
+ %
+ for some universal constant $C>0$ depending on $s$ and $T$. Indeed, the proof follows the steps of Section \ref{sec_null_1}, but for the sake of brevity, we omit it. 
+ 
+ Of course, this inequality still has the boundary observation of the variable $\theta$. Nevertheless, the new structure of the weight $\tilde\beta_2$ and property \eqref{prop_impor} will help us to estimate it in terms of localized terms of $\varphi$ in $\mathcal B_1$ and $\mathcal B_2$. Hypotheses \eqref{loc_teo2} and property \eqref{prop_impor} imply that
+ %
+ \begin{equation}
+ \eta_1(x) \geq \max_{x\in \mathcal S^\prime}\eta_2 \quad \text{in } \bar{\mathcal B}_i, \quad i=1,2.
+ \end{equation}
+ %
+ Therefore,
+ %
+ \begin{equation}
+ e^{s\tilde\beta_1}\leq e^{s\widehat{\beta_2}} \quad\text{in } \bar{\mathcal B}_i\times(0,T), \quad i=1,2,
+ \end{equation}
+ %
+ where we have defined
+ %
+ \begin{equation}
+ \widehat{\beta_2}:=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{{\lambda}\max_{x\in\mathcal S^\prime}\eta_2}}{\widetilde{l}(t)}.
+ \end{equation}
+ %
+Moreover, we can readily see that $e^{s\widehat{\beta_2}}\leq e^{s\beta_2}$, for all $(x,t)\in \mathcal S^\prime\times(0,T)$. Hence, 
+%
+\begin{equation}
+\iint_{S^{\prime}\times(0,T)}
+\end{equation}
+%
+ 
+
+
+\end{proof}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% %%%%%
+%%%%%%% DIBUJO QUE NO FUNCIONO  %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}
+%\centering
+%\begin{tikzpicture}
+%\begin{axis}[grid=both, ymin=-1,ymax=1,xmax=6,xmin=1,xtick={1,6},xticklabels={0,1,2},yticklabel=\empty,
+%               minor tick num=1,axis lines = left,xlabel=$x$]
+%  \end{axis}
+%  %
+%\draw [gray!50, xshift=1cm]  (0,1.5) -- (0.5,2) -- (1,2.5) --(1.5,3) -- (2,3.25) -- (2.5,3.5)--(3,3.75) -- (4,4)-- (5,4.25) --(6,4.5);
+%\draw[cyan,xshift=0cm,thick] plot[smooth,tension=0.1] coordinates{(0,1.5) (0.5,2)  (1,2.5) (1.5,3)  (2,3.25)  (2.5,3.5)(3,3.75)  (4,4)(5,4.25)(6,4.5)};
+%
+%\draw [gray!50, xshift=1cm]  (0,2.25) -- (0.5,2.5) -- (1,2.75) --(1.5,3) -- (2,3.25) -- (2.5,3.5)--(3,3.75) -- (4,4.25)-- (5,4.75) --(6,5.25);
+%\draw[red,xshift=0cm,thick] plot[smooth,tension=2] coordinates{(0,2.25)  (0.5,2.5)  (1,2.75) (1.5,3)  (2,3.25)(2.5,3.5)(3,3.75) (4,4.25)(5,4.75)(6,5.25)};
+%
+%%\draw [gray!50, xshift=1cm]  (0,2) -- (1.5,3) -- (4,4) -- (6,5);
+%%\draw[red,xshift=1cm] plot[smooth,tension=0.4] coordinates{(0,2)(1.5,3)(4,4)(6,5)};
+%
+%\end{tikzpicture}
+%%
+%\end{figure}
+%
+%\begin{figure}[h]
+%	\centering 
+%
+%	\begin{tikzpicture}[scale=0.9]
+%	\begin{axis}[xmin = -4, xmax = 3, ymin=-0.01,xtick={-4,-2.1,0.49,3}, ytick=\empty, xticklabels={$0$,$a$,$b$,$1$}]
+%		\end{axis}
+%	\end{tikzpicture}\caption{Example of a function $u(x)$ verifying: (i) $u\in C_0^\infty(0,1)$, (ii) $u(x)=0$ for $x\in(a,b)$ and (iii) $u\not\equiv 0$ in $(0,1).$}\label{figure_u}
+%\end{figure}
+
+
 \vspace{6 cm}
+
 
 
 \%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
@@ -1008,7 +1256,7 @@ Finally, we obtain the observability inequality \eqref{obs_ineq_1} by combining 
 
 
 
-\section{The case with distributed follower and boundary leader}\label{sec_bound_leader}
+
 
 \section{All controls on the boundary}\label{sec_bound}
 
@@ -1175,6 +1423,11 @@ Finally, we obtain the observability inequality \eqref{obs_ineq_1} by combining 
 \newblock Convex analysis and variational problems.
 \newblock {\em North-Holland}, (1976).
 %
+\bibitem{ima_original}
+\textsc{O. Yu. \`{E}manuilov.} 
+\newblock Controllability of parabolic equations. (Russian),
+\newblock {\em Sb. Math.}, \textbf{186} (1995), no. 6, 879--900
+%
 \bibitem{evans}
 \textsc{L. C. Evans.}
 \newblock Partial differential equations. 
@@ -1247,10 +1500,10 @@ Finally, we obtain the observability inequality \eqref{obs_ineq_1} by combining 
 \newblock Carleman estimates for parabolic equations with nonhomogeneous boundary conditions. 
 \newblock {\em Chin. Ann. Math. Ser. B}, \textbf{30} (2009), no. 4, 333--378.
  % 
-%\bibitem{ima_yama}
-%\textsc{O. Yu. Imanuvilov and M. Yamamoto.}
-%\newblock Carleman inequalities for parabolic equations in {S}obolev spaces of negative order and exact controllability for semilinear parabolic equations.
-%\newblock {\em Publ. RIMS, Kyoto Univ.}, \textbf{39}, (2003), 227--274.
+\bibitem{ima_yama}
+\textsc{O. Yu. Imanuvilov and M. Yamamoto.}
+\newblock Carleman inequalities for parabolic equations in {S}obolev spaces of negative order and exact controllability for semilinear parabolic equations.
+\newblock {\em Publ. RIMS, Kyoto Univ.}, \textbf{39}, (2003), 227--274.
 %%
 % \bibitem{lady}
 %\textsc{O. A. Ladyzhenskaya, V. A. Solonnikov, and N. N. Ural'ceva.}
