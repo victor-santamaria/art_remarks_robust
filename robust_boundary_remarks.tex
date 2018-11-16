@@ -73,7 +73,7 @@
 
 \begin{document}
 
-\title{\bf The super paper}
+\title{\bf Some remarks on the Robust Stackelberg controllability for the heat equation with controls on the boundary}
 
 \author{ V\'ictor Hern\'andez-Santamar\'ia \thanks{Institut de Math\'{e}matiques de
     Toulouse, UMR 5219,
@@ -1097,10 +1097,10 @@ From property \eqref{props_brazil}, we can note that,
 
 For all $\lambda\geq1$, let us consider the following weight functions
 %
-\begin{equation*}
+\begin{equation}\label{pesos_boundary}
 \begin{split}
 \tilde{\alpha}_i(x,t)=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{\lambda \eta_i(x)}}{t^2(T-t)^2}, \qquad \tilde{\xi}_i(x,t)=&\frac{e^{\lambda\eta_i(x)}}{t^2(T-t)^2}, \quad i=1,2,
-\end{split}\end{equation*}
+\end{split}\end{equation}
 %
 and for some parameters $s>0$ and $m\in\mathbb R$, we set the notation
 %
@@ -1304,21 +1304,11 @@ w(x,0)=w^0(x), &\quad \text{in } \Omega.
 %
 Notice that this time both controls are placed on the boundary and is a natural combination of the two previous problems. % : we seek to design the boundary control $h$ verifying a null controllability constraint and a pair $(v,\psi)$ satisfying a robust control problem in the spirit of Definition \ref{defi_rob}.
 
-It is not difficult to prove that for any fixed $h\in L^2(\Sigma)$ the exists a unique saddle point $(\bar v,\bar \psi)\in L^2(\Sigma)\times L^2(Q)$ for the cost functional \eqref{func_rob}. Indeed, the procedure is practically the same as in Section \ref{ex_uniq_saddle} since the leader control $h$ is fixed and participates in a indirect way. The characterization of the saddle point then leads to the system
-%
-\begin{equation*}%\label{sys_sec3}
-\begin{cases}
-w_t-\Delta w=\frac{1}{\gamma^2}r, &\quad  \text{in Q}, \\
--r_t-\Delta r= (w-w_d)\mathbf{1}_{\mathcal O_d}  &\quad  \text{in Q}\\ 
-w=h\mathbf{1}_{\mathcal O_1}+ \frac{1}{\ell^2}\frac{\partial r}{\partial n}\chi_{\mathcal O_2}, \quad r=0 &\quad \text{on } \Sigma, \\
-w(x,0)=w^0(x),\quad r(x,T)=0 &\quad \text{in } \Omega.
-\end{cases}
-\end{equation*}
-%
+It is not difficult to prove that for any fixed $h\in L^2(\Sigma)$ the exists a unique saddle point $(\bar v,\bar \psi)\in L^2(\Sigma)\times L^2(Q)$ for the cost functional \eqref{func_rob}. Indeed, the procedure is practically the same as in Section \ref{ex_uniq_saddle} since the leader control $h$ is fixed and participates in a indirect way. 
 
-As in Section \ref{sec_bound_leader}, the control $h$ of minimal norm can be obtained by solving a suitable minimization problem. This would require to prove an observability of the form
+As in Section \ref{sec_bound_leader}, once the saddle point has been characterized, the control $h$ of minimal norm can be obtained by solving a suitable minimization problem. This process would require to prove an observability of the form
 %
-\begin{equation}
+\begin{equation}\label{obs_ineq_sec3}
 \|\varphi(x,T)\|_{H_0^1(\Omega)}+\iint_{Q}\kappa^{-2}(t)|\theta|^2\dx\dt\leq C\iint_{\mathcal O_1\times(0,T)}\left|\frac{\partial\varphi}{\partial n}\right|^2\dx\dt,
 \end{equation}
 %
@@ -1335,19 +1325,155 @@ As in Section \ref{sec_bound_leader}, the control $h$ of minimal norm can be obt
 %
 where $\kappa(t)$ is an appropriate weight. Note that this system is the same as \eqref{adj_sys_foll}, but the observability we need now has a boundary observation instead of a distributed one. 
 
-We could opt to apply the Carleman inequality presented in Lemma \ref{lemma_car_boundary} fo the first equation of \eqref{adj_sys_3} while the Carleman estimate \eqref{car_boundary} to the second equation in \eqref{adj_sys_3}. Nevertheless, the definition of their respective weights are based on the selection of the functions $\eta_i$ (see eq. \eqref{constr_bound}) and $\eta^0$ (see eq. \eqref{constr_bound}). The different nature of such functions complicates the absorption of the lower order terms when adding both estimates and, moreover, as a consequence of applying \eqref{car_boundary} to the equation verified by $\theta$, we would have local term depending $\theta$ for which it is not clear how to eliminate. 
+We could opt to apply the Carleman inequality presented in Lemma \ref{lemma_car_boundary} fo the first equation of \eqref{adj_sys_3} while the Carleman estimate \eqref{car_boundary} to the second equation in \eqref{adj_sys_3}. Nevertheless, the definition of their respective weights are based on the selection of the functions $\eta_i$ (see eq. \eqref{constr_bound}) and $\eta^0$ (see eq. \eqref{constr_bound}) and their different nature complicates the absorption of the lower order terms while adding both estimates. Moreover, as a consequence of applying \eqref{car_boundary} to the equation verified by $\theta$, we would have local term depending $\theta$ for which it is not clear the procedure to eliminate it. 
 
-As mentioned in Section \ref{sec_intro}, we shall present a hierarchic control result for the case when $\psi\equiv 0$ and the optimal control objective is modified as follows. Let us choose any function $\rho_\star(t)\geq e^{\frac{s\alpha}{2}}$ and consider the cost functional
+As mentioned in Section \ref{sec_intro}, we shall present a hierarchic control result for the case when $\psi\equiv 0$ and the optimal control objective is modified as follows. 
+
+Let us choose any function $\rho_\star\in C^\infty([0,T])$, such that $\rho_\star(t)\geq e^{\frac{s\bar\alpha}{2}}$ with $\alpha$ defined as
+%
+\begin{equation*}
+\bar\alpha(x,t)=\frac{e^{2\lambda\|\bar\eta\|_{\infty}}-e^{\lambda\bar\eta(x)}}{t^2(T-t)^2}
+\end{equation*}
+%
+where $\bar\eta$ is a function verifying properties \eqref{constr_bound}. 
+%
+%\magenta{Checar bien aqui como es el peso $\rho_\star$. Parece que hace falta elegirlo un poco m\'as particular.}
+%
+Consider the optimization problem
+%
+\begin{equation}
+\min_{v\in L^2(\Sigma)} \mathcal I(v;h)
+\end{equation}
+%
+for the cost functional
 %
 \begin{equation}\label{func_teo3}
-\mathcal I(v;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt+\frac{\ell^2}{2}\iint_{\Sigma}\rho_\star^2|v|^2{\csbd}_1\d\sigma\dt
+\mathcal I(v;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt+\frac{\ell^2}{2}\iint_{\Sigma}\rho_\star^2|v|^2{\csbd}_2\d\sigma\dt
+\end{equation}
+%
+This is classical optimal control problem (cf. \cite{Lions_optim}) and the existence and uniqueness of its minimizer is guaranteed provided \eqref{func_teo3} is lower semicontinuous, strictly convex and coercive. The first two conditions can be readily verified while the coercivity follows from the fact that $e^{\frac{s\bar\alpha}{2}}\geq C>0$ for all $(x,t)\in Q$. 
+
+The characterization of the minimum can be carried out as in the previous sections and leads to the optimality system
+%
+\begin{equation*}%\label{sys_sec3}
+\begin{cases}
+w_t-\Delta w=0, &\quad  \text{in Q}, \\
+-r_t-\Delta r= (w-w_d)\mathbf{1}_{\mathcal O_d}  &\quad  \text{in Q},\\ 
+w=h\mathbf{1}_{\mathcal O_1}+ \frac{1}{\ell^2}\frac{\partial r}{\partial n}\rho_\star^{-2}\chi_{\mathcal O_2}, \quad r=0 &\quad \text{on } \Sigma, \\
+w(x,0)=w^0(x),\quad r(x,T)=0 &\quad \text{in } \Omega.
+\end{cases}
+\end{equation*}
+
+The next step is then to prove \eqref{obs_ineq_sec3} for the solutions to the adjoint system
+%
+\begin{equation}\label{adj_sys_3}
+\begin{cases}
+-\varphi_t-\Delta \varphi= \theta\mathbf{1}_{\mathcal O_d} \quad&\textnormal{in }Q, \\
+\theta_t-\Delta \theta=0 \quad& \textnormal{in }Q, \\
+\varphi=0, \quad \theta=\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\rho_{\star}^{-2}{\csbd}_2 \quad &\textnormal{on $\Sigma$,} \\
+\varphi(x,T)=\varphi^T(x), \quad \theta(x,0)=0 \quad &\textnormal{in $\Omega$},
+\end{cases}
+\end{equation}
+%
+The introduction of the weight $\rho_\star$ will help us to obtain a Carleman estimate for the solutions \eqref{adj_sys_3} without the necessity of applying a Carleman inequality to the equation verified by $\theta$ and thus avoiding the problems mentioned before. The result is the following.
+%
+\begin{proposition}Assume that $\ell$ is large enough. There exists a constant $\lambda_0$ such that for any $\lambda\geq \lambda_0$, there exists a constant $C>0$ such that the solution $(\varphi,\theta)$ to \eqref{adj_sys_3} satisfies 
+%
+\begin{equation}\label{car_final_sec3}
+\iint_{Q}e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt\leq C\iint_{\mathcal \mathcal O_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt
+\end{equation}
+%
+for all $s$ large enough and every $\varphi^T\in H_0^1(\Omega)$. Here, we have used the notation
+%
+\begin{equation*}
+\bar\xi(x,t)=\frac{e^{\lambda\bar\eta(x)}}{t^2(T-t)^2} \quad\text{and}\quad \bar\alpha^\star(t)=\frac{e^{2\lambda\|\eta\|_\infty}-e^{\lambda\min_{x\in \overline\Omega}\eta}}{t^2(T-t)^2}.
+\end{equation*}
+%
+\end{proposition}
+%
+
+\begin{proof}
+Let us set $\mathcal S^\prime\subset\subset \mathcal O_1$. Then, we apply inequality \eqref{Est1} (with the corresponding weights $\bar\alpha$, $\bar\xi$ and $m=0$) to the first equation of system \eqref{adj_sys_3}. By fixing $\lambda_0>0$, we obtain
+%
+\begin{equation}\label{car_init_sec3}
+\iint_Qe^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt\leq C\left(\iint_{Q}e^{-2s\bar\alpha}|\theta\mathbf{1}_{\mathcal O_d}|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|\dx\dt\right)
+\end{equation}
+%
+valid for $s$ and $\lambda$ large enough. 
+
+Now, we define $\widehat{\theta}=e^{-s\bar\alpha^\star}\theta$. Then, $\widehat{\theta}$ is solution to the system 
+%
+\begin{equation}\label{phi_gorro}
+\begin{cases}
+-\widehat\theta_t-\Delta \widehat\theta=(e^{-s\alpha^\star})_t\theta &\quad \text{in } Q, \\
+\widehat\theta=e^{-s\bar\alpha^\star}\frac{\partial\varphi}{\partial n}\rho_\star^{-2}{\csbd}_{2} &\quad \text{on } \Sigma, \\
+\widehat{\theta}(\cdot,0)=0 &\quad\text{in } \Omega.
+\end{cases}
+\end{equation}
+Notice that $e^{-s\bar\alpha^\star}\in C^{\infty}([0,T])$, thus the following energy estimate holds
+%
+\begin{equation}\label{est_theta_gorro}
+\|\widehat\theta\|_{W(Q)}\leq C\left(\|e^{-s\bar\alpha^\star}s(\bar\xi^\star)^{3/2}\theta\|_{L^2(Q)}+\left\|\frac{1}{\ell^2}e^{-s\bar\alpha^\star}\frac{\partial\varphi}{\partial n}\rho_\star^{-2}\right\|_{H^{\frac12,\frac14}(\Sigma)}\right)
+\end{equation}
+%
+Here, we have used that $|\bar\alpha^\star_t|\leq C({\bar\xi}^\star)^{3/2}$ and denoted $\bar{\xi}^\star(t)=\frac{e^{\lambda\min_{x\in \overline\Omega}\bar\eta}}{t^2(T-t)^2}$. Arguing as in the proof of Proposition \ref{prof_regularity}, we deduce from \eqref{est_theta_gorro} that
+%
+\begin{equation}\label{est_bar_theta}
+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt \leq C\iint_{Q}e^{-2s\bar\alpha^\star}s(\bar\xi^\star)^3|\theta|^2\dx\dt+\frac{C}{\ell^4}\|e^{-s\bar\alpha^\star}\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)}
 \end{equation}
 %
 
+Adding estimates \eqref{car_init_sec3} and \eqref{est_bar_theta}, and taking into account that $\mathcal O_d\subset\Omega$, we get
+%
+\begin{align} \notag
+\iint_{Q}&e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt \\ \label{car_inter_sec3}
+&\leq C\iint_{\mathcal \mathcal O_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+C\iint_{Q}e^{-2s\bar\alpha^\star}(s\bar\xi^\star)^3|\theta|^2\dx\dt+\frac{C}{\ell^4}\|e^{-s\bar\alpha^\star}\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)}
+\end{align}
+%
+for all $s$ large enough. At this point, we set $s$ to a fixed value sufficiently large and reasoning as in Proposition \ref{prop_obs_ineq_dif}, we will absorb the last two terms in the above expression by taking the parameter $\ell$ large enough. 
+
+Since $\theta(\cdot,0)=0$ and
+%
+\begin{equation*}
+e^{-2s\bar\alpha^\star}({\bar\xi^\star})^3\leq C, \quad \forall (x,t)\in Q.
+\end{equation*}
+% 
+we can use a classical (non-weighted) estimate for the solutions to $\theta$. More precisely, we can bound the second term in the right-hand side of \eqref{car_inter_sec3} as
+%
+\begin{align}\notag
+\iint_{Q}e^{-2s\bar\alpha^\star}({\bar\xi^\star})^3|\theta|^2&\leq C\|\theta\|_{L^2(Q)}  \\ \label{est_nonwei}
+&\leq \frac{C}{\ell^4}\|\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)}. 
+\end{align}
+%
+
+To conclude, it is enough to obtain an estimate for $\widehat{\varphi}:=e^{-s\bar\alpha^\star}\varphi$ in $H^{2,1}(Q)$. Indeed, since $\rho_\star\geq e^{\frac{s\alpha}{2}}$, we can use such estimate to bound the last term in \eqref{car_inter_sec3} and \eqref{est_nonwei}. For this, notice that $\widehat{\varphi}$ verifies
+%
+\begin{equation}\label{gorro_gorro}
+\begin{cases}
+-\widehat\varphi_t-\Delta \widehat\varphi=-(e^{-s\alpha^\star})_t\varphi+e^{-s\alpha^\star}\theta\mathbf{1}_{\mathcal O_d} &\quad \text{in } Q, \\
+\widehat\varphi=0 &\quad \text{on } \Sigma, \\
+\widehat{\varphi}(\cdot,T)=0 &\quad\text{in } \Omega.
+\end{cases}
+\end{equation}
+%
+then, we immediately deduce that
+%
+\begin{equation}\label{est_final}
+\|\widehat{\varphi}\|_{H^{2,1}(Q)}\leq C\left(\|e^{-s\bar\alpha^\star}(\xi^\star)^{3/2}\varphi\|_{L^2(Q)}+\|e^{-s\bar\alpha^\star}\theta\|_{L^2(Q)}\right).
+\end{equation}
+%
+Finally, using \eqref{est_final} in \eqref{car_inter_sec3} and \eqref{est_nonwei} the desired inequality \eqref{car_final_sec3} follows by taking $\ell>>1$. This concludes the proof.
+%
+\end{proof}
+
+\begin{remark} The observability inequality \eqref{obs_ineq_sec3} is a consequence of \eqref{car_final_sec3} and can be found arguing as in the previous sections. For brevity, we will omit the proof. 
+\end{remark}
+
+\section{Concluding remarks}\label{sec_conclusion}
+
+In this paper, we have considered the robust hierarchic control problem for the simple case of a heat equation. However, there are several open questions and remarks that are worth mentioning.  
 
 \vspace{6 cm}
-
-
 
 \%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
 
@@ -1369,7 +1495,7 @@ As mentioned in Section \ref{sec_intro}, we shall present a hierarchic control r
 
 
 
-\section{Concluding remarks}\label{sec_conclusion}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
