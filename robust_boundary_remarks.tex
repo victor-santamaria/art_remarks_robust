@@ -89,7 +89,7 @@ In this paper, we present some controllability results for parabolic equations i
 %On a second result, we present a Stackelberg-Nash strategy for the heat equation where we act on the system through several followers --solving a Nash multi-objective equilibrium-- and where the classical null-controllability objective for the leader is replaced by an insensitizing control problem.}
 
 
-\keywords{Hierarchic control, robust control, Carleman estimates, controllability.}
+\keywords{Hierarchic control, robust control, Carleman estimates, boundary controllability.}
 
 \section{Introduction}\label{sec_intro}
 %
@@ -140,7 +140,7 @@ Seen independently, Problem 1 (i.e. $h\equiv 0$) is a classical robust control p
 Consider a nonempty open set $\mathcal O_d\subset \Omega$ and define the cost functional
 %
 \begin{equation}\label{func_rob}
-J_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\partial \Omega\times(0,T)}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right]
+J_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\Sigma}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right]
 \end{equation}
 %
 %where $\ell,\gamma>0$ are constants and $y_d\in L^2(\mathcal O_d\times(0,T))$ is given. This functional is used to formulate and solve Problem 1. Indeed, we will look for a saddle point $(\bar v,\bar \psi)$ which simultaneously maximize $J_r$ with respect to $\psi$ and minimize it with respect to $v$, while maintaining the state $y$ ``close enough'' to a desired target $y_d$ in the observation domain $\mathcal O_d\times(0,T)$. The parameters $\ell$ and $\gamma$ will play a key role and take into account the relative weight of each term. 
@@ -156,7 +156,7 @@ Now, we are in position to describe the Robust hierarchic control problem. Accor
 Let $h\in L^2(\omega\times(0,T))$ be fixed. The control $\bar v\in L^2(\partial \Omega\times(0,T))$, the disturbance $\bar \psi\in L^2(Q)$ and the state $\bar y=\bar y(h,\bar v,\bar \psi)$ solution to \eqref{heat_lin} associated to $(\bar v,\bar \psi)$ are said to solve the robust control problem when a saddle point $(\bar v,\bar \psi)$ (which depends on $h$) of the cost functional $J_r$ is reached, namely
 %
 \begin{equation}\label{saddle}
-J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\partial \Omega\times(0,T))\times L^2(Q).
+J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\Sigma)\times L^2(Q).
 \end{equation}
 %
 In this case,
@@ -290,7 +290,7 @@ In the first step, we analyze the robust control problem associated to \eqref{fu
 
 The first thing to check is that the solution $y$ to \eqref{heat_lin} is well posed and is uniquely determined by the data of the problem. It is well-known (see, e.g., \cite{lions_magenes}) that for any $v\in L^2(\Sigma)$, $\psi\in L^2(Q)$, $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$, system \eqref{heat_lin} admits a unique weak solution (defined by transposition) that satisfies
 %
-\begin{equation}
+\begin{equation}\label{space_trans}
 y\in L^2(Q)\cap C^0([0,T];H^{-1}(\Omega)).
 \end{equation} 
 
@@ -599,7 +599,7 @@ From the results in \cite[Ch. 4, \S15.5]{lions_magenes} and estimates \eqref{nor
 %
 where we have denoted $\mu=\min\{\ell^2,\gamma^2\}$.
 
-Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system \eqref{heat_fixed},\eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and the embedding $W(Q)\hookrightarrow L^2(Q)$ (this follows from the classical Aubin-Lions Theorem, see, e.g., \cite{simon}) we can check that $\Lambda$ is a well-defined, continuous and linear map of $L^2(Q)\to L^2(Q)$.
+Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system \eqref{heat_fixed},\eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and the embedding $W(Q)\hookrightarrow L^2(Q)$ (this follows from classical compactness results, see, e.g., \cite{simon}) we can check that $\Lambda$ is a well-defined, continuous and linear map of $L^2(Q)\to L^2(Q)$.
 
 For any $\bar\theta_1,\bar\theta_2\in L^2(Q)$, we consider the difference $\Lambda\bar\theta_1-\Lambda\bar\theta_2$. Then, arguing as above, we can readily see that
 %
@@ -778,7 +778,7 @@ for some $a\in \mathbb R$ to be chosen later. Observe that $\rho(T)=0$. Then, $\
 From standard regularity estimates for the heat equation, we have that $\widehat{\varphi}$ solution to \eqref{phi_gorro} satisfies
 %
 \begin{equation}\label{est_regul}
-\|\widehat{\varphi}\|_{L^2(0,T;H^2(\Omega))\cap H^1(0,T;L^2(\Omega))}\leq C\left(\|\sigma\,\theta\|_{L^2(Q)}+\|\sigma_t\varphi\|_{L^2(Q)}\right).
+\|\widehat{\varphi}\|_{H^{2,1}(Q)}\leq C\left(\|\sigma\,\theta\|_{L^2(Q)}+\|\sigma_t\varphi\|_{L^2(Q)}\right).
 \end{equation}
 %
 Using the definitions of $\alpha^*$ and $\xi^*$ given in \eqref{weights_l} together with \eqref{rho_def}, it is not difficult to see that 
@@ -816,7 +816,7 @@ s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}} \frac{1}{\ell^2} \frac{\pa
 \end{split}
 \end{equation}
 %
-where we have used again that $\alpha^\star,\xi^\star$ coincide with $\alpha,\xi$ on the boundary. 
+where we have used again that $\alpha^*,\xi^*$ coincide with $\alpha,\xi$ on the boundary. 
 
 Now, set $\widehat \varphi=\sigma \varphi$ with $\sigma=e^{-s\alpha^*}(s\xi)^{-\frac{1}{4}}$. Arguing as before, we readily obtain from \eqref{est_regul} the following 
 %
@@ -882,7 +882,7 @@ Let us introduce the weight functions:
 \begin{equation}\label{weights_rec} 
 \begin{split}
 &\beta(x,t)= \frac{e^{2\lambda\|\eta^0\|_\infty}-e^{\lambda\eta^0(x)}}{\bar l^4(t)}, \quad \phi(x,t)=\frac{e^{\lambda \eta^0(x)}}{\bar l^4(t)} \\
-&\beta^\star(t)=\max_{x\in\overline{\Omega}}\beta(x,t), \quad \phi^\star(t)=\min_{x\in\overline\Omega} \phi(x,t).
+&\beta^*(t)=\max_{x\in\overline{\Omega}}\beta(x,t), \quad \phi^*(t)=\min_{x\in\overline\Omega} \phi(x,t).
 \end{split}
 \end{equation}
 %
@@ -898,8 +898,8 @@ l(t) &\quad\text{for}\quad T/2\leq t\leq T.
 We set $s$ to a sufficiently large fixed value. By construction, $\alpha=\beta$ in $[0,T/2]$. Thus, 
 %
 \begin{align} \notag 
-&\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi|\nabla \varphi|^2+\iint_{\Omega\times(T/2,T)}e^{-2s\beta^\star}|\theta|^2\dx\dt  \\ \notag
-&\quad = \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi^3|\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi|\nabla\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha^\star}|\theta|^2\dx\dt \\ \label{car_rec}
+&\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi|\nabla \varphi|^2+\iint_{\Omega\times(T/2,T)}e^{-2s\beta^*}|\theta|^2\dx\dt  \\ \notag
+&\quad = \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi^3|\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi|\nabla\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha^*}|\theta|^2\dx\dt \\ \label{car_rec}
 &\quad \leq  C(s,T)\left(\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right)
 \end{align}
 %
@@ -934,7 +934,7 @@ Here we have used the properties of the function $\tilde\eta$.
 Using the definition of the weight $\beta$, it can be readily seen that
 %
 \begin{equation*}
-e^{-2s\beta}\phi\geq C >0 \quad\text{and}\quad \quad  e^{-2s\beta^\star}\geq C>0, \quad \forall t\in[T/2,3T/4],
+e^{-2s\beta}\phi\geq C >0 \quad\text{and}\quad \quad  e^{-2s\beta^*}\geq C>0, \quad \forall t\in[T/2,3T/4],
 \end{equation*}
 %
 and therefore we can bound appropriately in \eqref{nabla_theta_0} to obtain
@@ -968,8 +968,8 @@ Arguing as in the proof of Lemma \ref{prof_regularity}, we can deduce the follow
 where $\mu=\min\{\ell^4,\gamma^4\}$. Observe that in this domain, the function $\beta^\star$ is actually constant in both variables, therefore, 
 %
 \begin{align}\notag
-\iint_{\Omega\times(0,T/2)}e^{-2s\beta^\star}|\theta|^2\dx\dt &\leq \frac{C}{\mu}\|e^{-s\beta^\star}\varphi\|_{H^{2,1}(\Omega\times(0,T/2))}^2 \\ \label{est_theta_tme}
-&\leq \frac{C}{\mu}\|e^{-s\beta^\star}\varphi\|_{H^{2,1}(Q)}^2.
+\iint_{\Omega\times(0,T/2)}e^{-2s\beta^*}|\theta|^2\dx\dt &\leq \frac{C}{\mu}\|e^{-s\beta^*}\varphi\|_{H^{2,1}(\Omega\times(0,T/2))}^2 \\ \label{est_theta_tme}
+&\leq \frac{C}{\mu}\|e^{-s\beta^*}\varphi\|_{H^{2,1}(Q)}^2.
 \end{align}
 %
 
@@ -977,8 +977,8 @@ Combining \eqref{car_rec} with \eqref{est_h01_theta}--\eqref{est_theta_tme} we d
 %
 \begin{equation}\label{obs_mu}
 \begin{split}
-\|\varphi(0)\|_{H_0^1(\Omega)}^2+\iint_{Q}&e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\beta^\star}|\theta|^2\dx\dt \\
-&\leq \frac{C}{\mu}\|e^{-s\beta^\star}\|_{H^{2,1}(Q)}^2+ C\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt
+\|\varphi(0)\|_{H_0^1(\Omega)}^2+\iint_{Q}&e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\beta^*}|\theta|^2\dx\dt \\
+&\leq \frac{C}{\mu}\|e^{-s\beta^*}\|_{H^{2,1}(Q)}^2+ C\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt
 \end{split}
 \end{equation}
 %
@@ -1104,9 +1104,9 @@ For all $\lambda\geq1$, let us consider the following weight functions
 %
 and for some parameters $s>0$ and $m\in\mathbb R$, we set the notation
 %
-\begin{equation}
+\begin{equation*}
 I(u;i,m):=\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla u|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|u|^2\dx\dt
-\end{equation}
+\end{equation*}
 
 We have the following
 %
@@ -1145,13 +1145,13 @@ holds for every $s$ sufficiently large.
  
  The first step is to improve \eqref{igualda1} in the sense that the weight functions do not vanish at $t=0$. Let us consider the function
  %
- \begin{equation}
+ \begin{equation*}
  \widetilde{l}(t)=
  \begin{cases}
  T^4/16 \quad &\text{for}\quad 0\leq t\leq T/2, \\
  t^2(T-t)^2 \quad &\text{for}\quad T/2\leq t\leq T,
  \end{cases}
- \end{equation}
+ \end{equation*}
  %
  and the weights
  %
@@ -1174,9 +1174,9 @@ One can prove that the following observability inequality hold:
  
  Of course, this inequality still has the boundary observation of the variable $\theta$. Nevertheless, the new structure of the weight $\tilde\beta_2$ and property \eqref{prop_impor} will help us to estimate it in terms of localized terms of $\varphi$ in $\mathcal B_1$ and $\mathcal B_2$. Hypotheses \eqref{loc_teo2} and property \eqref{prop_impor} imply that
  %
- \begin{equation}
+ \begin{equation*}
  \eta_1(x) \geq \max_{x\in \mathcal S^\prime}\eta_2 \quad \forall  x\in\bar{\mathcal B}_i, \quad i=1,2.
- \end{equation}
+ \end{equation*}
  %
  Therefore,
  %
@@ -1186,9 +1186,9 @@ One can prove that the following observability inequality hold:
  %
  where we have defined
  %
- \begin{equation}
+ \begin{equation*}
  \widehat{\beta_2}(t):=\frac{e^{\lambda(\|\eta_1\|+\|\eta_2\|)}-e^{{\lambda}\max_{x\in\mathcal S^\prime}\eta_2}}{\widetilde{l}(t)}.
- \end{equation}
+ \end{equation*}
  %
 Moreover, we can readily see that $e^{s\widehat{\beta_2}}\leq e^{s\tilde\beta_2}$ for all $(x,t)\in \mathcal S^\prime\times(0,T)$. This, together with the fact that $\mathcal S^\prime\subset\subset\partial \Omega$ and the well-known trace estimate, allow us to obtain 
 %
@@ -1341,9 +1341,9 @@ where $\bar\eta$ is a function verifying properties \eqref{constr_bound}.
 %
 Consider the optimization problem
 %
-\begin{equation}
+\begin{equation*}
 \min_{v\in L^2(\Sigma)} \mathcal I(v;h)
-\end{equation}
+\end{equation*}
 %
 for the cost functional
 %
@@ -1377,7 +1377,9 @@ The next step is then to prove \eqref{obs_ineq_sec3} for the solutions to the ad
 %
 The introduction of the weight $\rho_\star$ will help us to obtain a Carleman estimate for the solutions \eqref{adj_sys_3} without the necessity of applying a Carleman inequality to the equation verified by $\theta$ and thus avoiding the problems mentioned before. The result is the following.
 %
-\begin{proposition}Assume that $\ell$ is large enough. There exists a constant $\lambda_0$ such that for any $\lambda\geq \lambda_0$, there exists a constant $C>0$ such that the solution $(\varphi,\theta)$ to \eqref{adj_sys_3} satisfies 
+\begin{proposition}\label{prop_4_final}
+%
+Assume that $\ell$ is large enough. There exists a constant $\lambda_0$ such that for any $\lambda\geq \lambda_0$, there exists a constant $C>0$ such that the solution $(\varphi,\theta)$ to \eqref{adj_sys_3} satisfies 
 %
 \begin{equation}\label{car_final_sec3}
 \iint_{Q}e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt\leq C\iint_{\mathcal \mathcal O_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt
@@ -1403,13 +1405,14 @@ valid for $s$ and $\lambda$ large enough.
 
 Now, we define $\widehat{\theta}=e^{-s\bar\alpha^\star}\theta$. Then, $\widehat{\theta}$ is solution to the system 
 %
-\begin{equation}\label{phi_gorro}
+\begin{equation*}%\label{theta_gorro}
 \begin{cases}
 -\widehat\theta_t-\Delta \widehat\theta=(e^{-s\alpha^\star})_t\theta &\quad \text{in } Q, \\
 \widehat\theta=e^{-s\bar\alpha^\star}\frac{\partial\varphi}{\partial n}\rho_\star^{-2}{\csbd}_{2} &\quad \text{on } \Sigma, \\
 \widehat{\theta}(\cdot,0)=0 &\quad\text{in } \Omega.
 \end{cases}
-\end{equation}
+\end{equation*}
+%
 Notice that $e^{-s\bar\alpha^\star}\in C^{\infty}([0,T])$, thus the following energy estimate holds
 %
 \begin{equation}\label{est_theta_gorro}
@@ -1430,15 +1433,15 @@ Adding estimates \eqref{car_init_sec3} and \eqref{est_bar_theta}, and taking int
 &\leq C\iint_{\mathcal \mathcal O_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+C\iint_{Q}e^{-2s\bar\alpha^\star}(s\bar\xi^\star)^3|\theta|^2\dx\dt+\frac{C}{\ell^4}\|e^{-s\bar\alpha^\star}\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)}
 \end{align}
 %
-for all $s$ large enough. At this point, we set $s$ to a fixed value sufficiently large and reasoning as in Proposition \ref{prop_obs_ineq_dif}, we will absorb the last two terms in the above expression by taking the parameter $\ell$ large enough. 
+for all $s$ large enough. 
 
-Since $\theta(\cdot,0)=0$ and
+At this point, we set $s$ to a fixed value sufficiently large and reasoning as in Proposition \ref{prop_obs_ineq_dif}, we will absorb the last two terms in the above expression by taking the parameter $\ell$ large enough. Since $\theta(\cdot,0)=0$ and
 %
 \begin{equation*}
 e^{-2s\bar\alpha^\star}({\bar\xi^\star})^3\leq C, \quad \forall (x,t)\in Q.
 \end{equation*}
 % 
-we can use a classical (non-weighted) estimate for the solutions to $\theta$. More precisely, we can bound the second term in the right-hand side of \eqref{car_inter_sec3} as
+we can use a classical (non-weighted) energy estimates for the solutions to $\theta$. More precisely, we can bound the second term in the right-hand side of \eqref{car_inter_sec3} as
 %
 \begin{align}\notag
 \iint_{Q}e^{-2s\bar\alpha^\star}({\bar\xi^\star})^3|\theta|^2&\leq C\|\theta\|_{L^2(Q)}  \\ \label{est_nonwei}
@@ -1448,13 +1451,13 @@ we can use a classical (non-weighted) estimate for the solutions to $\theta$. Mo
 
 To conclude, it is enough to obtain an estimate for $\widehat{\varphi}:=e^{-s\bar\alpha^\star}\varphi$ in $H^{2,1}(Q)$. Indeed, since $\rho_\star\geq e^{\frac{s\alpha}{2}}$, we can use such estimate to bound the last term in \eqref{car_inter_sec3} and \eqref{est_nonwei}. For this, notice that $\widehat{\varphi}$ verifies
 %
-\begin{equation}\label{gorro_gorro}
+\begin{equation*}%\label{gorro_gorro}
 \begin{cases}
 -\widehat\varphi_t-\Delta \widehat\varphi=-(e^{-s\alpha^\star})_t\varphi+e^{-s\alpha^\star}\theta\mathbf{1}_{\mathcal O_d} &\quad \text{in } Q, \\
 \widehat\varphi=0 &\quad \text{on } \Sigma, \\
 \widehat{\varphi}(\cdot,T)=0 &\quad\text{in } \Omega.
 \end{cases}
-\end{equation}
+\end{equation*}
 %
 then, we immediately deduce that
 %
@@ -1462,7 +1465,7 @@ then, we immediately deduce that
 \|\widehat{\varphi}\|_{H^{2,1}(Q)}\leq C\left(\|e^{-s\bar\alpha^\star}(\xi^\star)^{3/2}\varphi\|_{L^2(Q)}+\|e^{-s\bar\alpha^\star}\theta\|_{L^2(Q)}\right).
 \end{equation}
 %
-Finally, using \eqref{est_final} in \eqref{car_inter_sec3} and \eqref{est_nonwei} the desired inequality \eqref{car_final_sec3} follows by taking $\ell>>1$. This concludes the proof.
+Finally, using \eqref{est_final} to estimate in \eqref{car_inter_sec3} and \eqref{est_nonwei} the desired inequality \eqref{car_final_sec3} follows by taking $\ell>>1$. This concludes the proof.
 %
 \end{proof}
 
@@ -1471,125 +1474,135 @@ Finally, using \eqref{est_final} in \eqref{car_inter_sec3} and \eqref{est_nonwei
 
 \section{Concluding remarks}\label{sec_conclusion}
 
-In this paper, we have considered the robust hierarchic control problem for the simple case of a heat equation. However, there are several open questions and remarks that are worth mentioning.  
+In this paper, we have considered the robust hierarchic control problem for the simple case of a heat equation. However, there are several open questions and related remarks that are worth mentioning.
 
-\vspace{6 cm}
-
-\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Algunas cosas viejas que pueden o no servir
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+\item \textit{Nonlinear problems.} So far, we have focused on studying linear control problems. A further step is to analyze the robust hierarchic control problem for systems of the form
 %
-%\subsection{The problem and its formulation}
-%%
-%We begin by describing the control problem for system \eqref{heat_b1}. As mentioned before, it consists of two parts: a robust control problem and a controllability one.
+\begin{equation}\label{nonlin_trans}
+\begin{cases}
+y_t-\Delta y+f(y)=h\mathbf{1}_{\omega}+\psi &\quad \text{in } Q,\\
+y=v\csbd &\quad\text{in }\Sigma, \\
+y(x,0)=y_0(x) &\quad\text{in } \Omega,
+\end{cases}
+\end{equation}
 %
+where $f\in C^2(\mathbb{R})$ is a globally Lipschitz function. The well-posedness of \eqref{nonlin_trans} in the  functional space \eqref{space_trans} can be understood as in \cite[Section 8.2]{pighin} and therefore the robust control problem (see Definition \ref{defi_rob}) is meaningful. 
+
+For proving the existence and uniqueness of the saddle point, we need to obtain the first and second order Frechet derivatives of the input-to-state operator $G:(v,\psi)\to y$ where $y$ is the solution to \eqref{nonlin_trans}, as well as their regularity. This can be done by following \cite{vhs_deT_rob}. Nevertheless, for proving an analog to Proposition \ref{verif_cond} for the solutions to \eqref{nonlin_trans} we need some additional embedding results (cf. \cite[Proof of Prop. 2]{vhs_deT_rob}) and, in this case, is not so clear how to obtain them. Thus, it remains as an open problem.
 %
+\item \textit{On the hypothesis \eqref{loc_teo2}}. We have proved Theorem \ref{teo_main2} by establishing an observability inequality where hypothesis \eqref{loc_teo2} was heavily used. Indeed, the construction of two different Carleman weights fulfilling \eqref{props_brazil}--\eqref{prop_impor} and then the elimination of the second boundary observation in \eqref{aux7} rely on such hypothesis. Notice also that, as a consequence, we were obliged to consider a perturbation $\psi$ localized in the domain $\mathcal B_2\times(0,T)$ for the robust control part but, at that level, \eqref{loc_teo2} is not necessary to determine the existence and uniqueness of the saddle point. It is therefore interesting to prove Theorem \ref{teo_main2} without using hypothesis \eqref{loc_teo2} or by considering an alternative procedure that allows to have a perturbation $\psi$ in the whole domain $Q$. 
+
+\item \textit{Remarks on the Stackelberg robust control with all controls localized in the boundary}. We devoted Section \ref{sec_bound} to prove a hierarchic control result for the heat equation in the case where the leader and the follower are placed on the boundary. This was possible due to the weighted functional \eqref{func_teo3} whose minimization enforces the control $v$ to vanish exponentially as $t$ goes to $0$ and $T$. 
+
+We could have taken into account the effect of a perturbation entering the system (see eq. \eqref{sys_sec3}) by considering a cost functional of the form
 %
-%In the second problem, we look for a control $h\in L^2(\omega\times(0,T))$ minimizing 
-%%
-%\begin{equation}\label{func_null}
-%J(h)=\frac{1}{2}\iint_{\omega\times(0,T)}|h|^2dxdt \quad\text{subject to}\quad y(\cdot,T)=0. 
-%\end{equation}
-%%
-%This is a classical null controllability problem. In the case where $\psi=v=0$, it its well-known that system \eqref{heat_b1} is null controllable, see, for instance, \cite{fursi,cara_guerrero}. 
+\begin{equation*}
+\mathcal K(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt+\frac{\ell^2}{2}\iint_{\Sigma}\rho_\star^2|v|^2{\csbd}_2\d\sigma\dt-\frac{\gamma^4}{2}\iint_{Q}\rho_\star^2|\psi|\dx\dt
+\end{equation*}
 %
-%It is well-known that for every $h\in L^2(\omega\times(0,T))$, $v\in L^2(\Gamma\times(0,T))$, $\psi\in L^2(Q)$, and $y_0\in H^{-1}(\Omega)$, system \eqref{heat_b1} admits a unique weak solution (defined by transposition) that satisfies
-%%
-%\begin{equation}
-%y\in L^2(Q)\cap C^0([0,T];H^{-1}(\Omega)).
-%\end{equation} 
+One may prove that for this functional, the existence of a saddle point is guaranteed as soon as $\gamma$ is large enough. However, the introduction of the weight function indicates that only perturbations vanishing at $t=0$ and $t=T$ are allowed. From the practical point of view, it makes sense to consider a control $v$ with these properties, since is at the choice of the designer, however, the perturbations are not at hand and restricting its behavior to such class of functions is not accurate.
+
+\item \textit{A Stackelberg-Nash controllability with all controls on the boundary}. Theorem \ref{teo3} can be extended to the case when more followers participate in the definition of the optimal control problem. More precisely, let us consider the system
 %
-%Following the notation of \cite{LionsSta} (originally introduced in \cite{Stackelber}), we denote $h$ as the \textit{leader} control and $v$ as the \textit{follower} control. As proposed in \cite{vhs_deT_rob}, we will use the following hierarchic control strategy to solve the optimization problems related to the cost functionals \eqref{func_rob}--\eqref{func_null}: 
-%%
-%\begin{enumerate}
-%\item 
-%%
-%Under certain conditions, we will prove that there exists a unique pair $(\bar v,\bar \psi)$ and the associated state $\bar y$ such that \eqref{saddle} holds.
-%%
-%\item After identifying the saddle point for each leader control $h$, we look for an optimal control $\hat h$ such that 
-%%
-%\begin{equation}\label{opt_leader}
-%J(\hat h)=\min_{h\in L^2(\omega\times(0,T))}J(h), 
-%\end{equation}
-%%
-%subject to 
-%%
-%\begin{equation}\label{opt_rest}
-%\bar y(\cdot,T;h,\bar v(h),\bar \psi(h))=0 \quad \text{in}\quad  H^{-1}(\Omega).
-%\end{equation}
-%%
-%\end{enumerate}
+\begin{equation}\label{sys_sec3}
+\begin{cases}
+w_t-\Delta w=0, & \quad \text{in Q}, \\
+w=h\mathbf{1}_{\mathcal O}+ v^1\chi_{\mathcal O_1}+v^2\chi_{\mathcal O_2}&\quad \text{on } \Sigma, \\
+w(x,0)=w^0(x), &\quad \text{in } \Omega.
+\end{cases}
+\end{equation}
+% 
+and the functionals
 %
-%\begin{remark}
-%As in \cite{LionsSta} and other related papers, we address the multi-objective optimization problem by solving the mono-objective problems \eqref{saddle_minmax} and \eqref{opt_leader}--\eqref{opt_rest}. Note, however, that in the second minimization problem the optimal strategy for the follower is fixed and therefore its characterization needs to be considered.
-%\end{remark}
+\begin{equation}\label{func_nash}
+\mathcal I_i(v^1,v^2;h)=\frac{1}{2}\iint_{\mathcal O_{i,d}\times(0,T)}|w-w_{i,d}|^2\dx\dt+\frac{\ell_i^2}{2}\iint_{\Sigma}\rho_\star^2|v^{i}|^2{\csbd}_{i}\d\sigma\dt, \quad i=1,2.
+\end{equation}
 %
-%Analogously, we may define the functionals for the multi-objective problem related to system \eqref{heat_b2}. We define the Hilbert spaces $H^{r,s}(\Sigma):=L^2(0,T;H^r(\Gamma))\cap H^s(0,T:L^2(\Gamma))$ and introduce the following space
-%%
-%\begin{equation}
-%V:=\left\{u\in H^2(\Omega): \  u=0 \ \text{on } \Gamma\backslash \mathcal S\right\}.
-%\end{equation}
+Here, the goal is to design $v^1$ and $v^2$ so that a \textit{Nash equilibrium} for the functionals \eqref{func_nash} is attained, this is,  for any fixed $h$, we look for a pair $(\bar v^1,\bar v^2)$ verifying  
 %
-%Consider the cost functional 
-%%
-%\begin{equation}\label{func_S_rob}
-%K_r(v,\psi;h)=\frac{1}{2}\iint_{\Gamma_d\times(0,T)}\left|\frac{\partial z}{\partial \nu}-\zeta_d\right|^2d\sigma dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2dxdt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2dxdt\right]
-%\end{equation}
-%%
-%where $\Gamma_d$ is a nonempty closed subset of $\Gamma$, $\zeta_d$ is a given function and $\ell,\gamma$ are positive constants. This functional describes the robust control problem for \eqref{heat_b2}. The leader functional is the following
-%%
-%\begin{equation}
-%K(h):=\frac{1}{2}\|h\|^2_{H^{\frac{3}{2},\frac{3}{4}}(\mathcal S\times(0,T))}
-%\end{equation}
-%%
+\begin{equation}\label{nash}
+I_1(\bar v^1,\bar v^2;h)=\min_{v^1\in L^2(\Sigma)}I_1(v^1,\bar v^2), \quad I_2(\bar v^1,\bar v^2;h)=\min_{v^2\in L^2(\Sigma)}I_1(\bar v^1, v^2).
+\end{equation}
 %
-%As before, for each leader control $h$, we will find a saddle point for the cost functional \eqref{func_S_rob}, more precisely, 
-%we look for an optimal pair $(\bar v,\bar \psi)$ and the associated state $\bar z=\bar z(h,\bar v,\bar \psi, z_0)$ such that 
-%%
-%\begin{equation}\label{saddle_2}
-%J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \forall (v,\psi)\in L^2(\mathcal B_1\times(0,T))\times L^2(\mathcal B_2\times(0,T)).
-%\end{equation}
-%%
-%Once we prove the existence and uniqueness of the saddle point, we look for a control $\hat h\in H^{\frac{3}{2},\frac{3}{4}}(\mathcal S\times(0,T))$ verifying 
-%%
-%\begin{equation}
-%K(\hat h)=\min_{h} K(h)
-%\end{equation}
-%%
-%subject to the null controllability condition
-%%
-%\begin{equation}
-%\bar z(\cdot,T; h,\bar v(h), \bar \psi(h))=0 \quad \text{in } \Omega.
-%\end{equation}
-%%
+where $w_{i,d}$ in $L^2(Q)$ are given functions and $\mathcal{O}_{i,d}\subset \Omega$ are arbitrary observation sets. Adapting the results of \cite{araruna,vhs_corri}, it can be seen that, choosing $\ell_i$ large enough, there exists a pair $(\bar v^1,\bar v^2)$ satisfying \eqref{nash}. The characterization of the Nash equilibrium then leads to the optimality system
+%
+\begin{equation*}%\label{sys_sec3}
+\begin{cases}
+w_t-\Delta w=0, &\quad  \text{in Q}, \\
+-r^{i}_t-\Delta r^{i}= (w-w_{i,d})\mathbf{1}_{\mathcal O_d}  &\quad  \text{in Q},\\ 
+w=h\mathbf{1}_{\mathcal O}+ \frac{1}{\ell_1^2}\frac{\partial r^{1}}{\partial n}\rho_\star^{-2}\chi_{\mathcal O_1}+\frac{1}{\ell_2^2}\frac{\partial r^{2}}{\partial n}\rho_\star^{-2}\chi_{\mathcal O_2}, \quad r^{i}=0 &\quad \text{on } \Sigma, \\
+w(x,0)=w^0(x),\quad r^{i}(x,T)=0 &\quad \text{in } \Omega, \quad i=1,2,
+\end{cases}
+\end{equation*}
+%
+and the null controllability for this system can be addressed by obtaining a suitable observability inequality for the solutions to the adjoint system
+%
+\begin{equation}\label{adj_conclusion}
+\begin{cases}
+-\varphi_t-\Delta \varphi=\theta^1\mathbf{1}_{\mathcal O_{2,d}}+\theta^2\mathbf{1}_{\mathcal O_{2,d}}, &\quad  \text{in Q}, \\
+\theta^{i}_t-\Delta \theta^{i}= 0 &\quad  \text{in Q},\\ 
+\varphi=0, \quad \theta^{i}=\frac{1}{\ell_i^2}\frac{\partial \varphi}{\partial n}\rho_\star^{-2}\chi_{\mathcal O_i}, &\quad \text{on } \Sigma, \\
+\varphi(x,T)=\varphi^T(x),\quad \theta^{i}(x,0)=0 &\quad \text{in } \Omega, \quad i=1,2.
+\end{cases}
+\end{equation}
+%
+Thanks to the weight $\rho_\star$, this inequality can be obtained as in the proof of Proposition \ref{prop_4_final}: it is enough to apply the Carleman inequality \eqref{Est1} to the first equation of \eqref{adj_conclusion} and then only use energy estimates to absorb the remaining terms depending on $\theta^{i}$ for $i=1,2$. For this same reason, unlike \cite{araruna,vhs_corri}, there is not need to impose additional hypothesis on the sets $\mathcal O_{i,d}$.
+
+\item \textit{Changing the objective of the leader}. As far as the authors' knowledge, all of the papers devoted to hierarchic control consider a controllability (either null or approximate) constraint as the leader's objective. An interesting problem that arises is to study the case where the leader is now in charge of an \emph{insensitizing} problem (see, e.g., \cite{deteresa2000}). To fix ideas, consider the system 
+%
+\begin{equation*}
+\begin{cases}
+y_t-\Delta y=\xi + h\chi_{\omega}+v\chi_{\mathcal O} &\quad\text{in }Q, \\
+y=0 &\quad\text{in } \Sigma, \\
+y(x,0)=y_0(x)+\tau\bar y  &\quad\text{in } \Omega.
+\end{cases}
+\end{equation*}
+%
+where $\xi\in L^2(Q)$ is a given source term. The data of the system is incomplete in the following sense: $\bar y\in L^2(\Omega)$ is unknown with $\|y\|_{L^2(\Omega)}=1$ and $\tau\in\mathbb R$ is unknown and small enough. 
+
+As usual, the follower $v$ will be in charge of a classical optimal control problem (i.e., minimize a functional like \eqref{func_rob} with $\gamma\equiv 0$) and for $h$ and $\xi$, the expected optimality system takes the form
+%
+\begin{equation}\label{sys_insi}
+\begin{cases}
+y_t-\Delta y=\xi + h\chi_{\omega}-\frac{1}{\ell^2}p\chi_{\mathcal O} &\quad\text{in }Q, \\ 
+-p_t-\Delta p=(y-y_d)\chi_{\mathcal O_d} &\quad\text{in }Q \\
+y=0, \quad p=0 &\quad\text{in } \Sigma, \\
+y(x,0)=y_0(x)+\tau\bar y, \quad p(x,T)=0  &\quad\text{in } \Omega.
+\end{cases}
+\end{equation}
+%
+Now, consider a differentiable functional $\Psi$ defined on the sets of solutions to \eqref{sys_insi}, for instance, for some observation set $\mathcal S\subset \Omega$ we define
+%
+\begin{equation*}
+\Psi(y):= \frac{1}{2}\iint_{\mathcal S\times(0,T)}|y|^2\dx\dt
+\end{equation*}
+%
+We say that a control $h$ insensitizes $\Psi(y)$ for the initial datum $y_0$ and the source term $\xi$ if
+%
+\begin{equation}\label{obj_ins}
+\left.\frac{\partial\psi}{\partial\tau}\right|_{\tau=0}=0, \quad \forall \bar y\in L^2(\Omega). 
+\end{equation}
+%
+As common in other insensitizing control problems, \eqref{obj_ins} is equivalent to a non-standard controllability problem. For our case, this translates into finding $h$ such that $z(x,0)=0$ where $(y,p,z,q)$ is the solution to
+%
+\begin{equation}\label{sys_insi}
+\begin{cases}
+y_t-\Delta y=\xi + h\chi_{\omega}-\frac{1}{\ell^2}p\chi_{\mathcal O} &\quad\text{in }Q, \\ 
+-p_t-\Delta p=(y-y_d)\chi_{\mathcal O_d} &\quad\text{in }Q \\
+-z_t-\Delta z= q+y\chi_\mathcal{S} &\quad\text{in }Q \\
+q_t-\Delta q=-\frac{1}{\ell^2}z\chi_{\mathcal O} &\quad\text{in }Q \\
+y= p=z=q=0 &\quad\text{in } \Sigma, \\
+y(x,0)=y_0(x), \quad p(x,T)=z(x,T)=q(x,0)=0  &\quad\text{in } \Omega.
+\end{cases}
+\end{equation}
+
+This means that we have to control one component of a system of four coupled equations. As pointed out in \cite{vhs_honor}, the hierarchic controllability of coupled systems as \eqref{sys_insi} with one control force is not fully understand and further investigation is desirable. 
 
 
+\end{enumerate}  
 
-
-\frenchspacing
+%\frenchspacing
 \begin{thebibliography}{7}
 
 \bibitem{a_araujo}
@@ -1729,6 +1742,12 @@ In this paper, we have considered the robust hierarchic control problem for the 
 \textsc{V. Hern\'andez-Santamar\'ia and L. de Teresa}
 \newblock Robust Stackelberg controllability for linear and semilinear heat equations. 
 \newblock {\em Evol. Equ. Control Theory}, \textbf{7} (2018), no. 2, 247--273.
+
+\bibitem{vhs_honor}
+\textsc{V. Hern\'andez-Santamar\'ia and L. de Teresa}
+\newblock Some Remarks on the Hierarchic Control for Coupled Parabolic PDEs.
+\newblock In: {\em Recent Advances in PDEs: Analysis, Numerics and Control
+In Honor of Prof. Fern\'andez-Cara's 60th Birthday}, SEMA-SIMAI Springer Series 17, 2018.
 %
 \bibitem{ima_yama_boundary}
 \textsc{O. Yu. Imanuvilov, J. P. Puel, and M. Yamamoto.}
@@ -1739,6 +1758,12 @@ In this paper, we have considered the robust hierarchic control problem for the 
 \textsc{O. Yu. Imanuvilov and M. Yamamoto.}
 \newblock Carleman inequalities for parabolic equations in {S}obolev spaces of negative order and exact controllability for semilinear parabolic equations.
 \newblock {\em Publ. RIMS, Kyoto Univ.}, \textbf{39}, (2003), 227--274.
+%
+\bibitem{jesus}
+\textsc{I. P. de Jesus, J. Limaco and M. R. Clark.}
+\newblock Hierarchical control for the one-dimensional plate equation with a moving boundary. 
+\newblock {\em J. Dyn. Control Syst.}, \textbf{24} (2018), no. 4, 635--655.
+%
 %%
 % \bibitem{lady}
 %\textsc{O. A. Ladyzhenskaya, V. A. Solonnikov, and N. N. Ural'ceva.}
@@ -1789,20 +1814,6 @@ In this paper, we have considered the robust hierarchic control problem for the 
 %\newblock Existence and uniqueness of optimal controls for a quasilinear parabolic equation.
 %\newblock {\em SIAM J. Control Optim.}, \textbf{20}, 6 (1982), 747--762.
 %
-\bibitem{Stackelber}
-\textsc{H. von Stackelberg.}
-\newblock Marktform und {G}leichgewicht.
-\newblock {\em Springer\/} (1934).
-%
-\bibitem{deteresa2000}
-\textsc{L. de Teresa.}
-\newblock Insensitizing controls for a semilinear heat equation.
-\newblock {\em Comm. Partial Differential Equations,} \textbf{25}, 1--2 (2000) 39--72.
-%
-\bibitem{trol}
-\textsc{F. Tr\"oltzsch.}
-\newblock Optimal control of partial differential equations: theory, methods and applications.
-\newblock {\em American Mathematical Society}, (2010).
 %
 %\bibitem{Ekeland}
 %{I. Ekeland and R. Temam.}
@@ -1815,11 +1826,6 @@ In this paper, we have considered the robust hierarchic control problem for the 
 %\textsc{Doubova, A., Fern\'andez-Cara, E., Gonz\'alez-Burgos, M., and Zuazua, E.}
 %\newblock On the controllability of parabolic systems with a nonlinear term involving the state and the gradient.
 %\newblock {\em SIAM Journal of Control and Optimization 41}, 3 (2002), 798--819.
-
-\bibitem{Ekeland}
-\textsc{I. Ekeland and R. Temam.}
-\newblock Convex analysis and variational problems.
-\newblock {\em North-Holland}, (1976).
 %
 %
 %
@@ -1841,12 +1847,6 @@ In this paper, we have considered the robust hierarchic control problem for the 
 %\newblock The cost of approximate controllability for heat equations: the linear case.
 %\newblock {\em Adv. Differential Equations 5}, 4--6 (2000), 465--514.
 
-
-\bibitem{fursi}
-\textsc{A. Fursikov and O. Yu. Imanuvilov.}
-\newblock Controllability of evolution equations.
-\newblock {\em Lecture Notes, Research Institute of Mathematics}, Seoul National University, Korea, (1996).
-
 %\bibitem{glo_lions}
 %\textsc{R. Glowinski and J.-L. Lions.}
 %\newblock Exact and approximate controllability for distributed parameter systems.
@@ -1856,11 +1856,6 @@ In this paper, we have considered the robust hierarchic control problem for the 
 %\textsc{R. Glowinski, J.-L. Lions, and J. He.}
 %\newblock Exact and approximate controllability for distributed parameter systems.
 %\newblock {\em Encyclopedia of Mathematics and its Applications}, vol. 117, Cambridge University Press, Cambridge, (2008).
-%
-\bibitem{luz_manuel}
-\textsc{M. Gonz\'alez-Burgos and L. de Teresa.}
-\newblock Controllability results for cascade systems of $m$ coupled parabolic PDEs by one control force.
-\newblock {\em Portugal. Math.}, \textbf{67}, 1 (2010), 91--113.
 
 %\bibitem{guerrero_stokes}
 %\textsc{S. Guerrero.}
@@ -1876,17 +1871,23 @@ In this paper, we have considered the robust hierarchic control problem for the 
 %\textsc{M. Gueye.}
 %\newblock Insensitizing controls for the Navier-Stokes equations.
 %\newblock {\em Ann. I. H. Poincar\'e--AN}, \textbf{30}, 5 (2013), 825--844.
-%
-\bibitem{jesus}
-\textsc{I. P. de Jesus, J. Limaco and M. R. Clark.}
-\newblock Hierarchical control for the one-dimensional plate equation with a moving boundary. 
-\newblock {\em J. Dyn. Control Syst.}, \textbf{24} (2018), no. 4, 635--655.
+
 %
 %
 \bibitem{montoya}
 \textsc{C. Montoya and L. de Teresa.}
 \newblock Robust Stackelberg controllability for the Navier-Stokes equations. 
 \newblock {\em NoDEA Nonlinear Differential Equations Appl.}, \textbf{25} (2018).
+%
+\bibitem{pighin}
+\textsc{D. Pighin and E. Zuazua.}
+\newblock Controllability under positivity constraints of semilinear heat equations.
+\newblock {\em Math. Control. Relat. F.}, \textbf{8}, 3--4 (2018), 935--964.
+%
+\bibitem{Stackelber}
+\textsc{H. von Stackelberg.}
+\newblock Marktform und {G}leichgewicht.
+\newblock {\em Springer\/} (1934).
 %
 \bibitem{simon}
 \textsc{J. Simon.} 
@@ -1897,7 +1898,12 @@ In this paper, we have considered the robust hierarchic control problem for the 
 \textsc{L. de Teresa.}
 \newblock Insensitizing controls for a semilinear heat equation.
 \newblock {\em Comm. Partial Differential Equations}, \textbf{25}, 1--2 (2000) 39--72.
-
+%
+\bibitem{trol}
+\textsc{F. Tr\"oltzsch.}
+\newblock Optimal control of partial differential equations: theory, methods and applications.
+\newblock {\em American Mathematical Society}, (2010).
+%
 %\bibitem{deteresa_zuazua}
 %\textsc{L. de Teresa and E. Zuazua.}
 %\newblock Identification of the class of initial data for the insensitizing control of the heat equation.
