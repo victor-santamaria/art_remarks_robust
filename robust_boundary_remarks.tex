@@ -192,14 +192,14 @@ As in \cite{LionsSta} and other related papers, we address the multi-objective o
 
 In a first result, we address the robust hierarchic control of system \eqref{heat_lin}, that is, the case where the follower control is applied on the boundary and the leader control is \magenta{ a distributed one. esto que significa?} In this regard, we have the following
 %
-\begin{theorem}\label{teo_main1} \magenta {no entiendo este resultado, cuales son las hip\'otesis y cuales las concluiones?}
+\begin{theorem}\label{teo_main1} 
 Assume that $\omega\cap\mathcal O_d\neq \emptyset$. Then, there exist $\gamma_0$, $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\gamma>\gamma_0$, $\ell>\ell_0$, $y^0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ verifying 
 %
 \begin{equation}\label{integ_yd}
 \iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
 \end{equation}
 %
-we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\Sigma)\times L^2(Q)$, for the functional given by \eqref{func_rob}, such that the associated solution to \eqref{heat_lin} verifies $y(\cdot,T)=0$ in $\Omega$. 
+we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique solution $(\bar v,\bar\psi)\in L^2(\Sigma)\times L^2(Q)$, to the robust control problem \eqref{func_rob}, such that the associated solution of \eqref{heat_lin} verifies $y(\cdot,T)=0$ in $\Omega$. \magenta{ corrigelo bien}
 %
 \end{theorem}
 
@@ -245,7 +245,7 @@ Then, there exist $\gamma_0$, $\ell_0$ and a positive function $\rho=\rho(t)$ bl
 \end{equation}
 %
 \magenta{ lo mismo que en el anterior}
-we can find a leader control $h\in \magenta{X}$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\mathcal B_1\times(0,T))\times L^2(\mathcal B_2\times(0,T))$, for the functional given by \eqref{func_rob_dif}, such that the associated solution to \eqref{heat_dif} verifies $y(\cdot,T)=0$ in $\Omega$. 
+we can find a leader control $h\in \magenta{X ?`por que en magenta?}$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\mathcal B_1\times(0,T))\times L^2(\mathcal B_2\times(0,T))$, for the functional given by \eqref{func_rob_dif}, such that the associated solution to \eqref{heat_dif} verifies $y(\cdot,T)=0$ in $\Omega$. 
 %
 \end{theorem}
 
@@ -270,14 +270,14 @@ I(v;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt+\frac{\ell^2}{2
 where $\rho_\star=\rho_\star(t)$ is a suitable positive weight function blowing up exponentially at $t=0$ and $t=T$. Observe that this is a classical optimal control problem (cf. \cite{Lions_optim,trol}) and hence we prove a result in the original framework of hierarchic control introduced in \cite{LionsSta}. We have the following:
 %
 \begin{theorem}\label{teo3}
-Suppose that $\psi\equiv 0$. Then, there exist $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\ell>\ell_0$, $w_0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ \magenta{faltan algo no entiendo la redacci\'on de los teoremas}
+Suppose that $\psi\equiv 0$. Then, there exist $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\ell>\ell_0$, $w_0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ such that
 \begin{equation*}%\label{integ_yd}
 \iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
 \end{equation*}
-we can find a leader control $h\in \magenta{X}$ and a unique follower control $\bar v$ minimizing \eqref{func_teo3}, such that the associated solution to \eqref{sys_teo3} verifies $w(\cdot,T)=0$. 
+we can find a leader control $h\in \magenta{X}$ and a unique follower control $\bar v$ minimizing \eqref{func_teo3}, such that the associated solution to \eqref{sys_teo3} verifies $w(\cdot,T)=0$. \magenta{ese 4.4 no me gusta}
 \end{theorem}
 
-The role of the weight function  $\rho_\star$ is clear. By minimizing \eqref{func_teo3}, we enforce the follower $v$ to vanish at $t=0$ and $t=T$ and therefore the leader $h$ finds no obstruction to control the system during the second part of the hierarchic methodology. We refer to \cite{araruna} and \cite{vhs_corri} for a similar use of weighted functionals as \eqref{func_teo3}. \magenta{ ?`no est\'a raro que 4.4 est\'e lejos}
+The role of the weight function  $\rho_\star$ is clear. By minimizing \eqref{func_teo3}, we enforce the follower $v$ to vanish at $t=0$ and $t=T$ and therefore the leader $h$ finds no obstruction to control the system during the second part of the hierarchic methodology. We refer to \cite{araruna} and \cite{vhs_corri} for a similar use of weighted functionals as \eqref{func_teo3}. \magenta{ ?`no est\'a raro que 4.4 est\'e lejos?}
 
 The rest of the paper is organized as follows. In section \ref{bound_follow}, we study the robust hierarchic problem concerning the case of boundary follower and distributed leader, this is, the case of system \eqref{heat_lin}. On the first stage, we address the robust control problem with boundary control and then we deal with the null controllability of the resulting system. These allow to establish the proof of Theorem \ref{teo_main1}. In section \ref{sec_bound_leader}, we deal with the case of a boundary leader. \magenta{We will emphasize the difficulties of controlling the  coupled system arising from the robust control part from its boundary  and how using \eqref{loc_teo2} allows us to obtain an observability inequality implying Theorem \ref{teo_main2}.} Section \ref{sec_bound} is devoted to analyze a hierarchic control strategy (in the sense of \cite{LionsSta}) for system \eqref{func_teo3} in the case when $\psi\equiv 0$. Due to the special selection of the cost functional \eqref{func_teo3}, we are able to proof Theorem \ref{teo3}. Finally, in Section \ref{sec_conclusion} we make some concluding remarks. \magenta{ no entiendo esa fesesota gigante}
 
@@ -372,19 +372,19 @@ Let $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$ be given. There ex
 We will show that $\mathcal G(\tau)$ is sctrictly concave with respect to $\tau$, i.e. $\mathcal G^{\prime\prime}(\tau)<0$. We compute
 %
 \begin{equation*}
-\mathcal G^\prime(\tau)=\iint_{\mathcal O_d\times(0,T)}(y+\tau y^\prime-y_d)y^\prime-\gamma^2\iint_{Q}(\psi+\tau\psi^\prime)\psi^\prime
+\mathcal G^\prime(\tau)=\iint_{\mathcal O_d\times(0,T)}(y+\tau y^\prime-y_d)y^\prime\dx\dt-\gamma^2\iint_{Q}(\psi+\tau\psi^\prime)\psi^\prime\dx\dt
 \end{equation*}
 %
-where $y^\prime$ is solution to \eqref{deriv_sys1} with $v^\prime=0$. Since $y^\prime$ is clearly independent of $\tau$, a further computations yields
+where $y^\prime$ is solution to \eqref{deriv_sys1} with $v^\prime=0$. Since $y^\prime$ is clearly independent of $\tau$, a further computations yield
 %
 \begin{equation*}
-\mathcal G^{\prime\prime}(\tau)=\iint_{\mathcal O_d\times(0,T)}|y^\prime|^2-\gamma^2\iint_{Q}|\psi^\prime|^2
+\mathcal G^{\prime\prime}(\tau)=\iint_{\mathcal O_d\times(0,T)}|y^\prime|^2\dx\dt-\gamma^2\iint_{Q}|\psi^\prime|^2\dx\dt
 \end{equation*}
 %
 Using standard energy estimates for the heat equation, it is not difficult to see that 
 %
 \begin{equation*}
-G^{\prime\prime}(\tau)\leq -(\gamma^2-C)\|\psi^\prime\|^2_{L^2(Q)}, \quad \forall \psi^\prime\in L^2(Q)
+G^{\prime\prime}(\tau)\leq -(\gamma^2-C)\|\psi^\prime\|^2_{L^2(Q)}, \quad \forall \psi^\prime\in L^2(Q),
 \end{equation*}
 %
 where $C=C(\Omega,\mathcal O_d,T)$ is a positive constant. We deduce that for a sufficiently large value of $\gamma$, we have $\mathcal G^{\prime\prime}(\tau)<0$, $\forall \tau\in \mathbb{R}$. Thus, the function $\mathcal G$ is striclty concave, and the strict concavity of $\psi$ follows immediately. 
@@ -412,8 +412,8 @@ Combining the statements of Propositions \ref{prop_saddle} and \ref{verif_cond},
 By differentiating \eqref{func_rob}, we obtain the expressions 
 %
 \begin{align}\label{deriv_J1}
-&\left(\frac{\partial J_r}{\partial v}(v,\psi),(v^\prime,0)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\ell^2\iint_{\Sigma}\csbd vv^\prime\,d\sigma dt \\ \label{deriv_J2}
-&\left(\frac{\partial J_r}{\partial v}(v,\psi),(0,\psi^\prime)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_\psi\,dxdt-\gamma^2\iint_{Q}\psi\psi^\prime\,dxdt
+&\left(\frac{\partial J_r}{\partial v}(v,\psi),(v^\prime,0)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\ell^2\iint_{\Sigma}\csbd vv^\prime\,d\sigma dt, \\ \label{deriv_J2}
+&\left(\frac{\partial J_r}{\partial v}(v,\psi),(0,\psi^\prime)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_\psi\,dxdt-\gamma^2\iint_{Q}\psi\psi^\prime\,dxdt,
 \end{align}
 %
 where we have denoted $y_v$ and $y_\psi$ the directional derivatives of $y$ solution to \eqref{heat_lin} (see Lemma \ref{lemma_prop_sol1}) in the directions $(v^\prime,0)$ and $(0,\psi^\prime)$, respectively. 
@@ -428,25 +428,25 @@ q(x,T)=0 \quad &\textnormal{in $\Omega$}.
 \end{cases}
 \end{equation}
 
-Multiplying \eqref{adj_frontera} by $y_v$ in $L^2(Q)$ and integrating by parts, we obtain 
+Multiplying \eqref{adj_frontera} by $y_v$ in $L^2(Q)$ and integrating by parts, we obtain  \magenta{de donde sali\'o esa $x_{O}$?}
 %
 \begin{equation*}
 \iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\iint_{\Sigma}\csbd v^\prime\frac{\partial q}{\partial \nu}\,d\sigma dt=0,
 \end{equation*}
 %
-and upon substitution in \eqref{deriv_J1}, we get 
+and upon substituting in \eqref{deriv_J1}, we get 
 %
 \begin{equation*}
 \frac{\partial J_r}{\partial v}(v,\psi)=\frac{\partial q}{\partial \nu}-\ell^2v\csbd  
 \end{equation*}
 %
-In a similar fashion, we multiply \eqref{adj_frontera} by $y_\psi$ in $L^2(Q)$ and integrate by parts. Then, from \eqref{deriv_J2}we deduce that 
+In a similar fashion, we multiply \eqref{adj_frontera} by $y_\psi$ in $L^2(Q)$ and integrate by parts. Then, from \eqref{deriv_J2} we deduce that 
 %
 \begin{equation*}
 \frac{\partial J_r}{\partial \psi}(v,\psi)=q-\gamma^2\psi. 
 \end{equation*}
 
-Thus, so far, we have proved the following
+Thus, so far, we have proved the following:
 %
 \begin{proposition}
 Let $y_0\in H^{-1}(\Omega)$ and $h\in L^2(\omega\times(0,T))$ be given. Then
@@ -489,10 +489,10 @@ For our particular case, let us consider the adjoint of system \eqref{sys_foll}:
 \end{cases}
 \end{equation}
 %
-where $\varphi^T\in H^{1}_0(\Omega)$. Then, the controllability of \eqref{sys_foll} can be characterized in terms of appropriate properties of the solutions to \eqref{adj_sys_foll}. More precisely, we have
+where $\varphi^T\in H^{1}_0(\Omega)$. Then, the controllability of \eqref{sys_foll} can be characterized in terms of appropriate properties of the solutions to \eqref{adj_sys_foll}. More precisely, we have the following proposition.
 
 \begin{proposition}\label{prop_control}
-Assume that $\omega\cap\mathcal O_d\neq \emptyset$ and $\ell,\gamma$ are large enough. The following statements are equivalent
+Assume that $\omega\cap\mathcal O_d\neq \emptyset$ and $\ell,\gamma$ are large enough. The following statements are equivalent.
 %
 \begin{enumerate}
 \item There exists a positive constant $C$, such that for any $y_0\in H^{-1}(\Omega)$ and any $y_d\in L^2(Q)$ such that \eqref{integ_yd} holds, there exists a control $h\in L^2(\omega\times(0,T))$ of minimal norm such that 
@@ -531,7 +531,7 @@ equipped with the norm
 and, for $r,s\geq 0$, we denote the Hilbert spaces $H^{r,s}(Q)=L^2(0,T;H^r(\Omega))\cap H^s(0,T;L^2(\Omega))$ endowed with  norms
 %
 \begin{equation}\label{norm_hrs}
-\|u\|_{H^{r,s}(Q)}=\left(\|u\|^2_{L^2(0,T;H^r(\Omega))}+\|u\|_{H^s(0,T;L^2(\Omega))}^2\right)^{1/2}
+\|u\|_{H^{r,s}(Q)}=\left(\|u\|^2_{L^2(0,T;H^r(\Omega))}+\|u\|_{H^s(0,T;L^2(\Omega))}^2\right)^{1/2}.
 \end{equation}
 %
 \begin{remark}
@@ -558,7 +558,7 @@ For any arbitrary $\bar \theta\in L^2(Q)$, let us consider the system
 Then, from classical regularity results (see, for instance, \cite{evans}), we have that 
 %
 \begin{equation*}
-\varphi\in L^2(0,T;H^2(\Omega))\cap L^\infty(0,T;H_0^1(\Omega)), \quad \varphi_t\in L^2(Q)
+\varphi\in L^2(0,T;H^2(\Omega))\cap L^\infty(0,T;H_0^1(\Omega)), \quad \varphi_t\in L^2(Q).
 \end{equation*}
 %
 This implies that $\varphi\in H^{2,1}(Q)$. Moreover, there exists a positive constant $C$ such that
@@ -570,7 +570,7 @@ This implies that $\varphi\in H^{2,1}(Q)$. Moreover, there exists a positive con
 Thanks to the regularity of $\varphi$, we have from \cite[Th. 2.1, p.9]{lions_magenes} that 
 %
 \begin{equation*}
-\frac{\partial\varphi}{\partial n}\in H^{\frac12,\frac14}(\Sigma)
+\frac{\partial\varphi}{\partial n}\in H^{\frac12,\frac14}(\Sigma),
 \end{equation*}
 %
 and, moreover,  $\varphi \mapsto \frac{\partial \varphi }{\partial n}$ is a continuous and linear map of $H^{\frac12,\frac14}(\Sigma)\to H^{2,1}(Q)$. Thus, we get
@@ -595,17 +595,17 @@ From the results in \cite[Ch. 4, \S15.5]{lions_magenes} and estimates \eqref{nor
 %
 \begin{align}\notag
 \|\theta\|_{W(Q)}&\leq C\left(\frac{1}{\gamma^2}\|\varphi\|_{L^2(Q)}+\frac{1}{\ell^2}\|\tfrac{\partial \varphi}{\partial n}\csbd \|_{H^{\frac12,\frac14}(\Sigma)}\right) \\ \label{est_theta_fixed}
-&\leq \frac{C}{\mu}\left(\|\bar\theta\|_{L^2(Q)}+\|\varphi^T\|_{H^{1}_0(\Omega)}\right)
+&\leq \frac{C}{\mu}\left(\|\bar\theta\|_{L^2(Q)}+\|\varphi^T\|_{H^{1}_0(\Omega)}\right),
 \end{align}
 %
 where we have denoted $\mu=\min\{\ell^2,\gamma^2\}$.
 
-Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system \eqref{heat_fixed},\eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and the embedding $W(Q)\hookrightarrow L^2(Q)$ (this follows from classical compactness results, see, e.g., \cite{simon}) we can check that $\Lambda$ is a well-defined, continuous and linear map of $L^2(Q)\to L^2(Q)$.
+Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system \eqref{heat_fixed}, \eqref{theta_fixed} \magenta{ ac\'a lleva gui\'on o ?`c\'omo?}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and the embedding $W(Q)\hookrightarrow L^2(Q)$ (this follows from classical compactness results, see, e.g., \cite{simon}) we can check that $\Lambda$ is a well-defined, continuous and linear map of $L^2(Q)\to L^2(Q)$.
 
 For any $\bar\theta_1,\bar\theta_2\in L^2(Q)$, we consider the difference $\Lambda\bar\theta_1-\Lambda\bar\theta_2$. Then, arguing as above, we can readily see that
 %
 \begin{equation*}
-\|\Lambda \bar\theta_1-\Lambda \bar\theta_2\|_{L^2(Q)}\leq \frac{C}{\mu}\left(\|\bar\theta_1-\bar\theta_2\|_{L^2(Q)}\right)
+\|\Lambda \bar\theta_1-\Lambda \bar\theta_2\|_{L^2(Q)}\leq \frac{C}{\mu}\left(\|\bar\theta_1-\bar\theta_2\|_{L^2(Q)}\right).
 \end{equation*}
 %
 For $\gamma,\ell$ large enough, the map $\Lambda$ is a contraction and therefore possesess a unique fixed point. The proof is complete. 
@@ -652,13 +652,13 @@ for some parameter $s>0$.
 We state a Carleman estimate, due to \cite{ima_yama_boundary}, which holds for the solutions of heat equations with non-homogeneous Dirichlet boundary conditions:
 %
 \begin{lemma}
-Let us assume $u_0\in L^2(\Omega)$, $f\in L^2(Q)$ and $g\in H^{\frac{1}{2},\frac{1}{4}}(\Sigma)$. Then, there exists a a constant $\lambda_0$, such that for any $\lambda\geq \lambda_0$ there exist constants $C>0$ independent of $s$ and $s_0(\lambda)>0$, such that the solution $y\in W(Q)$ of 
+Let us assume $u_0\in L^2(\Omega)$, $f\in L^2(Q)$ and $g\in H^{\frac{1}{2},\frac{1}{4}}(\Sigma)$. Then, there exists a constant $\lambda_0$, such that for any $\lambda\geq \lambda_0$ there exist constants $C>0$ independent of $s$ and $s_0(\lambda)>0$, such that the solution $y\in W(Q)$ of 
 %
 \begin{equation*}
 \begin{cases}
 u_t-\Delta u=f \quad& \textnormal{in } Q, \\
 u=g \quad& \textnormal{on } \Sigma, \\
-u(0)=u_0 \quad& \textnormal{in } \Omega. 
+u(0)=u_0 \quad& \textnormal{in } \Omega, 
 \end{cases}
 \end{equation*}
 %
@@ -674,7 +674,7 @@ satisfies
 for every $s\geq s_0(\lambda)$. 
 \end{lemma}
 
-The second result we need is the classical Carleman estimate for the linear heat equation (see, for instance, \cite{fursi,cara_guerrero}):
+The second result we need is the classical Carleman estimate for the linear heat equation (see, for instance, \cite{fursi,cara_guerrero}).
 \begin{lemma}
 Let us assume $u^T\in H_0^1(\Omega)$ and $f\in L^2(Q)$. Then, there exists a constant $\lambda_1$, such that for any $\lambda\geq \lambda_1$ there exist constants $C>0$ independent of $s$ and $s_1(\lambda)>0$, such that the solution of 
 %
@@ -682,7 +682,7 @@ Let us assume $u^T\in H_0^1(\Omega)$ and $f\in L^2(Q)$. Then, there exists a con
 \begin{cases}
 u_t+\Delta u=f \quad& \textnormal{in } Q, \\
 u=0 \quad& \textnormal{on } \Sigma, \\
-u(T)=u^T(x) \quad& \textnormal{in } \Omega. 
+u(T)=u^T(x) \quad& \textnormal{in } \Omega,
 \end{cases}
 \end{equation}
 %
@@ -703,12 +703,12 @@ In \cite{fursi,cara_guerrero}, the authors use the function $l(t)=t(T-t)$ to pro
 
 Thanks to Lemma \ref{prof_regularity} and using the above estimates, we can prove a Carleman inequality for the solutions of the adjoint system \eqref{adj_sys_foll}. This will be the main ingredient to prove the observability inequality \eqref{obs_ineq_1}. The result is the following:
 %
-\begin{proposition}\label{prop_carleman}
+\begin{proposition}\label{prop_carleman}\magenta{checar esta parte con m\'as cuidado en las pruebas}\\
 Assume that $\omega\cap\mathcal O_d\neq \emptyset$ and $\gamma,\ell$ are large enough. Then, there exists a constant $C$ such that for any $\varphi^T\in H^1_0(\Omega)$, the solution $(\varphi,\theta)$ to \eqref{adj_sys_foll} satisfies
 %
 \begin{equation}\label{car_final}
 \begin{split}
-I(s;\varphi)+\widetilde I(s;\theta) \leq C\left(s^5\iint_{\omega\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt\right)
+I(s;\varphi)+\widetilde I(s;\theta) \leq C\left(s^5\iint_{\omega\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt\right),
 \end{split}
 \end{equation}
 %
@@ -721,7 +721,7 @@ We start by applying inequality \eqref{car_clasica} to the first equation in \eq
 %
 \begin{equation*}
 \begin{split}
-I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right) +\iint_Q e^{-2s\alpha}\left(|\theta\mathbf{1}_{\mathcal O_d}|^2+s^{-2}\xi^{-2}|\tfrac{1}{\gamma^2}\varphi|^2\right)\right. \\
+I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt +\iint_Q e^{-2s\alpha}\left(|\theta\mathbf{1}_{\mathcal O_d}|^2+s^{-2}\xi^{-2}|\tfrac{1}{\gamma^2}\varphi|^2\right)\dx\dt\right. \\
 &\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}+s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \csbd \right\|^{2}_{L^2(\Sigma)}  \right)
 \end{split}
 \end{equation*}
@@ -730,33 +730,33 @@ for all $s$ large enough and some $m\geq 2$ to be fixed later. We can use the pa
 %
 \begin{equation}\label{car_con_bound}
 \begin{split}
-I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right) + s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \csbd \right\|^{2}_{L^2(\Sigma)} \right. \\
-&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}  \right)
+I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt + s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu} \csbd \right\|^{2}_{L^2(\Sigma)} \right. \\
+&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial \nu}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}  \right),
 \end{split}
 \end{equation}
 %
 for all $s\geq C$, with $C>0$ only depending on $\Omega$, $\omega$, $\mathcal O_d$ and $\lambda$. 
 
-Then, we proceed to estimate the first boundary term in \eqref{car_con_bound}. Reasoning as in \cite{duprez_lissy}, we take a function $\kappa\in C^2(\overline \Omega)$ such that
+Then, we proceed to estimate the first boundary term in \eqref{car_con_bound}. Applying the same ideas as in \cite{duprez_lissy}, we take a function $\kappa\in C^2(\overline \Omega)$ such that
 %
 \begin{equation*}
-\frac{\partial \kappa}{\partial \nu}=1 \quad\text{and}\quad \kappa=1 \quad \text{on } \Gamma.
+\frac{\partial \kappa}{\partial \nu}=1 \quad\text{and}\quad \kappa=1 \quad \text{on } \partial \Omega.
 \end{equation*}
 %
-Note that from the definition of the weight functions \eqref{weights_l}, we have $\alpha$ and $\alpha^*$ are equal in $\Gamma$, thus we may write
+Note that from the definition of the weight functions \eqref{weights_l}, we have $\alpha$ and $\alpha^*$ are equal in $\partial \Omega$, thus we may write
 %
 \begin{equation*}
 \begin{split}
-\iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial \nu}\right|^2&=\int_{0}^{T}e^{-2s\alpha^*}\int_\Gamma\nabla\varphi\cdot \nabla \kappa\frac{\partial \varphi}{\partial \nu} \\
-&=\int_{0}^{T}e^{-2s\alpha^*}\int_{\Omega}\Delta \varphi\,(\nabla\varphi\cdot \nabla \kappa)+\int_{\Omega}e^{-2s\alpha^*}\int_\Omega\nabla (\nabla\varphi\cdot\nabla\kappa)\cdot\nabla \varphi
+\iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial \nu}\right|^2\d\sigma\dt&=\int_{0}^{T}e^{-2s\alpha^*}\int_{\partial \Omega}\nabla\varphi\cdot \nabla \kappa\frac{\partial \varphi}{\partial \nu} \d\sigma \dt\\
+&=\int_{0}^{T}e^{-2s\alpha^*}\int_{\Omega}\Delta \varphi\,(\nabla\varphi\cdot \nabla \kappa)\dx\dt+\int_{0}^Te^{-2s\alpha^*}\int_\Omega\nabla (\nabla\varphi\cdot\nabla\kappa)\cdot\nabla \varphi \dx\dt
 \end{split}
-\end{equation*}
+\end{equation*} \magenta{corrige ecuaci\'on anterior}\\
 %
 where we have integrated by parts in the right-hand side. Using Cauchy-Schwarz and Young inequalities, we get
 %
 \begin{equation}\label{estimate_1}
 \begin{split}
-\iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial \nu}\right|^2&\leq C\left(\iint_Q e^{-2s\alpha^*}\left((s\xi)^{-1}|\Delta \varphi|^2 + s\xi|\nabla \varphi|^2\right)+\int_{0}^{T}e^{-2s\alpha^*}(s\xi^*)^{-1}\|\varphi\|^2_{H^2(\Omega)}\right).
+\iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial \nu}\right|^2\d\sigma \dt&\leq C\left(\iint_Q e^{-2s\alpha^*}\left((s\xi)^{-1}|\Delta \varphi|^2 + s\xi|\nabla \varphi|^2\right)\dx\dt+\int_{0}^{T}e^{-2s\alpha^*}(s\xi^*)^{-1}\|\varphi\|^2_{H^2(\Omega)}\dt\right).
 \end{split}
 \end{equation}
 
@@ -785,20 +785,20 @@ From standard regularity estimates for the heat equation, we have that $\widehat
 Using the definitions of $\alpha^*$ and $\xi^*$ given in \eqref{weights_l} together with \eqref{rho_def}, it is not difficult to see that 
 %
 \begin{equation*}
-|\sigma_t|\leq Ce^{-s\alpha^*}(s\xi^*)^{a+{(m+1)}/{m}}.
+|\sigma_t|\leq Ce^{-s\alpha^*}(s\xi^*)^{a+{(m+1)}/{m}},
 \end{equation*}
 %
 for all $s$ large enough. Employing  \eqref{est_regul} with $\sigma=e^{-s\alpha^*}(s\xi^*)^{-1/2}$, we obtain
 %
 \begin{equation}\label{estimate_2}
-\int_{0}^T e^{-2s\alpha^*}(s\xi^{*})^{-1}\|\varphi\|_{H^2(\Omega)}^2\leq C\left(\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1}|\theta|^2+\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1+2(m+1)/m}|\varphi|^2\right)
+\int_{0}^T e^{-2s\alpha^*}(s\xi^{*})^{-1}\|\varphi\|_{H^2(\Omega)}^2\dt\leq C\left(\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1}|\theta|^2\dx\dt+\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1+2(m+1)/m}|\varphi|^2\dx\dt\right)
 \end{equation}
 
-Setting $m=4$ and combining estimates \eqref{estimate_1} and \eqref{estimate_2}, together with the definitions of the weights $\alpha^*$ and $\xi^*$ (see \eqref{weights_l}), yields
+Setting $m=4$ and combining estimates \eqref{estimate_1} and \eqref{estimate_2}, together with the definitions of the weights $\alpha^*$ and $\xi^*$ (see \eqref{weights_l}), yield
 %
 \begin{equation*}
 \begin{split}
-\iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial \nu}\right|^2&\leq C\left(\iint_Q e^{-2s\alpha}\left((s\xi)^{-1}|\Delta \varphi|^2 + s\xi|\nabla \varphi|^2\right)+\iint_Qe^{-2s\alpha}\left(s\xi|\theta|^2+(s\xi)^{3/2}|\varphi|^2\right)\right).
+\iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial \nu}\right|^2\d\sigma\dt&\leq C\left(\iint_Q e^{-2s\alpha}\left((s\xi)^{-1}|\Delta \varphi|^2 + s\xi|\nabla \varphi|^2\right)\dx\dt+\iint_Qe^{-2s\alpha}\left(s\xi|\theta|^2+(s\xi)^{3/2}|\varphi|^2\right)\dx\dt\right).
 \end{split}
 \end{equation*}
 %
@@ -813,7 +813,7 @@ To deal with the second boundary term in \eqref{car_con_bound}, we can use the f
 \begin{equation}\label{est_trace}
 \begin{split}
 s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}} \frac{1}{\ell^2} \frac{\partial \varphi}{\partial \nu}\csbd \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)} & \leq s^{-\frac{1}{2}}\left\|e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \frac{\partial \varphi}{\partial \nu} \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)} \\
-&\leq s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)}
+&\leq s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)},
 \end{split}
 \end{equation}
 %
@@ -822,7 +822,7 @@ where we have used again that $\alpha^*,\xi^*$ coincide with $\alpha,\xi$ on the
 Now, set $\widehat \varphi=\sigma \varphi$ with $\sigma=e^{-s\alpha^*}(s\xi)^{-\frac{1}{4}}$. Arguing as before, we readily obtain from \eqref{est_regul} the following 
 %
 \begin{equation}\label{est_frontera}
-s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)}\leq C\left(\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^{-\frac{1}{2}}|\theta|^2+\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^2|\varphi|^2\right).
+s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)}\leq C\left(\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^{-\frac{1}{2}}|\theta|^2\dx\dt+\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^2|\varphi|^2\dx\dt\right).
 \end{equation}
 %
 Putting together \eqref{est_trace} and \eqref{est_frontera} and substituting in \eqref{car_con_bound}, we can take $s$ sufficiently large to absorb the remaining terms. 
@@ -831,7 +831,7 @@ Up to now, we have
 %
 \begin{equation}\label{est_locales}
 \begin{split}
-I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right) \right)
+I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt \right)
 \end{split}
 \end{equation}
 %
@@ -844,14 +844,14 @@ for all $s$ large enough. The last step is to eliminate the local term correspon
 Thanks to the hypothesis $\omega\cap\mathcal O_d\neq \emptyset$, we can use the first equation of \eqref{adj_sys_foll} and \eqref{cut_off} to obtain
 %
 \begin{equation}\label{car_inter}
-\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq \iint_{\omega_1\times(0,T)}e^{-2s\alpha}s\xi \theta(-\varphi_t-\Delta \varphi)\zeta
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt\leq \iint_{\omega_1\times(0,T)}e^{-2s\alpha}s\xi \theta(-\varphi_t-\Delta \varphi)\zeta\dx\dt.
 \end{equation}
 %
 Arguing as in \cite{luz_manuel,deteresa2000}, we integrate by parts in time and space several times in the right-hand side of \eqref{car_inter}. Then, using the expression of the second equation of \eqref{adj_sys_foll}, it is not difficult to see that 
 %
 \begin{equation*}
 \begin{split}
-\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2+\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\theta| |\varphi|+s^2\xi^2|\nabla \theta||\varphi|\right),
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2\dx\dt+\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\theta| |\varphi|+s^2\xi^2|\nabla \theta||\varphi|\right)\dx\dt,
 \end{split}
 \end{equation*}
 %
@@ -866,7 +866,7 @@ Using H\"older and Young inequalities, it follows
 %
 \begin{equation}\label{est_final}
 \begin{split}
-\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2+\varepsilon \widetilde I(s;\theta)+s^5\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2.
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2+\varepsilon \widetilde I(s;\theta)\dx\dt+s^5\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt.
 \end{split}
 \end{equation}
 %
