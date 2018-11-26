@@ -190,9 +190,9 @@ As in \cite{LionsSta} and other related papers, we address the multi-objective o
 
 %
 
-In a first result, we address the robust hierarchic control of system \eqref{heat_lin}, that is, the case where the follower control is applied on the boundary and the leader control is a distributed one. In this regard, we have the following
+In a first result, we address the robust hierarchic control of system \eqref{heat_lin}, that is, the case where the follower control is applied on the boundary and the leader control is \magenta{ a distributed one. esto que significa?} In this regard, we have the following
 %
-\begin{theorem}\label{teo_main1}
+\begin{theorem}\label{teo_main1} \magenta {no entiendo este resultado, cuales son las hip\'otesis y cuales las concluiones?}
 Assume that $\omega\cap\mathcal O_d\neq \emptyset$. Then, there exist $\gamma_0$, $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\gamma>\gamma_0$, $\ell>\ell_0$, $y^0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ verifying 
 %
 \begin{equation}\label{integ_yd}
@@ -203,7 +203,7 @@ we can find a leader control $h\in L^2(\omega\times(0,T))$ and a unique saddle p
 %
 \end{theorem}
 
-As usual in robust control problems, the assumption on $\gamma$ means that the possible disturbances spoiling the control objectives should have moderate $L^2$-norms. Indeed, without this condition, it is not possible to prove the existence of the saddle point. On the other hand, the assumption on the target $y_d$ means that should approach 0 as $t\to T$. This is a standard feature in some null controllability problems and has been discussed, for instance, in \cite{araruna,deteresa2000}. 
+As usual in robust control problems, the assumption on $\gamma$ means that the possible disturbances \magenta{spoiling the control objectives should have moderate $L^2$-norms. No entiendo} Indeed, without this condition, it is not possible to prove the existence of the saddle point. On the other hand, the \magenta{assumption ?`cu\'al?} on the target $y_d$ means that should approach 0 as $t\to T$. This is a standard feature in some null controllability problems and has been discussed, for instance, in \cite{araruna,deteresa2000}. 
 
 We shall prove Theorem \ref{teo_main1} in two steps. In a first one, we will adapt the methodology in \cite{vhs_deT_rob} to the boundary case  to prove the existence and uniqueness of a saddle point to \eqref{func_rob}. Then, the solution can be characterized by means of an optimality system leading to a coupled system. In the second part, we will use Carleman estimates for parabolic equations with non-homogenous boundary terms to deduce an observability inequality for a suitable adjoint system, which will imply the desired null controllability objective. 
 
@@ -213,7 +213,7 @@ Here, we are also interested in studying different configurations for the positi
 \begin{cases}
 z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi, & \text{in Q}, \\
 z=h\csbd &\text{on } \Sigma, \\
-z(x,0)=z^0(x), & \text{in } \Omega.
+z(x,0)=z^0(x), & \text{in } \Omega,
 \end{cases}
 \end{equation}
 %
@@ -225,9 +225,9 @@ The same methodology presented above can be used to address the Robust hierarchi
 K_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\dx\dt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2\dx\dt\right]
 \end{equation}
 %
-As before, we will see that the robust control can be solved by selecting appropriate parameters $\ell$ and $\gamma$. Notice that unlike \eqref{heat_dif}, here we maximize for disturbances $\psi$ localized in the region $\mathcal B_2$. This comes from a technical reason concerning the resolution of the null controllability objective (see Section \ref{} for details), but which is not necessary to solve the robust control part. 
+As before, we will see that the robust control can be solved by selecting appropriate parameters $\ell$ and $\gamma$. Notice that unlike \eqref{heat_dif}, here we maximize for disturbances $\psi$ localized in the region $\mathcal B_2$. This comes from a technical reason concerning the resolution of the null controllability objective (see Section \magenta{\ref{}} for details), but which is not necessary to solve the robust control part. 
 
-Once a characterization for the saddle point of $K_r$ is known, the resulting optimality system is once again a coupled system of PDEs. It is well-known that controllability problems using boundary controls is a difficult task for systems of two or more equations (see, e.g, \cite{assia_survey,assia_luz_new}). Here, using that the parameters $\ell,\gamma$ coming from the solution of the robust control part are sufficiently large, we will combine Carleman estimates with boundary observations together with weighted energy estimates to obtain an observability inequality for a system with two equations and only one observation at the boundary.
+Once a characterization for the saddle point of $K_r$ is known, the resulting optimality system is once again a coupled system of PDEs. It is well-known that controllability problems using boundary controls is a difficult task for systems of two or more equations (see, e.g, \cite{assia_survey,assia_luz_new}). Here,  using that the parameters $\ell,\gamma$ coming from the solution of the robust control part are sufficiently large, we will combine Carleman estimates with boundary observations together with weighted energy estimates to obtain an observability inequality for a system with two equations and only one observation at the boundary.
 
 The result can be summarized as follows. 
 %
@@ -244,11 +244,12 @@ Then, there exist $\gamma_0$, $\ell_0$ and a positive function $\rho=\rho(t)$ bl
 \iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
 \end{equation}
 %
+\magenta{ lo mismo que en el anterior}
 we can find a leader control $h\in \magenta{X}$ and a unique saddle point $(\bar v,\bar\psi)\in L^2(\mathcal B_1\times(0,T))\times L^2(\mathcal B_2\times(0,T))$, for the functional given by \eqref{func_rob_dif}, such that the associated solution to \eqref{heat_dif} verifies $y(\cdot,T)=0$ in $\Omega$. 
 %
 \end{theorem}
 
-Hypothesis \eqref{loc_teo2} plays a fundamental role in the selection of the weight functions participating in the Carleman estimates needed to prove Theorem \ref{teo_main2}. This is not a common selection and the proof can only be achieved thanks to the special structure of the adjoint system. This particular selection has been recently used in other hierarchic control problems, see \cite{da_silva}. 
+Hypothesis \eqref{loc_teo2} plays a fundamental role in the selection of the weight functions participating in the Carleman estimates needed to prove Theorem \ref{teo_main2}. This is not a common selection \magenta{falta decir algo m\'as creo} and the proof can only be achieved thanks to the special structure of the adjoint system. This particular selection has been recently used in other hierarchic control problems, see \cite{da_silva}. 
 
 A second question that arises in this context is if it is possible to put both controls on the boundary of the system, namely
 %
@@ -260,25 +261,25 @@ w(x,0)=w^0(x), & \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
-We provide a partial answer to this problem for the case where $\psi\equiv 0$ and the cost functional corresponding to the optimization problem takes the form
+We provide a partial answer to this problem for the case where $\psi\equiv 0$ and the cost functional corresponding to the optimization \magenta{problem takes the form ?`no se lee raro?}
 %
 \begin{equation}\label{func_teo3}
 I(v;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt+\frac{\ell^2}{2}\iint_{\partial\Omega\times(0,T)}\rho_\star^2|v|^2\d\sigma\dt
 \end{equation}
 %
-where $\rho_\star=\rho_\star(t)$ is a suitable positive weight function blowing up exponentially at $t=0$ and $t=T$. Observe that this is a classical optimal control problem (cf. \cite{Lions_optim,trol}) and hence we prove a result in the original framework of hierarchic control introduced in \cite{LionsSta}. We have the following
+where $\rho_\star=\rho_\star(t)$ is a suitable positive weight function blowing up exponentially at $t=0$ and $t=T$. Observe that this is a classical optimal control problem (cf. \cite{Lions_optim,trol}) and hence we prove a result in the original framework of hierarchic control introduced in \cite{LionsSta}. We have the following:
 %
 \begin{theorem}\label{teo3}
-Suppose that $\psi\equiv 0$. Then, there exist $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\ell>\ell_0$, $w_0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ 
+Suppose that $\psi\equiv 0$. Then, there exist $\ell_0$ and a positive function $\rho=\rho(t)$ blowing up at $t=T$ such that for any $\ell>\ell_0$, $w_0\in L^2(\Omega)$ and $y_d\in L^2(\mathcal O_d\times(0,T))$ \magenta{faltan algo no entiendo la redacci\'on de los teoremas}
 \begin{equation*}%\label{integ_yd}
 \iint_{\mathcal O_d\times(0,T)}\rho^2|y_d|^2dxdt<+\infty,
 \end{equation*}
 we can find a leader control $h\in \magenta{X}$ and a unique follower control $\bar v$ minimizing \eqref{func_teo3}, such that the associated solution to \eqref{sys_teo3} verifies $w(\cdot,T)=0$. 
 \end{theorem}
 
-The role of the weight function  $\rho_\star$ is clear. By minimizing \eqref{func_teo3}, we enforce the follower $v$ to vanish at $t=0$ and $t=T$ and therefore the leader $h$ finds no obstruction to control the system during the second part of the hierarchic methodology. We refer to \cite{araruna} and \cite{vhs_corri} for a similar use of weighted functionals as \eqref{func_teo3}. 
+The role of the weight function  $\rho_\star$ is clear. By minimizing \eqref{func_teo3}, we enforce the follower $v$ to vanish at $t=0$ and $t=T$ and therefore the leader $h$ finds no obstruction to control the system during the second part of the hierarchic methodology. We refer to \cite{araruna} and \cite{vhs_corri} for a similar use of weighted functionals as \eqref{func_teo3}. \magenta{ ?`no est\'a raro que 4.4 est\'e lejos}
 
-The rest of the paper is organized as follows. In section \ref{bound_follow}, we study the robust hierarchic problem concerning the case of boundary follower and distributed leader, this is, the case of system \eqref{heat_lin}. On the first stage, we address the robust control problem with boundary control and then we deal with the null controllability of the resulting system. These allow to establish the proof of Theorem \ref{teo_main1}. In section \ref{sec_bound_leader}, we deal with the case of a boundary leader. We will emphasize the difficulties of controlling the  coupled system arising from the robust control part from its boundary  and how using \eqref{loc_teo2} allows us to obtain an observability inequality implying Theorem \ref{teo_main2}. Section \ref{sec_bound} is devoted to analyze a hierarchic control strategy (in the sense of \cite{LionsSta}) for system \eqref{func_teo3} in the case when $\psi\equiv 0$. Due to the special selection of the cost functional \eqref{func_teo3}, we are able to proof Theorem \ref{teo3}. Finally, in Section \ref{sec_conclusion} we make some concluding remarks. 
+The rest of the paper is organized as follows. In section \ref{bound_follow}, we study the robust hierarchic problem concerning the case of boundary follower and distributed leader, this is, the case of system \eqref{heat_lin}. On the first stage, we address the robust control problem with boundary control and then we deal with the null controllability of the resulting system. These allow to establish the proof of Theorem \ref{teo_main1}. In section \ref{sec_bound_leader}, we deal with the case of a boundary leader. \magenta{We will emphasize the difficulties of controlling the  coupled system arising from the robust control part from its boundary  and how using \eqref{loc_teo2} allows us to obtain an observability inequality implying Theorem \ref{teo_main2}.} Section \ref{sec_bound} is devoted to analyze a hierarchic control strategy (in the sense of \cite{LionsSta}) for system \eqref{func_teo3} in the case when $\psi\equiv 0$. Due to the special selection of the cost functional \eqref{func_teo3}, we are able to proof Theorem \ref{teo3}. Finally, in Section \ref{sec_conclusion} we make some concluding remarks. \magenta{ no entiendo esa fesesota gigante}
 
 \section{The case with boundary follower and distributed leader}\label{bound_follow}
 
