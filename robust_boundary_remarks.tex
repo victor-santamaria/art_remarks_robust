@@ -78,7 +78,7 @@
 \author{ V\'ictor Hern\'andez-Santamar\'ia \thanks{Institut de Math\'{e}matiques de
     Toulouse, UMR 5219,
     Universit\'e de Toulouse, CNRS, UPS IMT, F-31062 Toulouse Cedex 9,
-    France. E-mail: \texttt{victor.santamaria@math.univ-toulouse.fr}} \and Liliana Peralta \thanks{E-mail: \texttt{liliana\_peralta@uaeh.edu.mx}}}
+    France. E-mail: \texttt{victor.santamaria@math.univ-toulouse.fr}} \and Liliana Peralta \thanks{Centro de Investigaci\'on en Matem\'aticas, UAEH, Carretera Pachuca-Tulancingo km 4.5 Pachuca, Hidalgo 42184, Mexico  E-mail: \texttt{liliana\_peralta@uaeh.edu.mx}}}
 
 
 \maketitle
@@ -95,7 +95,7 @@ In this paper, we present some controllability results for parabolic equations i
 %
 %\subsection{The hierarchic control problem}
 %
-Optimization and control problems arise in many applications of engineering and mathematics. Traditionally, such problems deal with a single objective: minimize cost, maximize benefit, etc. However, when studying more realistic and complex situations, it is desirable to include several different objectives and therefore the introduction of multi-objective optimization is essential. 
+Optimization and control problems arise in many applications of engineering and mathematics. Traditionally, such problems deal with a single objective: minimize cost, maximize benefit, etc. \magenta{Aqu\'i hay que agregar referencias} However, when studying more realistic and complex situations, it is desirable to include several different objectives and therefore the introduction of multi-objective optimization is essential. 
 
 %Unlike the single-objective case, there are different strategies in order to choose the controls in a multi-objective problem and the election greatly depends on the character of the problem. Different notions for the solution of a multi-objective problem were introduced in economics and game theory, see \cite{Nash}, \cite{Pareto}, \cite{Stackelber}. %In this sense, when
 %%dealing with multi-objective optimization problems, a concept of solution needs to be clarified.
@@ -110,7 +110,7 @@ Here, employing some arguments in \cite{da_silva}, we extend and discuss the res
 
 \subsection{The problem and its formulation}
 
-In this paper, we are interested in a robust control strategy for the heat equation where we assume that we can act on the dynamics of the system through a hierarchy of controls. More precisely, we are interested in the case where some of the controls act through a (small) portion of the boundary. To fix ideas, we begin by explaining one of the control problems addressed in this paper. 
+In this paper, we are interested in a robust control strategy for the heat equation where we assume that we can act on the dynamics of the system through a hierarchy of controls. We will study the case where some of the controls act through a (small) portion of the boundary. To fix ideas, we begin by explaining one of the control problems addressed in this paper. 
 
 Let us consider a bounded open set $\Omega\subset \mathbb{R}^N$, $N\geq 1$ with boundary $\partial \Omega$ of class $\mathcal C^2$. Let $\omega\subset \Omega$ be a nonempty open subset and $\cbd$ be a nonempty open subset of $\partial \Omega$.  Given $T>0$, we will use the notation $Q:=\Omega\times(0,T)$ and $\Sigma:=\partial \Omega\times(0,T)$, while $n(x)$ will denote the outward unit normal vector at the point $x\in \partial \Omega$. 
 
@@ -126,7 +126,7 @@ y(x,0)=y^0(x), & \text{in } \Omega.
 %
 where $y_0\in L^2(\Omega)$ is a given initial datum and $\psi\in L^2(Q)$ is an unknown perturbation. 
 
-In \eqref{heat_lin}, $y=y(x,t)$ is the state while $h=h(x,t)$ and $v=v(x,t)$ are control functions applied on $\omega$ and $\mathcal O$, respectively. Here $\csin{\omega}$ is the characteristic function of the set $\omega$ and $\csbd$ is a smooth nonnegative function such that $\supp\csbd=\overline \cbd$. \magenta{checar si es igualdad o $\subset\subset$}
+In \eqref{heat_lin}, $y=y(x,t)$ is the state while $h=h(x,t)$ and $v=v(x,t)$ are control functions applied on $\omega$ and $\mathcal O$, respectively. Here $\csin{\omega}$ is the characteristic function of the set $\omega$ and $\csbd$ is a smooth nonnegative function such that $\supp\csbd=\overline \cbd$. \magenta{checar si es igualdad o $\subset\subset$ ?`d\'onde o c\'omo hay que checar?}
 
 The intuitive idea of the robust hierarchic control is to choose ``simultaneously'' the control functions  $v$ and $h$ in such way that the following optimality problems are solved: 
 %
@@ -162,7 +162,7 @@ J_r(\bar v,\psi;h)\leq J_r(\bar v,\bar \psi;h)\leq J_r(v,\bar \psi;h), \quad \fo
 In this case,
 %
 \begin{equation}\label{saddle_minmax}
-J_r(\bar v,\bar \psi;h)=\max_{\psi\in L^2(Q)}\min_{v\in L^2(\partial\Omega\times(0,T))}J_r(v,\psi;h)=\min_{v\in L^2(\partial\Omega\times(0,T))}\max_{\psi\in L^2(Q)}J_r(v,\psi;h).
+J_r(\bar v,\bar \psi;h)=\max_{\psi\in L^2(Q)}\min_{v\in L^2(\Sigma)}J_r(v,\psi;h)=\min_{v\in L^2(\Sigma)}\max_{\psi\in L^2(Q)}J_r(v,\psi;h).
 \end{equation}
 %
 \end{definition} 
