@@ -9,7 +9,7 @@
 \usepackage{bbm}
 \usepackage{mathrsfs}
 \usepackage{color}
-\usepackage{refcheck}
+%\usepackage{refcheck}
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{epsfig}
@@ -20,7 +20,7 @@
 \usepackage{cases}
 \usepackage{tikz}
 \providecommand{\keywords}[1]{\noindent {\textbf{Keywords:}} #1}
-\usepackage{lineno}\linenumbers
+%\usepackage{lineno}\linenumbers
 %\usepackage{showkeys}
 
 %\usepackage[margin=2cm]{geometry}
@@ -85,7 +85,7 @@
 \maketitle
 
 \abstract{
-In this paper, we present some controllability results for parabolic equations in the framework of hierarchic control. In the first part, we present a Stackelberg strategy combining the concept of controllability with robustness: the main control (the leader) is in charge of a null-controllability objective while a secondary control (the follower) solves a robust control problem, this is, we look for an optimal control in the presence of the worst disturbance. We improve previous results by considering that either the leader or follower control acts on a small part of the boundary.  We also present a discussion about the possibility and limitations of placing all the involved controls on the boundary. 
+In this paper, we present some controllability results for the heat equation in the framework of hierarchic control. We present a Stackelberg strategy combining the concept of controllability with robustness: the main control (the leader) is in charge of a null-controllability objective while a secondary control (the follower) solves a robust control problem, this is, we look for an optimal control in the presence of the worst disturbance. We improve previous results by considering that either the leader or follower control acts on a small part of the boundary.  We also present a discussion about the possibility and limitations of placing all the involved controls on the boundary. 
 
 %On a second result, we present a Stackelberg-Nash strategy for the heat equation where we act on the system through several followers --solving a Nash multi-objective equilibrium-- and where the classical null-controllability objective for the leader is replaced by an insensitizing control problem.}
 
@@ -1070,7 +1070,7 @@ As before, we mainly focus proving an observability inequality to establish the 
 Assume that \eqref{loc_teo2} holds and $\ell,\gamma$ are large enough.  Then, there exist a positive constant $C$ and a weight function $\vartheta$ blowing up at $t=T$ such that the observability inequality
 %
 \begin{equation}\label{obs_ineq_dif}
-\left\|\varphi(x,0)\right\|^2_{H_0^1(\Omega)}+\iint_{Q}{\vartheta}^{-2}|\theta|^2dxdt\leq C\iint_{\cbd \times(0,T)}\left|\frac{\partial \varphi}{\partial n} \right|^2\d\sigma\dt
+\left\|\varphi(x,0)\right\|^2_{H_0^1(\Omega)}+\iint_{Q}{\vartheta}_2^{-2}|\theta|^2dxdt\leq C\iint_{\cbd \times(0,T)}\left|\frac{\partial \varphi}{\partial n} \right|^2\d\sigma\dt
 \end{equation}
 %
 holds for every $\varphi^T\in H_0^{1}(\Omega)$, where $(\varphi,\theta)$ is the solution to \eqref{adjunto1} associated to the inital datum $\varphi^T$. 
@@ -1270,7 +1270,7 @@ Putting together estimates \eqref{est_local_theta}, \eqref{est_theta_h2} and tak
 %
 Thus, thanks to hypothesis \eqref{loc_teo2} and the special selection of the weight functions \eqref{props_brazil}--\eqref{prop_impor}, we have estimated the local boundary term of $\theta$ in function of some localized terms depending on $\varphi$. 
 
-To conclude, it is enough to combine estimates \eqref{aux7} and \eqref{est_local_fin} and take the parameters $\ell,\gamma$ large enough to absorb the remaining terms. Then, \eqref{obs_ineq_dif} follows from the resulting expression by setting $\varrho_2(t):=e^{s\tilde\beta_2^\star}$, where we denote $\tilde{\beta}_2^\star(t)=\max_{x\in\overline{\Omega}}\tilde\beta_2(x,t)$, and recalling that $\mathcal S^\prime\subset\subset \mathcal O$.  This ends the proof. 
+To conclude, it is enough to combine estimates \eqref{aux7} and \eqref{est_local_fin} and take the parameters $\ell,\gamma$ large enough to absorb the remaining terms. Then, \eqref{obs_ineq_dif} follows from the resulting expression by setting $\varrho_2(t):=e^{s\tilde\beta_2^\star}$, where we have denoted $\tilde{\beta}_2^\star(t)=\max_{x\in\overline{\Omega}}\tilde\beta_2(x,t)$, and recalling that $\mathcal S^\prime\subset\subset \mathcal O$.  This ends the proof. 
 %
 \end{proof}
 
@@ -1316,7 +1316,7 @@ It is not difficult to prove that for any fixed $h\in L^2(\Sigma)$ the exists a 
 As in Section \ref{sec_bound_leader}, once the saddle point has been characterized, the control $h$ of minimal norm can be obtained by solving a suitable minimization problem. This process would require to prove an observability of the form
 %
 \begin{equation}\label{obs_ineq_sec3}
-\|\varphi(x,T)\|^2_{H_0^1(\Omega)}+\iint_{Q}\vartheta_3^{-2}(t)|\theta|^2\dx\dt\leq C\iint_{ \cbd_1\times(0,T)}\left|\frac{\partial\varphi}{\partial n}\right|^2\d\sigma\dt,
+\|\varphi(x,0)\|^2_{H_0^1(\Omega)}+\iint_{Q}\vartheta_3^{-2}(t)|\theta|^2\dx\dt\leq C\iint_{ \cbd_1\times(0,T)}\left|\frac{\partial\varphi}{\partial n}\right|^2\d\sigma\dt,
 \end{equation}
 %
  for the solutions to the adjoint system 
