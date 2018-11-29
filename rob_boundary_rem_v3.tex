@@ -20,7 +20,7 @@
 \usepackage{cases}
 \usepackage{tikz}
 \providecommand{\keywords}[1]{\noindent {\textbf{Keywords:}} #1}
-%\usepackage{lineno}\linenumbers
+\usepackage[pagewise]{lineno}\linenumbers
 %\usepackage{showkeys}
 
 %\usepackage[margin=2cm]{geometry}
@@ -54,6 +54,7 @@
 %\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
 \numberwithin{equation}{section} 
 \numberwithin{theorem}{section}
+\providecommand{\AMScodes}[1]{\noindent {\textbf{MSC2010:}} #1}
 
 \def\dx{\,\textnormal{d}x}
 \def\dt{\textnormal{d}t}
@@ -91,6 +92,8 @@ In this paper, we present some controllability results for the heat equation in 
 
 
 \keywords{Hierarchic control, robust control, Carleman estimates, boundary controllability.}
+
+\AMScodes{49J20; 93B05; 49K35}
 
 \section{Introduction}\label{sec_intro}
 %
