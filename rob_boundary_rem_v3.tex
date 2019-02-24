@@ -80,7 +80,7 @@
 \author{ V\'ictor Hern\'andez-Santamar\'ia \thanks{Institut de Math\'{e}matiques de
     Toulouse, UMR 5219,
     Universit\'e de Toulouse, CNRS, UPS IMT, F-31062 Toulouse Cedex 9,
-    France. E-mail: \texttt{victor.santamaria@math.univ-toulouse.fr}} \and Liliana Peralta \thanks{Centro de Investigaci\'on en Matem\'aticas, UAEH, Carretera Pachuca-Tulancingo km 4.5 Pachuca, Hidalgo 42184, Mexico  E-mail: \texttt{liliana\_peralta@uaeh.edu.mx}}}
+    France. E-mail: \texttt{victor.santamaria@math.univ-toulouse.fr}} \and Liliana Peralta \thanks{Centro de Investigaci\'on en Matem\'aticas, UAEH, Carretera Pachuca-Tulancingo km 4.5 Pachuca, Hidalgo 42184, Mexico.  E-mail: \texttt{liliana\_peralta@uaeh.edu.mx}}}
 
 
 \maketitle
@@ -122,9 +122,9 @@ Let us consider the system
 %
 \begin{equation}\label{heat_lin}
 \begin{cases}
-y_t-\Delta y=\csin{\omega}h+\psi, & \text{in Q}, \\
+y_t-\Delta y=\csin{\omega}h+\psi & \text{in Q}, \\
 y=v\csbd &\text{on } \Sigma, \\
-y(x,0)=y^0(x), & \text{in } \Omega.
+y(x,0)=y^0(x) & \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
@@ -144,7 +144,7 @@ Seen independently, Problem 1 (i.e. $h\equiv 0$) is a classical robust control p
 Consider a nonempty open set $\mathcal O_d\subset \Omega$ and define the cost functional
 %
 \begin{equation}\label{func_rob}
-J_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\Sigma}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right]
+J_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\Sigma}|v|^2\d\sigma\dt-\gamma^2\iint_Q|\psi|^2\dx\dt\right],
 \end{equation}
 %
 %where $\ell,\gamma>0$ are constants and $y_d\in L^2(\mathcal O_d\times(0,T))$ is given. This functional is used to formulate and solve Problem 1. Indeed, we will look for a saddle point $(\bar v,\bar \psi)$ which simultaneously maximize $J_r$ with respect to $\psi$ and minimize it with respect to $v$, while maintaining the state $y$ ``close enough'' to a desired target $y_d$ in the observation domain $\mathcal O_d\times(0,T)$. The parameters $\ell$ and $\gamma$ will play a key role and take into account the relative weight of each term. 
@@ -215,9 +215,9 @@ In this paper, we are also interested in studying different configurations for t
 %
 \begin{equation}\label{heat_dif}
 \begin{cases}
-z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi, & \text{in Q}, \\
+z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi & \text{in Q}, \\
 z=h\csin{\Gamma} &\text{on } \Sigma, \\
-z(x,0)=z^0(x), & \text{in } \Omega,
+z(x,0)=z^0(x) & \text{in } \Omega,
 \end{cases}
 \end{equation}
 %
@@ -258,9 +258,9 @@ A second question that arises in this context is if it is possible to put both c
 %
 \begin{equation}\label{sys_teo3}
 \begin{cases}
-w_t-\Delta w=\psi, & \text{in Q}, \\
+w_t-\Delta w=\psi & \text{in Q}, \\
 w= h\csin{\Gamma_1}+ v{\csbd}_{2} &\text{on } \Sigma, \\
-w(x,0)=w^0(x), & \text{in } \Omega.
+w(x,0)=w^0(x) & \text{in } \Omega,
 \end{cases}
 \end{equation}
 %
@@ -301,7 +301,7 @@ y\in L^2(Q)\cap C^0([0,T];H^{-1}(\Omega)).
 Moreover, $y$ satisfies an estimate of the form
 %
 \begin{equation}\label{ener_trans}
-\|y\|_{L^2(Q)}\leq C\left(\|y_0\|_{H^{-1}(\Omega)}+\|v\|_{L^2(\Sigma)}+\|h\|_{L^2(\omega\times(0,T))}+\|\psi\|_{L^2(Q)}\right)
+\|y\|_{L^2(Q)}\leq C\left(\|y_0\|_{H^{-1}(\Omega)}+\|v\|_{L^2(\Sigma)}+\|h\|_{L^2(\omega\times(0,T))}+\|\psi\|_{L^2(Q)}\right),
 \end{equation}
 %
 where $C$ is a positive constant not depending on $\psi$, $v$, $h$ nor $y_0$. 
@@ -310,7 +310,7 @@ where $C$ is a positive constant not depending on $\psi$, $v$, $h$ nor $y_0$.
 Note that the regularity \eqref{space_trans} and the energy estimate \eqref{ener_trans} hold also for the boundary control systems \eqref{heat_dif} and \eqref{sys_teo3} by making suitable changes. 
 \end{remark}
 
-The main goal of this section is to proof the existence and uniqueness of a saddle point $(\bar v,\bar\psi)$ to the robust control problem in Definition \ref{defi_rob}. The result is based on the following result. 
+The main goal of this section is to prove the existence and uniqueness of a saddle point $(\bar v,\bar\psi)$ to the robust control problem in Definition \ref{defi_rob}. The result is based on the following result. 
 %
 \begin{proposition}\label{prop_saddle}
 Let $J$ be a functional defined on $X\times Y$, where $X$ and $Y$ are non-empty, closed, unbounded, convex sets. If $J$ satisfies
@@ -331,7 +331,7 @@ J(\bar v,\bar \psi)=\min_{v\in X}\sup_{\psi\in Y} J(v,\psi)=\max_{\psi\in Y}\min
 Moreover, if $\{\psi\mapsto J(v,\psi)\}$ is strictly concave $\forall v\in X$ and $\{v\mapsto J(v,\psi)\}$ is strictly convex $\forall \psi\in Y$, the saddle point $(\bar v,\bar \psi)$ is unique. 
 \end{proposition}
 
- The proof can be found on \cite[Prop. 1.5 and 2.2, Ch. VI]{Ekeland}. The aim here is to apply Proposition \ref{prop_saddle} to functional \eqref{func_rob} with $X=L^2(\Sigma)$ and $Y=L^2(Q)$. To verify conditions 1--4 for our problem, we need the following auxiliary lemma.
+ The proof can be found on \cite[Prop. 1.5 and 2.2, Ch. VI]{Ekeland}. The aim here is to apply Proposition \ref{prop_saddle} to functional \eqref{func_rob} with $X=L^2(\Sigma)$ and $Y=L^2(Q)$. To verify conditions 1--4 for our problem, we need the following lemma.
 
 \begin{lemma}\label{lemma_prop_sol1}
 Let $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$ be given. The mapping $(v,\psi)\mapsto y(v,\psi)$ from $L^2(\Sigma)\times L^2(Q)$ into $L^2(Q)$ is affine, continuous, and has G\^{a}teaux derivative $y^\prime(v^\prime,\psi^\prime)$ in every direction $(v^\prime,\psi^\prime)\in L^2(\Sigma)\times L^2(Q)$. Moreover, the derivative $y^\prime(v^\prime,\psi^\prime)$ solves the system
@@ -340,7 +340,7 @@ Let $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$ be given. The mapp
 \begin{cases}
 y^\prime_t-\Delta y^\prime=\psi^\prime \quad &\textnormal{in $Q$}, \\
 y^\prime=v^\prime\csbd \quad &\textnormal{on $\Sigma$,} \\
-y^\prime(x,0)=0 \quad &\textnormal{in $\Omega$},
+y^\prime(x,0)=0 \quad &\textnormal{in $\Omega$}.
 \end{cases}
 \end{equation}
 %
@@ -379,7 +379,7 @@ Let $h\in L^2(\omega\times(0,T))$ and $y_0\in H^{-1}(\Omega)$ be given. There ex
 We will show that $\mathcal G(\tau)$ is sctrictly concave with respect to $\tau$, i.e. $\mathcal G^{\prime\prime}(\tau)<0$. We compute
 %
 \begin{equation*}
-\mathcal G^\prime(\tau)=\iint_{\mathcal O_d\times(0,T)}(y+\tau y^\prime-y_d)y^\prime\dx\dt-\gamma^2\iint_{Q}(\psi+\tau\psi^\prime)\psi^\prime\dx\dt
+\mathcal G^\prime(\tau)=\iint_{\mathcal O_d\times(0,T)}(y+\tau y^\prime-y_d)y^\prime\dx\dt-\gamma^2\iint_{Q}(\psi+\tau\psi^\prime)\psi^\prime\dx\dt,
 \end{equation*}
 %
 where $y^\prime$ is solution to \eqref{deriv_sys1} with $v^\prime=0$. Since $y^\prime$ is clearly independent of $\tau$, a further computation yields
@@ -403,7 +403,7 @@ where $C=C(\Omega,\mathcal O_d,T)$ is a positive constant. We deduce that for a 
 \textit{Condition 4.} Since \eqref{heat_lin} is linear and using the estimate \eqref{ener_trans}, we have
 %
 \begin{equation*}
-J(\psi,0)\leq \tilde C+C\|\psi\|_{L^2(Q)}^2-\frac{\gamma^2}{2}\|\psi\|_{L^2(Q)}^2
+J(\psi,0)\leq \tilde C+C\|\psi\|_{L^2(Q)}^2-\frac{\gamma^2}{2}\|\psi\|_{L^2(Q)}^2,
 \end{equation*}
 %
 where $\tilde C$ is a positive constant only depending on $y_0$, $h$ and $y_d$. Hence, for $\gamma$ large enough, condition 4 holds. This concludes the proof.
@@ -420,7 +420,7 @@ By differentiating \eqref{func_rob}, we obtain the expressions
 %
 \begin{align}\label{deriv_J1}
 &\left(\frac{\partial J_r}{\partial v}(v,\psi),(v^\prime,0)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_v\,dxdt+\ell^2\iint_{\Sigma}vv^\prime\,d\sigma dt, \\ \label{deriv_J2}
-&\left(\frac{\partial J_r}{\partial v}(v,\psi),(0,\psi^\prime)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_\psi\,dxdt-\gamma^2\iint_{Q}\psi\psi^\prime\,dxdt,
+&\left(\frac{\partial J_r}{\partial \psi}(v,\psi),(0,\psi^\prime)\right)=\iint_{\mathcal O_d\times(0,T)}(y-y_d)y_\psi\,dxdt-\gamma^2\iint_{Q}\psi\psi^\prime\,dxdt,
 \end{align}
 %
 where we have denoted $y_v$ and $y_\psi$ the directional derivatives of $y$ solution to \eqref{heat_lin} (see Lemma \ref{lemma_prop_sol1}) in the directions $(v^\prime,0)$ and $(0,\psi^\prime)$, respectively. 
@@ -469,7 +469,7 @@ are the solution to the robust control problem stated in Definition \ref{defi_ro
 y_t-\Delta y= \chi_\omega h+\frac{1}{\gamma^2}q \quad&\textnormal{in }Q, \\
 -q_t-\Delta q=(y-y_d)\chi_{\mathcal O_d} \quad& \textnormal{in }Q, \\
 y=\frac{1}{\ell^2}\frac{\partial q}{\partial n}\csbd, \quad q=0 \quad &\textnormal{on $\Sigma$,} \\
-y(x,0)=y_0(x), \quad q(x,T)=0 \quad &\textnormal{in $\Omega$}.
+y(x,0)=y_0(x), \quad q(x,T)=0 \quad &\textnormal{in $\Omega$},
 \end{cases}
 \end{equation}
 %
@@ -483,7 +483,7 @@ As in other robust control problems (cf. \cite{aziz,temam_nonlinear}), the chara
 
 \subsection{Null controllability}\label{sec_null_1}
 
-In this section, we will proof an observability inequality that allows to establish the null controllability of system \eqref{sys_foll}. It is classical by now that null controllability is related to the observability of a proper adjoint system (see, for instance, \cite{cara_guerrero,zab}). 
+In this section, we will prove an observability inequality that allows to establish the null controllability of system \eqref{sys_foll}. It is classical by now that null controllability is related to the observability of a proper adjoint system (see, for instance, \cite{cara_guerrero,zab}). 
 
 For our particular case, let us consider the adjoint of system \eqref{sys_foll}:
 %
@@ -492,7 +492,7 @@ For our particular case, let us consider the adjoint of system \eqref{sys_foll}:
 -\varphi_t-\Delta \varphi= \theta\chi_{\mathcal O_d} \quad&\textnormal{in }Q, \\
 \theta_t-\Delta \theta=\frac{1}{\gamma^2}\varphi \quad& \textnormal{in }Q, \\
 \varphi=0, \quad \theta=\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\csbd \quad &\textnormal{on $\Sigma$,} \\
-\varphi(x,T)=\varphi^T(x), \quad \theta(x,0)=0 \quad &\textnormal{in $\Omega$}.
+\varphi(x,T)=\varphi^T(x), \quad \theta(x,0)=0 \quad &\textnormal{in $\Omega$},
 \end{cases}
 \end{equation}
 %
@@ -505,15 +505,15 @@ Assume that $\omega\cap\mathcal O_d\neq \emptyset$ and $\ell,\gamma$ are large e
 \item There exists a positive constant $C$, such that for any $y_0\in H^{-1}(\Omega)$ and any $y_d\in L^2(Q)$ such that \eqref{integ_yd} holds, there exists a control $h\in L^2(\omega\times(0,T))$ of minimal norm such that 
 %
 \begin{equation*}
-\|h\|_{L^2(\omega\times(0,T))}\leq \sqrt C\left(\|y_0\|_{H^{-1}(\Omega)}+\|\rho y_d\|_{L^2(Q)}\right)
+\|h\|_{L^2(\omega\times(0,T))}\leq \sqrt C\left(\|y_0\|_{H^{-1}(\Omega)}+\|\varrho_1 y_d\|_{L^2(Q)}\right)
 \end{equation*}
 %
 and the associated state satisfies $y(\cdot,T)=0$, where $y$ is the first component of \eqref{sys_foll}.  
 %
-\item There exist a positive constant $C$ and a weight function $\rho$ blowing up at $t=T$ such that the observability inequality 
+\item There exist a positive constant $C$ and a weight function $\varrho_1$ blowing up at $t=T$ such that the observability inequality 
 %
 \begin{equation}\label{obs_ineq_1}
-\|\varphi(0)\|_{H^1_{0}(\Omega)}^2+\iint_Q \rho^{-2}|\theta|^2dxdt\leq C\iint_{\omega\times(0,T)}|\varphi|^2dxdt
+\|\varphi(0)\|_{H^1_{0}(\Omega)}^2+\iint_Q \varrho_1^{-2}|\theta|^2dxdt\leq C\iint_{\omega\times(0,T)}|\varphi|^2dxdt
 \end{equation}
 %
 holds for every $\varphi^T\in H^1_{0}(\Omega)$, where $(\varphi,\theta)$ is the solution to \eqref{adj_sys_foll} associated to the initial datum $\varphi^T$. 
@@ -562,9 +562,9 @@ For any arbitrary $\bar \theta\in L^2(Q)$, let us consider the system
 %
 \begin{equation}\label{heat_fixed}
 \begin{cases}
--\varphi_t-\Delta \varphi=\bar\theta\chi_{\mathcal O_d}, & \text{in Q}, \\
+-\varphi_t-\Delta \varphi=\bar\theta\chi_{\mathcal O_d} & \text{in Q}, \\
 \varphi=0 &\text{on } \Sigma, \\
-\varphi(x,T)=\varphi^T(x), & \text{in } \Omega.
+\varphi(x,T)=\varphi^T(x) & \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
@@ -589,7 +589,7 @@ Thanks to the regularity of $\varphi$, we have from \cite[Th. 2.1, p.9]{lions_ma
 and, moreover,  $\varphi \mapsto \frac{\partial \varphi }{\partial n}$ is a continuous and linear map of $H^{\frac12,\frac14}(\Sigma)\to H^{2,1}(Q)$. Thus, we get
 %
 \begin{equation}\label{est_phi_h1214}
-\|\tfrac{\partial \varphi}{\partial n}\csbd\|_{H^{\frac12,\frac14}(\Sigma)}\leq C\left(\|\bar \theta\|_{L^2(Q)}+\|\varphi^T\|_{H_{0}^{1}(\Omega)} \right)
+\|\tfrac{\partial \varphi}{\partial n}\csbd\|_{H^{\frac12,\frac14}(\Sigma)}\leq C\left(\|\bar \theta\|_{L^2(Q)}+\|\varphi^T\|_{H_{0}^{1}(\Omega)} \right),
 \end{equation}
 %
 where we have used the fact that $\Gamma\subset \partial \Omega$ and $\csbd$ is a smooth function. 
@@ -598,9 +598,9 @@ On the other hand, for $\varphi$ solution to \eqref{heat_fixed}, let us consider
 %
 \begin{equation}\label{theta_fixed}
 \begin{cases}
-\theta_t-\Delta \theta=\frac{1}{\gamma^2}\varphi, & \text{in Q}, \\
+\theta_t-\Delta \theta=\frac{1}{\gamma^2}\varphi & \text{in Q}, \\
 \theta=\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\csbd &\text{on } \Sigma, \\
-\theta(x,0)=0, & \text{in } \Omega.
+\theta(x,0)=0 & \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
@@ -613,7 +613,7 @@ From the results in \cite[Ch. 4, \S15.5]{lions_magenes} and estimates \eqref{nor
 %
 where we have denoted $\mu=\min\{\ell^2,\gamma^2\}$.
 
-Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system composed by \eqref{heat_fixed} and \eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and the embedding $W(Q)\hookrightarrow L^2(Q)$ (which follows from classical compactness results, see, e.g., \cite{simon}) we can check that $\Lambda$ is a well-defined, continuous and linear map of $L^2(Q)\to L^2(Q)$.
+Now, consider the mapping defined by $\Lambda\bar\theta=\theta$ where $(\varphi,\theta)$ is the solution to the cascade system composed by \eqref{heat_fixed} and \eqref{theta_fixed}. From the linearity of the systems, estimate \eqref{est_theta_fixed} and the embedding $W(Q)\hookrightarrow L^2(Q)$ (which follows from classical compactness results, see, e.g., \cite{simon}) we can deduce that $\Lambda$ is a well-defined, continuous and linear map of $L^2(Q)\to L^2(Q)$.
 
 For any $\bar\theta_1,\bar\theta_2\in L^2(Q)$, we consider the difference $\Lambda\bar\theta_1-\Lambda\bar\theta_2$. Then, arguing as above, we can readily see that
 %
@@ -646,7 +646,7 @@ Then, for all $\lambda\geq 1$ and $m\geq 2$, we consider the following weight fu
 %
 \begin{equation}\label{weights_l} 
 \begin{split}
-&\alpha(x,t)= \frac{e^{2\lambda\|\eta^0\|_\infty}-e^{\lambda\eta^0(x)}}{l^m(t)}, \quad \xi(x,t)=\frac{e^{\lambda \eta^0(x)}}{l^m(t)} \\
+&\alpha(x,t)= \frac{e^{2\lambda\|\eta^0\|_\infty}-e^{\lambda\eta^0(x)}}{l^m(t)}, \quad \xi(x,t)=\frac{e^{\lambda \eta^0(x)}}{l^m(t)}, \\
 &\alpha^*(t)=\max_{x\in\overline{\Omega}}\alpha(x,t), \quad \xi^*(t)=\min_{x\in\overline\Omega} \xi(x,t).
 \end{split}
 \end{equation}
@@ -655,7 +655,7 @@ The following notation will be used to abridge the estimates
 %
 \begin{equation*} 
 \begin{gathered}
-I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}(|u_t|^2+|\Delta u|^2)\dx\dt+s\iint_Qe^{-2s\alpha}\xi|\nabla u|^2\dx\dt+s^3\iint_Qe^{-2s\alpha}\xi^3|u|^2\dx\dt \\
+I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}(|u_t|^2+|\Delta u|^2)\dx\dt+s\iint_Qe^{-2s\alpha}\xi|\nabla u|^2\dx\dt+s^3\iint_Qe^{-2s\alpha}\xi^3|u|^2\dx\dt, \\
 \widetilde I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}|\nabla u|^2\dx\dt+s\iint_{Q}e^{-2s\alpha}\xi |u|^2\dx\dt,
 \end{gathered}
 \end{equation*}
@@ -849,7 +849,7 @@ Up to now, we have
 %
 \begin{equation}\label{est_locales}
 \begin{split}
-I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt \right)
+I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt \right),
 \end{split}
 \end{equation}
 %
@@ -885,11 +885,11 @@ Using H\"older and Young inequalities in the last term of \eqref{inter_res}, it 
 %
 \begin{equation}\label{est_final_1}
 \begin{split}
-\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2\dx\dt+\delta \widetilde I(s;\theta)+C_{\delta}s^5\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt.
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2\dx\dt+\delta \widetilde I(s;\theta)+C_{\delta}s^5\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt,
 \end{split}
 \end{equation}
 %
-for any $\delta>0$. We replace \eqref{est_final_1} in \eqref{est_locales} with $\delta$ small enough and  since $\gamma$ is sufficiently large, we can absorb the first two terms of the above inequality. Finally, noting that $\omega_1\subset \omega$, we obtain the desired inequality. This concludes the proof of Proposition \ref{prop_carleman}
+for any $\delta>0$. We replace \eqref{est_final_1} in \eqref{est_locales} with $\delta$ small enough and  since $\gamma$ is sufficiently large, we can absorb the first two terms of the above inequality. Finally, noting that $\omega_1\subset \omega$, we obtain the desired inequality. This concludes the proof of Proposition \ref{prop_carleman}.
 %
 \end{proof}
 
@@ -901,7 +901,7 @@ Let us introduce the weight functions:
 %
 \begin{equation}\label{weights_rec} 
 \begin{split}
-&\beta(x,t)= \frac{e^{2\lambda\|\eta^0\|_\infty}-e^{\lambda\eta^0(x)}}{\bar l^4(t)}, \quad \phi(x,t)=\frac{e^{\lambda \eta^0(x)}}{\bar l^4(t)} \\
+&\beta(x,t)= \frac{e^{2\lambda\|\eta^0\|_\infty}-e^{\lambda\eta^0(x)}}{\bar l^4(t)}, \quad \phi(x,t)=\frac{e^{\lambda \eta^0(x)}}{\bar l^4(t)}, \\
 &\beta^*(t)=\max_{x\in\overline{\Omega}}\beta(x,t), \quad \phi^*(t)=\min_{x\in\overline\Omega} \phi(x,t),
 \end{split}
 \end{equation}
@@ -920,7 +920,7 @@ We set $s$ to a sufficiently large fixed value. By construction, $\alpha=\beta$ 
 \begin{align} \notag 
 &\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi|\nabla \varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta^*}|\theta|^2\dx\dt  \\ \notag
 &\quad = \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi^3|\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi|\nabla\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha^*}|\theta|^2\dx\dt \\ \label{car_rec}
-&\quad \leq  C(s,T)\left(\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right)
+&\quad \leq  C(s,T)\left(\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right),
 \end{align}
 %
 where we have used the Carleman inequality \eqref{car_final}, the weight properties \eqref{weights_l}, \eqref{weights_rec} and the fact that $\beta\leq \alpha$ in Q. 
@@ -934,13 +934,13 @@ On the other hand, consider a function $\tilde \eta\in C^1([0,T])$, such that
 Let us multiply by $\tilde\eta\Delta\varphi$ the equation verified by $\varphi$ (see \eqref{adj_sys_foll}) and integrate in $\Omega$, namely 
 %
 \begin{equation*}
--\int_{\Omega}\varphi_t\Delta\varphi\tilde\eta\dx-\int_{\Omega}|\Delta \varphi|^2\tilde\eta\dx=\int_{\mathcal O_d}\theta\Delta\varphi\tilde \eta\dx
+-\int_{\Omega}\varphi_t\Delta\varphi\tilde\eta\dx-\int_{\Omega}|\Delta \varphi|^2\tilde\eta\dx=\int_{\mathcal O_d}\theta\Delta\varphi\tilde \eta\dx.
 \end{equation*}
 %
 Integrating by parts and using H\"older and Young inequalities yield
 %
 \begin{equation*}
--\frac{1}{2}\frac{\d}{\dt}\int_{\Omega}|\nabla\varphi|^2\tilde\eta\dx+\int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx\leq \delta \int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx+C_\delta\int_{\Omega}|\theta|^2\tilde\eta\dx+\frac{1}{2}\int_{\Omega}|\nabla\varphi|^2|\eta^\prime|\dx
+-\frac{1}{2}\frac{\d}{\dt}\int_{\Omega}|\nabla\varphi|^2\tilde\eta\dx+\int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx\leq \delta \int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx+C_\delta\int_{\Omega}|\theta|^2\tilde\eta\dx+\frac{1}{2}\int_{\Omega}|\nabla\varphi|^2|\eta^\prime|\dx,
 \end{equation*}
 %
 for any $\delta>0$.  Choosing $\delta$ small enough and dropping the positive term involving $|\Delta\varphi|^2\tilde\eta$, we integrate in $[0,T]$, from which we obtain
@@ -977,7 +977,7 @@ Using similar arguments, one may deduce an estimate of the form,
 %
 where we have used that $\beta$ and $\phi$ are bounded functions in $\Omega\times[0,T/2]$.
 
-Arguing as in the proof of Lemma \ref{prof_regularity}, we can deduce the following estimate for the solutions to $\theta$ in the domain $\Omega\times [0,T/2]$
+Arguing as in the proof of Lemma \ref{prof_regularity}, we can deduce the following estimate for the solutions $\theta$ in the domain $\Omega\times [0,T/2]$
 %
 \begin{align}\notag 
 \|\theta\|^2_{L^2(0,T/2;L^2(\Omega))}&\leq C\|\theta\|^2_{W(\Omega\times(0,T/2))}\\ \notag
@@ -998,18 +998,18 @@ Combining \eqref{car_rec} with \eqref{est_h01_theta}--\eqref{est_theta_tme} we d
 \begin{equation}\label{obs_mu}
 \begin{split}
 \|\varphi(0)\|_{H_0^1(\Omega)}^2+\iint_{Q}&e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\beta^*}|\theta|^2\dx\dt \\
-&\leq \frac{C}{\mu}\|e^{-s\beta^*}\|_{H^{2,1}(Q)}^2+ C\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt.
+&\leq \frac{C}{\mu}\|e^{-s\beta^*}\varphi\|_{H^{2,1}(Q)}^2+ C\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt.
 \end{split}
 \end{equation}
 %
 
-To conclude, it is enough to estimate the $H^{2,1}$-norm in the right-hand side of \eqref{obs_mu}. To do this, we use the system \eqref{phi_gorro} and estimate \eqref{est_regul} with $\sigma=e^{-s\beta^\star}$. More precisely, we have 
+To conclude, it is enough to estimate the $H^{2,1}$-norm in the right-hand side of \eqref{obs_mu}. To do this, we use the system \eqref{phi_gorro} and estimate \eqref{est_regul} with $\sigma=e^{-s\beta^*}$. More precisely, we have 
 %
 \begin{equation}\label{est_C_mu}
-\|e^{-s\beta^\star}\|^2_{H^{2,1}(Q)}\leq C\left(\iint_{Q}e^{-2s\beta^\star}(\phi^\star)^{5/2}|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\beta^\star}|\theta|^2\dx\dt\right).
+\|e^{-s\beta^*}\varphi\|^2_{H^{2,1}(Q)}\leq C\left(\iint_{Q}e^{-2s\beta^*}(\phi^*)^{5/2}|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\beta^*}|\theta|^2\dx\dt\right).
 \end{equation}
 %
-Finally, we obtain the observability inequality \eqref{obs_ineq_1} with $\varrho_1(t):=e^{s\beta^\star}$ by combining estimates \eqref{obs_mu}--\eqref{est_C_mu}, using the definition of $\beta^\star$ and $\phi^\star$ and taking $\gamma,\ell>>1$. This concludes the proof. 
+Finally, we obtain the observability inequality \eqref{obs_ineq_1} with $\varrho_1(t):=e^{s\beta^*}$ by combining estimates \eqref{obs_mu}--\eqref{est_C_mu}, using the definition of $\beta^*$ and $\phi^*$ and taking $\gamma,\ell>>1$. This concludes the proof. 
 
 \section{The case with distributed follower and boundary leader}\label{sec_bound_leader}
 
@@ -1017,9 +1017,9 @@ In this section, we address the robust hierarchic problem for the case when the 
 %
 \begin{equation}\label{heat_dif1}
 \begin{cases}
-z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi, & \text{in Q}, \\
+z_t-\Delta z=\csin{\mathcal B_1}v+\csin{\mathcal B_2}\psi & \text{in Q}, \\
 z=h\chi_{\cbd} &\text{on } \Sigma, \\
-z(x,0)=z^0(x), & \text{in } \Omega.
+z(x,0)=z^0(x) & \text{in } \Omega.
 \end{cases}
 \end{equation}
 
@@ -1041,8 +1041,8 @@ are the solution to the robust control problem (see and adapt accordingly Defini
 
 \begin{equation}\label{couple1}
 \begin{cases}
-z_t-\Delta z=-\frac{1}{\ell^2}p\csin{\mathcal B_1}+\frac{1}{\gamma^2}p\csin{\mathcal B_2}, & \text{in Q}, \\
--p_t-\Delta p=(z-z_d)\chi_{\mathcal O_d}, & \text{in Q}, \\
+z_t-\Delta z=-\frac{1}{\ell^2}p\csin{\mathcal B_1}+\frac{1}{\gamma^2}p\csin{\mathcal B_2} & \text{in Q}, \\
+-p_t-\Delta p=(z-z_d)\chi_{\mathcal O_d} & \text{in Q}, \\
 z=h\csin{\Gamma}, \quad p=0 &\text{on } \Sigma, \\
 z(x,0)=z^0(x), \quad p(x,T)=0& \text{in } \Omega.
 \end{cases}
@@ -1053,27 +1053,27 @@ Then, the problem amounts to study the null controllability of the coupled syste
 As mentioned in the previous section, we can build the control $h$ of minimal norm by adapting the well-known HUM method. For this particular case, the main ingredient lies at finding, for each $\varepsilon>0$, the minimizers of the functional
 %
 \begin{equation}\label{func_FR}
-F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\cbd\times(0,T)}\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+\frac{\varepsilon}{2}\|\varphi^T\|_{H_0^1(\Omega)}+\langle z^0(x),\varphi(0)\rangle_{-1,1}-\iint_{Q}\theta z_d \dx\dt
+F_{\epsilon}(\varphi^T)=\frac{1}{2}\iint_{\cbd\times(0,T)}\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+\frac{\varepsilon}{2}\|\varphi^T\|_{H_0^1(\Omega)}+\langle z^0(x),\varphi(0)\rangle_{-1,1}-\iint_{Q}\theta z_d \dx\dt,
 \end{equation}
 %
 defined for the solutions to the adjoint system
 %
 \begin{equation}\label{adjunto1}
 \begin{cases}
--\varphi_t-\Delta \varphi=\theta\csin{\mathcal \mathcal O_d}, & \text{in Q}, \\
-\theta_t-\Delta \theta=-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}, & \text{in Q}, \\
-\varphi=0, \quad \theta=0 &\text{on } \Sigma, \\
-\varphi(x,T)=\varphi^T(x), \quad \theta(x,0)=0& \text{in } \Omega.
+-\varphi_t-\Delta \varphi=\theta\csin{\mathcal \mathcal O_d} &\quad \text{in Q}, \\
+\theta_t-\Delta \theta=-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2} & \quad \text{in Q}, \\
+\varphi=0, \quad \theta=0 &\quad \text{on } \Sigma, \\
+\varphi(x,T)=\varphi^T(x), \quad \theta(x,0)=0&\quad \text{in } \Omega.
 \end{cases}
 \end{equation}
 
 As before, we mainly focus proving an observability inequality to establish the coerciveness of the functional \eqref{func_FR} and thus guaranteeing the existence and uniqueness of the minimizers. We have the following result.
 %
 \begin{proposition}\label{prop_obs_ineq_dif}
-Assume that \eqref{loc_teo2} holds and $\ell,\gamma$ are large enough.  Then, there exist a positive constant $C$ and a weight function $\vartheta$ blowing up at $t=T$ such that the observability inequality
+Assume that \eqref{loc_teo2} holds and $\ell,\gamma$ are large enough.  Then, there exist a positive constant $C$ and a weight function $\varrho_2$ blowing up at $t=T$ such that the observability inequality
 %
 \begin{equation}\label{obs_ineq_dif}
-\left\|\varphi(x,0)\right\|^2_{H_0^1(\Omega)}+\iint_{Q}{\vartheta}_2^{-2}|\theta|^2dxdt\leq C\iint_{\cbd \times(0,T)}\left|\frac{\partial \varphi}{\partial n} \right|^2\d\sigma\dt
+\left\|\varphi(x,0)\right\|^2_{H_0^1(\Omega)}+\iint_{Q}{\varrho}_2^{-2}|\theta|^2dxdt\leq C\iint_{\cbd \times(0,T)}\left|\frac{\partial \varphi}{\partial n} \right|^2\d\sigma\dt
 \end{equation}
 %
 holds for every $\varphi^T\in H_0^{1}(\Omega)$, where $(\varphi,\theta)$ is the solution to \eqref{adjunto1} associated to the inital datum $\varphi^T$. 
@@ -1128,13 +1128,13 @@ and for some parameters $s>0$ and $m\in\mathbb R$, we set the notation
 I(u;i,m):=\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}|\nabla u|^2\dx\dt+\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{3+m}|u|^2\dx\dt.
 \end{equation*}
 
-We have the following Lemma.
+We have the following lemma.
 %
 \begin{lemma}\label{lemma_car_boundary}
 Assume that $u_0\in H_0^1(\Omega)$ and $f\in L^2(Q)$. For any $m\in \mathbb R$, there exists a constant $\lambda_m$, such that for any $\lambda\geq \lambda_m$ there exist constants $C>0$ independent of $s$ and $s_m(\lambda)>0$, such that the solution of \eqref{sys_u} satisfies
 %
 \begin{equation}\label{Est1}
-I(u;i,m)\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^m|f|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}\left|\frac{\partial u}{\partial n}\right|^2\d\sigma\dt\right)
+I(u;i,m)\leq C\left(\iint_{Q}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^m|f|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_i}(s\tilde{\xi}_i)^{1+m}\left|\frac{\partial u}{\partial n}\right|^2\d\sigma\dt\right),
 \end{equation}
 %
 for every $s\geq s_m(\lambda)$. 
@@ -1219,7 +1219,7 @@ Moreover, we can readily see that $e^{s\widehat{\beta_2}}\leq e^{s\tilde\beta_2}
 
 Our task is now to estimate the weighted norm in the above expression. Multiplying the equation satisfied by $\theta$ by $e^{-2s\widehat{\beta_2}}\theta$ in $\Omega$ yields
 %
-\begin{equation*}\int_{\Omega}\left(\theta_t-\theta \Delta \theta\right) e^{-2s\widehat{\beta_2}}\theta \dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-s\widehat{\beta_2}}\theta\dx,\end{equation*}
+\begin{equation*}\int_{\Omega}\left(\theta_t-\theta \Delta \theta\right) e^{-2s\widehat{\beta_2}}\theta \dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-s\widehat{\beta_2}}\theta\dx.\end{equation*}
 
 Integrating by parts and since the weight $\widehat{\beta_2}$ only depends on time, we have
 %
@@ -1306,20 +1306,20 @@ In this section, we shall discuss the hierarchic control problem for the system
 %
 \begin{equation}\label{sys_sec3}
 \begin{cases}
-w_t-\Delta w=\psi, & \quad \text{in Q}, \\
+w_t-\Delta w=\psi & \quad \text{in Q}, \\
 w=h\chi_{\cbd_1}+ v{\csbd}_2&\quad \text{on } \Sigma, \\
-w(x,0)=w^0(x), &\quad \text{in } \Omega.
+w(x,0)=w^0(x) &\quad \text{in } \Omega.
 \end{cases}
 \end{equation}
 %
 Notice that this time both controls are placed on the boundary and is a natural combination of the two previous problems. % : we seek to design the boundary control $h$ verifying a null controllability constraint and a pair $(v,\psi)$ satisfying a robust control problem in the spirit of Definition \ref{defi_rob}.
 
-It is not difficult to prove that for any fixed $h\in L^2(\Sigma)$ the exists a unique saddle point $(\bar v,\bar \psi)\in L^2(\Sigma)\times L^2(Q)$ for the cost functional \eqref{func_rob}. Indeed, the procedure is practically the same as in Section \ref{ex_uniq_saddle} since the leader control $h$ is fixed and participates in a indirect way. 
+It is not difficult to prove that for any fixed $h\in L^2(\Sigma)$ the exists a unique saddle point $(\bar v,\bar \psi)\in L^2(\Sigma)\times L^2(Q)$ for the cost functional \eqref{func_rob}. Indeed, the procedure is practically the same as in Section \ref{ex_uniq_saddle} since the leader control $h$ is fixed and participates in an indirect way. 
 
 As in Section \ref{sec_bound_leader}, once the saddle point has been characterized, the control $h$ of minimal norm can be obtained by solving a suitable minimization problem. This process would require to prove an observability of the form
 %
 \begin{equation}\label{obs_ineq_sec3}
-\|\varphi(x,0)\|^2_{H_0^1(\Omega)}+\iint_{Q}\vartheta_3^{-2}(t)|\theta|^2\dx\dt\leq C\iint_{ \cbd_1\times(0,T)}\left|\frac{\partial\varphi}{\partial n}\right|^2\d\sigma\dt,
+\|\varphi(x,0)\|^2_{H_0^1(\Omega)}+\iint_{Q}\varrho_3^{-2}(t)|\theta|^2\dx\dt\leq C\iint_{ \cbd_1\times(0,T)}\left|\frac{\partial\varphi}{\partial n}\right|^2\d\sigma\dt,
 \end{equation}
 %
  for the solutions to the adjoint system 
@@ -1333,7 +1333,7 @@ As in Section \ref{sec_bound_leader}, once the saddle point has been characteriz
 \end{cases}
 \end{equation}
 %
-where $\vartheta_3(t)$ is an appropriate weight. Note that this system is the same as \eqref{adj_sys_foll}, but the observability we need now has a boundary observation instead of a distributed one. 
+where $\varrho_3(t)$ is an appropriate weight. Note that this system is the same as \eqref{adj_sys_foll}, but the observability we need now has a boundary observation instead of a distributed one. 
 
 We could opt to apply the Carleman inequality, presented in Lemma \ref{lemma_car_boundary}, to the first equation of \eqref{adj_sys_3} while the Carleman estimate \eqref{car_boundary} to the second equation in \eqref{adj_sys_3}. Nevertheless, the definition of their respective weights are based on the selection of the functions $\eta_i$ (see eq. \eqref{constr_bound}) and $\eta^0$ (see eq. \eqref{constr_1}) and their different nature complicates the absorption of the lower order terms at the moment of adding both estimates. Moreover, as a consequence of applying \eqref{car_boundary} to the equation verified by $\theta$, we would have local term depending on $\theta$ for which it is not clear the procedure to eliminate it. 
 
@@ -1342,7 +1342,7 @@ As mentioned in Section \ref{sec_intro}, we shall present a hierarchic control r
 Let us choose any function $\rho_\star\in C^\infty([0,T])$, such that $\rho_\star(t)\geq e^{\frac{s\bar\alpha}{2}}$ with $\alpha$ defined as
 %
 \begin{equation*}
-\bar\alpha(x,t)=\frac{e^{2\lambda\|\bar\eta\|_{\infty}}-e^{\lambda\bar\eta(x)}}{t^2(T-t)^2}
+\bar\alpha(x,t)=\frac{e^{2\lambda\|\bar\eta\|_{\infty}}-e^{\lambda\bar\eta(x)}}{t^2(T-t)^2},
 \end{equation*}
 %
 where $\bar\eta$ is a function verifying properties \eqref{constr_bound}. 
@@ -1367,7 +1367,7 @@ The characterization of the minimum can be carried out as in the previous sectio
 %
 \begin{equation*}%\label{sys_sec3}
 \begin{cases}
-w_t-\Delta w=0, &\quad  \text{in Q}, \\
+w_t-\Delta w=0 &\quad  \text{in Q}, \\
 -r_t-\Delta r= (w-w_d)\chi_{\mathcal O_d}  &\quad  \text{in Q},\\ 
 w=h\csin{\Gamma_1}+ \frac{1}{\ell^2}\frac{\partial r}{\partial n}\rho_\star^{-2}{\csbd}_2, \quad r=0 &\quad \text{on } \Sigma, \\
 w(x,0)=w^0(x),\quad r(x,T)=0 &\quad \text{in } \Omega.
@@ -1392,7 +1392,7 @@ The introduction of the weight $\rho_\star$ will help us to obtain a Carleman es
 Assume that $\ell$ is large enough. There exist a constant $\lambda_0$ such that for any $\lambda\geq \lambda_0$ and a constant $C>0$ such that the solution $(\varphi,\theta)$ to \eqref{adj_sys_3} satisfies 
 %
 \begin{equation}\label{car_final_sec3}
-\iint_{Q}e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt\leq C\iint_{\mathcal \mathcal O_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt
+\iint_{Q}e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt\leq C\iint_{\mathcal \mathcal O_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt,
 \end{equation}
 %
 for all $s$ large enough and every $\varphi^T\in H_0^1(\Omega)$. Here, we have used the notation
@@ -1417,7 +1417,7 @@ Now, we define $\widehat{\theta}=e^{-s\bar\alpha^\star}\theta$. Then, $\widehat{
 %
 \begin{equation*}%\label{theta_gorro}
 \begin{cases}
--\widehat\theta_t-\Delta \widehat\theta=(e^{-s\alpha^\star})_t\theta &\quad \text{in } Q, \\
+-\widehat\theta_t-\Delta \widehat\theta=(e^{-s\bar\alpha^\star})_t\theta &\quad \text{in } Q, \\
 \widehat\theta=e^{-s\bar\alpha^\star}\frac{\partial\varphi}{\partial n}\rho_\star^{-2}{\csbd}_{2} &\quad \text{on } \Sigma, \\
 \widehat{\theta}(\cdot,0)=0 &\quad\text{in } \Omega.
 \end{cases}
@@ -1440,7 +1440,7 @@ Adding estimates \eqref{car_init_sec3} and \eqref{est_bar_theta}, and taking int
 %
 \begin{align} \notag
 \iint_{Q}&e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt \\ \label{car_inter_sec3}
-&\leq C\iint_{\Gamma_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+C\iint_{Q}e^{-2s\bar\alpha^\star}(s\bar\xi^\star)^3|\theta|^2\dx\dt+\frac{C}{\ell^4}\|e^{-s\bar\alpha^\star}\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)}
+&\leq C\iint_{\Gamma_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+C\iint_{Q}e^{-2s\bar\alpha^\star}(s\bar\xi^\star)^3|\theta|^2\dx\dt+\frac{C}{\ell^4}\|e^{-s\bar\alpha^\star}\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)},
 \end{align}
 %
 for all $s$ large enough. 
@@ -1517,16 +1517,16 @@ For this functional, we can prove the existence of a saddle point if $\gamma$ is
 %
 \begin{equation}\label{sys_sec3}
 \begin{cases}
-w_t-\Delta w=0, & \quad \text{in Q}, \\
+w_t-\Delta w=0 & \quad \text{in Q}, \\
 w=h\chi_{\cbd}+ v^1\rho_{\Gamma_1}+v^2\rho_{\Gamma_2}&\quad \text{on } \Sigma, \\
-w(x,0)=w^0(x), &\quad \text{in } \Omega,
+w(x,0)=w^0(x) &\quad \text{in } \Omega,
 \end{cases}
 \end{equation}
 % 
 where $\Gamma,\Gamma_i\subset \partial \Omega$ are open sets with $\Gamma\cap\Gamma_i=\emptyset$, $i=1,2$. Also, consider the functionals
 %
 \begin{equation}\label{func_nash}
-\mathcal I_i(v^1,v^2;h)=\frac{1}{2}\iint_{\mathcal O_{i,d}\times(0,T)}|w-w_{i,d}|^2\dx\dt+\frac{\ell_i^2}{2}\iint_{\Sigma}\rho_\star^2|v^{i}|^2\d\sigma\dt, \quad i=1,2.
+\mathcal I_i(v^1,v^2;h)=\frac{1}{2}\iint_{\mathcal O_{i,d}\times(0,T)}|w-w_{i,d}|^2\dx\dt+\frac{\ell_i^2}{2}\iint_{\Sigma}\rho_\star^2|v^{i}|^2\d\sigma\dt, \quad i=1,2,
 \end{equation}
 %
 where $w_{i,d}$ in $L^2(Q)$ are given functions and $\mathcal{O}_{i,d}\subset \Omega$ are arbitrary observation sets.
@@ -1541,7 +1541,7 @@ Adapting the results of \cite{araruna,vhs_corri}, it can be seen that, choosing 
 %
 \begin{equation*}%\label{sys_sec3}
 \begin{cases}
-w_t-\Delta w=0, &\quad  \text{in Q}, \\
+w_t-\Delta w=0 &\quad  \text{in Q}, \\
 -r^{i}_t-\Delta r^{i}= (w-w_{i,d})\chi_{\mathcal O_d}  &\quad  \text{in Q},\\ 
 w=h\chi_{\cbd}+ \frac{1}{\ell_1^2}\frac{\partial r^{1}}{\partial n}\rho_\star^{-2}\rho_{\Gamma_1}+\frac{1}{\ell_2^2}\frac{\partial r^{2}}{\partial n}\rho_\star^{-2}\rho_{ \Gamma_2}, \quad r^{i}=0 &\quad \text{on } \Sigma, \\
 w(x,0)=w^0(x),\quad r^{i}(x,T)=0 &\quad \text{in } \Omega, \quad i=1,2,
@@ -1552,9 +1552,9 @@ and the null controllability for this system can be addressed by obtaining a sui
 %
 \begin{equation}\label{adj_conclusion}
 \begin{cases}
--\varphi_t-\Delta \varphi=\theta^1\chi_{\mathcal O_{2,d}}+\theta^2\chi_{\mathcal O_{2,d}}, &\quad  \text{in Q}, \\
+-\varphi_t-\Delta \varphi=\theta^1\chi_{\mathcal O_{2,d}}+\theta^2\chi_{\mathcal O_{2,d}} &\quad  \text{in Q}, \\
 \theta^{i}_t-\Delta \theta^{i}= 0 &\quad  \text{in Q},\\ 
-\varphi=0, \quad \theta^{i}=\frac{1}{\ell_i^2}\frac{\partial \varphi}{\partial n}\rho_\star^{-2}\chi_{\Gamma_i}, &\quad \text{on } \Sigma, \\
+\varphi=0, \quad \theta^{i}=\frac{1}{\ell_i^2}\frac{\partial \varphi}{\partial n}\rho_\star^{-2}\chi_{\Gamma_i} &\quad \text{on } \Sigma, \\
 \varphi(x,T)=\varphi^T(x),\quad \theta^{i}(x,0)=0 &\quad \text{in } \Omega, \quad i=1,2.
 \end{cases}
 \end{equation}
@@ -1578,7 +1578,7 @@ As usual, the follower $v$ will be in charge of a classical optimal control prob
 \begin{equation}\label{sys_insi}
 \begin{cases}
 y_t-\Delta y=\xi + h\chi_{\omega}-\frac{1}{\ell^2}p\chi_{\mathcal O} &\quad\text{in }Q, \\ 
--p_t-\Delta p=(y-y_d)\chi_{\mathcal O_d} &\quad\text{in }Q \\
+-p_t-\Delta p=(y-y_d)\chi_{\mathcal O_d} &\quad\text{in }Q, \\
 y=0, \quad p=0 &\quad\text{in } \Sigma, \\
 y(x,0)=y_0(x)+\tau\bar y, \quad p(x,T)=0  &\quad\text{in } \Omega.
 \end{cases}
@@ -1601,9 +1601,9 @@ As common in other insensitizing control problems, \eqref{obj_ins} is equivalent
 \begin{equation}\label{sys_insi}
 \begin{cases}
 y_t-\Delta y=\xi + h\chi_{\omega}-\frac{1}{\ell^2}p\chi_{\mathcal O} &\quad\text{in }Q, \\ 
--p_t-\Delta p=(y-y_d)\chi_{\mathcal O_d} &\quad\text{in }Q \\
--z_t-\Delta z= q+y\chi_\mathcal{S} &\quad\text{in }Q \\
-q_t-\Delta q=-\frac{1}{\ell^2}z\chi_{\mathcal O} &\quad\text{in }Q \\
+-p_t-\Delta p=(y-y_d)\chi_{\mathcal O_d} &\quad\text{in }Q, \\
+-z_t-\Delta z= q+y\chi_\mathcal{S} &\quad\text{in }Q, \\
+q_t-\Delta q=-\frac{1}{\ell^2}z\chi_{\mathcal O} &\quad\text{in }Q, \\
 y= p=z=q=0 &\quad\text{in } \Sigma, \\
 y(x,0)=y_0(x), \quad p(x,T)=z(x,T)=q(x,0)=0  &\quad\text{in } \Omega.
 \end{cases}
@@ -1681,7 +1681,7 @@ UNAM (Mexico). Also, the authors wish to acknowledge  Prof. Luz de Teresa (UNAM,
 \bibitem{carreno}
 \textsc{N. Carre\~{n}o and M. C. Santos}.
 \newblock Stackelberg-Nash exact controllability for the Kuramoto-Sivashinsky equation.
-\newblock {\em Preprint}, (2018). 
+\newblock {\em J. Differential Equations}, \textbf{266}, 9 (2019), 6068--6108. 
 %
 \bibitem{duprez_lissy}
 \textsc{M. Duprez and P. Lissy.}
