@@ -7,13 +7,14 @@
   \usepackage{graphics} %% add this and next lines if pictures should be in esp format
   \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
 \usepackage{graphicx}  \usepackage{epstopdf}%This is to transfer .eps figure to .pdf figure; please compile your paper using PDFLeTex or PDFTeXify.
- \usepackage[colorlinks=true]{hyperref}
+% \usepackage[colorlinks=true]{hyperref}
+ \usepackage{refcheck}
  
  \usepackage{amssymb}
    % Warning: when you first run your tex file, some errors might occur,
    % please just press enter key to end the compilation process, then it will be fine if you run your tex file again.
    % Note that it is highly recommended by AIMS to use this package.
-\hypersetup{urlcolor=blue, citecolor=red}
+%\hypersetup{urlcolor=blue, citecolor=red}
 %\usepackage{hyperref}
 
   \textheight=8.2 true in
@@ -54,6 +55,9 @@
 \def\dx{\,\textnormal{d}x}
 \def\dt{\textnormal{d}t}
 \def\d{\,\textnormal{d}}
+\hyphenation{ins-ti-tu-to}
+\hyphenation{ins-ti-tut}
+
 
 
 %% Place the running title of the paper with 40 letters or less in []
@@ -257,7 +261,10 @@ where {$\mathcal B_i \subsetneq \Omega$}, $i=1,2,$ are nonempty open subsets and
 The same methodology presented above can be used to address the robust hierarchic control of \eqref{heat_dif}. In this case, the cost functional \eqref{func_rob} should be replaced by 
 %
 \begin{equation}\label{func_rob_dif}
-K_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\dx\dt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2\dx\dt\right].
+\begin{split}
+K_r(v,\psi;h)=&\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt\\
+&+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\dx\dt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2\dx\dt\right].
+\end{split}
 \end{equation}
 %
 As before, we will see that the robust control can be solved by selecting appropriate parameters $\ell$ and $\gamma$. Notice that unlike \eqref{heat_dif}, here we maximize for disturbances $\psi$ localized in the region $\mathcal B_2$. This comes from a technical reason concerning the resolution of the null controllability objective (see Section {\ref{sec_bound_leader}} for details), but which is not necessary to solve the robust control part. 
@@ -688,7 +695,7 @@ The following notation will be used to abridge the estimates
 %
 \begin{equation*} 
 \begin{gathered}
-I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}(|u_t|^2+|\Delta u|^2)\dx\dt+s\iint_Qe^{-2s\alpha}\xi|\nabla u|^2\dx\dt+s^3\iint_Qe^{-2s\alpha}\xi^3|u|^2\dx\dt, \\
+I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}(|u_t|^2+|\Delta u|^2)\dx\dt+s\iint_Qe^{-2s\alpha}\xi|\nabla u|^2\dx\dt\\+s^3\iint_Qe^{-2s\alpha}\xi^3|u|^2\dx\dt, \\
 \widetilde I(s;u):=s^{-1}\iint_{Q}e^{-2s\alpha}\xi^{-1}|\nabla u|^2\dx\dt+s\iint_{Q}e^{-2s\alpha}\xi |u|^2\dx\dt,
 \end{gathered}
 \end{equation*}
@@ -767,8 +774,10 @@ We start by applying inequality \eqref{car_clasica} to the first equation in \eq
 %
 \begin{equation*}
 \begin{split}
-I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt +\iint_Q e^{-2s\alpha}\left(|\theta\chi_{\mathcal O_d}|^2+s^{-2}\xi^{-2}|\tfrac{1}{\gamma^2}\varphi|^2\right)\dx\dt\right. \\
-&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}+s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial n} \csbd \right\|^{2}_{L^2(\Sigma)}  \right),
+I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt \right. \\
+&\quad \left. +\iint_Q e^{-2s\alpha}\left(|\theta\chi_{\mathcal O_d}|^2+s^{-2}\xi^{-2}|\tfrac{1}{\gamma^2}\varphi|^2\right)\dx\dt\right. \\
+&\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}\right. \\
+&\quad \left. +s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial n} \csbd \right\|^{2}_{L^2(\Sigma)}  \right),
 \end{split}
 \end{equation*}
 %
@@ -776,7 +785,8 @@ for all $s$ large enough and some $m\geq 2$ to be fixed later. We can use the pa
 %
 \begin{equation}\label{car_con_bound}
 \begin{split}
-I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt + s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial n} \csbd \right\|^{2}_{L^2(\Sigma)} \right. \\
+I(s;\varphi)+\widetilde{I}(s;\theta)\leq C&\left(\iint_{\omega_0\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\varphi|^2+s\xi|\theta|^2\right)\dx\dt \right. \\
+&\quad\left.+ s^{-\frac{1}{2}}\left\| e^{-2s\alpha}\xi^{-\frac{1}{4}+\frac{1}{m}} \frac{1}{\ell^2}\frac{\partial \varphi}{\partial n} \csbd \right\|^{2}_{L^2(\Sigma)} \right. \\
 &\quad\left. +s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}}\frac{1}{\ell^2}\frac{\partial \varphi}{\partial n}\csbd \right\|^2_{H^{\frac{1}{4},\frac{1}{2}}(\Sigma)}  \right),
 \end{split}
 \end{equation}
@@ -794,7 +804,8 @@ Note that from the definition of the weight functions \eqref{weights_l}, we have
 \begin{equation*}
 \begin{split}
 \iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt&=\int_{0}^{T}e^{-2s\alpha^*}\int_{\partial \Omega}\nabla\varphi\cdot \nabla \kappa\frac{\partial \varphi}{\partial n} \d\sigma \dt\\
-&=\int_{0}^{T}e^{-2s\alpha^*}\int_{\Omega}\Delta \varphi\,(\nabla\varphi\cdot \nabla \kappa)\dx\dt+\int_{0}^Te^{-2s\alpha^*}\int_\Omega\nabla (\nabla\varphi\cdot\nabla\kappa)\cdot\nabla \varphi \dx\dt,
+&=\int_{0}^{T}e^{-2s\alpha^*}\int_{\Omega}\Delta \varphi\,(\nabla\varphi\cdot \nabla \kappa)\dx\dt\\
+&\quad +\int_{0}^Te^{-2s\alpha^*}\int_\Omega\nabla (\nabla\varphi\cdot\nabla\kappa)\cdot\nabla \varphi \dx\dt,
 \end{split}
 \end{equation*}
 %
@@ -839,8 +850,8 @@ for all $s$ large enough. Employing  \eqref{est_regul} with $\sigma=e^{-s\alpha^
 %
 \begin{equation}\label{estimate_2}
 \begin{split}
-\int_{0}^T e^{-2s\alpha^*}&(s\xi^{*})^{-1}\|\varphi\|_{H^2(\Omega)}^2\dt \\
-&\leq C\left(\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1}|\theta|^2\dx\dt+\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1+2(m+1)/m}|\varphi|^2\dx\dt\right).
+&\int_{0}^T e^{-2s\alpha^*}(s\xi^{*})^{-1}\|\varphi\|_{H^2(\Omega)}^2\dt \\
+&\quad \leq C\left(\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1}|\theta|^2\dx\dt+\iint_Qe^{-2s\alpha^*}(s\xi^*)^{-1+2(m+1)/m}|\varphi|^2\dx\dt\right).
 \end{split}
 \end{equation}
 
@@ -848,8 +859,9 @@ Setting $m=4$ and combining estimates \eqref{estimate_1} and \eqref{estimate_2},
 %
 \begin{equation*}
 \begin{split}
-\iint_{\Sigma}e^{-2s\alpha}&\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt\\
-&\leq C\left(\iint_Q e^{-2s\alpha}\left((s\xi)^{-1}|\Delta \varphi|^2 + s\xi|\nabla \varphi|^2\right)\dx\dt+\iint_Qe^{-2s\alpha}\left(s\xi|\theta|^2+(s\xi)^{3/2}|\varphi|^2\right)\dx\dt\right).
+\iint_{\Sigma}e^{-2s\alpha}\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt
+&\leq C\left(\iint_Q e^{-2s\alpha}\left((s\xi)^{-1}|\Delta \varphi|^2 + s\xi|\nabla \varphi|^2\right)\dx\dt \right.\\
+&\quad \left.+\iint_Qe^{-2s\alpha}\left(s\xi|\theta|^2+(s\xi)^{3/2}|\varphi|^2\right)\dx\dt\right).
 \end{split}
 \end{equation*}
 %
@@ -873,7 +885,10 @@ where we have used again that $\alpha^*,\xi^*$ coincide with $\alpha,\xi$ on the
 Now, set $\widehat \varphi=\sigma \varphi$ with $\sigma=e^{-s\alpha^*}(s\xi)^{-\frac{1}{4}}$. Arguing as before, we readily obtain from \eqref{est_regul} the following 
 %
 \begin{equation}\label{est_frontera}
-s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)}\leq C\left(\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^{-\frac{1}{2}}|\theta|^2\dx\dt+\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^2|\varphi|^2\dx\dt\right).
+\begin{split}
+s^{-\frac{1}{2}}&\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)}\\
+&\leq C\left(\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^{-\frac{1}{2}}|\theta|^2\dx\dt+\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^2|\varphi|^2\dx\dt\right).
+\end{split}
 \end{equation}
 %
 Putting together \eqref{est_trace} and \eqref{est_frontera} and substituting in \eqref{car_con_bound}, we can take $s$ sufficiently large to absorb the remaining terms. 
@@ -902,8 +917,8 @@ Following well-known arguments (see, e.g. \cite{luz_manuel,deteresa2000}), we in
 %
 \begin{equation}\label{inter_res}
 \begin{split}
-\iint_{\omega_0\times(0,T)}&e^{-2s\alpha}s\xi|\theta|^2\dx\dt\\
-&\leq \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2\dx\dt+\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\theta| |\varphi|+s^2\xi^2|\nabla \theta||\varphi|\right)\dx\dt,
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt&\leq \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2\dx\dt\\
+&\quad+\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\left(s^3\xi^3|\theta| |\varphi|+s^2\xi^2|\nabla \theta||\varphi|\right)\dx\dt,
 \end{split}
 \end{equation}
 %
@@ -918,7 +933,8 @@ Using H\"older and Young inequalities in the last term of \eqref{inter_res}, it 
 %
 \begin{equation}\label{est_final_1}
 \begin{split}
-\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2\dx\dt+\delta \widetilde I(s;\theta)+C_{\delta}s^5\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt,
+\iint_{\omega_0\times(0,T)}e^{-2s\alpha}s\xi|\theta|^2\dx\dt\leq& \frac{1}{\gamma^2}\iint_{Q}e^{-2s\alpha}s\xi |\varphi|^2\dx\dt\\
+&+\delta \widetilde I(s;\theta)+C_{\delta}s^5\iint_{\omega_1\times(0,T)}e^{-2s\alpha}\xi^5|\varphi|^2\dx\dt,
 \end{split}
 \end{equation}
 %
@@ -951,8 +967,9 @@ l(t) &\quad\text{for}\quad T/2\leq t\leq T.
 We set $s$ to a sufficiently large fixed value. By construction, $\alpha=\beta$ in $[0,T/2]$. Thus, 
 %
 \begin{align} \notag 
-&\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi|\nabla \varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta^*}|\theta|^2\dx\dt  \\ \notag
-&\quad = \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi^3|\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi|\nabla\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha^*}|\theta|^2\dx\dt \\ \label{car_rec}
+&\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt+\iint_{\Omega\times(T/2,T)}e^{-2s\beta}\phi|\nabla \varphi|^2\dx\dt \\ \notag
+&+\iint_{\Omega\times(T/2,T)}e^{-2s\beta^*}|\theta|^2\dx\dt = \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi^3|\varphi|^2\dx\dt \\ \notag
+&+ \iint_{\Omega\times(T/2,T)}e^{-2s\alpha}\xi|\nabla\varphi|^2\dx\dt + \iint_{\Omega\times(T/2,T)}e^{-2s\alpha^*}|\theta|^2\dx\dt \\ \label{car_rec}
 &\quad \leq  C(s,T)\left(\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right),
 \end{align}
 %
@@ -973,7 +990,10 @@ Let us multiply by $\tilde\eta\Delta\varphi$ the equation verified by $\varphi$ 
 Integrating by parts and using H\"older and Young inequalities yield
 %
 \begin{equation*}
--\frac{1}{2}\frac{\d}{\dt}\int_{\Omega}|\nabla\varphi|^2\tilde\eta\dx+\int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx\leq \delta \int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx+C_\delta\int_{\Omega}|\theta|^2\tilde\eta\dx+\frac{1}{2}\int_{\Omega}|\nabla\varphi|^2|\eta^\prime|\dx,
+\begin{split}
+-\frac{1}{2}\frac{\d}{\dt}&\int_{\Omega}|\nabla\varphi|^2\tilde\eta\dx+\int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx\\
+&\leq \delta \int_{\Omega}|\Delta\varphi|^2\tilde\eta\dx+C_\delta\int_{\Omega}|\theta|^2\tilde\eta\dx+\frac{1}{2}\int_{\Omega}|\nabla\varphi|^2|\eta^\prime|\dx,
+\end{split}
 \end{equation*}
 %
 for any $\delta>0$.  Choosing $\delta$ small enough and dropping the positive term involving $|\Delta\varphi|^2\tilde\eta$, we integrate in $[0,T]$, from which we obtain
@@ -993,7 +1013,10 @@ e^{-2s\beta}\phi\geq C >0 \quad\text{and}\quad \quad  e^{-2s\beta^*}\geq C>0, \q
 and therefore we can bound appropriately in \eqref{nabla_theta_0} to obtain
 %
 \begin{equation*}
-\int_{\Omega}|\nabla\varphi(0)|^2\dx\leq C\left(\iint_{\Omega\times(0,T/2)}|\theta|^2\dx\dt+\iint_{\Omega\times(T/2,3T/4)}\left(e^{-2s\beta}\phi|\nabla\varphi|^2+e^{-2s\beta^\star}|\theta|^2\right)\dx\dt\right).
+\begin{split}
+\int_{\Omega}|\nabla\varphi(0)|^2\dx\leq C&\left(\iint_{\Omega\times(0,T/2)}|\theta|^2\dx\dt\right. \\
+&\quad \left. +\iint_{\Omega\times(T/2,3T/4)}\left(e^{-2s\beta}\phi|\nabla\varphi|^2+e^{-2s\beta^\star}|\theta|^2\right)\dx\dt\right).
+\end{split}
 \end{equation*}
 %
 Observe that the second term in the above expression can be estimated with inequality \eqref{car_rec}, this is
@@ -1005,7 +1028,10 @@ Observe that the second term in the above expression can be estimated with inequ
 Using similar arguments, one may deduce an estimate of the form,
 %
 \begin{equation}\label{est_phi_0}
-\iint_{\Omega\times(0,T/2)}e^{-2s\beta}\phi^3|\varphi|^2\dx\dt\leq C\left(\iint_{\Omega\times(0,T/2)}|\theta|^2\dx\dt+\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right),
+\begin{split}
+\iint_{\Omega\times(0,T/2)}&e^{-2s\beta}\phi^3|\varphi|^2\dx\dt\\
+&\leq C\left(\iint_{\Omega\times(0,T/2)}|\theta|^2\dx\dt+\iint_{\omega\times(0,T)}e^{-2s\beta}\phi^5|\varphi|^2\dx\dt\right),
+\end{split}
 \end{equation}
 %
 where we have used that $\beta$ and $\phi$ are bounded functions in $\Omega\times[0,T/2]$.
@@ -1061,7 +1087,10 @@ It is well-known (see, e.g., \cite{ima_original,cara_guerrero}) that for $v\equi
 Adapting the arguments of Section \ref{ex_uniq_saddle}, it is not difficult to prove the existence and uniqueness of the saddle point $(\bar v,\bar \psi)$ for the cost functional 
 %
 \begin{equation*}%\label{func_rob_dif}
-K_r(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\dx\dt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2\dx\dt\right].
+\begin{split}
+K_r(v,\psi;h)=&\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|y-y_d|^2\dx\dt\\
+&+\frac{1}{2}\left[\ell^2\iint_{\mathcal B_1\times(0,T)}|v|^2\dx\dt-\gamma^2\iint_{\mathcal B_2\times(0,T)}|\psi|^2\dx\dt\right].
+\end{split}
 \end{equation*}
 %
 Indeed, for any given $h\in L^2(\cbd\times(0,T))$ and $y_0\in H^{-1}(\Omega)$, one can prove that
@@ -1180,17 +1209,18 @@ We apply estimate \eqref{Est1} to the each equation of the coupled system \eqref
 %
 \begin{align}\notag
 I(\varphi;1,0)&+I(\theta;2, -1)\\\notag
-&\leq C\left(\iint_{\mathcal O_d\times(0,T)}e^{-2s\tilde{\alpha}_1}|\theta|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt\right.\\ \notag
-&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\d\sigma\dt\right)% \\ \label{igualda1}
-%&\leq C\left(\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt+\iint_{\Sigma^{\prime}}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt\right).
+\leq C&\left(\iint_{\mathcal O_d\times(0,T)}e^{-2s\tilde{\alpha}_1}|\theta|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt\right.\\ \notag
+&\quad+\left.\iint_{Q}e^{-2s\tilde{\alpha}_2}(s\tilde{\xi}_2)^{-1}|-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}|^2\dx\dt\right. \\ \notag
+&\quad\left.+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\d\sigma\dt\right)
 \end{align}
 %
 holds for any $\lambda\geq\hat\lambda$, where $\hat{\lambda}=\max\{\lambda_0,\lambda_{-1}\}$ and any $s$ large enough.
 
 From \eqref{weights_12}, we readily deduce that $e^{-2s\tilde\alpha_2}\leq e^{-2s\tilde\alpha_1}$ in $Q$ and that $\xi_2^{-1}\xi_1\leq C$, where $C>0$ only depends on $\Omega$ and $\mathcal S^\prime$. Moreover, $e^{-2s\tilde\alpha_1}=e^{-2s\tilde\alpha_2}$ in  $\mathcal O_d\times(0,T)$. In this way, we can absorb the lower order terms so 
+%
 \begin{align}\notag
-I(\varphi;1,0)&+I(\theta;2, -1)\\ \label{igualda1}
-&\leq C\left(\iint_{\mathcal S^{\prime}\times(0,T)}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\d\sigma\dt\right),
+&I(\varphi;1,0)+I(\theta;2, -1)\\ \label{igualda1}
+&\quad \leq C\left(\iint_{\mathcal S^{\prime}\times(0,T)}e^{-2s\tilde{\alpha}_1}(s\tilde{\xi}_1)\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde{\alpha}_2}\left|\frac{\partial \theta}{\partial n}\right|^2\d\sigma\dt\right),
 \end{align}
 holds for every $s$ sufficiently large.
 
@@ -1218,8 +1248,8 @@ It can be proved that the following observability inequality holds:
 \begin{equation}
 \label{aux7}
 \begin{split}
-\|\varphi(x,0)\|_{H_0^1(\Omega)}^2+&\int_0^{T}\int_{\Omega}e^{-2s\tilde \beta_1}\tilde \phi_1^{3}|\varphi|^2\dx\dt+\int_0^{T}\int_{\Omega}e^{-2s\tilde \beta_2}\tilde \phi_2^{2}|\theta|^2\dx\dt\\
-&\leq C\left(\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde \beta_1}\tilde \phi_1\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+\iint_{\mathcal S^{\prime}\times(0,T)}e^{-2s\tilde \beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\d\sigma\dt\right),
+&\|\varphi(x,0)\|_{H_0^1(\Omega)}^2+\int_0^{T}\int_{\Omega}e^{-2s\tilde \beta_1}\tilde \phi_1^{3}|\varphi|^2\dx\dt+\int_0^{T}\int_{\Omega}e^{-2s\tilde \beta_2}\tilde \phi_2^{2}|\theta|^2\dx\dt\\
+&\quad \leq C\left(\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\tilde \beta_1}\tilde \phi_1\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+\iint_{\mathcal S^{\prime}\times(0,T)}e^{-2s\tilde \beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\d\sigma\dt\right),
 \end{split}
 \end{equation}
  %
@@ -1259,7 +1289,7 @@ Integrating by parts and since the weight $\widehat{\beta_2}$ only depends on ti
 \begin{equation}
 \label{aux_temp}
 \begin{split}
-\frac12\frac{d}{dt}\int_{\Omega}e^{-2s\widehat{\beta_2}}|\theta|^2\dx+&\int_{\Omega}e^{-2s\widehat{\beta_2}}|\nabla \theta|^2\dx\\
+\frac12\frac{d}{dt}&\int_{\Omega}e^{-2s\widehat{\beta_2}}|\theta|^2\dx+\int_{\Omega}e^{-2s\widehat{\beta_2}}|\nabla \theta|^2\dx\\
 &=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-s\hat{\beta}_2}\theta\dx-s\int_{\Omega}e^{-2s\widehat{\beta_2}}(\widehat{\beta_2})_t|\theta|^2\dx.
 \end{split}
 \end{equation}
@@ -1269,24 +1299,28 @@ Integrating by parts and since the weight $\widehat{\beta_2}$ only depends on ti
  \begin{equation}
 \label{aux8}
 \begin{split}
-\frac12\frac{d}{dt}\int_{\Omega}e^{-2s\widehat{\beta}_2}|\theta|^2\dx+&\int_{\Omega}e^{-2s\widehat{\beta_2}}|\triangledown \theta|^2\dx\\
+\frac12\frac{d}{dt}&\int_{\Omega}e^{-2s\widehat{\beta}_2}|\theta|^2\dx+\int_{\Omega}e^{-2s\widehat{\beta_2}}|\triangledown \theta|^2\dx\\
 &\leq \frac{C}{\ell^4}\int_{\mathcal B_1}|\varphi|e^{-2s\widehat{\beta_2}}\dx+\frac{C}{\gamma^4}\int_{\mathcal B_2}|\varphi|e^{-2s\widehat{\beta_2}}\dx+\frac12\int_{\Omega}e^{-2s\widehat{\beta_2}}|\theta|^2\dx, 
 \end{split}
 \end{equation}
  %
 and applying Gronwall's lemma to \eqref{aux8} followed by integration by parts yields
  %
- \begin{equation}
-\label{aux9}
-\iint_Q e^{-2s\widehat{\beta_2}}|\theta|^2\dx\dt\leq C\left(\frac{1}{\ell^4}\int_0^T\!\!\!\!\int_{\mathcal B_1}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt+\frac{1}{\gamma^4}\int_0^T\!\!\!\!\int_{\mathcal B_2}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt\right).
+ \begin{equation}\label{aux9}
+ \begin{split}
+\iint_Q &e^{-2s\widehat{\beta_2}}|\theta|^2\dx\dt\\
+&\leq C\left(\frac{1}{\ell^4}\int_0^T\!\!\!\!\int_{\mathcal B_1}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt+\frac{1}{\gamma^4}\int_0^T\!\!\!\!\int_{\mathcal B_2}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt\right).
+\end{split}
 \end{equation}
  %
  
 A similar analysis can be developed to obtain the estimate
 %
-\begin{equation}
-\label{aux10}
-\iint_{Q} e^{-2s\widehat{\beta_2}}|\Delta\theta|^2\dx\dt\leq C\left(\frac{1}{\ell^4}\int_0^T\!\!\!\!\int_{\mathcal B_1}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt+\frac{1}{\gamma^4}\int_0^T\!\!\!\!\int_{\mathcal B_2}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt\right).
+\begin{equation}\label{aux10}
+\begin{split}
+\iint_{Q} &e^{-2s\widehat{\beta_2}}|\Delta\theta|^2\dx\dt\\
+&\leq C\left(\frac{1}{\ell^4}\int_0^T\!\!\!\!\int_{\mathcal B_1}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt+\frac{1}{\gamma^4}\int_0^T\!\!\!\!\int_{\mathcal B_2}|\varphi|^2e^{-2s\widehat{\beta_2}}\dx\dt\right).
+\end{split}
 \end{equation}
 %
 Indeed, it is enough to multiply the second equation of \eqref{adjunto1} by $e^{-2s\widehat{\beta_2}}\Delta\theta$ in $\Omega$, integrate by parts and argue as above. Therefore, we deduce
@@ -1301,7 +1335,10 @@ Indeed, it is enough to multiply the second equation of \eqref{adjunto1} by $e^{
 Putting together estimates \eqref{est_local_theta}, \eqref{est_theta_h2} and taking into account relation \eqref{rel_eta1_eta2} allow us to conclude that
 %
 \begin{equation}\label{est_local_fin}
-\iint_{S^{\prime}\times(0,T)}e^{-2s\tilde\beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt  \leq C\left(\frac{1}{\ell^4}\int_0^T\!\!\!\!\int_{\mathcal B_1}|\varphi|^2e^{-2s\tilde{\beta}_1}\dx\dt+\frac{1}{\gamma^4}\int_0^T\!\!\!\!\int_{\mathcal B_2}|\varphi|^2e^{-2s\tilde{\beta}_1}\dx\dt\right).
+\begin{split}
+\iint_{S^{\prime}\times(0,T)}&e^{-2s\tilde\beta_2}\left|\frac{\partial \theta}{\partial n}\right|^2\dx\dt \\
+& \leq C\left(\frac{1}{\ell^4}\int_0^T\!\!\!\!\int_{\mathcal B_1}|\varphi|^2e^{-2s\tilde{\beta}_1}\dx\dt+\frac{1}{\gamma^4}\int_0^T\!\!\!\!\int_{\mathcal B_2}|\varphi|^2e^{-2s\tilde{\beta}_1}\dx\dt\right).
+\end{split}
 \end{equation}
 %
 Thus, thanks to hypothesis \eqref{loc_teo2} and the special selection of the weight functions \eqref{props_brazil}--\eqref{prop_impor}, we have estimated the local boundary term of $\theta$ in function of some localized terms depending on $\varphi$. 
@@ -1418,7 +1455,10 @@ for all $s$ large enough and every $\varphi^T\in H_0^1(\Omega)$. Here, we have u
 Let us set $\mathcal S^\prime\subset\subset \mathcal O_1$. Then, we apply inequality \eqref{Est1} (with the corresponding weights $\bar\alpha$, $\bar\xi$ and $m=0$) to the first equation of system \eqref{adj_sys_3}. By fixing $\lambda_0>0$, we obtain
 %
 \begin{equation}\label{car_init_sec3}
-\iint_Qe^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt\leq C\left(\iint_{Q}e^{-2s\bar\alpha}|\theta\chi_{\mathcal O_d}|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|\dx\dt\right)
+\begin{split}
+\iint_Q & e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt\\
+&\leq C\left(\iint_{Q}e^{-2s\bar\alpha}|\theta\chi_{\mathcal O_d}|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|\dx\dt\right)
+\end{split}
 \end{equation}
 %
 valid for $s$ and $\lambda$ large enough. 
@@ -1450,7 +1490,8 @@ Adding estimates \eqref{car_init_sec3} and \eqref{est_bar_theta}, and taking int
 %
 \begin{align} \notag
 \iint_{Q}&e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt+\iint_{Q}e^{-2s\bar\alpha^\star}|\theta|^2\dx\dt \\ \label{car_inter_sec3}
-&\leq C\iint_{\Gamma_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+C\iint_{Q}e^{-2s\bar\alpha^\star}(s\bar\xi^\star)^3|\theta|^2\dx\dt+\frac{C}{\ell^4}\|e^{-s\bar\alpha^\star}\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)},
+&\leq C\iint_{\Gamma_1\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\d\sigma\dt+C\iint_{Q}e^{-2s\bar\alpha^\star}(s\bar\xi^\star)^3|\theta|^2\dx\dt\\
+&\quad +\frac{C}{\ell^4}\|e^{-s\bar\alpha^\star}\rho_\star^{-2}\varphi\|^2_{H^{2,1}(Q)},
 \end{align}
 %
 for all $s$ large enough. 
@@ -1518,7 +1559,10 @@ For proving the existence and uniqueness of the saddle point, we need to obtain 
 We could have taken into account the effect of a perturbation affecting the system (see eq. \eqref{sys_sec3}) by considering a cost functional of the form
 %
 \begin{equation*}
-\mathcal K(v,\psi;h)=\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt+\frac{\ell^2}{2}\iint_{\Sigma}\rho_\star^2|v|^2{\csbd}_2\d\sigma\dt-\frac{\gamma^4}{2}\iint_{Q}\rho_\star^2|\psi|\dx\dt.
+\begin{split}
+\mathcal K(v,\psi;h)=&\frac{1}{2}\iint_{\mathcal O_d\times(0,T)}|w-w_d|^2\dx\dt\\
+&+\frac{\ell^2}{2}\iint_{\Sigma}\rho_\star^2|v|^2{\csbd}_2\d\sigma\dt-\frac{\gamma^4}{2}\iint_{Q}\rho_\star^2|\psi|\dx\dt.
+\end{split}
 \end{equation*}
 %
 For this functional, we can prove the existence of a saddle point if $\gamma$ is large enough. However, the introduction of the weight function indicates that only perturbations vanishing at $t=0$ and $t=T$ are allowed. From the practical point of view, it makes sense to consider a control $v$ with these properties, since is at the choice of the designer, however, the perturbations are not at hand and restricting its behavior to such class of functions is not accurate.
@@ -1536,7 +1580,10 @@ w(x,0)=w^0(x) &\quad \text{in } \Omega,
 where $\Gamma,\Gamma_i\subset \partial \Omega$ are open sets with $\Gamma\cap\Gamma_i=\emptyset$, $i=1,2$. Also, consider the functionals
 %
 \begin{equation}\label{func_nash}
-\mathcal I_i(v^1,v^2;h)=\frac{1}{2}\iint_{\mathcal O_{i,d}\times(0,T)}|w-w_{i,d}|^2\dx\dt+\frac{\ell_i^2}{2}\iint_{\Sigma}\rho_\star^2|v^{i}|^2\d\sigma\dt, \quad i=1,2,
+\begin{split}
+\mathcal I_i(v^1,v^2;h)=&\frac{1}{2}\iint_{\mathcal O_{i,d}\times(0,T)}|w-w_{i,d}|^2\dx\dt\\
+&+\frac{\ell_i^2}{2}\iint_{\Sigma}\rho_\star^2|v^{i}|^2\d\sigma\dt, \quad i=1,2,
+\end{split}
 \end{equation}
 %
 where $w_{i,d}$ in $L^2(Q)$ are given functions and $\mathcal{O}_{i,d}\subset \Omega$ are arbitrary observation sets.
@@ -1622,7 +1669,7 @@ y(x,0)=y_0(x), \quad p(x,T)=z(x,T)=q(x,0)=0  &\quad\text{in } \Omega.
 This means that we have to control one component of a system of four coupled equations. As pointed out in \cite{vhs_honor}, the hierarchic controllability of coupled systems as \eqref{sys_insi} with one control force is not yet fully understood and further investigation is desirable. 
 \end{enumerate} 
 
-\section*{Acknowledgments} The authors wish to acknowledge  Prof. Luz de Teresa (Instituto de Matem\'aticas UNAM, Mexico) and Prof. Franck Boyer (Institut de Math\'ematiques de Toulouse, France) for the fruitful discussions. 
+\section*{Acknowledgments} The authors wish to acknowledge  Prof. Luz de Teresa (Instituto de Matem\'aticas, UNAM, Mexico) and Prof. Franck Boyer (Institut de Math\'ematiques de Toulouse, France) for the fruitful discussions. 
 
 
 \begin{thebibliography}{99}
