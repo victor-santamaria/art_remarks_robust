@@ -5,3 +5,4 @@
 *.pdf
 *.gz
 *.auxlock
+.DS_Store
