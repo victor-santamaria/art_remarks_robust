@@ -158,7 +158,7 @@ Let us consider the system
 \begin{cases}
 y_t-\Delta y=\csin{\omega}h+\psi & \text{in Q}, \\
 y=v\csbd &\text{on } \Sigma, \\
-y(x,0)=y^0(x) & \text{in } \Omega.
+y(x,0)=y^0(x) & \text{in } \Omega,
 \end{cases}
 \end{equation}
 %
@@ -483,7 +483,7 @@ Multiplying \eqref{adj_frontera} by $y_v$ in $L^2(Q)$ and integrating by parts, 
 and upon substituting in \eqref{deriv_J1}, we get
 %
 \begin{equation*}
-\frac{\partial J_r}{\partial v}(v,\psi)=\frac{\partial q}{\partial n}\csbd-\ell^2v
+\frac{\partial J_r}{\partial v}(v,\psi)=\frac{\partial q}{\partial n}\csbd-\ell^2v.
 \end{equation*}
 %
 In a similar fashion, we multiply \eqref{adj_frontera} by $y_\psi$ in $L^2(Q)$ and integrate by parts. Then, from \eqref{deriv_J2} we deduce that
@@ -798,7 +798,7 @@ Then, we proceed to estimate the first boundary term in \eqref{car_con_bound}. A
 \frac{\partial \kappa}{\partial \nu}=1 \quad\text{and}\quad \kappa=1 \quad \text{on } \partial \Omega.
 \end{equation*}
 %
-Note that from the definition of the weight functions \eqref{weights_l}, we have $\alpha$ and $\alpha^*$ are equal in $\partial \Omega$, thus we may write
+Note that from the definition of the weight functions \eqref{weights_l}, we have that $\alpha$ and $\alpha^*$ are equal in $\partial \Omega$, thus we may write
 %
 \begin{equation*}
 \begin{split}
@@ -1383,7 +1383,7 @@ We could opt to apply the Carleman inequality, presented in Lemma \ref{lemma_car
 
 As mentioned in Section \ref{sec_intro}, we shall present a hierarchic control result for the case when $\psi\equiv 0$ and the optimal control objective is modified as follows.
 
-Let us choose any function $\rho_\star\in C^\infty([0,T])$, such that $\rho_\star(t)\geq e^{\frac{s\bar\alpha}{2}}$ with $\alpha$ defined as
+Let us choose any function $\rho_\star\in C^\infty([0,T])$, such that $\rho_\star(t)\geq e^{\frac{s\bar\alpha}{2}}$ with $\bar \alpha$ defined as
 %
 \begin{equation*}
 \bar\alpha(x,t)=\frac{e^{2\lambda\|\bar\eta\|_{\infty}}-e^{\lambda\bar\eta(x)}}{t^2(T-t)^2},
@@ -1454,7 +1454,7 @@ Let us set $\mathcal S^\prime\subset\subset \mathcal O_1$. Then, we apply inequa
 \begin{equation}\label{car_init_sec3}
 \begin{split}
 \iint_Q & e^{-2s\bar\alpha}(s\bar\xi)^3|\varphi|^2\dx\dt\\
-&\leq C\left(\iint_{Q}e^{-2s\bar\alpha}|\theta\chi_{\mathcal O_d}|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|\dx\dt\right)
+&\leq C\left(\iint_{Q}e^{-2s\bar\alpha}|\theta\chi_{\mathcal O_d}|^2\dx\dt+\iint_{\mathcal S^\prime\times(0,T)}e^{-2s\bar\alpha}s\bar\xi\left|\frac{\partial \varphi}{\partial n}\right|^2\dx\dt\right)
 \end{split}
 \end{equation}
 %
@@ -1742,7 +1742,7 @@ This means that we have to control one component of a system of four coupled equ
 
 \bibitem{evans} (MR1625845)
 \newblock {L. C. Evans,}
-\newblock \emph{Partial \emph{differential equa}tions,}
+\newblock \emph{Partial differential equations,}
 \newblock Graduate studies in Mathematics, American Mathematical Society, Providence, RI, 1991.
 
 \bibitem{cara_guerrero} (MR2257228) [10.1137/S0363012904439696]
