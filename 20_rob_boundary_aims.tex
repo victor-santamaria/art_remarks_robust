@@ -874,7 +874,7 @@ To deal with the second boundary term in \eqref{car_con_bound}, we can use the f
 \begin{equation}\label{est_trace}
 \begin{split}
 s^{-\frac{1}{2}}\left\|e^{-s\alpha}\xi^{-\frac{1}{4}} \frac{1}{\ell^2} \frac{\partial \varphi}{\partial n}\csbd \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)} & \leq s^{-\frac{1}{2}}\left\|e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \frac{\partial \varphi}{\partial n} \right\|^2_{H^{\frac{1}{2},\frac{1}{4}}(\Sigma)} \\
-&\leq s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)},
+&\leq s^{-\frac{1}{2}}\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|^2_{H^{2,1}(Q)},
 \end{split}
 \end{equation}
 %
@@ -884,7 +884,7 @@ Now, set $\widehat \varphi=\sigma \varphi$ with $\sigma=e^{-s\alpha^*}(s\xi)^{-\
 %
 \begin{equation}\label{est_frontera}
 \begin{split}
-s^{-\frac{1}{2}}&\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|_{H^{2,1}(Q)}\\
+s^{-\frac{1}{2}}&\left\| e^{-s\alpha^*}(\xi^*)^{-\frac{1}{4}} \varphi \right\|^2_{H^{2,1}(Q)}\\
 &\leq C\left(\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^{-\frac{1}{2}}|\theta|^2\dx\dt+\iint_{Q}e^{-2s\alpha^*}(s\xi^*)^2|\varphi|^2\dx\dt\right).
 \end{split}
 \end{equation}
@@ -1279,7 +1279,7 @@ Moreover, we can readily see that $e^{s\widehat{\beta_2}}\leq e^{s\tilde\beta_2}
 
 Our task is now to estimate the weighted norm in the above expression. Multiplying the equation satisfied by $\theta$ by $e^{-2s\widehat{\beta_2}}\theta$ in $\Omega$ yields
 %
-\begin{equation*}\int_{\Omega}\left(\theta_t-\theta \Delta \theta\right) e^{-2s\widehat{\beta_2}}\theta \dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-s\widehat{\beta_2}}\theta\dx.\end{equation*}
+\begin{equation*}\int_{\Omega}\left(\theta_t-\theta \Delta \theta\right) e^{-2s\widehat{\beta_2}}\theta \dx=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-2s\widehat{\beta_2}}\theta\dx.\end{equation*}
 
 Integrating by parts and since the weight $\widehat{\beta_2}$ only depends on time, we have
 %
@@ -1287,7 +1287,7 @@ Integrating by parts and since the weight $\widehat{\beta_2}$ only depends on ti
 \label{aux_temp}
 \begin{split}
 \frac12\frac{d}{dt}&\int_{\Omega}e^{-2s\widehat{\beta_2}}|\theta|^2\dx+\int_{\Omega}e^{-2s\widehat{\beta_2}}|\nabla \theta|^2\dx\\
-&=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-s\hat{\beta}_2}\theta\dx-s\int_{\Omega}e^{-2s\widehat{\beta_2}}(\widehat{\beta_2})_t|\theta|^2\dx.
+&=\int_{\Omega}\left(-\frac{1}{\ell^2}\varphi\csin{\mathcal B_1}+\frac{1}{\gamma^2}\varphi \csin{\mathcal B_2}\right)e^{-2s\widehat{\beta_2}}\theta\dx-s\int_{\Omega}e^{-2s\widehat{\beta_2}}(\widehat{\beta_2})_t|\theta|^2\dx.
 \end{split}
 \end{equation}
 %
@@ -1296,12 +1296,12 @@ Integrating by parts and since the weight $\widehat{\beta_2}$ only depends on ti
  \begin{equation}
 \label{aux8}
 \begin{split}
-\frac12\frac{d}{dt}&\int_{\Omega}e^{-2s\widehat{\beta}_2}|\theta|^2\dx+\int_{\Omega}e^{-2s\widehat{\beta_2}}|\triangledown \theta|^2\dx\\
+\frac12\frac{d}{dt}&\int_{\Omega}e^{-2s\widehat{\beta_2}}|\theta|^2\dx+\int_{\Omega}e^{-2s\widehat{\beta_2}}|\triangledown \theta|^2\dx\\
 &\leq \frac{C}{\ell^4}\int_{\mathcal B_1}|\varphi|e^{-2s\widehat{\beta_2}}\dx+\frac{C}{\gamma^4}\int_{\mathcal B_2}|\varphi|e^{-2s\widehat{\beta_2}}\dx+\frac12\int_{\Omega}e^{-2s\widehat{\beta_2}}|\theta|^2\dx,
 \end{split}
 \end{equation}
  %
-and applying Gronwall's lemma to \eqref{aux8} followed by integration by parts yields
+and applying Gronwall's lemma to \eqref{aux8} followed by integration in time yields
  %
  \begin{equation}\label{aux9}
  \begin{split}
